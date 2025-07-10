@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 // User
 Route::group(['prefix' => ''], function () {
     Route::get('/', [CosmicExplorerController::class, 'home']);
+    Route::get('/planet', [CosmicExplorerController::class, 'pageDetailPlanet']);
 });
 
 
