@@ -21,4 +21,10 @@ class CosmicExplorerController extends Controller
         ];
         return view('user/home')->with($data);
     }
+
+    public function pageDetailPlanet()
+    {
+        $data = [];
+        return view('user/details-page-planet')->with($data);
+    }
 }
