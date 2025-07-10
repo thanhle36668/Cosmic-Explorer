@@ -146,7 +146,7 @@ html,
 body {
   font-family: 'Roboto', sans-serif;
   font-weight: 400;
-  background-color: #1e1e1e;
+  background-color: rgb(0, 0, 0);
   font-size: 16px;
   -ms-text-size-adjust: 100%;
   -webkit-font-smoothing: antialiased;
@@ -368,7 +368,7 @@ Pre-loader Style
 
 #overflowTest {
   width: 100%;
-  height: 200px;
+  height: 220px;
   overflow: auto;
 
   /* For Webkit browsers (Chrome, Safari, Edge, Opera) */
@@ -384,9 +384,6 @@ Pre-loader Style
     /* Makes the scrollbar thumb transparent */
   }
 
-  /* For Firefox (requires a different approach as of now) */
-  /* Note: Firefox has limited support for transparent scrollbars directly via this method. */
-  /* You might need to consider a custom scrollbar library or a different design for full cross-browser transparency. */
   scrollbar-color: transparent transparent;
   /* For Firefox (track and thumb) */
   scrollbar-width: thin;
@@ -841,6 +838,12 @@ Introduction
   background-color: #2a2a2a;
 }
 
+.main-banner-details {
+  background-size: cover;
+  padding-top: 20px !important;
+  padding-bottom: 50px !important;
+}
+
 .main-banner h1 {
   color: #fff;
   font-size: 50px;
@@ -921,6 +924,34 @@ Introduction
   opacity: 1;
 }
 
+.main-banner-details .header-text h2 {
+  font-size: 2.5em;
+  color: #ffffff;
+  font-weight: normal;
+  margin-top: 0 !important;
+  margin-bottom: 10px;
+}
+
+.main-banner-details .header-text ul li strong {
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.main-banner-details .header-text ul li {
+  padding: 0;
+  margin-bottom: 15px;
+  font-size: 1.1em;
+  line-height: 1.6;
+  color: #e0e0e0;
+}
+
+.main-banner-details .header-text p {
+  font-size: 1.1em;
+  line-height: 1.8;
+  color: #cccccc;
+  text-align: justify;
+}
+
 .card {
   background-color: transparent;
   border: none;
@@ -935,7 +966,7 @@ Introduction
 }
 
 .card img:hover {
-  box-shadow: 5px 5px 10px #888888;
+  box-shadow: 10px 10px 20px #888888, -10px -10px 20px #ffffff;
 }
 
 .card .card-body {
@@ -1073,10 +1104,16 @@ Categories & Collections Style
   padding: 30px;
 }
 
+.collections .item .down-content-discovery {
+  background-color: #282b2f;
+  border: 1px solid #404245;
+  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  padding: 30px;
+}
+
 .collections .item .down-content h4 {
-  height: 45px;
-  font-size: 20px;
-  padding-bottom: 24px;
+  font-size: 16px;
 }
 
 .collections .item .down-content p {
@@ -1085,7 +1122,7 @@ Categories & Collections Style
 
 .collections .item {
   cursor: pointer;
-  padding-bottom: 60px;
+  padding: 20px;
   transition: all 0.5s ease;
 }
 
@@ -1684,6 +1721,31 @@ About Us Style
   color: black !important;
   margin-top: 25px;
   margin-bottom: 25px;
+}
+
+/* 
+---------------------------------------------
+Heading Page
+--------------------------------------------- 
+*/
+.page-heading {
+  margin-top: 90px !important;
+  background-color: white;
+}
+
+.page-heading .inner-content {
+  padding: 80px 0px;
+  text-align: center;
+}
+
+.page-heading .inner-content h1 {
+  font-size: 4em;
+  font-weight: bold;
+  color: #ffffff;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  letter-spacing: 5px;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
 }
 
 /* 

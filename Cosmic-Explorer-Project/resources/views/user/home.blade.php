@@ -8,7 +8,7 @@
                 <div class="col-12">
                     <nav class="main-nav">
                         <!-- ***** Logo Start ***** -->
-                        <a href="index.html" class="logo">
+                        <a href="{{ route('home') }}" class="logo">
                             <img src="{{ asset('images') }}/logo.svg" alt="">
                         </a>
                         <!-- ***** Logo End ***** -->
@@ -16,7 +16,7 @@
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
                             <li>
-                                <a href="#">Home</a>
+                                <a href="{{ route('home') }}">Home</a>
                             </li>
                             <li>
                                 <a href="#">About</a>
@@ -29,7 +29,8 @@
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     @foreach ($planets as $planet)
                                         <li>
-                                            <a class="dropdown-item" href="#">{{ $planet->name }}</a>
+                                            <a class="dropdown-item"
+                                                href="{{ route('planet', $planet->id) }}">{{ $planet->name }}</a>
                                         </li>
                                     @endforeach
                                 </ul>
@@ -85,7 +86,7 @@
                             <br class="hidden">
                             about the universe
                         </h3>
-                        <p id="overflowTest">We are a group of amateur astronomers working together to improve astronomical
+                        <p>We are a group of amateur astronomers working together to improve astronomical
                             knowledge and
                             observational skills. We make ourselves and our instruments available to promote public
                             interest in
@@ -108,8 +109,10 @@
                     <div class="owl-banner owl-carousel ">
                         @foreach ($planets as $planet)
                             <div class="item">
-                                <img class="rounded-circle" src="{{ asset('images') }}/planets/{{ $planet->photo }}"
-                                    alt="" height="480px" width="480px">
+                                <a href="{{ route('planet', $planet->id) }}">
+                                    <img class="rounded-circle" src="{{ asset('images') }}/planets/{{ $planet->photo }}"
+                                        alt="" height="480px" width="480px">
+                                </a>
                             </div>
                         @endforeach
                     </div>
@@ -239,7 +242,7 @@
                             </div>
                             @foreach ($planets as $planet)
                                 <div class="col-lg-3 col-sm-6">
-                                    <a href="#">
+                                    <a href="{{ route('planet', $planet->id) }}">
                                         <div class="item">
                                             <div class="icon">
                                                 <img src="{{ asset('images') }}/planets/{{ $planet->photo }}"
@@ -247,7 +250,8 @@
                                             </div>
                                             <h4>{{ $planet->name }}</h4>
                                             <div class="icon-button">
-                                                <a href="#"><i class="fa fa-angle-right"></i></a>
+                                                <a href="{{ route('planet', $planet->id) }}"><i
+                                                        class="fa fa-angle-right"></i></a>
                                             </div>
                                         </div>
                                     </a>

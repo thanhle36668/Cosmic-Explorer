@@ -14,6 +14,15 @@ class Planets extends Model
 
     public $fillable = [
         'name',
-        'photo'
+        'photo',
+        'photo_2',
+        'photo_3',
+        'photo_4',
+        'photo_extra',
+        'discovery_date',
+        'diameter_km',
+        'avg_distance_to_earth_km',
+        'avg_distance_to_sun_km',
+        'brief_intro_composition'
     ];
 }
