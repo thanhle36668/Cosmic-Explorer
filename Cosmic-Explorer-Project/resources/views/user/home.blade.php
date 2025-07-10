@@ -1,4 +1,4 @@
-@extends('layouts.cosmic-explorer')
+@extends('layouts.user.cosmic-explorer')
 
 @section('section-change')
     <!-- ***** Header ***** -->
