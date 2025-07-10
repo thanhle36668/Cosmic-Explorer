@@ -1,4 +1,4 @@
-@extends('layouts.user.details-page')
+@extends('layouts.user.detail-page')
 
 @section('title')
     <title>Cosmic Explorer</title>
