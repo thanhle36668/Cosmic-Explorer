@@ -29,7 +29,10 @@
             color: #fff;
         }
         .main-content {
-            padding: 24px;
+               padding: 24px;
+                background-color: #f0f0f0; 
+                color: #000; 
+                border-radius: 8px;
         }
     </style>
 </head>
