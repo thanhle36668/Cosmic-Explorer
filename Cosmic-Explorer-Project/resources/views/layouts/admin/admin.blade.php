@@ -39,16 +39,24 @@
         <div class="sidebar p-3">
             <h4 class="text-white">Admin</h4>
             <a href="{{ route('admin.dashboard') }}">Dashboard</a>
-            <a href="{{ route('posts.index') }}">Posts</a>
-            <a href="{{ route('comments.index') }}">Comments</a>
-            <a href="{{ route('logout') }}"
+        <div class="dropdown">
+            <a href="#" class="dropdown-toggle d-block text-white mb-2" data-bs-toggle="collapse" data-bs-target="#postsMenu" aria-expanded="false">
+                Posts
+            </a>
+            <div class="collapse" id="postsMenu">
+                <a href="{{ route('posts.index') }}" class="d-block ps-3 text-white mb-1">All Posts</a>
+                <a href="{{ route('posts.create') }}" class="d-block ps-3 text-white">Create Post</a>
+            </div>
+        </div>      
+        <a href="{{ route('comments.index') }}">Comments</a>
+        <a href="{{ route('logout') }}"
                onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
             >Logout</a>
 
             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                 @csrf
             </form>
-        </div>
+    </div>
 
         <!-- Main Content -->
         <div class="main-content flex-grow-1">
