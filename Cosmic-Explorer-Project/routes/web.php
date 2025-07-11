@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CosmicExplorerController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CommentController;
 use Illuminate\Support\Facades\Route;
 
 // User
@@ -18,6 +19,7 @@ Route::middleware(['auth', 'is_admin'])
         Route::get('/', fn() => view('admin.dashboard'))
             ->name('admin.dashboard');
         Route::resource('posts', \App\Http\Controllers\Admin\PostController::class);
+        Route::resource('comments', CommentController::class);
     });
 
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
