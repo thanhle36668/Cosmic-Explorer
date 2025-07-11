@@ -317,7 +317,7 @@
                                                 <p>
                                                     {{ $observatory->location }}
                                                 </p>
-                                                <div class="main-button">
+                                                <div class="main-button observatories">
                                                     <a href="#">View Details</a>
                                                 </div>
                                             </div>
