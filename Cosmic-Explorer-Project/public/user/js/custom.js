@@ -98,7 +98,8 @@
 		dots: false,
 		nav: true,
 		autoplay: true,
-		margin: 30,
+		margin: 0,
+		autoHeight: true,
 		responsive: {
 			0: {
 				items: 1
@@ -107,7 +108,7 @@
 				items: 2
 			},
 			1000: {
-				items: 4
+				items: 3
 			}
 		}
 	})

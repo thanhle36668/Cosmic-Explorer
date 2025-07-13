@@ -30,7 +30,7 @@
                                     @foreach ($planets as $planet)
                                         <li>
                                             <a class="dropdown-item"
-                                                href="{{ route('planet', $planet->id) }}">{{ $planet->name }}</a>
+                                                href="{{ route('details-planet', $planet->id) }}">{{ $planet->name }}</a>
                                         </li>
                                     @endforeach
                                 </ul>
@@ -44,6 +44,20 @@
                                     @foreach ($constellations as $constellation)
                                         <li>
                                             <a class="dropdown-item" href="#">{{ $constellation->name }}</a>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown observatories">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    Observatories
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    @foreach ($observatories as $observatory)
+                                        <li>
+                                            <a class="dropdown-item"
+                                                href="{{ route('details-observatory', $observatory->id) }}">{{ $observatory->name }}</a>
                                         </li>
                                     @endforeach
                                 </ul>
@@ -109,9 +123,9 @@
                     <div class="owl-banner owl-carousel ">
                         @foreach ($planets as $planet)
                             <div class="item">
-                                <a href="{{ route('planet', $planet->id) }}">
+                                <a href="{{ route('details-planet', $planet->id) }}">
                                     <img class="rounded-circle" src="{{ asset('images') }}/planets/{{ $planet->photo }}"
-                                        alt="" height="480px" width="480px">
+                                        alt="{{ $planet->name }}" height="480px" width="480px">
                                 </a>
                             </div>
                         @endforeach
@@ -122,8 +136,8 @@
     </section>
     <!-- ***** Introduction End ***** -->
 
-    <!-- ***** Discoveries (BigBang Theory - The Earth's Evolution - Comets ) ***** -->
-    <section class="discoveries py-4"
+    <!-- ***** Featured news (BigBang Theory - The Earth's Evolution - Comets ) ***** -->
+    <section class="featured-news py-4"
         style="background-image: url('{{ asset('images') }}/background/background-dark.jpg');">
         <!-- ***** BigBang Theory ***** -->
         <div class="card py-5 px-5">
@@ -184,7 +198,6 @@
     <section class="news" style="background-color: black">
         <div class="container">
             <div class="row">
-                <!-- ***** Featured Explore***** -->
                 <div class="col-lg-12">
                     <div class="news">
                         <div class="row">
@@ -220,7 +233,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- ***** Featured Explore End ***** -->
             </div>
         </div>
     </section>
@@ -242,7 +254,7 @@
                             </div>
                             @foreach ($planets as $planet)
                                 <div class="col-lg-3 col-sm-6">
-                                    <a href="{{ route('planet', $planet->id) }}">
+                                    <a href="{{ route('details-planet', $planet->id) }}">
                                         <div class="item">
                                             <div class="icon">
                                                 <img src="{{ asset('images') }}/planets/{{ $planet->photo }}"
@@ -250,7 +262,7 @@
                                             </div>
                                             <h4>{{ $planet->name }}</h4>
                                             <div class="icon-button">
-                                                <a href="{{ route('planet', $planet->id) }}"><i
+                                                <a href="{{ route('details-planet', $planet->id) }}"><i
                                                         class="fa fa-angle-right"></i></a>
                                             </div>
                                         </div>
@@ -308,17 +320,16 @@
                                 <div class="owl-collection owl-carousel">
                                     @foreach ($observatories as $observatory)
                                         <div class="item">
-                                            <img src="{{ asset('images') }}/observatories/{{ $observatory->photo }}"
-                                                alt="{{ $observatory->name }}" height="240" width="240">
-                                            <div class="down-content">
-                                                <h4>
-                                                    {{ $observatory->name }}
+                                            <img class="img-observatory"
+                                                src="{{ asset('images') }}/observatories/{{ $observatory->photo }}"
+                                                alt="{{ $observatory->name }}">
+                                            <div class="down-content text-center">
+                                                <h4>{{ $observatory->name }}
                                                 </h4>
-                                                <p>
-                                                    {{ $observatory->location }}
-                                                </p>
-                                                <div class="main-button observatories">
-                                                    <a href="#">View Details</a>
+                                                <p>{{ $observatory->location }}</p>
+                                                <div class="main-button">
+                                                    <a href="{{ route('details-observatory', $observatory->id) }}">View
+                                                        Details</a>
                                                 </div>
                                             </div>
                                         </div>

@@ -28,7 +28,7 @@
                                     <?php $__currentLoopData = $planets; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $planet): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                         <li>
                                             <a class="dropdown-item"
-                                                href="<?php echo e(route('planet', $planet->id)); ?>"><?php echo e($planet->name); ?></a>
+                                                href="<?php echo e(route('details-planet', $planet->id)); ?>"><?php echo e($planet->name); ?></a>
                                         </li>
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </ul>
@@ -42,6 +42,20 @@
                                     <?php $__currentLoopData = $constellations; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $constellation): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                         <li>
                                             <a class="dropdown-item" href="#"><?php echo e($constellation->name); ?></a>
+                                        </li>
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown observatories">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    Observatories
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <?php $__currentLoopData = $observatories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $observatory): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                        <li>
+                                            <a class="dropdown-item"
+                                                href="<?php echo e(route('details-observatory', $observatory->id)); ?>"><?php echo e($observatory->name); ?></a>
                                         </li>
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </ul>
@@ -107,9 +121,9 @@
                     <div class="owl-banner owl-carousel ">
                         <?php $__currentLoopData = $planets; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $planet): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <div class="item">
-                                <a href="<?php echo e(route('planet', $planet->id)); ?>">
+                                <a href="<?php echo e(route('details-planet', $planet->id)); ?>">
                                     <img class="rounded-circle" src="<?php echo e(asset('images')); ?>/planets/<?php echo e($planet->photo); ?>"
-                                        alt="" height="480px" width="480px">
+                                        alt="<?php echo e($planet->name); ?>" height="480px" width="480px">
                                 </a>
                             </div>
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -120,8 +134,8 @@
     </section>
     <!-- ***** Introduction End ***** -->
 
-    <!-- ***** Discoveries (BigBang Theory - The Earth's Evolution - Comets ) ***** -->
-    <section class="discoveries py-4"
+    <!-- ***** Featured news (BigBang Theory - The Earth's Evolution - Comets ) ***** -->
+    <section class="featured-news py-4"
         style="background-image: url('<?php echo e(asset('images')); ?>/background/background-dark.jpg');">
         <!-- ***** BigBang Theory ***** -->
         <div class="card py-5 px-5">
@@ -183,7 +197,6 @@
     <section class="news" style="background-color: black">
         <div class="container">
             <div class="row">
-                <!-- ***** Featured Explore***** -->
                 <div class="col-lg-12">
                     <div class="news">
                         <div class="row">
@@ -219,7 +232,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- ***** Featured Explore End ***** -->
             </div>
         </div>
     </section>
@@ -241,7 +253,7 @@
                             </div>
                             <?php $__currentLoopData = $planets; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $planet): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <div class="col-lg-3 col-sm-6">
-                                    <a href="<?php echo e(route('planet', $planet->id)); ?>">
+                                    <a href="<?php echo e(route('details-planet', $planet->id)); ?>">
                                         <div class="item">
                                             <div class="icon">
                                                 <img src="<?php echo e(asset('images')); ?>/planets/<?php echo e($planet->photo); ?>"
@@ -249,7 +261,7 @@
                                             </div>
                                             <h4><?php echo e($planet->name); ?></h4>
                                             <div class="icon-button">
-                                                <a href="<?php echo e(route('planet', $planet->id)); ?>"><i
+                                                <a href="<?php echo e(route('details-planet', $planet->id)); ?>"><i
                                                         class="fa fa-angle-right"></i></a>
                                             </div>
                                         </div>
@@ -308,19 +320,17 @@
                                 <div class="owl-collection owl-carousel">
                                     <?php $__currentLoopData = $observatories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $observatory): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                         <div class="item">
-                                            <img src="<?php echo e(asset('images')); ?>/observatories/<?php echo e($observatory->photo); ?>"
-                                                alt="<?php echo e($observatory->name); ?>" height="240" width="240">
-                                            <div class="down-content">
-                                                <h4>
-                                                    <?php echo e($observatory->name); ?>
+                                            <img class="img-observatory"
+                                                src="<?php echo e(asset('images')); ?>/observatories/<?php echo e($observatory->photo); ?>"
+                                                alt="<?php echo e($observatory->name); ?>">
+                                            <div class="down-content text-center">
+                                                <h4><?php echo e($observatory->name); ?>
 
                                                 </h4>
-                                                <p>
-                                                    <?php echo e($observatory->location); ?>
-
-                                                </p>
-                                                <div class="main-button observatories">
-                                                    <a href="#">View Details</a>
+                                                <p><?php echo e($observatory->location); ?></p>
+                                                <div class="main-button">
+                                                    <a href="<?php echo e(route('details-observatory', $observatory->id)); ?>">View
+                                                        Details</a>
                                                 </div>
                                             </div>
                                         </div>

@@ -483,7 +483,7 @@ Header Style
 .header-area .main-nav .nav li {
   padding-left: 10px;
   padding-right: 10px;
-  display: inline-block;
+  display: block;
 }
 
 .header-area .main-nav .nav .nav-item .dropdown-menu {
@@ -1087,15 +1087,25 @@ Categories & Collections Style
   margin-top: 60px;
 }
 
-.collections .carousel {
-  margin-top: 60px !important;
-}
-
 .collections .item img {
-  height: 240px;
+  height: 280px !important;
   width: 240px;
   border-top-right-radius: 20px;
   border-top-left-radius: 20px;
+}
+
+.collections .item .img-planet {
+  height: 380px !important;
+  width: 100% !important;
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
+}
+
+.collections .item .img-observatory {
+  height: 380px !important;
+  width: 100% !important;
+  border-top-right-radius: 25px;
+  border-top-left-radius: 25px;
 }
 
 .collections .item .down-content {
@@ -1115,7 +1125,7 @@ Categories & Collections Style
 }
 
 .collections .item {
-  padding: 20px;
+  padding: 40px;
   cursor: pointer;
 }
 
@@ -1142,6 +1152,11 @@ Categories & Collections Style
 .collections .item .main-button {
   margin-top: 20px;
   margin-bottom: -60px;
+}
+
+.main-button-observatory {
+  margin-top: -15px !important;
+  margin-bottom: 20px !important;
 }
 
 .collections .item .main-button a:hover {
@@ -1734,7 +1749,7 @@ Heading Page
 }
 
 .page-heading .inner-content {
-  padding: 80px 0px;
+  padding: 40px 0px;
   text-align: center;
 }
 
