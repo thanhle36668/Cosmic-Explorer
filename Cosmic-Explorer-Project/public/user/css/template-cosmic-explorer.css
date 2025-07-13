@@ -1092,19 +1092,13 @@ Categories & Collections Style
 }
 
 .collections .item img {
+  height: 240px;
+  width: 240px;
   border-top-right-radius: 20px;
   border-top-left-radius: 20px;
 }
 
 .collections .item .down-content {
-  background-color: #282b2f;
-  border: 1px solid #404245;
-  border-bottom-right-radius: 20px;
-  border-bottom-left-radius: 20px;
-  padding: 30px;
-}
-
-.collections .item .down-content-discovery {
   background-color: #282b2f;
   border: 1px solid #404245;
   border-bottom-right-radius: 20px;
@@ -1121,10 +1115,8 @@ Categories & Collections Style
 }
 
 .collections .item {
-  height: 500px;
-  cursor: pointer;
   padding: 20px;
-  transition: all 0.5s ease;
+  cursor: pointer;
 }
 
 .collections .item span {
@@ -1221,6 +1213,13 @@ Explore Style
 .news .item .thumb {
   position: relative;
   overflow: hidden;
+}
+
+
+.news .item .thumb:hover {
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
 }
 
 .news .item .thumb:hover .hover-effect {
