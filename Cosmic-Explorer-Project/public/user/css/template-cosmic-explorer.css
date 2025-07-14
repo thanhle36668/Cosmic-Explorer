@@ -483,7 +483,7 @@ Header Style
 .header-area .main-nav .nav li {
   padding-left: 10px;
   padding-right: 10px;
-  display: inline-block;
+  display: block;
 }
 
 .header-area .main-nav .nav .nav-item .dropdown-menu {
@@ -1087,24 +1087,28 @@ Categories & Collections Style
   margin-top: 60px;
 }
 
-.collections .carousel {
-  margin-top: 60px !important;
-}
-
 .collections .item img {
+  height: 280px !important;
+  width: 240px;
   border-top-right-radius: 20px;
   border-top-left-radius: 20px;
 }
 
-.collections .item .down-content {
-  background-color: #282b2f;
-  border: 1px solid #404245;
-  border-bottom-right-radius: 20px;
-  border-bottom-left-radius: 20px;
-  padding: 30px;
+.collections .item .img-planet {
+  height: 380px !important;
+  width: 100% !important;
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
 }
 
-.collections .item .down-content-discovery {
+.collections .item .img-observatory {
+  height: 380px !important;
+  width: 100% !important;
+  border-top-right-radius: 25px;
+  border-top-left-radius: 25px;
+}
+
+.collections .item .down-content {
   background-color: #282b2f;
   border: 1px solid #404245;
   border-bottom-right-radius: 20px;
@@ -1121,10 +1125,8 @@ Categories & Collections Style
 }
 
 .collections .item {
-  height: 500px;
+  padding: 40px;
   cursor: pointer;
-  padding: 20px;
-  transition: all 0.5s ease;
 }
 
 .collections .item span {
@@ -1150,6 +1152,11 @@ Categories & Collections Style
 .collections .item .main-button {
   margin-top: 20px;
   margin-bottom: -60px;
+}
+
+.main-button-observatory {
+  margin-top: -15px !important;
+  margin-bottom: 20px !important;
 }
 
 .collections .item .main-button a:hover {
@@ -1221,6 +1228,13 @@ Explore Style
 .news .item .thumb {
   position: relative;
   overflow: hidden;
+}
+
+
+.news .item .thumb:hover {
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
 }
 
 .news .item .thumb:hover .hover-effect {
@@ -1735,7 +1749,7 @@ Heading Page
 }
 
 .page-heading .inner-content {
-  padding: 80px 0px;
+  padding: 40px 0px;
   text-align: center;
 }
 

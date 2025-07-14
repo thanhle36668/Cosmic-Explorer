@@ -32,20 +32,34 @@
                                     <?php $__currentLoopData = $planets; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $planet): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                         <li>
                                             <a class="dropdown-item"
-                                                href="<?php echo e(route('planet', $planet->id)); ?>"><?php echo e($planet->name); ?></a>
+                                                href="<?php echo e(route('details-planet', $planet->id)); ?>"><?php echo e($planet->name); ?></a>
                                         </li>
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </ul>
                             </li>
-                            <li class="nav-item dropdown constellation">
+                            <li class="nav-item dropdown constellations">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                                     data-bs-toggle="dropdown" aria-expanded="false">
-                                    planets
+                                    Constellations
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <?php $__currentLoopData = $planets; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $planet): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                        <li>
-                                            <a class="dropdown-item" href="#"><?php echo e($planet->name); ?></a>
+                                    <?php $__currentLoopData = $constellations; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $constellations): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                        <li style="width: 100%">
+                                            <a class="dropdown-item" href="#"><?php echo e($constellations->name); ?></a>
+                                        </li>
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown observatories">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    Observatories
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <?php $__currentLoopData = $observatories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $observatory): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                        <li style="width: 100%">
+                                            <a class="dropdown-item"
+                                                href="<?php echo e(route('details-observatory', $observatory->id)); ?>"><?php echo e($observatory->name); ?></a>
                                         </li>
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </ul>
@@ -154,12 +168,14 @@
                                 <div class="owl-collection owl-carousel">
                                     <?php $__currentLoopData = $planets; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $planet): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                         <div class="item">
-                                            <img src="<?php echo e(asset('images')); ?>/planets/<?php echo e($planet->photo_extra); ?>"
+                                            <img class="img-planet"
+                                                src="<?php echo e(asset('images')); ?>/planets/<?php echo e($planet->photo_extra); ?>"
                                                 alt="<?php echo e($planet->name); ?>">
                                             <div class="down-content-discovery text-center p-3"
                                                 style="background-color: transparent; border: none">
                                                 <div class="main-button mt-0 mb-0">
-                                                    <a href="<?php echo e(route('planet', $planet->id)); ?>">View Details</a>
+                                                    <a href="<?php echo e(route('details-planet', $planet->id)); ?>">View
+                                                        Details</a>
                                                 </div>
                                             </div>
                                         </div>

@@ -8,7 +8,8 @@ use Illuminate\Support\Facades\Route;
 // User
 Route::group(['prefix' => ''], function () {
     Route::get('/', [CosmicExplorerController::class, 'home'])->name('home');
-    Route::get('/planet/{id}', [CosmicExplorerController::class, 'pageDetailsPlanet'])->name('planet');
+    Route::get('/planet/{id}', [CosmicExplorerController::class, 'pageDetailsPlanet'])->name('details-planet');
+    Route::get('/observatory/{id}', [CosmicExplorerController::class, 'pageDetailsObservatory'])->name('details-observatory');
 });
 
 

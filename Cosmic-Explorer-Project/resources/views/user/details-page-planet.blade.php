@@ -34,20 +34,34 @@
                                     @foreach ($planets as $planet)
                                         <li>
                                             <a class="dropdown-item"
-                                                href="{{ route('planet', $planet->id) }}">{{ $planet->name }}</a>
+                                                href="{{ route('details-planet', $planet->id) }}">{{ $planet->name }}</a>
                                         </li>
                                     @endforeach
                                 </ul>
                             </li>
-                            <li class="nav-item dropdown constellation">
+                            <li class="nav-item dropdown constellations">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                                     data-bs-toggle="dropdown" aria-expanded="false">
-                                    planets
+                                    Constellations
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    @foreach ($planets as $planet)
-                                        <li>
-                                            <a class="dropdown-item" href="#">{{ $planet->name }}</a>
+                                    @foreach ($constellations as $constellations)
+                                        <li style="width: 100%">
+                                            <a class="dropdown-item" href="#">{{ $constellations->name }}</a>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown observatories">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    Observatories
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    @foreach ($observatories as $observatory)
+                                        <li style="width: 100%">
+                                            <a class="dropdown-item"
+                                                href="{{ route('details-observatory', $observatory->id) }}">{{ $observatory->name }}</a>
                                         </li>
                                     @endforeach
                                 </ul>
@@ -154,12 +168,14 @@
                                 <div class="owl-collection owl-carousel">
                                     @foreach ($planets as $planet)
                                         <div class="item">
-                                            <img src="{{ asset('images') }}/planets/{{ $planet->photo_extra }}"
+                                            <img class="img-planet"
+                                                src="{{ asset('images') }}/planets/{{ $planet->photo_extra }}"
                                                 alt="{{ $planet->name }}">
                                             <div class="down-content-discovery text-center p-3"
                                                 style="background-color: transparent; border: none">
                                                 <div class="main-button mt-0 mb-0">
-                                                    <a href="{{ route('planet', $planet->id) }}">View Details</a>
+                                                    <a href="{{ route('details-planet', $planet->id) }}">View
+                                                        Details</a>
                                                 </div>
                                             </div>
                                         </div>
