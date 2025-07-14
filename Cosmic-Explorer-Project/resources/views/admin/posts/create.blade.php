@@ -7,6 +7,17 @@
 <form action="{{ route('admin.posts.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
 
+    @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
+
+
 
     <section class="content">
           <div class="card card-primary">
@@ -16,11 +27,11 @@
             <div class="card-body">
               <div class="form-group">
                 <label for="inputName">Name</label>
-                <input name="tittle" type="text" id="inputName" class="form-control">
+                <input name="title" type="text" id="inputName" class="form-control">
               </div>
               <div class="form-group">
                 <label for="inputDescription">Introduction</label>
-                <textarea name="introduction" id="inputDescription" class="form-control" rows="2"></textarea>
+                <textarea name="slug" id="inputDescription" class="form-control" rows="2"></textarea>
               </div>
               <div class="form-group">
                 <label for="inputDescription">Main content</label>
@@ -28,19 +39,19 @@
               </div>
               <div class="form-group">
                 <label for="inputStatus">Category</label>
-                <select name="category" id="inputStatus" class="form-control custom-select">
+                <select name="category_id" id="inputStatus" class="form-control custom-select">
                   <option selected disabled>Select one</option>
-                  <option>Planet</option>
-                  <option>Chom sao</option>
-                  <option>Dai thien van</option>
+                  @foreach($categories as $category)
+                  <option value="{{ $category->id }}">{{ $category->name }}</option>
+                  @endforeach
                 </select>
               </div>
               <div class="form-group">
                 <label for="inputStatus">Status</label>
-                <select name="status" id="inputStatus" class="form-control custom-select">
+                <select name="is_published" id="inputStatus" class="form-control custom-select">
                   <option selected disabled>Select one</option>
-                  <option>Publish</option>
-                  <option>Private</option>
+                  <option value="1">Publish</option>
+                  <option value="0">Private</option>
                 </select>
               </div>
               <div class="form-group">
