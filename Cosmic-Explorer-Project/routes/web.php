@@ -28,5 +28,7 @@ Route::middleware(['auth', 'is_admin'])
     });
 
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
+Route::get('/posts/{slug}', [PostController::class, 'show'])->name('posts.show');
+
 Route::post('/process-login', [AuthController::class, 'processLogin'])->name('process-login');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
