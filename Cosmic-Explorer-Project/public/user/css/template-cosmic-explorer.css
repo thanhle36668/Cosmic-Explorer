@@ -945,6 +945,14 @@ Introduction
   color: #e0e0e0;
 }
 
+.main-banner-details .header-text ul li ol li {
+  padding: 0;
+  margin-bottom: 15px;
+  font-size: 1.1em;
+  line-height: 1.6;
+  color: #e0e0e0;
+}
+
 .main-banner-details .header-text p {
   font-size: 1.1em;
   line-height: 1.8;

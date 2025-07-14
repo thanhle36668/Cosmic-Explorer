@@ -139,19 +139,19 @@
                     <div class="owl-banner owl-carousel ">
                         <div class="item">
                             <img class="rounded-3" src="{{ asset('images') }}/observatories/Paranal-Observatory.jpg"
-                                alt="{{ $Observatory_details->name }}" height="480px" width="480px">
+                                alt="{{ $observatory_details->name }}" height="480px" width="480px">
                         </div>
                         <div class="item">
                             <img class="rounded-3" src="{{ asset('images') }}/observatories/Paranal-Observatory-2.jpg"
-                                alt="{{ $Observatory_details->name }}" height="480px" width="480px">
+                                alt="{{ $observatory_details->name }}" height="480px" width="480px">
                         </div>
                         <div class="item">
                             <img class="rounded-3" src="{{ asset('images') }}/observatories/Paranal-Observatory-3.jpg"
-                                alt="{{ $Observatory_details->name }}" height="480px" width="480px">
+                                alt="{{ $observatory_details->name }}" height="480px" width="480px">
                         </div>
                         <div class="item">
                             <img class="rounded-3" src="{{ asset('images') }}/observatories/Paranal-Observatory-4.jpg"
-                                alt="{{ $Observatory_details->name }}" height="480px" width="480px">
+                                alt="{{ $observatory_details->name }}" height="480px" width="480px">
                         </div>
                     </div>
                 </div>
@@ -178,7 +178,7 @@
                                     @foreach ($observatories as $observatory)
                                         <div class="item">
                                             <img class="img-observatory"
-                                                src="{{ asset('images') }}/observatories/Paranal-Observatory-2.jpg"
+                                                src="{{ asset('images') }}/observatories/{{ $observatory->photo }}"
                                                 alt="{{ $observatory->name }}">
                                             <div class="down-content text-center p-0"
                                                 style="background-color: transparent; border: none">

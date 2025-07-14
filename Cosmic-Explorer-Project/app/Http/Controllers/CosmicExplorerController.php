@@ -39,8 +39,19 @@ class CosmicExplorerController extends Controller
             'planets' => Planets::get(),
             'constellations' => Constellations::orderBy('name', 'asc')->get(),
             'observatories' => Observatories::orderBy('name', 'desc')->get(),
-            'Observatory_details' => Observatories::find($id)
+            'observatory_details' => Observatories::find($id)
         ];
         return view('user/details-page-observatory')->with($data);
+    }
+
+    public function pageDetailsConstellation($id)
+    {
+        $data = [
+            'planets' => Planets::get(),
+            'constellations' => Constellations::get(),
+            'observatories' => Observatories::orderBy('name', 'desc')->get(),
+            'constellation_details' => Constellations::find($id)
+        ];
+        return view('user/details-page-constellation')->with($data);
     }
 }

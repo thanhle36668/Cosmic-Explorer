@@ -43,7 +43,8 @@
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     @foreach ($constellations as $constellation)
                                         <li>
-                                            <a class="dropdown-item" href="#">{{ $constellation->name }}</a>
+                                            <a class="dropdown-item"
+                                                href="{{ route('details-constellation', $constellation->id) }}">{{ $constellation->name }}</a>
                                         </li>
                                     @endforeach
                                 </ul>

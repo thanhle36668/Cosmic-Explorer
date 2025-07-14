@@ -41,7 +41,8 @@
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <?php $__currentLoopData = $constellations; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $constellation): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                         <li>
-                                            <a class="dropdown-item" href="#"><?php echo e($constellation->name); ?></a>
+                                            <a class="dropdown-item"
+                                                href="<?php echo e(route('details-constellation', $constellation->id)); ?>"><?php echo e($constellation->name); ?></a>
                                         </li>
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </ul>
