@@ -1,7 +1,7 @@
 @extends('layouts.user.details-page')
 
 @section('title')
-    <title>{{ $constellation_details->name }} Constellation</title>
+    <title>Leo Constellation</title>
 @endsection
 
 @section('section-change')
@@ -47,7 +47,8 @@
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     @foreach ($constellations as $constellation)
                                         <li style="width: 100%">
-                                            <a class="dropdown-item" href="#">{{ $constellation->name }}</a>
+                                            <a class="dropdown-item"
+                                                href="{{ route('details-constellation', $constellation->id) }}">{{ $constellation->name }}</a>
                                         </li>
                                     @endforeach
                                 </ul>
@@ -93,44 +94,49 @@
     <!-- ***** Header End ***** -->
 
     <!-- ***** Main Banner Details ***** -->
-    <div class="page-heading" style="background-image: url('{{ asset('images') }}/background/background-banner-main.avif')"
-        id="top">
+    <section class="page-heading"
+        style="background-image: url('{{ asset('images') }}/background/background-banner-main.avif')" id="top">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="inner-content">
-                        <h1 style="text-transform: uppercase">Paranal Observatory</h1>
+                        <h1 style="text-transform: uppercase">Leo Constellation</h1>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
     <!-- ***** Main Banner Details End ***** -->
 
-    <!-- ***** Details Observatory ***** -->
+    <!-- ***** Constellation Details  ***** -->
     <section class="main-banner-details"
         style="background-image: url('{{ asset('images') }}/background/background-banner-main.avif');">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 align-self-center">
                     <div class="header-text">
-                        <h2>Paranal</h2>
+                        <h2>Leo (The Lion)</h2>
                         <ul class="info-list">
-                            <li><strong>Location:</strong> Atacama Desert, Chile</li>
-                            <li><strong>Altitude and Advantage:</strong>2,635 meters. Good height combined with extremely
-                                dry climate, ideal for both optical and infrared with nearly cloudless skies</li>
-                            <li><strong>Established:</strong>Began operations in 1999
+                            <li>
+                                <strong>Identification:</strong>
+                                A bright constellation, especially noticeable in the spring sky (March - June) from the
+                                Northern Hemisphere. It looks like a reclining lion, clearly identified by the Sickle shape
+                                that forms its head and mane
                             </li>
-                            <li><strong>Managing Organization:</strong>Run by ESO
+                            <li>
+                                <strong>Main Stars:</strong>
+                                Regulus: The brightest star, marking the lion's heart. Denebola: The second brightest star,
+                                found at the lion's tail
                             </li>
-                            <li><strong>Main Instruments:</strong>Very Large Telescope (VLT), 4x 8.2-meter telescopes (can
-                                be combined)
+                            <li>
+                                <strong>Notable Features:</strong>
+                                Notable Features: Home to several interesting galaxies, especially the Leo Triplet (M65,
+                                M66, NGC 3628), a group of three beautiful spiral galaxies
                             </li>
-                            <li><strong>Primary Research:</strong>Exoplanets, black holes, galaxies, cosmology. It's
-                                especially successful in directly imaging distant planets and tracking stars moving around
-                                the supermassive black hole at our galaxy's center
-                            </li>
-                            <li><strong>Public Access:</strong>Offers free guided tours on Saturdays (registration required)
+                            <li>
+                                <strong>Myths & Meaning:</strong>
+                                Myths & Meaning: One of the 12 Zodiac constellations. In Greek mythology, it represents the
+                                Nemean Lion, defeated by Hercules
                             </li>
                         </ul>
                     </div>
@@ -138,52 +144,60 @@
                 <div class="col-lg-5 offset-lg-1">
                     <div class="owl-banner owl-carousel ">
                         <div class="item">
-                            <img class="rounded-3" src="{{ asset('images') }}/observatories/Paranal-Observatory.jpg"
+                            <img class="rounded-3" src="{{ asset('images') }}/constellations/leo-constellation.jpg"
                                 alt="{{ $constellation_details->name }}" height="480px" width="480px">
                         </div>
                         <div class="item">
-                            <img class="rounded-3" src="{{ asset('images') }}/observatories/Paranal-Observatory-2.jpg"
+                            <img class="rounded-3" src="{{ asset('images') }}/constellations/leo-constellation-2.jpg"
                                 alt="{{ $constellation_details->name }}" height="480px" width="480px">
                         </div>
                         <div class="item">
-                            <img class="rounded-3" src="{{ asset('images') }}/observatories/Paranal-Observatory-3.jpg"
+                            <img class="rounded-3" src="{{ asset('images') }}/constellations/leo-constellation-3.webp"
                                 alt="{{ $constellation_details->name }}" height="480px" width="480px">
                         </div>
                         <div class="item">
-                            <img class="rounded-3" src="{{ asset('images') }}/observatories/Paranal-Observatory-4.jpg"
+                            <img class="rounded-3" src="{{ asset('images') }}/constellations/leo-constellation-4.jpg"
                                 alt="{{ $constellation_details->name }}" height="480px" width="480px">
                         </div>
+                        @if ($constellation_details->photo_5 !== '')
+                            <div class="item">
+                                <img class="rounded-3"
+                                    src="{{ asset('images') }}/constellations/{{ $constellation_details->photo_5 }}"
+                                    alt="{{ $constellation_details->name }}" height="480px" width="480px">
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <!-- ***** Details Observatory End ***** -->
+    <!-- ***** Constellation Details  End ***** -->
 
+    <!-- ***** Constellation Collections ***** -->
     <section class="categories-collections" style="background-color: black">
         <div class="container">
             <div class="row">
-                <!-- ***** Observatories Collections ***** -->
+                <!-- ***** Constellations Collections ***** -->
                 <div class="col-lg-12">
                     <div class="collections">
                         <div class="row">
                             <div class="col-lg-12 title">
                                 <div class="section-heading">
                                     <div class="line-dec"></div>
-                                    <h2>Observatory Collection</h2>
+                                    <h2>Constellations Collection</h2>
                                 </div>
                             </div>
                             <div class="col-lg-12 carousel">
                                 <div class="owl-collection owl-carousel">
                                     @foreach ($constellations as $constellation)
                                         <div class="item">
-                                            <img class="img-observatory"
-                                                src="{{ asset('images') }}/constellations/{{ $constellation->photo }}"
+                                            <img class="img-constellation"
+                                                src="{{ asset('images') }}/constellations/leo-constellation.jpg"
                                                 alt="{{ $constellation->name }}">
-                                            <div class="down-content text-center p-0"
-                                                style="background-color: transparent; border: none">
-                                                <div class="main-button main-button-observatory">
-                                                    <a href="{{ route('details-observatory', $observatory->id) }}">View
+                                            <div class="down-content p-3" style="background-color: #282B2F;">
+                                                <div class="main-button main-button-constellation text-center">
+                                                    <h4 class="mb-2">Leo (The Lion)</h4>
+                                                    <a href="{{ route('details-constellation', $constellation->id) }}">View
                                                         Details</a>
                                                 </div>
                                             </div>
@@ -194,9 +208,9 @@
                         </div>
                     </div>
                 </div>
-                <!-- ***** planets Collections End ***** -->
+                <!-- ***** Constellations Collections End ***** -->
             </div>
-            <!-- ***** planets Collections End ***** -->
         </div>
     </section>
+    <!-- ***** Constellation Collections End ***** -->
 @endsection

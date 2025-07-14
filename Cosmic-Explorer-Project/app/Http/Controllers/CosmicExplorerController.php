@@ -9,6 +9,8 @@ use App\Models\Planets;
 
 class CosmicExplorerController extends Controller
 {
+
+    // Controller Home
     public function home()
     {
         $data = [
@@ -22,6 +24,7 @@ class CosmicExplorerController extends Controller
         return view('user/home')->with($data);
     }
 
+    // Controller Page Details Planet
     public function pageDetailsPlanet($id)
     {
         $data = [
@@ -33,17 +36,7 @@ class CosmicExplorerController extends Controller
         return view('user/details-page-planet')->with($data);
     }
 
-    public function pageDetailsObservatory($id)
-    {
-        $data = [
-            'planets' => Planets::get(),
-            'constellations' => Constellations::orderBy('name', 'asc')->get(),
-            'observatories' => Observatories::orderBy('name', 'desc')->get(),
-            'observatory_details' => Observatories::find($id)
-        ];
-        return view('user/details-page-observatory')->with($data);
-    }
-
+    // Controller Page Details Constellation
     public function pageDetailsConstellation($id)
     {
         $data = [
@@ -53,5 +46,17 @@ class CosmicExplorerController extends Controller
             'constellation_details' => Constellations::find($id)
         ];
         return view('user/details-page-constellation')->with($data);
+    }
+
+    // Controller Page Details Observatory
+    public function pageDetailsObservatory($id)
+    {
+        $data = [
+            'planets' => Planets::get(),
+            'constellations' => Constellations::orderBy('name', 'asc')->get(),
+            'observatories' => Observatories::orderBy('name', 'desc')->get(),
+            'observatory_details' => Observatories::find($id)
+        ];
+        return view('user/details-page-observatory')->with($data);
     }
 }

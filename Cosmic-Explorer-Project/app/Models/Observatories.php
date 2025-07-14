@@ -14,6 +14,7 @@ class Observatories extends Model
 
     public $fillable = [
         'name',
+        'observatories',
         'location',
         'photo',
         'photo_2',

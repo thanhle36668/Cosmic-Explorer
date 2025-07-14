@@ -14,14 +14,14 @@ class Constellations extends Model
 
     public $fillable = [
         'name',
-        'description_short',
+        'title',
         'photo',
         'photo_2',
         'photo_3',
         'photo_4',
-        'identify',
+        'photo_5',
+        'identification',
         'main_stars',
-        'main_stars_2',
         'notable_features',
         'myths_meaning'
     ];

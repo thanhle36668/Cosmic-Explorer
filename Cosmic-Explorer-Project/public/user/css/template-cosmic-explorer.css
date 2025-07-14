@@ -840,8 +840,8 @@ Introduction
 
 .main-banner-details {
   background-size: cover;
-  padding-top: 20px !important;
-  padding-bottom: 50px !important;
+  padding-top: 40px !important;
+  padding-bottom: 60px !important;
 }
 
 .main-banner h1 {
@@ -933,6 +933,7 @@ Introduction
 }
 
 .main-banner-details .header-text ul li strong {
+  display: block;
   color: #ffffff;
   font-weight: bold;
 }
@@ -1060,7 +1061,7 @@ Categories & Collections Style
 
 .categories .item h4 {
   margin-top: 30px;
-  font-size: 20px;
+  font-size: 18px;
 }
 
 .categories .item .icon-button a {
@@ -1103,13 +1104,20 @@ Categories & Collections Style
 }
 
 .collections .item .img-planet {
-  height: 380px !important;
+  height: 400px !important;
   width: 100% !important;
   border-top-right-radius: 20px;
   border-top-left-radius: 20px;
 }
 
 .collections .item .img-observatory {
+  height: 380px !important;
+  width: 100% !important;
+  border-top-right-radius: 25px;
+  border-top-left-radius: 25px;
+}
+
+.collections .item .img-constellation {
   height: 380px !important;
   width: 100% !important;
   border-top-right-radius: 25px;
@@ -1125,7 +1133,7 @@ Categories & Collections Style
 }
 
 .collections .item .down-content h4 {
-  font-size: 16px;
+  font-size: 18px;
 }
 
 .collections .item .down-content p {
@@ -1163,8 +1171,13 @@ Categories & Collections Style
 }
 
 .main-button-observatory {
-  margin-top: -15px !important;
-  margin-bottom: 20px !important;
+  margin-top: 0px !important;
+  margin-bottom: 0px !important;
+}
+
+.main-button-constellation {
+  margin-top: 0px !important;
+  margin-bottom: 0px !important;
 }
 
 .collections .item .main-button a:hover {

@@ -1,7 +1,11 @@
 @extends('layouts.user.details-page')
 
 @section('title')
-    <title>Paranal Observatory Details</title>
+    @if ($observatory_details->observatories)
+        <title>{{ $observatory_details->name }}</title>
+    @else
+        <title>{{ $observatory_details->name }} Observatory</title>
+    @endif
 @endsection
 
 @section('section-change')
@@ -13,7 +17,7 @@
                     <nav class="main-nav">
                         <!-- ***** Logo Start ***** -->
                         <a href="{{ route('home') }}" class="logo">
-                            <img src="{{ asset('images') }}/logo.svg" alt="">
+                            <img src="{{ asset('images') }}/logo.svg" alt="Logo Cosmic Explorer">
                         </a>
                         <!-- ***** Logo End ***** -->
 
@@ -45,9 +49,10 @@
                                     Constellations
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    @foreach ($constellations as $constellations)
+                                    @foreach ($constellations as $constellation)
                                         <li style="width: 100%">
-                                            <a class="dropdown-item" href="#">{{ $constellations->name }}</a>
+                                            <a class="dropdown-item"
+                                                href="{{ route('details-constellation', $constellation->id) }}">{{ $constellation->name }}</a>
                                         </li>
                                     @endforeach
                                 </ul>
@@ -93,21 +98,25 @@
     <!-- ***** Header End ***** -->
 
     <!-- ***** Main Banner Details ***** -->
-    <div class="page-heading" style="background-image: url('{{ asset('images') }}/background/background-banner-main.avif')"
-        id="top">
+    <section class="page-heading"
+        style="background-image: url('{{ asset('images') }}/background/background-banner-main.avif')" id="top">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="inner-content">
-                        <h1 style="text-transform: uppercase">Paranal Observatory</h1>
+                        @if ($observatory_details->observatories)
+                            <h1 style="text-transform: uppercase">{{ $observatory_details->name }}</h1>
+                        @else
+                            <h1 style="text-transform: uppercase">{{ $observatory_details->name }} Observatory</h1>
+                        @endif
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
     <!-- ***** Main Banner Details End ***** -->
 
-    <!-- ***** Details Observatory ***** -->
+    <!-- ***** Observatory Details  ***** -->
     <section class="main-banner-details"
         style="background-image: url('{{ asset('images') }}/background/background-banner-main.avif');">
         <div class="container">
@@ -158,8 +167,9 @@
             </div>
         </div>
     </section>
-    <!-- ***** Details Observatory End ***** -->
+    <!-- ***** Observatory Details  End ***** -->
 
+    <!-- ***** Observatory Collections ***** -->
     <section class="categories-collections" style="background-color: black">
         <div class="container">
             <div class="row">
@@ -178,11 +188,11 @@
                                     @foreach ($observatories as $observatory)
                                         <div class="item">
                                             <img class="img-observatory"
-                                                src="{{ asset('images') }}/observatories/{{ $observatory->photo }}"
+                                                src="{{ asset('images') }}/observatories/Paranal-Observatory.jpg"
                                                 alt="{{ $observatory->name }}">
-                                            <div class="down-content text-center p-0"
-                                                style="background-color: transparent; border: none">
-                                                <div class="main-button main-button-observatory">
+                                            <div class="down-content p-3" style="background-color: #282B2F;">
+                                                <div class="main-button main-button-observatory text-center">
+                                                    <h4 class="mb-2">Paranal</h4>
                                                     <a href="{{ route('details-observatory', $observatory->id) }}">View
                                                         Details</a>
                                                 </div>
@@ -199,4 +209,5 @@
             <!-- ***** planets Collections End ***** -->
         </div>
     </section>
+    <!-- ***** Observatory Collections End ***** -->
 @endsection

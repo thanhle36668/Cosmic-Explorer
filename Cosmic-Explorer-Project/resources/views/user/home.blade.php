@@ -137,9 +137,8 @@
     </section>
     <!-- ***** Introduction End ***** -->
 
-    <!-- ***** Featured news (BigBang Theory - The Earth's Evolution - Comets ) ***** -->
-    <section class="featured-news py-4"
-        style="background-image: url('{{ asset('images') }}/background/background-dark.jpg');">
+    <!-- ***** Discovery (BigBang Theory - The Earth's Evolution - Comets ) ***** -->
+    <section class="discovery py-4" style="background-color: black">
         <!-- ***** BigBang Theory ***** -->
         <div class="card py-5 px-5">
             <div class="row g-0">
@@ -196,7 +195,8 @@
     <!-- ***** Discovery (BigBang Theory - The Earth's Evolution - Comets ) End ***** -->
 
     <!-- ***** News ***** -->
-    <section class="news" style="background-color: black">
+    <section class="news"
+        style="background-image: url('{{ asset('images') }}/background/background-banner-main.avif');">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -295,7 +295,8 @@
                                                 <h4>{{ $constellation->name }}
                                                 </h4>
                                                 <div class="main-button">
-                                                    <a href="#">View Details</a>
+                                                    <a href="{{ route('details-constellation', $constellation->id) }}">View
+                                                        Details</a>
                                                 </div>
                                             </div>
                                         </div>

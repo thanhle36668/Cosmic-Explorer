@@ -1,7 +1,7 @@
 @extends('layouts.user.details-page')
 
 @section('title')
-    <title>{{ $planet_details->name }} Details</title>
+    <title>{{ $planet_details->name }} Planet</title>
 @endsection
 
 @section('section-change')
@@ -45,9 +45,10 @@
                                     Constellations
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    @foreach ($constellations as $constellations)
+                                    @foreach ($constellations as $constellation)
                                         <li style="width: 100%">
-                                            <a class="dropdown-item" href="#">{{ $constellations->name }}</a>
+                                            <a class="dropdown-item"
+                                                href="{{ route('details-constellation', $constellation->id) }}">{{ $constellation->name }}</a>
                                         </li>
                                     @endforeach
                                 </ul>
@@ -151,6 +152,7 @@
     </section>
     <!-- ***** Details Planet End ***** -->
 
+    <!-- ***** Planet Collections ***** -->
     <section class="categories-collections" style="background-color: black">
         <div class="container">
             <div class="row">
@@ -190,4 +192,5 @@
             <!-- ***** planets Collections End ***** -->
         </div>
     </section>
+    <!-- ***** Planet Collections End ***** -->
 @endsection

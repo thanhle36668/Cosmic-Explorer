@@ -1,5 +1,5 @@
 <?php $__env->startSection('title'); ?>
-    <title><?php echo e($planet_details->name); ?> Details</title>
+    <title><?php echo e($planet_details->name); ?> Planet</title>
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('section-change'); ?>
@@ -43,9 +43,10 @@
                                     Constellations
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <?php $__currentLoopData = $constellations; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $constellations): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <?php $__currentLoopData = $constellations; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $constellation): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                         <li style="width: 100%">
-                                            <a class="dropdown-item" href="#"><?php echo e($constellations->name); ?></a>
+                                            <a class="dropdown-item"
+                                                href="<?php echo e(route('details-constellation', $constellation->id)); ?>"><?php echo e($constellation->name); ?></a>
                                         </li>
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </ul>
@@ -151,6 +152,7 @@
     </section>
     <!-- ***** Details Planet End ***** -->
 
+    <!-- ***** Planet Collections ***** -->
     <section class="categories-collections" style="background-color: black">
         <div class="container">
             <div class="row">
@@ -190,6 +192,7 @@
             <!-- ***** planets Collections End ***** -->
         </div>
     </section>
+    <!-- ***** Planet Collections End ***** -->
 <?php $__env->stopSection(); ?>
 
 <?php echo $__env->make('layouts.user.details-page', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\Admin\Desktop\Cosmic-Explorer\Cosmic-Explorer-Project\resources\views/user/details-page-planet.blade.php ENDPATH**/ ?>
