@@ -24,6 +24,17 @@ class CosmicExplorerController extends Controller
         return view('user/home')->with($data);
     }
 
+
+    // Controller Page Collections Planet
+    public function pageCollectionsPlanets()
+    {
+        $data = [
+            'planets' => Planets::paginate(4)
+        ];
+        return view('user/collections-page-planets')->with($data);
+    }
+
+
     // Controller Page Details Planet
     public function pageDetailsPlanet($id)
     {

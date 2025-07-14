@@ -1,5 +1,9 @@
 @extends('layouts.user.cosmic-explorer')
 
+@section('title')
+    <title>Cosmic Explorer</title>
+@endsection
+
 @section('section-change')
     <!-- ***** Header ***** -->
     <header class="header-area header-sticky">
@@ -21,46 +25,34 @@
                             <li>
                                 <a href="#">About</a>
                             </li>
-                            <li class="nav-item dropdown planets">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                    Planets
-                                </a>
-                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    @foreach ($planets as $planet)
-                                        <li>
-                                            <a class="dropdown-item"
-                                                href="{{ route('details-planet', $planet->id) }}">{{ $planet->name }}</a>
-                                        </li>
-                                    @endforeach
-                                </ul>
-                            </li>
-                            <li class="nav-item dropdown constellation">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                    Constellations
-                                </a>
-                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    @foreach ($constellations as $constellation)
-                                        <li>
-                                            <a class="dropdown-item"
-                                                href="{{ route('details-constellation', $constellation->id) }}">{{ $constellation->name }}</a>
-                                        </li>
-                                    @endforeach
-                                </ul>
-                            </li>
-                            <li class="nav-item dropdown observatories">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                    Observatories
-                                </a>
-                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    @foreach ($observatories as $observatory)
-                                        <li>
-                                            <a class="dropdown-item"
-                                                href="{{ route('details-observatory', $observatory->id) }}">{{ $observatory->name }}</a>
-                                        </li>
-                                    @endforeach
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownCollections"
+                                    role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Collections </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdownCollections">
+
+                                    <li class="nav-item">
+                                        <a class="dropdown-item" href="{{ route('collections-planets') }}"
+                                            id="navbarDropdownPlanets">
+                                            Planets
+                                        </a>
+                                    </li>
+
+                                    <li class="nav-item dropdown">
+                                        <a class="dropdown-item dropdown-toggle" href="#"
+                                            id="navbarDropdownConstellations" role="button" data-bs-toggle="dropdown"
+                                            aria-expanded="true">
+                                            Constellations
+                                        </a>
+                                    </li>
+
+                                    <li class="nav-item dropdown">
+                                        <a class="dropdown-item dropdown-toggle" href="#"
+                                            id="navbarDropdownObservatories" role="button" data-bs-toggle="dropdown"
+                                            aria-expanded="true">
+                                            Observatories
+                                        </a>
+                                    </li>
                                 </ul>
                             </li>
                             <li class="nav-item dropdown educational">

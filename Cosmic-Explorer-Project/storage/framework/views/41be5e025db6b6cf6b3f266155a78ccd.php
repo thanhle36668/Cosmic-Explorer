@@ -1,3 +1,7 @@
+<?php $__env->startSection('title'); ?>
+    <title>Cosmic Explorer</title>
+<?php $__env->stopSection(); ?>
+
 <?php $__env->startSection('section-change'); ?>
     <!-- ***** Header ***** -->
     <header class="header-area header-sticky">
@@ -19,46 +23,34 @@
                             <li>
                                 <a href="#">About</a>
                             </li>
-                            <li class="nav-item dropdown planets">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                    Planets
-                                </a>
-                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <?php $__currentLoopData = $planets; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $planet): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                        <li>
-                                            <a class="dropdown-item"
-                                                href="<?php echo e(route('details-planet', $planet->id)); ?>"><?php echo e($planet->name); ?></a>
-                                        </li>
-                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                </ul>
-                            </li>
-                            <li class="nav-item dropdown constellation">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                    Constellations
-                                </a>
-                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <?php $__currentLoopData = $constellations; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $constellation): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                        <li>
-                                            <a class="dropdown-item"
-                                                href="<?php echo e(route('details-constellation', $constellation->id)); ?>"><?php echo e($constellation->name); ?></a>
-                                        </li>
-                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                </ul>
-                            </li>
-                            <li class="nav-item dropdown observatories">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                    Observatories
-                                </a>
-                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <?php $__currentLoopData = $observatories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $observatory): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                        <li>
-                                            <a class="dropdown-item"
-                                                href="<?php echo e(route('details-observatory', $observatory->id)); ?>"><?php echo e($observatory->name); ?></a>
-                                        </li>
-                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownCollections"
+                                    role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Collections </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdownCollections">
+
+                                    <li class="nav-item">
+                                        <a class="dropdown-item" href="<?php echo e(route('collections-planets')); ?>"
+                                            id="navbarDropdownPlanets">
+                                            Planets
+                                        </a>
+                                    </li>
+
+                                    <li class="nav-item dropdown">
+                                        <a class="dropdown-item dropdown-toggle" href="#"
+                                            id="navbarDropdownConstellations" role="button" data-bs-toggle="dropdown"
+                                            aria-expanded="true">
+                                            Constellations
+                                        </a>
+                                    </li>
+
+                                    <li class="nav-item dropdown">
+                                        <a class="dropdown-item dropdown-toggle" href="#"
+                                            id="navbarDropdownObservatories" role="button" data-bs-toggle="dropdown"
+                                            aria-expanded="true">
+                                            Observatories
+                                        </a>
+                                    </li>
                                 </ul>
                             </li>
                             <li class="nav-item dropdown educational">
@@ -135,8 +127,8 @@
     </section>
     <!-- ***** Introduction End ***** -->
 
-    <!-- ***** Featured news (BigBang Theory - The Earth's Evolution - Comets ) ***** -->
-    <section class="featured-news py-4" style="background-color: black">
+    <!-- ***** Discovery (BigBang Theory - The Earth's Evolution - Comets ) ***** -->
+    <section class="discovery py-4" style="background-color: black">
         <!-- ***** BigBang Theory ***** -->
         <div class="card py-5 px-5">
             <div class="row g-0">

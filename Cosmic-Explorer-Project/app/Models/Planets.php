@@ -14,6 +14,7 @@ class Planets extends Model
 
     public $fillable = [
         'name',
+        'title_short',
         'photo',
         'photo_2',
         'photo_3',

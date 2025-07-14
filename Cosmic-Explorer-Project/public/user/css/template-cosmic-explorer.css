@@ -975,7 +975,14 @@ Introduction
 }
 
 .card img:hover {
-  box-shadow: 10px 10px 20px #888888, -10px -10px 20px #ffffff;
+  transform: translateY(-10px);
+}
+
+.card .collections {
+  border-radius: 50px;
+  display: flex;
+  height: 320px;
+  transition: all 0.3s ease-in-out;
 }
 
 .card .card-body {
@@ -1181,6 +1188,12 @@ Categories & Collections Style
 }
 
 .collections .item .main-button a:hover {
+  background-color: #fff;
+  border: 1px solid #fff;
+  color: #7453fc;
+}
+
+#collections .main-button a:hover {
   background-color: #fff;
   border: 1px solid #fff;
   color: #7453fc;
@@ -1758,6 +1771,13 @@ About Us Style
   margin-top: 25px;
   margin-bottom: 25px;
 }
+
+.planet-image-fixed-size {
+  width: 360px;
+  height: 380px;
+  flex-shrink: 0;
+}
+
 
 /* 
 ---------------------------------------------
