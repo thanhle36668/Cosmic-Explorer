@@ -48,7 +48,7 @@ class CosmicExplorerController extends Controller
     {
         $data = [
             'planets' => Planets::get(),
-            'constellations' => Constellations::get(),
+            'constellations' => Constellations::orderBy('name', 'asc')->get(),
             'observatories' => Observatories::orderBy('name', 'desc')->get(),
             'constellation_details' => Constellations::find($id)
         ];
