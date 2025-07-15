@@ -67,21 +67,29 @@ CREATE TABLE `comments` (
 
 CREATE TABLE `constellations` (
   `id` int(11) NOT NULL,
-  `name` varchar(250) NOT NULL,
-  `description_short` text NOT NULL,
-  `photo` varchar(250) NOT NULL
+  `name` varchar(255) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `photo` varchar(255) NOT NULL,
+  `photo_2` varchar(255) NOT NULL,
+  `photo_3` varchar(255) NOT NULL,
+  `photo_4` varchar(255) NOT NULL,
+  `photo_5` varchar(255) NOT NULL,
+  `identification` text NOT NULL,
+  `main_stars` text NOT NULL,
+  `notable_features` text NOT NULL,
+  `myths_meaning` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `constellations`
 --
 
-INSERT INTO `constellations` (`id`, `name`, `description_short`, `photo`) VALUES
-(1, 'Orion', 'Famous hunter constellation, bright stars, visible worldwide, winter sky.', 'orion-constellation.jpg'),
-(2, 'Leo', 'Represents a lion in Greek mythology.', 'leo-constellation.jpg'),
-(3, 'Ursa Major', 'Contains the Big Dipper, which helps locate the North Star.', 'ursa-major-constellation.jpg'),
-(4, 'Scorpius', 'Resembles the shape of a scorpion.', 'scorpius-constellation.jpg'),
-(5, 'Cassiopeia', 'Has a distinctive \"W\" shape, visible in the Northern Hemisphere.', 'cassiopeia-constellation.jpg');
+INSERT INTO `constellations` (`id`, `name`, `title`, `photo`, `photo_2`, `photo_3`, `photo_4`, `photo_5`, `identification`, `main_stars`, `notable_features`, `myths_meaning`) VALUES
+(1, 'Orion (The Hunter)', 'Orion', 'orion-constellation.jpg', 'orion-constellation-2.jpg', 'orion-constellation-3.jpg', 'orion-constellation-4.jpg', '', 'This is a very bright constellation, easy to find in the winter sky (December - March). It\'s located near the celestial equator, so you can see it from most places on Earth. It looks like a hunter, clearly marked by Orion\'s Belt (three bright stars in a straight line)', 'Betelgeuse: A huge, red-orange star on the hunter\'s shoulder, estimated to be about 1,000 times bigger than our Sun.\r\nRigel: A brilliant blue-white star on the hunter\'s foot', 'The Orion Nebula (M42), a giant star-forming region about 1,344 light-years away. You can often see it with your naked eye as a fuzzy patch in dark skies', 'In Greek mythology, Orion was a great hunter. This constellation is also useful for finding nearby constellations'),
+(2, 'Leo (The Lion)', 'Leo', 'leo-constellation.jpg', 'leo-constellation-2.jpg', 'leo-constellation-3.webp', 'leo-constellation-4.jpg', '', 'A bright constellation, especially noticeable in the spring sky (March - June) from the Northern Hemisphere. It looks like a reclining lion, clearly identified by the Sickle shape that forms its head and mane', 'Regulus: The brightest star, marking the lion\'s heart.\r\nDenebola: The second brightest star, found at the lion\'s tail', 'Notable Features: Home to several interesting galaxies, especially the Leo Triplet (M65, M66, NGC 3628), a group of three beautiful spiral galaxies', 'Myths & Meaning: One of the 12 Zodiac constellations. In Greek mythology, it represents the Nemean Lion, defeated by Hercules'),
+(3, 'Ursa Major (The Great Bear)', 'Ursa Major', 'ursa-major-constellation.jpg', 'ursa-major-constellation-2.jpg', 'ursa-major-constellation-3.jpg', 'ursa-major-constellation-4.jpg', 'ursa-major-constellation-5.jpg', 'A large and bright constellation in the Northern Hemisphere, visible all year round (it\'s a circumpolar constellation). Its most famous part is the Big Dipper (also called the Plough), a group of seven stars forming a ladle or spoon shape', 'Dubhe & Merak: These two stars are \"pointer stars\" that help you easily find Polaris (the North Star).\r\n\r\nMizar & Alcor: A well-known double star pair in the dipper\'s \"handle\"', 'Includes the Owl Nebula (M97) and bright galaxies like Bode\'s Galaxy (M81) and the Cigar Galaxy (M82)', 'Linked to Callisto in Greek mythology. This constellation has been incredibly important for navigation for centuries because it helps people find true North'),
+(4, 'Scorpius (The Scorpion)', 'Scorpius', 'scorpius-constellation.jpg', 'scorpius-constellation-2.jpg', 'scorpius-constellation-3.jpg', 'scorpius-constellation-4.jpg', '', 'A very bright and easily recognizable constellation, especially in the summer sky (June - September) from the Northern Hemisphere. It\'s located in the southern celestial hemisphere. It looks like a winding scorpion with a curved tail and a stinger', 'Antares: A supergiant red star, known as the \"heart of the Scorpion.\" It\'s one of the brightest stars in the night sky, about 700 times larger than our Sun', 'Contains many beautiful open star clusters like M6 (the Butterfly Cluster) and M7 (Ptolemy\'s Cluster). This area is also famous for its interesting dark nebulae', 'One of the 12 Zodiac constellations. It\'s connected to the myth of Orion\'s death, where the Scorpion killed the great hunter. This is why the two constellations never appear in the sky at the same time'),
+(5, 'Cassiopeia (The Queen)', 'Cassiopeia', 'cassiopeia-constellation.jpg', 'cassiopeia-constellation-2.jpg', 'cassiopeia-constellation-3.jpg', 'cassiopeia-constellation-4.jpg', '', 'A bright constellation, easy to find in the Northern Hemisphere all year round (it\'s circumpolar). It\'s distinctly shaped like a large \"W\" or \"M\" (depending on the time of night). It appears opposite the North Star from the Big Dipper', 'The stars forming the W/M shape, like Schedar and Caph, are quite bright', 'Located within the Milky Way, Cassiopeia contains many open star clusters and nebulae, such as the Heart Nebula (IC 1805) and the Soul Nebula (IC 1848). It\'s also the location of Cassiopeia A, a powerful supernova remnan', 'In Greek mythology, Cassiopeia was a boastful queen punished by being placed in the sky, sometimes upside down. This constellation is also a useful landmark for finding other constellations and objects in the northern sky');
 
 -- --------------------------------------------------------
 
