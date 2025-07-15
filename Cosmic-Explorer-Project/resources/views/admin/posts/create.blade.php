@@ -26,16 +26,20 @@
             </div>
             <div class="card-body">
               <div class="form-group">
-                <label for="inputName">Name</label>
+                <label for="inputName">Title</label>
                 <input name="title" type="text" id="inputName" class="form-control">
               </div>
               <div class="form-group">
-                <label for="inputDescription">Introduction</label>
-                <textarea name="slug" id="inputDescription" class="form-control" rows="2"></textarea>
+                <label for="inputIntroduction">Introduction</label>
+                <textarea name="slug" id="inputIntroduction" class="form-control" rows="2"></textarea>
               </div>
               <div class="form-group">
                 <label for="inputDescription">Main content</label>
                 <textarea name="content" id="inputDescription" class="form-control" rows="5" style="max-height: 300px; overflow-y: auto;"></textarea>
+              </div>
+              <div class="form-group">
+                <label for="inputImage">Image</label>
+                <input type="file" name="image" id="inputImage" class="form-control-file">
               </div>
               <div class="form-group">
                 <label for="inputStatus">Category</label>
@@ -53,10 +57,6 @@
                   <option value="1">Publish</option>
                   <option value="0">Private</option>
                 </select>
-              </div>
-              <div class="form-group">
-                <label for="inputName">Author</label>
-                <input name="user_id" type="text" id="inputName" class="form-control">
               </div>
             </div>
             <!-- /.card-body -->
