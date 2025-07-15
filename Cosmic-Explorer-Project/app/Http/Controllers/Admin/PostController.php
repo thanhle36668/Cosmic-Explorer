@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Category;
 
-    
+
 class PostController extends Controller
 {
     public function index()
@@ -23,13 +23,31 @@ class PostController extends Controller
         return view('admin.posts.create', compact('categories'));
     }
 
+
+    public function show($slug)
+    {
+        $post = Post::where('slug', $slug)->firstOrFail();
+        return view('admin.posts.show-news', compact('post'));
+    }
+
+
     public function store(Request $request)
     {
         $request->validate([
             'title' => 'required',
             'content' => 'required',
             'slug' => 'required',
+            'category_id' => 'required|integer|exists:categories,id',
+            'is_published' => 'required|boolean',
+            'image' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
         ]);
+
+          if ($request->hasFile('image')) {
+                $imagePath = $request->file('image')->store('posts', 'public');
+            } else {
+                    $imagePath = null;
+                    }
+
 
         Post::create([
             'title' => $request->title,
@@ -38,6 +56,7 @@ class PostController extends Controller
             'category_id' => $request->category_id,
             'is_published' => $request->is_published,
             'user_id' => Auth::id(),
+            'image' => $imagePath,
         ]);
 
         return redirect()->route('admin.posts.index')->with('success', 'Đã tạo bài viết');
@@ -45,7 +64,8 @@ class PostController extends Controller
 
     public function edit(Post $post)
     {
-        return view('admin.posts.edit', compact('post'));
+        $categories = Category::all(); 
+        return view('admin.posts.edit', compact('post', 'categories'));
     }
 
     public function update(Request $request, Post $post)
