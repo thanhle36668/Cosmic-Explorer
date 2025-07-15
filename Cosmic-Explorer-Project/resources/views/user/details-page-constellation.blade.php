@@ -1,7 +1,7 @@
 @extends('layouts.user.details-page')
 
 @section('title')
-    <title>{{$constellation_details->title}} Constellation</title>
+    <title>{{ $constellation_details->title }} Constellation</title>
 @endsection
 
 @section('section-change')
@@ -18,7 +18,7 @@
                         <!-- ***** Logo End ***** -->
 
                         <!-- ***** Menu Start ***** -->
-                       <ul class="nav">
+                        <ul class="nav">
                             <li>
                                 <a href="{{ route('home') }}">Home</a>
                             </li>
@@ -89,7 +89,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="inner-content">
-                        <h1 style="text-transform: uppercase">{{$constellation_details->title}} Constellation</h1>
+                        <h1 style="text-transform: uppercase">{{ $constellation_details->title }} Constellation</h1>
                     </div>
                 </div>
             </div>
@@ -104,23 +104,23 @@
             <div class="row">
                 <div class="col-lg-6 align-self-center">
                     <div class="header-text">
-                        <h2>{{$constellation_details->name}}</h2>
+                        <h2>{{ $constellation_details->name }}</h2>
                         <ul class="info-list">
                             <li>
                                 <strong>Identification:</strong>
-                                {{$constellation_details->identification}}
+                                {{ $constellation_details->identification }}
                             </li>
                             <li>
                                 <strong>Main Stars:</strong>
-                                {{$constellation_details->main_stars}}
+                                {{ $constellation_details->main_stars }}
                             </li>
                             <li>
                                 <strong>Notable Features:</strong>
-                                {{$constellation_details->notable_features}}
+                                {{ $constellation_details->notable_features }}
                             </li>
                             <li>
                                 <strong>Myths & Meaning:</strong>
-                                {{$constellation_details->myths_meaning}}
+                                {{ $constellation_details->myths_meaning }}
                             </li>
                         </ul>
                     </div>
@@ -128,19 +128,23 @@
                 <div class="col-lg-5 offset-lg-1">
                     <div class="owl-banner owl-carousel ">
                         <div class="item">
-                            <img class="rounded-3" src="{{ asset('images') }}/constellations/{{$constellation_details->photo}}"
+                            <img class="rounded-3"
+                                src="{{ asset('images') }}/constellations/{{ $constellation_details->photo }}"
                                 alt="{{ $constellation_details->name }}" height="480px" width="480px">
                         </div>
                         <div class="item">
-                            <img class="rounded-3" src="{{ asset('images') }}/constellations/{{$constellation_details->photo_2}}"
+                            <img class="rounded-3"
+                                src="{{ asset('images') }}/constellations/{{ $constellation_details->photo_2 }}"
                                 alt="{{ $constellation_details->name }}" height="480px" width="480px">
                         </div>
                         <div class="item">
-                            <img class="rounded-3" src="{{ asset('images') }}/constellations/{{$constellation_details->photo_3}}"
+                            <img class="rounded-3"
+                                src="{{ asset('images') }}/constellations/{{ $constellation_details->photo_3 }}"
                                 alt="{{ $constellation_details->name }}" height="480px" width="480px">
                         </div>
                         <div class="item">
-                            <img class="rounded-3" src="{{ asset('images') }}/constellations/{{$constellation_details->photo_4}}"
+                            <img class="rounded-3"
+                                src="{{ asset('images') }}/constellations/{{ $constellation_details->photo_4 }}"
                                 alt="{{ $constellation_details->name }}" height="480px" width="480px">
                         </div>
                         @if ($constellation_details->photo_5 !== '')
@@ -176,11 +180,11 @@
                                     @foreach ($constellations as $constellation)
                                         <div class="item">
                                             <img class="img-constellation"
-                                                src="{{ asset('images') }}/constellations/{{$constellation->photo}}"
+                                                src="{{ asset('images') }}/constellations/{{ $constellation->photo }}"
                                                 alt="{{ $constellation->name }}">
                                             <div class="down-content p-3" style="background-color: #282B2F;">
                                                 <div class="main-button main-button-constellation text-center">
-                                                    <h4 class="mb-2">{{$constellation->name}}</h4>
+                                                    <h4 class="mb-2">{{ $constellation->name }}</h4>
                                                     <a href="{{ route('details-constellation', $constellation->id) }}">View
                                                         Details</a>
                                                 </div>
