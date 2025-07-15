@@ -25,29 +25,32 @@
                             <li>
                                 <a href="#">About</a>
                             </li>
+                            <li>
+                                <a href="{{ route('news') }}">News</a>
+                            </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownCollections"
                                     role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     Collections </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdownCollections">
 
-                                    <li class="nav-item dropdown">
-                                        <a class="dropdown-item" href="#" id="navbarDropdownPlanets" role="button"
-                                            data-bs-toggle="dropdown" aria-expanded="true">
+                                    <li class="nav-item">
+                                        <a class="dropdown-item" href="{{ route('collections-planets') }}"
+                                            id="navbarDropdownPlanets">
                                             Planets
                                         </a>
                                     </li>
 
-                                    <li class="nav-item dropdown">
-                                        <a class="dropdown-item" href="#" id="navbarDropdownConstellations"
-                                            role="button" data-bs-toggle="dropdown" aria-expanded="true">
+                                    <li class="nav-item">
+                                        <a class="dropdown-item" href="{{ route('collections-constellations') }}"
+                                            id="navbarDropdownConstellations">
                                             Constellations
                                         </a>
                                     </li>
 
-                                    <li class="nav-item dropdown">
-                                        <a class="dropdown-item" href="#" id="navbarDropdownObservatories"
-                                            role="button" data-bs-toggle="dropdown" aria-expanded="true">
+                                    <li class="nav-item">
+                                        <a class="dropdown-item" href="{{ route('collections-observatories') }}"
+                                            id="navbarDropdownObservatories">
                                             Observatories
                                         </a>
                                     </li>
@@ -121,7 +124,7 @@
                 @endforeach
             </div>
         </div>
-        <div class="pagination-links mt-2">
+        <div class="pagination-links mt-2 mb-2">
             {{ $planets->links('pagination::bootstrap-5') }}
         </div>
     </section>

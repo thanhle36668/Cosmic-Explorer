@@ -24,8 +24,13 @@ class CosmicExplorerController extends Controller
         return view('user/home')->with($data);
     }
 
+    public function news()
+    {
+        $data = [];
+        return view('user/news')->with($data);
+    }
 
-    // Controller Page Collections Planet
+    // Controller Page Collections Planets
     public function pageCollectionsPlanets()
     {
         $data = [
@@ -34,6 +39,30 @@ class CosmicExplorerController extends Controller
         return view('user/collections-page-planets')->with($data);
     }
 
+    // Controller Page Collections Constellations
+    public function pageCollectionsConstellations()
+    {
+        $data = [
+            'constellations' => Constellations::paginate(4)
+        ];
+        return view('user/collections-page-constellations')->with($data);
+    }
+
+    // Controller Page Collections Observatories
+    public function pageCollectionsObservatories()
+    {
+        $data = [
+            'observatories' => Observatories::paginate(4)
+        ];
+        return view('user/collections-page-observatories')->with($data);
+    }
+
+    // Controller Page Details New
+    public function pageDetailsNew()
+    {
+        $data = [];
+        return view('user/details-page-new')->with($data);
+    }
 
     // Controller Page Details Planet
     public function pageDetailsPlanet($id)

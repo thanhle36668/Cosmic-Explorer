@@ -18,12 +18,15 @@
                         <!-- ***** Logo End ***** -->
 
                         <!-- ***** Menu Start ***** -->
-                        <ul class="nav">
+                       <ul class="nav">
                             <li>
                                 <a href="{{ route('home') }}">Home</a>
                             </li>
                             <li>
                                 <a href="#">About</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('news') }}">News</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownCollections"
@@ -38,18 +41,16 @@
                                         </a>
                                     </li>
 
-                                    <li class="nav-item dropdown">
-                                        <a class="dropdown-item dropdown-toggle" href="#"
-                                            id="navbarDropdownConstellations" role="button" data-bs-toggle="dropdown"
-                                            aria-expanded="true">
+                                    <li class="nav-item">
+                                        <a class="dropdown-item" href="{{ route('collections-constellations') }}"
+                                            id="navbarDropdownConstellations">
                                             Constellations
                                         </a>
                                     </li>
 
-                                    <li class="nav-item dropdown">
-                                        <a class="dropdown-item dropdown-toggle" href="#"
-                                            id="navbarDropdownObservatories" role="button" data-bs-toggle="dropdown"
-                                            aria-expanded="true">
+                                    <li class="nav-item">
+                                        <a class="dropdown-item" href="{{ route('collections-observatories') }}"
+                                            id="navbarDropdownObservatories">
                                             Observatories
                                         </a>
                                     </li>

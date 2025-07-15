@@ -16,12 +16,15 @@
                         <!-- ***** Logo End ***** -->
 
                         <!-- ***** Menu Start ***** -->
-                        <ul class="nav">
+                       <ul class="nav">
                             <li>
                                 <a href="<?php echo e(route('home')); ?>">Home</a>
                             </li>
                             <li>
                                 <a href="#">About</a>
+                            </li>
+                            <li>
+                                <a href="<?php echo e(route('news')); ?>">News</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownCollections"
@@ -36,18 +39,16 @@
                                         </a>
                                     </li>
 
-                                    <li class="nav-item dropdown">
-                                        <a class="dropdown-item dropdown-toggle" href="#"
-                                            id="navbarDropdownConstellations" role="button" data-bs-toggle="dropdown"
-                                            aria-expanded="true">
+                                    <li class="nav-item">
+                                        <a class="dropdown-item" href="<?php echo e(route('collections-constellations')); ?>"
+                                            id="navbarDropdownConstellations">
                                             Constellations
                                         </a>
                                     </li>
 
-                                    <li class="nav-item dropdown">
-                                        <a class="dropdown-item dropdown-toggle" href="#"
-                                            id="navbarDropdownObservatories" role="button" data-bs-toggle="dropdown"
-                                            aria-expanded="true">
+                                    <li class="nav-item">
+                                        <a class="dropdown-item" href="<?php echo e(route('collections-observatories')); ?>"
+                                            id="navbarDropdownObservatories">
                                             Observatories
                                         </a>
                                     </li>
@@ -103,12 +104,16 @@
                     <div class="header-text">
                         <h2><?php echo e($planet_details->name); ?></h2>
                         <ul class="info-list">
-                            <li><strong>Discovery Date:</strong> <?php echo e($planet_details->discovery_date); ?></li>
-                            <li><strong>Size (Diameter):</strong> <?php echo e($planet_details->diameter_km); ?></li>
-                            <li><strong>Average Distance to Earth:</strong> <?php echo e($planet_details->avg_distance_to_earth_km); ?>
+                            <li><strong class="d-inline">Discovery Date:</strong> <?php echo e($planet_details->discovery_date); ?>
 
                             </li>
-                            <li><strong>Average Distance to the Sun:</strong> <?php echo e($planet_details->avg_distance_to_sun_km); ?>
+                            <li><strong class="d-inline">Size (Diameter):</strong> <?php echo e($planet_details->diameter_km); ?></li>
+                            <li><strong class="d-inline">Average Distance to Earth:</strong>
+                                <?php echo e($planet_details->avg_distance_to_earth_km); ?>
+
+                            </li>
+                            <li><strong class="d-inline">Average Distance to the Sun:</strong>
+                                <?php echo e($planet_details->avg_distance_to_sun_km); ?>
 
                             </li>
                         </ul>

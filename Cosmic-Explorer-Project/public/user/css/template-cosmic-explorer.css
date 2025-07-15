@@ -1,11 +1,3 @@
-/*
-
-TemplateMo 577 Liberty Market
-
-https://templatemo.com/tm-577-liberty-market
-
-*/
-
 /* ---------------------------------------------
 Table of contents
 ------------------------------------------------
@@ -98,6 +90,15 @@ figcaption {
 
 section {
   margin-top: 0 !important;
+}
+
+.section-padding {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+.section-padding span strong {
+  color: white;
 }
 
 .clearfix:after {
@@ -933,7 +934,6 @@ Introduction
 }
 
 .main-banner-details .header-text ul li strong {
-  display: block;
   color: #ffffff;
   font-weight: bold;
 }
@@ -975,6 +975,7 @@ Introduction
 }
 
 .card img:hover {
+  border-radius: 0;
   transform: translateY(-10px);
 }
 
