@@ -114,17 +114,17 @@
                 <div class="header-text">
                     <h2>{{ $observatory_details->name }}</h2>
                     <ul class="info-list">
-                        <li><strong>Location:</strong> {{ $observatory_details->location }}</li>
-                        <li><strong>Altitude and Advantage:</strong>{{ $observatory_details->altitude_meters }}</li>
-                        <li><strong>Established:</strong>{{ $observatory_details->established_year }}
+                        <li><strong>Location: </strong> {{ $observatory_details->location }}</li>
+                        <li><strong>Altitude and Advantage: </strong>{{ $observatory_details->altitude_meters }}</li>
+                        <li><strong>Established: </strong>{{ $observatory_details->established_year }}
                         </li>
-                        <li><strong>Managing Organization:</strong>{{ $observatory_details-> managing_organization }}
+                        <li><strong>Managing Organization: </strong>{{ $observatory_details-> managing_organization }}
                         </li>
-                        <li><strong>Main Instruments:</strong>{{ $observatory_details-> main_instruments }}
+                        <li><strong>Main Instruments: </strong>{{ $observatory_details-> main_instruments }}
                         </li>
-                        <li><strong>Primary Research:</strong>{{ $observatory_details-> primary_research_areas }}
+                        <li><strong>Primary Research: </strong>{{ $observatory_details-> primary_research_areas }}
                         </li>
-                        <li><strong>Public Access:</strong>{{ $observatory_details-> public_access_info }}
+                        <li><strong>Public Access: </strong>{{ $observatory_details-> public_access_info }}
                         </li>
                     </ul>
                 </div>
