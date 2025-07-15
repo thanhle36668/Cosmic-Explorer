@@ -1,7 +1,7 @@
 @extends('layouts.user.details-page')
 
 @section('title')
-    <title>Leo Constellation</title>
+    <title>{{$constellation_details->title}} Constellation</title>
 @endsection
 
 @section('section-change')
@@ -89,7 +89,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="inner-content">
-                        <h1 style="text-transform: uppercase">Leo Constellation</h1>
+                        <h1 style="text-transform: uppercase">{{$constellation_details->title}} Constellation</h1>
                     </div>
                 </div>
             </div>
@@ -104,28 +104,23 @@
             <div class="row">
                 <div class="col-lg-6 align-self-center">
                     <div class="header-text">
-                        <h2>Leo (The Lion)</h2>
+                        <h2>{{$constellation_details->name}}</h2>
                         <ul class="info-list">
                             <li>
                                 <strong>Identification:</strong>
-                                A bright constellation, especially noticeable in the spring sky (March - June) from the
-                                Northern Hemisphere. It looks like a reclining lion, clearly identified by the Sickle shape
-                                that forms its head and mane
+                                {{$constellation_details->identification}}
                             </li>
                             <li>
                                 <strong>Main Stars:</strong>
-                                Regulus: The brightest star, marking the lion's heart. Denebola: The second brightest star,
-                                found at the lion's tail
+                                {{$constellation_details->main_stars}}
                             </li>
                             <li>
                                 <strong>Notable Features:</strong>
-                                Notable Features: Home to several interesting galaxies, especially the Leo Triplet (M65,
-                                M66, NGC 3628), a group of three beautiful spiral galaxies
+                                {{$constellation_details->notable_features}}
                             </li>
                             <li>
                                 <strong>Myths & Meaning:</strong>
-                                Myths & Meaning: One of the 12 Zodiac constellations. In Greek mythology, it represents the
-                                Nemean Lion, defeated by Hercules
+                                {{$constellation_details->myths_meaning}}
                             </li>
                         </ul>
                     </div>
@@ -133,19 +128,19 @@
                 <div class="col-lg-5 offset-lg-1">
                     <div class="owl-banner owl-carousel ">
                         <div class="item">
-                            <img class="rounded-3" src="{{ asset('images') }}/constellations/leo-constellation.jpg"
+                            <img class="rounded-3" src="{{ asset('images') }}/constellations/{{$constellation_details->photo}}"
                                 alt="{{ $constellation_details->name }}" height="480px" width="480px">
                         </div>
                         <div class="item">
-                            <img class="rounded-3" src="{{ asset('images') }}/constellations/leo-constellation-2.jpg"
+                            <img class="rounded-3" src="{{ asset('images') }}/constellations/{{$constellation_details->photo_2}}"
                                 alt="{{ $constellation_details->name }}" height="480px" width="480px">
                         </div>
                         <div class="item">
-                            <img class="rounded-3" src="{{ asset('images') }}/constellations/leo-constellation-3.webp"
+                            <img class="rounded-3" src="{{ asset('images') }}/constellations/{{$constellation_details->photo_3}}"
                                 alt="{{ $constellation_details->name }}" height="480px" width="480px">
                         </div>
                         <div class="item">
-                            <img class="rounded-3" src="{{ asset('images') }}/constellations/leo-constellation-4.jpg"
+                            <img class="rounded-3" src="{{ asset('images') }}/constellations/{{$constellation_details->photo_4}}"
                                 alt="{{ $constellation_details->name }}" height="480px" width="480px">
                         </div>
                         @if ($constellation_details->photo_5 !== '')
@@ -181,11 +176,11 @@
                                     @foreach ($constellations as $constellation)
                                         <div class="item">
                                             <img class="img-constellation"
-                                                src="{{ asset('images') }}/constellations/leo-constellation.jpg"
+                                                src="{{ asset('images') }}/constellations/{{$constellation->photo}}"
                                                 alt="{{ $constellation->name }}">
                                             <div class="down-content p-3" style="background-color: #282B2F;">
                                                 <div class="main-button main-button-constellation text-center">
-                                                    <h4 class="mb-2">Leo (The Lion)</h4>
+                                                    <h4 class="mb-2">{{$constellation->name}}</h4>
                                                     <a href="{{ route('details-constellation', $constellation->id) }}">View
                                                         Details</a>
                                                 </div>
