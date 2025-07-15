@@ -8,11 +8,16 @@
             Ngày đăng: {{ $post->created_at->format('d/m/Y') }}</p>
     </div>
 
-    @if ($post->image)
-        <div class="mb-4">
-            <img src="{{ asset('storage/' . $post->image) }}" class="img-fluid" alt="{{ $post->title }}">
-        </div>
-    @endif
+    <div>
+        Image:
+            @if ($post->image)
+                <div class="mb-4">
+                    
+                    <img src="{{ asset('storage/' . $post->image) }}" class="img-fluid" alt="{{ $post->title }}">
+                </div>
+            @endif
+
+    </div>
 
     <div class="mb-4">
         <h4>Giới thiệu</h4>

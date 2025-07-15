@@ -42,13 +42,12 @@ class PostController extends Controller
             'image' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
         ]);
 
-          if ($request->hasFile('image')) {
+            $imagePath = null;
+            if ($request->hasFile('image')) {
                 $imagePath = $request->file('image')->store('posts', 'public');
-            } else {
-                    $imagePath = null;
-                    }
+                }
 
-
+                
         Post::create([
             'title' => $request->title,
             'slug' => $request->slug,

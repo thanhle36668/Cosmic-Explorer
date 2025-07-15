@@ -13,6 +13,7 @@ class Post extends Model
         'category_id',
         'is_published',
         'user_id',
+        'image',
     ];
 
     public function category() {
