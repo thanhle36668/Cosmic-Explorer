@@ -1,7 +1,7 @@
 @extends('layouts.user.cosmic-explorer')
 
 @section('title')
-    <title>Planets Collections</title>
+    <title>Observatories Collections</title>
 @endsection
 
 @section('section-change')
@@ -13,7 +13,7 @@
                     <nav class="main-nav">
                         <!-- ***** Logo Start ***** -->
                         <a href="{{ route('home') }}" class="logo">
-                            <img src="{{ asset('images') }}/logo.svg" alt="">
+                            <img src="{{ asset('images') }}/logo.svg" alt="Logo">
                         </a>
                         <!-- ***** Logo End ***** -->
 
@@ -89,7 +89,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="inner-content">
-                        <h1 style="text-transform: uppercase">Planets Collections</h1>
+                        <h1 style="text-transform: uppercase">Observatories Collections</h1>
                     </div>
                 </div>
             </div>
@@ -97,35 +97,35 @@
     </div>
     <!-- ***** Main Banner Details End ***** -->
 
-    <!-- ***** Collections Planets ***** -->
+    <!-- ***** Collections Observatories ***** -->
     <section id="collections" class="px-3">
         <div class="container">
             <div class="space-y-5 mt-5 mx-auto" style="max-width: 1000px;">
-                @foreach ($planets as $planet)
-                    <div id="{{ $planet->name }}"
+                @foreach ($observatories as $observatory)
+                    <div id="{{ $observatory->name }}"
                         class="card p-4 rounded-lg shadow-lg scroll-margin-top-120 d-md-flex flex-md-row align-items-md-center gap-5"
                         style="height: auto">
-                        <div
-                            class="planet-image-fixed-size d-flex align-items-center justify-content-center overflow-hidden mb-2">
-                            <img src="{{ asset('images') }}/planets/{{ $planet->photo }}" alt="{{ $planet->name }}"
-                                class="img-fluid rounded-lg">
-                        </div>
                         <div class="flex-grow-1">
-                            <h3>{{ $planet->name }}</h3>
+                            <h3>{{ $observatory->name }}</h3>
                             <p class="text-light lh-lg mb-3">
-                                {{ $planet->title_short }}
+                                {{ $observatory->location }}
                             </p>
                             <div class="main-button">
-                                <a href="{{ route('details-planet', $planet->id) }}">View
+                                <a href="{{ route('details-observatory', $observatory->id) }}">View
                                     Details</a>
                             </div>
+                        </div>
+                        <div
+                            class="planet-image-fixed-size d-flex align-items-center justify-content-center overflow-hidden mb-2">
+                            <img src="{{ asset('images') }}/observatories/{{ $observatory->photo }}"
+                                alt="{{ $observatory->name }}" class="img-fluid rounded-lg">
                         </div>
                     </div>
                 @endforeach
             </div>
         </div>
-        <div class="pagination-links mt-2 mb-2">
-            {{ $planets->links('pagination::bootstrap-5') }}
+        <div class="pagination-links mt-4 mb-4">
+            {{ $observatories->links('pagination::bootstrap-5') }}
         </div>
     </section>
     <!-- ***** Collections Planets End ***** -->
