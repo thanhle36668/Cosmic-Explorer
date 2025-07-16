@@ -16,15 +16,15 @@
             <div class="card-body">
                 <div class="form-group">
                     <label>Title</label>
-                    <input type="text" name="title" value="{{ $post->title }}" class="form-control">
+                    <input type="text" name="title" value="{{ old('title', $post->title) }}" class="form-control">
                 </div>
                 <div class="form-group">
                     <label>Introduction</label>
-                    <input type="text" name="slug" value="{{ $post->slug }}" class="form-control">
+                    <input type="text" name="slug" value="{{ old('slug', $post->slug) }}" class="form-control">
                 </div>
                 <div class="form-group">
                     <label>Main content</label>
-                    <textarea name="content" rows="5" class="form-control">{{ $post->content }}</textarea>
+                    <textarea name="content" rows="5" class="form-control">{{ old('content' ,$post->content) }}</textarea>
                 </div>
                 <div class="form-group">
                     <label>Category</label>

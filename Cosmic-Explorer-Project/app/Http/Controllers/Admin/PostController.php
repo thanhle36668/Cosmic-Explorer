@@ -71,10 +71,12 @@ class PostController extends Controller
     public function update(Request $request, Post $post)
     {
         $request->validate([
-            'title' => 'required', 
-            'content' => 'required',
-            'image' => 'required'
-        
+            'title' => 'required|string|max:255',
+            'content' => 'required|string',
+            'slug' => 'nullable|string|max:255',
+            'category_id' => 'nullable|integer|exists:categories,id',
+            'is_published' => 'nullable|boolean',
+            'image' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',        
         ]);
 
          $data = $request->only(['title', 'content', 'slug', 'category_id', 'is_published']);
