@@ -143,7 +143,7 @@
                     <div class="card-body">
                         <h5 class="card-title">{{ $news_bigbang_theory->title }}</h5>
                         <p class="card-text">{{ $news_bigbang_theory->description_short }}</p>
-                        <a href="#" class="card-button badge rounded-pill bg-white">View Details</a>
+                        <a href="{{ route('details-news', $news_bigbang_theory->id) }}" class="card-button badge rounded-pill bg-white">View Details</a>
                     </div>
                 </div>
             </div>
@@ -158,7 +158,7 @@
                         <p class="card-text">
                             {{ $news_earth_evolved->description_short }}
                         </p>
-                        <a href="#" class="card-button badge rounded-pill bg-white">View Details</a>
+                        <a href="{{ route('details-news', $news_earth_evolved->id) }}" class="card-button badge rounded-pill bg-white">View Details</a>
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -179,7 +179,7 @@
                     <div class="card-body">
                         <h5 class="card-title">{{ $news_comet->title }}</h5>
                         <p class="card-text">{{ $news_comet->description_short }}</p>
-                        <a href="#" class="card-button badge rounded-pill bg-white">View Details</a>
+                        <a href="{{ route('details-news', $news_comet->id) }}" class="card-button badge rounded-pill bg-white">View Details</a>
                     </div>
                 </div>
             </div>

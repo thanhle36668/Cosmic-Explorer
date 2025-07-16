@@ -99,4 +99,17 @@ class CosmicExplorerController extends Controller
         ];
         return view('user/details-page-observatory')->with($data);
     }
+
+    // Controller Page Details News
+    public function pageDetailsNews($id)
+    {
+        $data = [
+            'planets' => Planets::get(),
+            'constellations' => Constellations::orderBy('name', 'asc')->get(),
+            'observatories' => Observatories::orderBy('name', 'desc')->get(),
+            'news' => News::get(),
+            'news_details' => News::find($id)
+        ];
+        return view('user/details-page-news')->with($data);
+    }
 }
