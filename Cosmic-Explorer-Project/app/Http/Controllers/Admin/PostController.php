@@ -15,7 +15,7 @@ class PostController extends Controller
 {
     public function index()
     {
-        $posts = Post::latest()->paginate(10);
+        $posts = Post::latest()->paginate(5);
         return view('admin.posts.index', compact('posts'));
     }
 
@@ -103,6 +103,10 @@ class PostController extends Controller
 
     public function destroy(Post $post)
     {
+         if ($post->image && Storage::disk('public')->exists($post->image)) {
+        Storage::disk('public')->delete($post->image);
+    }
+
         $post->delete();
         return redirect()->route('admin.posts.index')->with('success', 'Đã xoá');
     }
