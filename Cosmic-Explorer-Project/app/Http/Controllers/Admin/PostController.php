@@ -48,7 +48,6 @@ class PostController extends Controller
             $imagePath = $request->file('image')->store('posts', 'public');
         }
 
-
         Post::create([
             'title' => $request->title,
             'slug' => $request->slug,

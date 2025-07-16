@@ -7,6 +7,7 @@ use App\Models\News;
 use App\Models\Observatories;
 use App\Models\Planets;
 use App\Models\Post;
+use App\Models\Discovery;
 
 class CosmicExplorerController extends Controller
 {
@@ -18,9 +19,7 @@ class CosmicExplorerController extends Controller
             'planets' => Planets::get(),
             'constellations' => Constellations::orderBy('name', 'asc')->get(),
             'observatories' => Observatories::orderBy('name', 'desc')->get(),
-            'news_bigbang_theory' => News::find(1),
-            'news_earth_evolved' => News::find(2),
-            'news_comet' => News::find(3),
+            'discovery' => Discovery::get()
         ];
         return view('user/home')->with($data);
     }
@@ -105,16 +104,15 @@ class CosmicExplorerController extends Controller
         return view('user/details-page-observatory')->with($data);
     }
 
-    // Controller Page Details News
-    public function pageDetailsNews($id)
+    // Controller Page Details Discovery
+    public function pageDetailsDiscovery($id)
     {
         $data = [
             'planets' => Planets::get(),
             'constellations' => Constellations::orderBy('name', 'asc')->get(),
             'observatories' => Observatories::orderBy('name', 'desc')->get(),
-            'news' => News::get(),
-            'news_details' => News::find($id)
+            'discovery_details' => Discovery::find($id)
         ];
-        return view('user/details-page-news')->with($data);
+        return view('user/details-page-discovery')->with($data);
     }
 }

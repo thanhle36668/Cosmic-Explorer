@@ -103,10 +103,12 @@
                             college students. Ability levels span the range from novice to expert.</p>
                         <div class="buttons">
                             <div class="border-button">
-                                <a href="#">Evolution of Earth</a>
+                                <a href="<?php echo e(route('collections-planets')); ?>">Planet
+                                    collections</a>
                             </div>
                             <div class="border-button">
-                                <a href="#" target="_blank">Constellation collections</a>
+                                <a href="<?php echo e(route('collections-constellations')); ?>" target="_blank">Constellation
+                                    collections</a>
                             </div>
                         </div>
                     </div>
@@ -116,7 +118,8 @@
                         <?php $__currentLoopData = $planets; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $planet): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <div class="item">
                                 <a href="<?php echo e(route('details-planet', $planet->id)); ?>">
-                                    <img class="rounded-circle" src="<?php echo e(asset('storage/images')); ?>/planets/<?php echo e($planet->photo); ?>"
+                                    <img class="rounded-circle"
+                                        src="<?php echo e(asset('storage/images')); ?>/planets/<?php echo e($planet->photo); ?>"
                                         alt="<?php echo e($planet->name); ?>" height="480px" width="480px">
                                 </a>
                             </div>
@@ -129,60 +132,44 @@
     <!-- ***** Introduction End ***** -->
 
     <!-- ***** Discovery (BigBang Theory - The Earth's Evolution - Comets ) ***** -->
-    <section class="discovery py-4" style="background-color: black">
-        <!-- ***** BigBang Theory ***** -->
-        <div class="card py-5 px-5">
-            <div class="row g-0">
-                <div class="col-md-4">
-                    <img src="<?php echo e(asset('storage/images')); ?>/news/<?php echo e($news_bigbang_theory->photo); ?>" class="img-fluid"
-                        alt="<?php echo e($news_bigbang_theory->name); ?>">
-                </div>
-                <div class="col-md-8 d-flex justify-content-center align-items-center">
-                    <div class="card-body">
-                        <h5 class="card-title"><?php echo e($news_bigbang_theory->title); ?></h5>
-                        <p class="card-text"><?php echo e($news_bigbang_theory->description_short); ?></p>
-                        <a href="<?php echo e(route('details-news', $news_bigbang_theory->id)); ?>" class="card-button badge rounded-pill bg-white">View Details</a>
+    <section class="discovery py-5 px-5" style="background-color: black">
+        <?php $__currentLoopData = $discovery; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $discoveries): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+            <?php if($discoveries->id % 2 == 0): ?>
+                <div class="card px-4 py-4">
+                    <div class="row g-0">
+                        <div class="col-md-8 d-flex justify-content-center align-items-center">
+                            <div class="card-body">
+                                <h5 class="card-title"><?php echo e($discoveries->title); ?></h5>
+                                <p class="card-text"><?php echo e($discoveries->description_short); ?></p>
+                                <a href="<?php echo e(route('details-discovery', $discoveries->id)); ?>"
+                                    class="card-button badge rounded-pill bg-white">View Details</a>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <img src="<?php echo e(asset('storage/images')); ?>/discovery/<?php echo e($discoveries->photo); ?>" class="img-fluid img-discovery"
+                                alt="<?php echo e($discoveries->title); ?>">
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
-
-        <!-- ***** The Earth's Evolution ***** -->
-        <div class="card py-5 px-5">
-            <div class="row g-0">
-                <div class="col-md-8 d-flex justify-content-center align-items-center">
-                    <div class="card-body">
-                        <h5 class="card-title"><?php echo e($news_earth_evolved->title); ?></h5>
-                        <p class="card-text">
-                            <?php echo e($news_earth_evolved->description_short); ?>
-
-                        </p>
-                        <a href="<?php echo e(route('details-news', $news_earth_evolved->id)); ?>" class="card-button badge rounded-pill bg-white">View Details</a>
+            <?php else: ?>
+                <div class="card px-4 py-4">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img src="<?php echo e(asset('storage/images')); ?>/discovery/<?php echo e($discoveries->photo); ?>" class="img-fluid"
+                                alt="<?php echo e($discoveries->title); ?>">
+                        </div>
+                        <div class="col-md-8 d-flex justify-content-center align-items-center">
+                            <div class="card-body">
+                                <h5 class="card-title"><?php echo e($discoveries->title); ?></h5>
+                                <p class="card-text"><?php echo e($discoveries->description_short); ?></p>
+                                <a href="<?php echo e(route('details-discovery', $discoveries->id)); ?>"
+                                    class="card-button badge rounded-pill bg-white">View Details</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <img src="<?php echo e(asset('storage/images')); ?>/news/<?php echo e($news_earth_evolved->photo); ?>" class="img-fluid"
-                        alt="<?php echo e($news_earth_evolved->name); ?>">
-                </div>
-            </div>
-        </div>
-
-        <!-- ***** Comets ***** -->
-        <div class="card py-5 px-5">
-            <div class="row g-0">
-                <div class="col-md-4">
-                    <img src="<?php echo e(asset('storage/images')); ?>/news/<?php echo e($news_comet->photo); ?>" class="img-fluid"
-                        alt="<?php echo e($news_comet->name); ?>">
-                </div>
-                <div class="col-md-8 d-flex justify-content-center align-items-center">
-                    <div class="card-body">
-                        <h5 class="card-title"><?php echo e($news_comet->title); ?></h5>
-                        <p class="card-text"><?php echo e($news_comet->description_short); ?></p>
-                        <a href="<?php echo e(route('details-news', $news_comet->id)); ?>" class="card-button badge rounded-pill bg-white">View Details</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+            <?php endif; ?>
+        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
     </section>
     <!-- ***** Discovery (BigBang Theory - The Earth's Evolution - Comets ) End ***** -->
 
