@@ -192,7 +192,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (6, '2025_07_11_033351_create_posts_table', 1),
 (7, '2025_07_11_033429_create_comments_table', 1),
 (9, '2025_07_13_050629_create_categories_table', 2),
-(10, '2025_07_13_053710_add_category_id_slug_image_is_published_to_posts_table', 3);
+(10, '2025_07_13_053710_add_category_id_slug_image_is_published_to_posts_table', 3),
+(11, '2025_07_16_105914_add_excerpt_to_posts_table', 4);
 
 -- --------------------------------------------------------
 
@@ -305,6 +306,7 @@ INSERT INTO `planets` (`id`, `name`, `title_short`, `photo`, `photo_2`, `photo_3
 CREATE TABLE `posts` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `title` varchar(255) NOT NULL,
+  `excerpt` text DEFAULT NULL,
   `slug` varchar(255) NOT NULL,
   `image` varchar(255) DEFAULT NULL,
   `category_id` bigint(20) UNSIGNED DEFAULT NULL,
