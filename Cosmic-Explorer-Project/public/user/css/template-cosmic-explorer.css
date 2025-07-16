@@ -1894,3 +1894,8 @@ body {
 }
 
 @media (max-width: 1200px) {}
+
+.news_photo img {
+  width: 50%;
+  height: 50%;
+}
