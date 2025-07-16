@@ -7,12 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Post extends Model
 {
     protected $fillable = [
-<<<<<<< HEAD
         'title',
-=======
-        'title', 
         'excerpt',
->>>>>>> dev
         'slug',
         'content',
         'category_id',

@@ -52,7 +52,7 @@ class PostController extends Controller
 
         Post::create([
             'title' => $request->title,
-            'excerpt'=> $request->excerpt,
+            'excerpt' => $request->excerpt,
             'slug' => Str::slug($request->title),
             'content' => $request->content,
             'category_id' => $request->category_id,
@@ -73,27 +73,17 @@ class PostController extends Controller
     public function update(Request $request, Post $post)
     {
         $request->validate([
-<<<<<<< HEAD
-            'title' => 'required',
-            'content' => 'required',
-            'image' => 'required'
-
-        ]);
-
-        $data = $request->only(['title', 'content', 'slug', 'category_id', 'is_published']);
-=======
             'title' => 'required|string|max:255',
             'excerpt' => 'required',
             'content' => 'required|string',
             'slug' => 'nullable|string|max:255',
             'category_id' => 'nullable|integer|exists:categories,id',
             'is_published' => 'nullable|boolean',
-            'image' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',        
+            'image' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
         ]);
 
-         $data = $request->only(['title', 'content', 'excerpt', 'category_id', 'is_published']);
-         $data['slug'] = Str::slug($request->title);
->>>>>>> dev
+        $data = $request->only(['title', 'content', 'excerpt', 'category_id', 'is_published']);
+        $data['slug'] = Str::slug($request->title);
 
         if ($request->hasFile('image')) {
             // Xoá ảnh cũ nếu có
