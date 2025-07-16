@@ -13,7 +13,7 @@
                     <nav class="main-nav">
                         <!-- ***** Logo Start ***** -->
                         <a href="{{ route('home') }}" class="logo">
-                            <img src="{{ asset('images') }}/logo.svg" alt="">
+                            <img src="{{ asset('storage/images') }}/logo.svg" alt="">
                         </a>
                         <!-- ***** Logo End ***** -->
 
@@ -83,7 +83,7 @@
 
     <!-- ***** Main Banner Details ***** -->
     <section class="page-heading"
-        style="background-image: url('{{ asset('images') }}/background/background-banner-main.avif')" id="top">
+        style="background-image: url('{{ asset('storage/images') }}/background/background-banner-main.avif')" id="top">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -98,7 +98,7 @@
 
     <!-- ***** News Details  ***** -->
     <section class="main-banner-details"
-        style="background-image: url('{{ asset('images') }}/background/background-banner-main.avif');">
+        style="background-image: url('{{ asset('storage/images') }}/background/background-banner-main.avif');">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 align-self-center">
@@ -106,7 +106,7 @@
                         <h4>{{ $news_details->description_short }}</h4>
                     </div>
                     <div class="news_photo" align="center">
-                        <img src="{{ asset('images') }}/news/{{ $news_details->photo }}" alt="">
+                        <img src="{{ asset('storage/images') }}/news/{{ $news_details->photo }}" alt="">
                     </div>
                 </div>
             </div>
@@ -133,7 +133,7 @@
                                     @foreach ($constellations as $constellation)
                                         <div class="item">
                                             <img class="img-constellation"
-                                                src="{{ asset('images') }}/constellations/leo-constellation.jpg"
+                                                src="{{ asset('storage/images') }}/constellations/leo-constellation.jpg"
                                                 alt="{{ $constellation->name }}">
                                             <div class="down-content p-3" style="background-color: #282B2F;">
                                                 <div class="main-button main-button-constellation text-center">
