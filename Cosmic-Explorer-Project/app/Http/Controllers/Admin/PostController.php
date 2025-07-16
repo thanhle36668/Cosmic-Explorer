@@ -7,6 +7,7 @@ use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Category;
+use Illuminate\Support\Facades\Storage;
 
 
 class PostController extends Controller
@@ -27,7 +28,7 @@ class PostController extends Controller
     public function show($slug)
     {
         $post = Post::where('slug', $slug)->firstOrFail();
-        return view('admin.posts.show-news', compact('post'));
+        return view('admin.posts.news', compact('post'));
     }
 
 
@@ -69,9 +70,26 @@ class PostController extends Controller
 
     public function update(Request $request, Post $post)
     {
-        $request->validate(['title' => 'required', 'content' => 'required']);
+        $request->validate([
+            'title' => 'required', 
+            'content' => 'required',
+            'image' => 'required'
+        
+        ]);
 
-        $post->update($request->only('title', 'content'));
+         $data = $request->only(['title', 'content', 'slug', 'category_id', 'is_published']);
+
+            if ($request->hasFile('image')) {
+                // Xoá ảnh cũ nếu có
+                if ($post->image) {
+                    Storage::disk('public')->delete($post->image);
+                }
+
+                // Lưu ảnh mới
+                $data['image'] = $request->file('image')->store('posts', 'public');
+            }
+
+        $post->update($data);
 
         return redirect()->route('admin.posts.index')->with('success', 'Đã cập nhật');
     }
