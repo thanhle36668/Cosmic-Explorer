@@ -185,6 +185,31 @@ img {
   overflow: hidden;
 }
 
+.pagination {
+  width: 200px;
+}
+
+.pagination .page-item {
+  width: 25%;
+  text-align: center;
+}
+
+.pagination .page-item .page-link {
+  color: #fff !important;
+  background-color: transparent;
+}
+
+.pagination .page-item.active .page-link {
+  color: #fff !important;
+  background-color: rgb(0, 0, 255, 0.8);
+  border-color: #fff;
+  transition: all 0.3s ease-in-out;
+}
+
+.pagination .page-link:hover {
+  background-color: rgb(0, 0, 255, 0.8);
+}
+
 /* 
 ---------------------------------------------
 Global Styles
@@ -983,7 +1008,7 @@ Introduction
 
 .card img:hover {
   border-radius: 0;
-  transform: translateY(-10px);
+  transform: translateY(-6px);
 }
 
 .card .collections {

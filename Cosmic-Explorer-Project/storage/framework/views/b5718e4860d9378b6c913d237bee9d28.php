@@ -16,7 +16,7 @@
                         <!-- ***** Logo End ***** -->
 
                         <!-- ***** Menu Start ***** -->
-                       <ul class="nav">
+                        <ul class="nav">
                             <li>
                                 <a href="<?php echo e(route('home')); ?>">Home</a>
                             </li>
@@ -81,7 +81,8 @@
     <!-- ***** Header End ***** -->
 
     <!-- ***** Main Banner Details ***** -->
-    <div class="page-heading" style="background-image: url('<?php echo e(asset('storage/images')); ?>/background/background-banner-main.avif')"
+    <div class="page-heading"
+        style="background-image: url('<?php echo e(asset('storage/images')); ?>/background/background-banner-main.avif')"
         id="top">
         <div class="container">
             <div class="row">
@@ -123,20 +124,24 @@
                 <div class="col-lg-5 offset-lg-1">
                     <div class="owl-banner owl-carousel ">
                         <div class="item">
-                            <img class="rounded-circle" src="<?php echo e(asset('storage/images')); ?>/planets/<?php echo e($planet_details->photo); ?>"
-                                alt="" height="480px" width="480px">
+                            <img class="rounded-circle"
+                                src="<?php echo e(asset('storage/images')); ?>/planets/<?php echo e($planet_details->photo); ?>" alt=""
+                                height="480px" width="480px">
                         </div>
                         <div class="item">
-                            <img class="rounded-circle" src="<?php echo e(asset('storage/images')); ?>/planets/<?php echo e($planet_details->photo_2); ?>"
-                                alt="" height="480px" width="480px">
+                            <img class="rounded-circle"
+                                src="<?php echo e(asset('storage/images')); ?>/planets/<?php echo e($planet_details->photo_2); ?>" alt=""
+                                height="480px" width="480px">
                         </div>
                         <div class="item">
-                            <img class="rounded-circle" src="<?php echo e(asset('storage/images')); ?>/planets/<?php echo e($planet_details->photo_3); ?>"
-                                alt="" height="480px" width="480px">
+                            <img class="rounded-circle"
+                                src="<?php echo e(asset('storage/images')); ?>/planets/<?php echo e($planet_details->photo_3); ?>" alt=""
+                                height="480px" width="480px">
                         </div>
                         <div class="item">
-                            <img class="rounded-circle" src="<?php echo e(asset('storage/images')); ?>/planets/<?php echo e($planet_details->photo_4); ?>"
-                                alt="" height="480px" width="480px">
+                            <img class="rounded-circle"
+                                src="<?php echo e(asset('storage/images')); ?>/planets/<?php echo e($planet_details->photo_4); ?>" alt=""
+                                height="480px" width="480px">
                         </div>
                     </div>
                 </div>
@@ -186,6 +191,111 @@
         </div>
     </section>
     <!-- ***** Planet Collections End ***** -->
+
+    <!-- ***** Contact ***** -->
+    <section class="contact" style="background-image: url('<?php echo e(asset('storage/images')); ?>/background-dark.jpg')">
+        <div class="contact-us">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div id="map">
+                            <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3694.5308998533724!2d106.7116196747655!3d10.806685889343925!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317529ed00409f09%3A0x11f7708a5c77d777!2zQXB0ZWNoIENvbXB1dGVyIEVkdWNhdGlvbiAtIEjhu4cgVGjhu5FuZyDEkMOgbyB04bqhbyBM4bqtcCBUcsOsbmggVmnDqm4gUXXhu5FjIHThur8gQXB0ZWNo!5e1!3m2!1svi!2s!4v1751729317282!5m2!1svi!2s"
+                                width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            <!-- You can simply copy and paste "Embed a map" code from Google Maps for any location. -->
+
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="section-heading">
+                            <h2>Say Hello. Don't Be Shy!</h2>
+                        </div>
+                        <form id="contact" action="" method="post">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <fieldset>
+                                        <input name="name" type="text" id="name" placeholder="Your name"
+                                            required="">
+                                    </fieldset>
+                                </div>
+                                <div class="col-lg-6">
+                                    <fieldset>
+                                        <input name="email" type="text" id="email" placeholder="Your email"
+                                            required="">
+                                    </fieldset>
+                                </div>
+                                <div class="col-lg-12">
+                                    <fieldset>
+                                        <textarea name="message" rows="6" id="message" placeholder="Your message" required=""></textarea>
+                                    </fieldset>
+                                </div>
+                                <div class="col-lg-12">
+                                    <fieldset>
+                                        <button type="submit" id="form-submit" class="main-dark-button"><i
+                                                class="fa fa-paper-plane"></i></button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="subscribe">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="section-heading">
+                            <h2>By Subscribing To Our Newsletter</h2>
+                        </div>
+                        <form id="subscribe" action="" method="get">
+                            <div class="row">
+                                <div class="col-lg-5">
+                                    <fieldset>
+                                        <input name="name" type="text" id="name" placeholder="Your Name"
+                                            required="">
+                                    </fieldset>
+                                </div>
+                                <div class="col-lg-5">
+                                    <fieldset>
+                                        <input name="email" type="text" id="email" pattern="[^ @]*@[^ @]*"
+                                            placeholder="Your Email Address" required="">
+                                    </fieldset>
+                                </div>
+                                <div class="col-lg-2">
+                                    <fieldset>
+                                        <button type="submit" id="form-submit" class="main-dark-button"><i
+                                                class="fa fa-paper-plane"></i></button>
+                                    </fieldset>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="row">
+                            <div class="col-6">
+                                <ul>
+                                    <li>Store Location:<br><span>Sunny Isles Beach, FL 33160, United States</span></li>
+                                    <li>Phone:<br><span>010-020-0340</span></li>
+                                    <li>Office Location:<br><span>North Miami Beach</span></li>
+                                </ul>
+                            </div>
+                            <div class="col-6">
+                                <ul>
+                                    <li>Work Hours:<br><span>07:30 AM - 9:30 PM Daily</span></li>
+                                    <li>Email:<br><span>info@company.com</span></li>
+                                    <li>Social Media:<br><span><a href="#">Facebook</a>, <a
+                                                href="#">Instagram</a>, <a href="#">Behance</a>,
+                                            <a href="#">Linkedin</a></span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ***** Contact End ***** -->
 <?php $__env->stopSection(); ?>
 
 <?php echo $__env->make('layouts.user.details-page', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\Admin\Desktop\Cosmic-Explorer\Cosmic-Explorer-Project\resources\views/user/details-page-planet.blade.php ENDPATH**/ ?>
