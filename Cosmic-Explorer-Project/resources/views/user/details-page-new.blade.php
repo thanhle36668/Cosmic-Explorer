@@ -89,7 +89,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="inner-content">
-                        <h1 style="text-transform: uppercase"></h1>
+                        <h1 style="text-transform: uppercase">Tên tiêu đề</h1>
                     </div>
                 </div>
             </div>
@@ -116,10 +116,10 @@
                         {{ $post_details->content }}
                     </p>
                     <div class="clearfix my-4 mt-lg-0 mt-5">
-                        <div class="col-md-6 float-md-end mb-3 ms-md-3" data-aos="fade-up">
+                        <div class="col-md-6 float-md-end mb-3 ms-md-3">
                             <figure class="figure">
-                                <img src="{{ asset('images') }}/constellations/leo-constellation.jpg"
-                                    class="img-fluid news-image" alt="">
+                                <img src="{{ asset('storage/' . $post_details->image) }}" class="img-fluid news-image"
+                                    alt="">
                                 <figcaption class="figure-caption text-start">tên ảnh</figcaption>
                             </figure>
                         </div>
