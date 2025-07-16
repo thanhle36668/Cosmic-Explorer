@@ -31,7 +31,7 @@
               </div>
               <div class="form-group">
                 <label for="inputIntroduction">Introduction</label>
-                <textarea name="slug" id="inputIntroduction" class="form-control" rows="2"></textarea>
+                <textarea name="excerpt" id="inputIntroduction" class="form-control" rows="2"></textarea>
               </div>
               <div class="form-group">
                 <label for="inputDescription">Main content</label>

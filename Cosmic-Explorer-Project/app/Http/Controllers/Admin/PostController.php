@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Category;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 
 class PostController extends Controller
@@ -36,8 +37,9 @@ class PostController extends Controller
     {
         $request->validate([
             'title' => 'required',
+            'excerpt' => 'required',
             'content' => 'required',
-            'slug' => 'required',
+            'slug' => Str::slug($request->title),
             'category_id' => 'required|integer|exists:categories,id',
             'is_published' => 'required|boolean',
             'image' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
@@ -51,7 +53,8 @@ class PostController extends Controller
                 
         Post::create([
             'title' => $request->title,
-            'slug' => $request->slug,
+            'excerpt'=> $request->excerpt,
+            'slug' => Str::slug($request->title),
             'content' => $request->content,
             'category_id' => $request->category_id,
             'is_published' => $request->is_published,
@@ -72,6 +75,7 @@ class PostController extends Controller
     {
         $request->validate([
             'title' => 'required|string|max:255',
+            'excerpt' => 'required',
             'content' => 'required|string',
             'slug' => 'nullable|string|max:255',
             'category_id' => 'nullable|integer|exists:categories,id',
@@ -79,7 +83,8 @@ class PostController extends Controller
             'image' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',        
         ]);
 
-         $data = $request->only(['title', 'content', 'slug', 'category_id', 'is_published']);
+         $data = $request->only(['title', 'content', 'excerpt', 'category_id', 'is_published']);
+         $data['slug'] = Str::slug($request->title);
 
             if ($request->hasFile('image')) {
                 // Xoá ảnh cũ nếu có

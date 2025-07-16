@@ -20,7 +20,7 @@
                 </div>
                 <div class="form-group">
                     <label>Introduction</label>
-                    <input type="text" name="slug" value="{{ old('slug', $post->slug) }}" class="form-control">
+                    <input type="text" name="excerpt" value="{{ old('excerpt', $post->excerpt) }}" class="form-control">
                 </div>
                 <div class="form-group">
                     <label>Main content</label>
