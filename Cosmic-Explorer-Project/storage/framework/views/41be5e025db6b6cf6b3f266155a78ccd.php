@@ -132,7 +132,7 @@
     <!-- ***** Introduction End ***** -->
 
     <!-- ***** Discovery (BigBang Theory - The Earth's Evolution - Comets ) ***** -->
-    <section class="discovery py-5 px-5" style="background-color: black">
+    <section class="discovery py-5 px-5" style="background-color: rgb(0,0,0);">
         <?php $__currentLoopData = $discovery; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $discoveries): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
             <?php if($discoveries->id % 2 == 0): ?>
                 <div class="card px-4 py-4">
@@ -146,8 +146,8 @@
                             </div>
                         </div>
                         <div class="col-md-4">
-                            <img src="<?php echo e(asset('storage/images')); ?>/discovery/<?php echo e($discoveries->photo); ?>" class="img-fluid img-discovery"
-                                alt="<?php echo e($discoveries->title); ?>">
+                            <img src="<?php echo e(asset('storage/images')); ?>/discovery/<?php echo e($discoveries->photo); ?>"
+                                class="img-fluid img-discovery" alt="<?php echo e($discoveries->title); ?>">
                         </div>
                     </div>
                 </div>
@@ -219,7 +219,8 @@
     <!-- ***** News End ***** -->
 
     <!-- ***** Collections (Planets - Constellations - Observatories) ***** -->
-    <section class="categories-collections" style="background-color: black">
+    <section class="categories-collections"
+        style="background: url('<?php echo e(asset('storage/images')); ?>/background/background-collections.jpg')">
         <div class="container">
             <div class="row">
                 <!-- ***** Planets Collections ***** -->

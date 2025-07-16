@@ -134,7 +134,7 @@
     <!-- ***** Introduction End ***** -->
 
     <!-- ***** Discovery (BigBang Theory - The Earth's Evolution - Comets ) ***** -->
-    <section class="discovery py-5 px-5" style="background-color: black">
+    <section class="discovery py-5 px-5" style="background-color: rgb(0,0,0);">
         @foreach ($discovery as $discoveries)
             @if ($discoveries->id % 2 == 0)
                 <div class="card px-4 py-4">
@@ -148,8 +148,8 @@
                             </div>
                         </div>
                         <div class="col-md-4">
-                            <img src="{{ asset('storage/images') }}/discovery/{{ $discoveries->photo }}" class="img-fluid img-discovery"
-                                alt="{{ $discoveries->title }}">
+                            <img src="{{ asset('storage/images') }}/discovery/{{ $discoveries->photo }}"
+                                class="img-fluid img-discovery" alt="{{ $discoveries->title }}">
                         </div>
                     </div>
                 </div>
@@ -221,7 +221,8 @@
     <!-- ***** News End ***** -->
 
     <!-- ***** Collections (Planets - Constellations - Observatories) ***** -->
-    <section class="categories-collections" style="background-color: black">
+    <section class="categories-collections"
+        style="background: url('{{ asset('storage/images') }}/background/background-collections.jpg')">
         <div class="container">
             <div class="row">
                 <!-- ***** Planets Collections ***** -->
