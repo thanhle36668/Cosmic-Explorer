@@ -43,12 +43,12 @@ class PostController extends Controller
             'image' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
         ]);
 
-            $imagePath = null;
-            if ($request->hasFile('image')) {
-                $imagePath = $request->file('image')->store('posts', 'public');
-                }
+        $imagePath = null;
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('posts', 'public');
+        }
 
-                
+
         Post::create([
             'title' => $request->title,
             'slug' => $request->slug,
@@ -64,30 +64,30 @@ class PostController extends Controller
 
     public function edit(Post $post)
     {
-        $categories = Category::all(); 
+        $categories = Category::all();
         return view('admin.posts.edit', compact('post', 'categories'));
     }
 
     public function update(Request $request, Post $post)
     {
         $request->validate([
-            'title' => 'required', 
+            'title' => 'required',
             'content' => 'required',
             'image' => 'required'
-        
+
         ]);
 
-         $data = $request->only(['title', 'content', 'slug', 'category_id', 'is_published']);
+        $data = $request->only(['title', 'content', 'slug', 'category_id', 'is_published']);
 
-            if ($request->hasFile('image')) {
-                // Xoá ảnh cũ nếu có
-                if ($post->image) {
-                    Storage::disk('public')->delete($post->image);
-                }
-
-                // Lưu ảnh mới
-                $data['image'] = $request->file('image')->store('posts', 'public');
+        if ($request->hasFile('image')) {
+            // Xoá ảnh cũ nếu có
+            if ($post->image) {
+                Storage::disk('public')->delete($post->image);
             }
+
+            // Lưu ảnh mới
+            $data['image'] = $request->file('image')->store('posts', 'public');
+        }
 
         $post->update($data);
 

@@ -6,6 +6,7 @@ use App\Models\Constellations;
 use App\Models\News;
 use App\Models\Observatories;
 use App\Models\Planets;
+use App\Models\Post;
 
 class CosmicExplorerController extends Controller
 {
@@ -26,7 +27,9 @@ class CosmicExplorerController extends Controller
 
     public function news()
     {
-        $data = [];
+        $data = [
+            'posts' => Post::paginate(4)
+        ];
         return view('user/news')->with($data);
     }
 
@@ -58,9 +61,11 @@ class CosmicExplorerController extends Controller
     }
 
     // Controller Page Details New
-    public function pageDetailsNew()
+    public function pageDetailsNew($id)
     {
-        $data = [];
+        $data = [
+            'post_details' => Post::find($id)
+        ];
         return view('user/details-page-new')->with($data);
     }
 

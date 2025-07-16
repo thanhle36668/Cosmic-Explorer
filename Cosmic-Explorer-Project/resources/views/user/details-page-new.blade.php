@@ -89,7 +89,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="inner-content">
-                        <h1 style="text-transform: uppercase">Tên thể loại</h1>
+                        <h1 style="text-transform: uppercase"></h1>
                     </div>
                 </div>
             </div>
@@ -106,20 +106,14 @@
                     <span class="me-2">
                         <strong>Author: Linh Nguyễn</strong>
                     </span>
+                    <span class="me-2">
+                        <strong>Ngày đăng: {{ $post_details->created_at->format('d/m/Y') }}</strong>
+                    </span>
                     <span>
                         <strong>Category: Planet</strong>
                     </span>
                     <p class="mt-2">
-                        Nội dung 1
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                        eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida.
-                        Risus commodo viverra maecenas accumsan.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                        do
-                        eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida.
-                        Risus commodo viverra maecenas accumsan.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                        do
-                        eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida.
-                        Risus commodo viverra maecenas accumsan.
+                        {{ $post_details->content }}
                     </p>
                     <div class="clearfix my-4 mt-lg-0 mt-5">
                         <div class="col-md-6 float-md-end mb-3 ms-md-3" data-aos="fade-up">
@@ -130,28 +124,7 @@
                             </figure>
                         </div>
                         <p>
-                            Nội dung 2
-                            Morbi scelerisque urna in orci elementum, nec mollis ligula luctus. Proin ullamcorper pulvinar
-                            commodo. Quisque tortor nunc, ultricies efficitur ex sit amet, tempus rutrum libero. In nec
-                            faucibus tellus.
-                            Morbi scelerisque urna in orci elementum, nec mollis ligula luctus. Proin ullamcorper pulvinar
-                            commodo. Quisque tortor nunc, ultricies efficitur ex sit amet, tempus rutrum libero. In nec
-                            faucibus tellus.
-                            Morbi scelerisque urna in orci elementum, nec mollis ligula luctus. Proin ullamcorper pulvinar
-                            commodo. Quisque tortor nunc, ultricies efficitur ex sit amet, tempus rutrum libero. In nec
-                            faucibus tellus.
-                            Morbi scelerisque urna in orci elementum, nec mollis ligula luctus. Proin ullamcorper pulvinar
-                            commodo. Quisque tortor nunc, ultricies efficitur ex sit amet, tempus rutrum libero. In nec
-                            faucibus tellus.
-                            Morbi scelerisque urna in orci elementum, nec mollis ligula luctus. Proin ullamcorper pulvinar
-                            commodo. Quisque tortor nunc, ultricies efficitur ex sit amet, tempus rutrum libero. In nec
-                            faucibus tellus.
-                            Morbi scelerisque urna in orci elementum, nec mollis ligula luctus. Proin ullamcorper pulvinar
-                            commodo. Quisque tortor nunc, ultricies efficitur ex sit amet, tempus rutrum libero. In nec
-                            faucibus tellus.
-                            Morbi scelerisque urna in orci elementum, nec mollis ligula luctus. Proin ullamcorper pulvinar
-                            commodo. Quisque tortor nunc, ultricies efficitur ex sit amet, tempus rutrum libero. In nec
-                            faucibus tellus.
+                            {{ $post_details->content }}
                         </p>
                     </div>
                 </div>
