@@ -48,7 +48,8 @@
     <!-- ***** Change Section End***** -->
 
     <!-- ***** Contact ***** -->
-    <section class="contact" style="background-image: url('<?php echo e(asset('images')); ?>/background/background-dark.jpg')">
+    <section class="contact"
+        style="background-image: url('<?php echo e(asset('storage/images')); ?>/background/background-dark.jpg')">
         <div class="contact-us">
             <div class="container">
                 <div class="row">

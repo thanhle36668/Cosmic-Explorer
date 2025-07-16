@@ -13,7 +13,7 @@
                     <nav class="main-nav">
                         <!-- ***** Logo Start ***** -->
                         <a href="{{ route('home') }}" class="logo">
-                            <img src="{{ asset('images') }}/logo.svg" alt="">
+                            <img src="{{ asset('storage/images') }}/logo.svg" alt="">
                         </a>
                         <!-- ***** Logo End ***** -->
 
@@ -84,7 +84,7 @@
 
     <!-- ***** Introduction ***** -->
     <section class="main-banner"
-        style="background-image: url('{{ asset('images') }}/background/background-banner-main.avif');">
+        style="background-image: url('{{ asset('storage/images') }}/background/background-banner-main.avif');">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 align-self-center">
@@ -105,10 +105,12 @@
                             college students. Ability levels span the range from novice to expert.</p>
                         <div class="buttons">
                             <div class="border-button">
-                                <a href="#">Evolution of Earth</a>
+                                <a href="{{ route('collections-planets') }}">Planet
+                                    collections</a>
                             </div>
                             <div class="border-button">
-                                <a href="#" target="_blank">Constellation collections</a>
+                                <a href="{{ route('collections-constellations') }}" target="_blank">Constellation
+                                    collections</a>
                             </div>
                         </div>
                     </div>
@@ -118,7 +120,8 @@
                         @foreach ($planets as $planet)
                             <div class="item">
                                 <a href="{{ route('details-planet', $planet->id) }}">
-                                    <img class="rounded-circle" src="{{ asset('images') }}/planets/{{ $planet->photo }}"
+                                    <img class="rounded-circle"
+                                        src="{{ asset('storage/images') }}/planets/{{ $planet->photo }}"
                                         alt="{{ $planet->name }}" height="480px" width="480px">
                                 </a>
                             </div>
@@ -131,65 +134,50 @@
     <!-- ***** Introduction End ***** -->
 
     <!-- ***** Discovery (BigBang Theory - The Earth's Evolution - Comets ) ***** -->
-    <section class="discovery py-4" style="background-color: black">
-        <!-- ***** BigBang Theory ***** -->
-        <div class="card py-5 px-5">
-            <div class="row g-0">
-                <div class="col-md-4">
-                    <img src="{{ asset('images') }}/news/{{ $news_bigbang_theory->photo }}" class="img-fluid"
-                        alt="{{ $news_bigbang_theory->name }}">
-                </div>
-                <div class="col-md-8 d-flex justify-content-center align-items-center">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ $news_bigbang_theory->title }}</h5>
-                        <p class="card-text">{{ $news_bigbang_theory->description_short }}</p>
-                        <a href="{{ route('details-news', $news_bigbang_theory->id) }}" class="card-button badge rounded-pill bg-white">View Details</a>
+    <section class="discovery py-5 px-5" style="background-color: black">
+        @foreach ($discovery as $discoveries)
+            @if ($discoveries->id % 2 == 0)
+                <div class="card px-4 py-4">
+                    <div class="row g-0">
+                        <div class="col-md-8 d-flex justify-content-center align-items-center">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ $discoveries->title }}</h5>
+                                <p class="card-text">{{ $discoveries->description_short }}</p>
+                                <a href="{{ route('details-discovery', $discoveries->id) }}"
+                                    class="card-button badge rounded-pill bg-white">View Details</a>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <img src="{{ asset('storage/images') }}/discovery/{{ $discoveries->photo }}" class="img-fluid img-discovery"
+                                alt="{{ $discoveries->title }}">
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
-
-        <!-- ***** The Earth's Evolution ***** -->
-        <div class="card py-5 px-5">
-            <div class="row g-0">
-                <div class="col-md-8 d-flex justify-content-center align-items-center">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ $news_earth_evolved->title }}</h5>
-                        <p class="card-text">
-                            {{ $news_earth_evolved->description_short }}
-                        </p>
-                        <a href="{{ route('details-news', $news_earth_evolved->id) }}" class="card-button badge rounded-pill bg-white">View Details</a>
+            @else
+                <div class="card px-4 py-4">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img src="{{ asset('storage/images') }}/discovery/{{ $discoveries->photo }}" class="img-fluid"
+                                alt="{{ $discoveries->title }}">
+                        </div>
+                        <div class="col-md-8 d-flex justify-content-center align-items-center">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ $discoveries->title }}</h5>
+                                <p class="card-text">{{ $discoveries->description_short }}</p>
+                                <a href="{{ route('details-discovery', $discoveries->id) }}"
+                                    class="card-button badge rounded-pill bg-white">View Details</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <img src="{{ asset('images') }}/news/{{ $news_earth_evolved->photo }}" class="img-fluid"
-                        alt="{{ $news_earth_evolved->name }}">
-                </div>
-            </div>
-        </div>
-
-        <!-- ***** Comets ***** -->
-        <div class="card py-5 px-5">
-            <div class="row g-0">
-                <div class="col-md-4">
-                    <img src="{{ asset('images') }}/news/{{ $news_comet->photo }}" class="img-fluid"
-                        alt="{{ $news_comet->name }}">
-                </div>
-                <div class="col-md-8 d-flex justify-content-center align-items-center">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ $news_comet->title }}</h5>
-                        <p class="card-text">{{ $news_comet->description_short }}</p>
-                        <a href="{{ route('details-news', $news_comet->id) }}" class="card-button badge rounded-pill bg-white">View Details</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+            @endif
+        @endforeach
     </section>
     <!-- ***** Discovery (BigBang Theory - The Earth's Evolution - Comets ) End ***** -->
 
     <!-- ***** News ***** -->
     <section class="news"
-        style="background-image: url('{{ asset('images') }}/background/background-banner-main.avif');">
+        style="background-image: url('{{ asset('storage/images') }}/background/background-banner-main.avif');">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -206,7 +194,7 @@
                                     @foreach ($constellations as $constellation)
                                         <div class="item">
                                             <div class="thumb">
-                                                <img src="{{ asset('images') }}/constellations/{{ $constellation->photo }}"
+                                                <img src="{{ asset('storage/images') }}/constellations/{{ $constellation->photo }}"
                                                     alt="{{ $constellation->name }}" style="border-radius: 20px;"
                                                     height="360" width="360">
                                                 <div class="hover-effect">
@@ -251,7 +239,7 @@
                                     <a href="{{ route('details-planet', $planet->id) }}">
                                         <div class="item">
                                             <div class="icon">
-                                                <img src="{{ asset('images') }}/planets/{{ $planet->photo }}"
+                                                <img src="{{ asset('storage/images') }}/planets/{{ $planet->photo }}"
                                                     alt="{{ $planet->name }}">
                                             </div>
                                             <h4>{{ $planet->name }}</h4>
@@ -282,7 +270,7 @@
                                 <div class="owl-collection owl-carousel">
                                     @foreach ($constellations as $constellation)
                                         <div class="item">
-                                            <img src="{{ asset('images') }}/constellations/{{ $constellation->photo }}"
+                                            <img src="{{ asset('storage/images') }}/constellations/{{ $constellation->photo }}"
                                                 alt="{{ $constellation->name }}">
                                             <div class="down-content text-center">
                                                 <h4>{{ $constellation->name }}
@@ -316,7 +304,7 @@
                                     @foreach ($observatories as $observatory)
                                         <div class="item">
                                             <img class="img-observatory"
-                                                src="{{ asset('images') }}/observatories/{{ $observatory->photo }}"
+                                                src="{{ asset('storage/images') }}/observatories/{{ $observatory->photo }}"
                                                 alt="{{ $observatory->name }}">
                                             <div class="down-content text-center">
                                                 <h4>{{ $observatory->name }}
