@@ -1,7 +1,7 @@
 @extends('layouts.user.details-page')
 
 @section('title')
-        <title>{{ $news_details->name }}</title>
+    <title>{{ $discovery_details->title }}</title>
 @endsection
 
 @section('section-change')
@@ -13,7 +13,7 @@
                     <nav class="main-nav">
                         <!-- ***** Logo Start ***** -->
                         <a href="{{ route('home') }}" class="logo">
-                            <img src="{{ asset('images') }}/logo.svg" alt="">
+                            <img src="{{ asset('storage/images') }}/logo.svg" alt="">
                         </a>
                         <!-- ***** Logo End ***** -->
 
@@ -24,6 +24,9 @@
                             </li>
                             <li>
                                 <a href="#">About</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('news') }}">News</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownCollections"
@@ -38,18 +41,16 @@
                                         </a>
                                     </li>
 
-                                    <li class="nav-item dropdown">
-                                        <a class="dropdown-item dropdown-toggle" href="#"
-                                            id="navbarDropdownConstellations" role="button" data-bs-toggle="dropdown"
-                                            aria-expanded="true">
+                                    <li class="nav-item">
+                                        <a class="dropdown-item" href="{{ route('collections-constellations') }}"
+                                            id="navbarDropdownConstellations">
                                             Constellations
                                         </a>
                                     </li>
 
-                                    <li class="nav-item dropdown">
-                                        <a class="dropdown-item dropdown-toggle" href="#"
-                                            id="navbarDropdownObservatories" role="button" data-bs-toggle="dropdown"
-                                            aria-expanded="true">
+                                    <li class="nav-item">
+                                        <a class="dropdown-item" href="{{ route('collections-observatories') }}"
+                                            id="navbarDropdownObservatories">
                                             Observatories
                                         </a>
                                     </li>
@@ -83,12 +84,13 @@
 
     <!-- ***** Main Banner Details ***** -->
     <section class="page-heading"
-        style="background-image: url('{{ asset('images') }}/background/background-banner-main.avif')" id="top">
+        style="background-image: url('{{ asset('storage/images') }}/background/background-banner-main.avif')"
+        id="top">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="inner-content">
-                        <h2 style="text-transform: uppercase">{{ $news_details->title }}</h2>
+                        <h1 style="text-transform: uppercase">Discovery</h1>
                     </div>
                 </div>
             </div>
@@ -96,49 +98,81 @@
     </section>
     <!-- ***** Main Banner Details End ***** -->
 
-    <!-- ***** News Details  ***** -->
+    <!-- ***** Discovery Details  ***** -->
     <section class="main-banner-details"
-        style="background-image: url('{{ asset('images') }}/background/background-banner-main.avif');">
+        style="background-image: url('{{ asset('storage/images') }}/background/background-banner-main.avif');">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12 align-self-center">
-                    <div>
-                        <h4>{{ $news_details->description_short }}</h4>
+                <div class="col-lg-8 col-10 mx-auto">
+                    <h2>{{ $discovery_details->title_details }}</h2>
+                    <span class="me-2">
+                        <strong class="text-light">Author: {{ $discovery_details->author }}</strong>
+                    </span>
+                    <span class="me-2">
+                        <strong class="text-light">Publication
+                            Date:{{ \Carbon\Carbon::parse($discovery_details->created_at)->format('d-m-Y') }}
+                        </strong>
+                    </span>
+                    <p class="mt-2">{{ $discovery_details->description_details }}</p>
+                    <div class="clearfix mt-lg-0 mt-2">
+                        <div class="col-md-6 float-md-end mb-3 ms-md-3 mt-3">
+                            <figure class="figure">
+                                <img src="{{ asset('storage/images') }}/discovery/{{ $discovery_details->photo }}"
+                                    class="img-fluid news-image" alt="{{ $discovery_details->name_photo }}">
+                                <figcaption class="figure-caption text-start text-light mt-2">Picture:
+                                    {{ $discovery_details->name_photo }}
+                                </figcaption>
+                            </figure>
+                        </div>
+                        <p class="mt-2">
+                            {{ $discovery_details->content_1 }}
+                        </p>
                     </div>
-                    <div class="news_photo" align="center">
-                        <img src="{{ asset('images') }}/news/{{ $news_details->photo }}" alt="">
+                    <div class="clearfix mt-lg-0 mt-2">
+                        <div class="col-md-6 float-md-start me-3 mt-3">
+                            <figure class="figure">
+                                <img src="{{ asset('storage/images') }}/discovery/{{ $discovery_details->photo_2 }}"
+                                    class="img-fluid news-image" alt="{{ $discovery_details->name_photo }}">
+                                <figcaption class="figure-caption text-start text-light mt-2">Picture:
+                                    {{ $discovery_details->name_photo }}
+                                </figcaption>
+                            </figure>
+                        </div>
+                        <p class="mt-2">
+                            {{ $discovery_details->content_2 }}
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <!-- ***** News Details  End ***** -->
+    <!-- ***** Discovery Details End ***** -->
 
-    <!-- ***** Constellation Collections ***** -->
+    <!-- ***** Planet Collections ***** -->
     <section class="categories-collections" style="background-color: black">
         <div class="container">
             <div class="row">
-                <!-- ***** Constellations Collections ***** -->
+                <!-- ***** planets Collections ***** -->
                 <div class="col-lg-12">
                     <div class="collections">
                         <div class="row">
                             <div class="col-lg-12 title">
                                 <div class="section-heading">
                                     <div class="line-dec"></div>
-                                    <h2>Constellations Collection</h2>
+                                    <h2>Planet Collection</h2>
                                 </div>
                             </div>
                             <div class="col-lg-12 carousel">
                                 <div class="owl-collection owl-carousel">
-                                    @foreach ($constellations as $constellation)
+                                    @foreach ($planets as $planet)
                                         <div class="item">
-                                            <img class="img-constellation"
-                                                src="{{ asset('images') }}/constellations/leo-constellation.jpg"
-                                                alt="{{ $constellation->name }}">
-                                            <div class="down-content p-3" style="background-color: #282B2F;">
-                                                <div class="main-button main-button-constellation text-center">
-                                                    <h4 class="mb-2">Leo (The Lion)</h4>
-                                                    <a href="{{ route('details-constellation', $constellation->id) }}">View
+                                            <img class="img-planet"
+                                                src="{{ asset('storage/images') }}/planets/{{ $planet->photo_extra }}"
+                                                alt="{{ $planet->name }}">
+                                            <div class="down-content-discovery text-center p-3"
+                                                style="background-color: transparent; border: none">
+                                                <div class="main-button mt-0 mb-0">
+                                                    <a href="{{ route('details-planet', $planet->id) }}">View
                                                         Details</a>
                                                 </div>
                                             </div>
@@ -149,9 +183,115 @@
                         </div>
                     </div>
                 </div>
-                <!-- ***** Constellations Collections End ***** -->
+                <!-- ***** planets Collections End ***** -->
+            </div>
+            <!-- ***** planets Collections End ***** -->
+        </div>
+    </section>
+    <!-- ***** Planet Collections End ***** -->
+
+    <!-- ***** Contact ***** -->
+    <section class="contact" style="background-image: url('{{ asset('storage/images') }}/background-dark.jpg')">
+        <div class="contact-us">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div id="map">
+                            <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3694.5308998533724!2d106.7116196747655!3d10.806685889343925!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317529ed00409f09%3A0x11f7708a5c77d777!2zQXB0ZWNoIENvbXB1dGVyIEVkdWNhdGlvbiAtIEjhu4cgVGjhu5FuZyDEkMOgbyB04bqhbyBM4bqtcCBUcsOsbmggVmnDqm4gUXXhu5FjIHThur8gQXB0ZWNo!5e1!3m2!1svi!2s!4v1751729317282!5m2!1svi!2s"
+                                width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            <!-- You can simply copy and paste "Embed a map" code from Google Maps for any location. -->
+
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="section-heading">
+                            <h2>Say Hello. Don't Be Shy!</h2>
+                        </div>
+                        <form id="contact" action="" method="post">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <fieldset>
+                                        <input name="name" type="text" id="name" placeholder="Your name"
+                                            required="">
+                                    </fieldset>
+                                </div>
+                                <div class="col-lg-6">
+                                    <fieldset>
+                                        <input name="email" type="text" id="email" placeholder="Your email"
+                                            required="">
+                                    </fieldset>
+                                </div>
+                                <div class="col-lg-12">
+                                    <fieldset>
+                                        <textarea name="message" rows="6" id="message" placeholder="Your message" required=""></textarea>
+                                    </fieldset>
+                                </div>
+                                <div class="col-lg-12">
+                                    <fieldset>
+                                        <button type="submit" id="form-submit" class="main-dark-button"><i
+                                                class="fa fa-paper-plane"></i></button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="subscribe">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="section-heading">
+                            <h2>By Subscribing To Our Newsletter</h2>
+                        </div>
+                        <form id="subscribe" action="" method="get">
+                            <div class="row">
+                                <div class="col-lg-5">
+                                    <fieldset>
+                                        <input name="name" type="text" id="name" placeholder="Your Name"
+                                            required="">
+                                    </fieldset>
+                                </div>
+                                <div class="col-lg-5">
+                                    <fieldset>
+                                        <input name="email" type="text" id="email" pattern="[^ @]*@[^ @]*"
+                                            placeholder="Your Email Address" required="">
+                                    </fieldset>
+                                </div>
+                                <div class="col-lg-2">
+                                    <fieldset>
+                                        <button type="submit" id="form-submit" class="main-dark-button"><i
+                                                class="fa fa-paper-plane"></i></button>
+                                    </fieldset>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="row">
+                            <div class="col-6">
+                                <ul>
+                                    <li>Store Location:<br><span>Sunny Isles Beach, FL 33160, United States</span></li>
+                                    <li>Phone:<br><span>010-020-0340</span></li>
+                                    <li>Office Location:<br><span>North Miami Beach</span></li>
+                                </ul>
+                            </div>
+                            <div class="col-6">
+                                <ul>
+                                    <li>Work Hours:<br><span>07:30 AM - 9:30 PM Daily</span></li>
+                                    <li>Email:<br><span>info@company.com</span></li>
+                                    <li>Social Media:<br><span><a href="#">Facebook</a>, <a
+                                                href="#">Instagram</a>, <a href="#">Behance</a>,
+                                            <a href="#">Linkedin</a></span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
-    <!-- ***** Constellation Collections End ***** -->
+    <!-- ***** Contact End ***** -->
 @endsection

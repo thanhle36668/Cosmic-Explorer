@@ -1,7 +1,7 @@
 @extends('layouts.user.details-page')
 
 @section('title')
-    <title>{{$constellation_details->title}} Constellation</title>
+    <title>{{ $constellation_details->title }} Constellation</title>
 @endsection
 
 @section('section-change')
@@ -13,12 +13,12 @@
                     <nav class="main-nav">
                         <!-- ***** Logo Start ***** -->
                         <a href="{{ route('home') }}" class="logo">
-                            <img src="{{ asset('images') }}/logo.svg" alt="">
+                            <img src="{{ asset('storage/images') }}/logo.svg" alt="">
                         </a>
                         <!-- ***** Logo End ***** -->
 
                         <!-- ***** Menu Start ***** -->
-                       <ul class="nav">
+                        <ul class="nav">
                             <li>
                                 <a href="{{ route('home') }}">Home</a>
                             </li>
@@ -84,12 +84,13 @@
 
     <!-- ***** Main Banner Details ***** -->
     <section class="page-heading"
-        style="background-image: url('{{ asset('images') }}/background/background-banner-main.avif')" id="top">
+        style="background-image: url('{{ asset('storage/images') }}/background/background-banner-main.avif')"
+        id="top">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="inner-content">
-                        <h1 style="text-transform: uppercase">{{$constellation_details->title}} Constellation</h1>
+                        <h1 style="text-transform: uppercase">{{ $constellation_details->title }} Constellation</h1>
                     </div>
                 </div>
             </div>
@@ -99,28 +100,28 @@
 
     <!-- ***** Constellation Details  ***** -->
     <section class="main-banner-details"
-        style="background-image: url('{{ asset('images') }}/background/background-banner-main.avif');">
+        style="background-image: url('{{ asset('storage/images') }}/background/background-banner-main.avif');">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 align-self-center">
                     <div class="header-text">
-                        <h2>{{$constellation_details->name}}</h2>
+                        <h2>{{ $constellation_details->name }}</h2>
                         <ul class="info-list">
                             <li>
                                 <strong>Identification:</strong>
-                                {{$constellation_details->identification}}
+                                {{ $constellation_details->identification }}
                             </li>
                             <li>
                                 <strong>Main Stars:</strong>
-                                {{$constellation_details->main_stars}}
+                                {{ $constellation_details->main_stars }}
                             </li>
                             <li>
                                 <strong>Notable Features:</strong>
-                                {{$constellation_details->notable_features}}
+                                {{ $constellation_details->notable_features }}
                             </li>
                             <li>
                                 <strong>Myths & Meaning:</strong>
-                                {{$constellation_details->myths_meaning}}
+                                {{ $constellation_details->myths_meaning }}
                             </li>
                         </ul>
                     </div>
@@ -128,25 +129,29 @@
                 <div class="col-lg-5 offset-lg-1">
                     <div class="owl-banner owl-carousel ">
                         <div class="item">
-                            <img class="rounded-3" src="{{ asset('images') }}/constellations/{{$constellation_details->photo}}"
+                            <img class="rounded-3"
+                                src="{{ asset('storage/images') }}/constellations/{{ $constellation_details->photo }}"
                                 alt="{{ $constellation_details->name }}" height="480px" width="480px">
                         </div>
                         <div class="item">
-                            <img class="rounded-3" src="{{ asset('images') }}/constellations/{{$constellation_details->photo_2}}"
+                            <img class="rounded-3"
+                                src="{{ asset('storage/images') }}/constellations/{{ $constellation_details->photo_2 }}"
                                 alt="{{ $constellation_details->name }}" height="480px" width="480px">
                         </div>
                         <div class="item">
-                            <img class="rounded-3" src="{{ asset('images') }}/constellations/{{$constellation_details->photo_3}}"
+                            <img class="rounded-3"
+                                src="{{ asset('storage/images') }}/constellations/{{ $constellation_details->photo_3 }}"
                                 alt="{{ $constellation_details->name }}" height="480px" width="480px">
                         </div>
                         <div class="item">
-                            <img class="rounded-3" src="{{ asset('images') }}/constellations/{{$constellation_details->photo_4}}"
+                            <img class="rounded-3"
+                                src="{{ asset('storage/images') }}/constellations/{{ $constellation_details->photo_4 }}"
                                 alt="{{ $constellation_details->name }}" height="480px" width="480px">
                         </div>
                         @if ($constellation_details->photo_5 !== '')
                             <div class="item">
                                 <img class="rounded-3"
-                                    src="{{ asset('images') }}/constellations/{{ $constellation_details->photo_5 }}"
+                                    src="{{ asset('storage/images') }}/constellations/{{ $constellation_details->photo_5 }}"
                                     alt="{{ $constellation_details->name }}" height="480px" width="480px">
                             </div>
                         @endif
@@ -176,11 +181,11 @@
                                     @foreach ($constellations as $constellation)
                                         <div class="item">
                                             <img class="img-constellation"
-                                                src="{{ asset('images') }}/constellations/{{$constellation->photo}}"
+                                                src="{{ asset('storage/images') }}/constellations/{{ $constellation->photo }}"
                                                 alt="{{ $constellation->name }}">
                                             <div class="down-content p-3" style="background-color: #282B2F;">
                                                 <div class="main-button main-button-constellation text-center">
-                                                    <h4 class="mb-2">{{$constellation->name}}</h4>
+                                                    <h4 class="mb-2">{{ $constellation->name }}</h4>
                                                     <a href="{{ route('details-constellation', $constellation->id) }}">View
                                                         Details</a>
                                                 </div>
@@ -197,4 +202,109 @@
         </div>
     </section>
     <!-- ***** Constellation Collections End ***** -->
+
+    <!-- ***** Contact ***** -->
+    <section class="contact" style="background-image: url('{{ asset('storage/images') }}/background-dark.jpg')">
+        <div class="contact-us">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div id="map">
+                            <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3694.5308998533724!2d106.7116196747655!3d10.806685889343925!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317529ed00409f09%3A0x11f7708a5c77d777!2zQXB0ZWNoIENvbXB1dGVyIEVkdWNhdGlvbiAtIEjhu4cgVGjhu5FuZyDEkMOgbyB04bqhbyBM4bqtcCBUcsOsbmggVmnDqm4gUXXhu5FjIHThur8gQXB0ZWNo!5e1!3m2!1svi!2s!4v1751729317282!5m2!1svi!2s"
+                                width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            <!-- You can simply copy and paste "Embed a map" code from Google Maps for any location. -->
+
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="section-heading">
+                            <h2>Say Hello. Don't Be Shy!</h2>
+                        </div>
+                        <form id="contact" action="" method="post">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <fieldset>
+                                        <input name="name" type="text" id="name" placeholder="Your name"
+                                            required="">
+                                    </fieldset>
+                                </div>
+                                <div class="col-lg-6">
+                                    <fieldset>
+                                        <input name="email" type="text" id="email" placeholder="Your email"
+                                            required="">
+                                    </fieldset>
+                                </div>
+                                <div class="col-lg-12">
+                                    <fieldset>
+                                        <textarea name="message" rows="6" id="message" placeholder="Your message" required=""></textarea>
+                                    </fieldset>
+                                </div>
+                                <div class="col-lg-12">
+                                    <fieldset>
+                                        <button type="submit" id="form-submit" class="main-dark-button"><i
+                                                class="fa fa-paper-plane"></i></button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="subscribe">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="section-heading">
+                            <h2>By Subscribing To Our Newsletter</h2>
+                        </div>
+                        <form id="subscribe" action="" method="get">
+                            <div class="row">
+                                <div class="col-lg-5">
+                                    <fieldset>
+                                        <input name="name" type="text" id="name" placeholder="Your Name"
+                                            required="">
+                                    </fieldset>
+                                </div>
+                                <div class="col-lg-5">
+                                    <fieldset>
+                                        <input name="email" type="text" id="email" pattern="[^ @]*@[^ @]*"
+                                            placeholder="Your Email Address" required="">
+                                    </fieldset>
+                                </div>
+                                <div class="col-lg-2">
+                                    <fieldset>
+                                        <button type="submit" id="form-submit" class="main-dark-button"><i
+                                                class="fa fa-paper-plane"></i></button>
+                                    </fieldset>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="row">
+                            <div class="col-6">
+                                <ul>
+                                    <li>Store Location:<br><span>Sunny Isles Beach, FL 33160, United States</span></li>
+                                    <li>Phone:<br><span>010-020-0340</span></li>
+                                    <li>Office Location:<br><span>North Miami Beach</span></li>
+                                </ul>
+                            </div>
+                            <div class="col-6">
+                                <ul>
+                                    <li>Work Hours:<br><span>07:30 AM - 9:30 PM Daily</span></li>
+                                    <li>Email:<br><span>info@company.com</span></li>
+                                    <li>Social Media:<br><span><a href="#">Facebook</a>, <a
+                                                href="#">Instagram</a>, <a href="#">Behance</a>,
+                                            <a href="#">Linkedin</a></span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ***** Contact End ***** -->
 @endsection
