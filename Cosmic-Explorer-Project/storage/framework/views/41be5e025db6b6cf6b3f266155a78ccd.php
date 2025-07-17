@@ -24,7 +24,7 @@
                                 <a href="#">About</a>
                             </li>
                             <li>
-                                <a href="<?php echo e(route('news')); ?>">News</a>
+                                <a href="<?php echo e(route('all-news')); ?>">News</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownCollections"
