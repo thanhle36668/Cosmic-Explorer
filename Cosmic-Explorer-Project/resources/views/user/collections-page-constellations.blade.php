@@ -66,7 +66,7 @@
                                         <a class="dropdown-item" href="{{ route('collections-books') }}">Books</a>
                                     </li>
                                     <li>
-                                        <a class="dropdown-item" href="#">Videos</a>
+                                        <a class="dropdown-item" href="{{ route('collections-videos') }}">Videos</a>
                                     </li>
                                 </ul>
                             </li>
@@ -83,8 +83,7 @@
     <!-- ***** Header End ***** -->
 
     <!-- ***** Main Banner Details ***** -->
-    <div class="page-heading"
-        style="background: url('{{ asset('images') }}/background/background-banner-main.avif')"
+    <div class="page-heading" style="background: url('{{ asset('images') }}/background/background-banner-main.avif')"
         id="top">
         <div class="container">
             <div class="row">

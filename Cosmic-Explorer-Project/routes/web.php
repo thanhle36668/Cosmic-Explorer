@@ -14,6 +14,7 @@ Route::group(['prefix' => ''], function () {
     Route::get('/collections-observatories', [CosmicExplorerController::class, 'pageCollectionsObservatories'])->name('collections-observatories');
     Route::get('/collections-constellations', [CosmicExplorerController::class, 'pageCollectionsConstellations'])->name('collections-constellations');
     Route::get('/collections-books', [CosmicExplorerController::class, 'pageCollectionsBooks'])->name('collections-books');
+    Route::get('/collections-videos', [CosmicExplorerController::class, 'pageCollectionsVideos'])->name('collections-videos');
     // News Page
     Route::get('/news', [CosmicExplorerController::class, 'news'])->name('news');
     Route::get('/new-details/{id}', [CosmicExplorerController::class, 'pageDetailsNew'])->name('details-new');

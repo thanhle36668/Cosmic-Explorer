@@ -7,6 +7,7 @@ use App\Models\Constellations;
 use App\Models\Discovery;
 use App\Models\Observatories;
 use App\Models\Planets;
+use App\Models\Videos;
 
 class CosmicExplorerController extends Controller
 {
@@ -66,6 +67,16 @@ class CosmicExplorerController extends Controller
         return view('user/collections-page-books')->with($data);
     }
 
+    // Controller Page Collections Videos
+    public function pageCollectionsVideos()
+    {
+        $data = [
+            'videos' => Videos::paginate(4)
+        ];
+        return view('user/collections-page-videos')->with($data);
+    }
+
+    // Page Details
     // Controller Page Details New
     public function pageDetailsNew()
     {

@@ -66,7 +66,7 @@
                                         <a class="dropdown-item" href="{{ route('collections-books') }}">Books</a>
                                     </li>
                                     <li>
-                                        <a class="dropdown-item" href="#">Videos</a>
+                                        <a class="dropdown-item" href="{{ route('collections-videos') }}">Videos</a>
                                     </li>
                                 </ul>
                             </li>
