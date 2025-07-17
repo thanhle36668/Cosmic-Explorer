@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Books;
 use App\Models\Constellations;
-use App\Models\News;
+use App\Models\Discovery;
 use App\Models\Observatories;
 use App\Models\Planets;
 
@@ -17,13 +18,12 @@ class CosmicExplorerController extends Controller
             'planets' => Planets::get(),
             'constellations' => Constellations::orderBy('name', 'asc')->get(),
             'observatories' => Observatories::orderBy('name', 'desc')->get(),
-            'news_bigbang_theory' => News::find(1),
-            'news_earth_evolved' => News::find(2),
-            'news_comet' => News::find(3),
+            'discovery' => Discovery::get()
         ];
         return view('user/home')->with($data);
     }
 
+    // Controller Page News
     public function news()
     {
         $data = [];
@@ -100,16 +100,24 @@ class CosmicExplorerController extends Controller
         return view('user/details-page-observatory')->with($data);
     }
 
-    // Controller Page Details News
-    public function pageDetailsNews($id)
+    // Controller Page Details Discovery
+    public function pageDetailsDiscovery($id)
     {
         $data = [
             'planets' => Planets::get(),
             'constellations' => Constellations::orderBy('name', 'asc')->get(),
             'observatories' => Observatories::orderBy('name', 'desc')->get(),
-            'news' => News::get(),
-            'news_details' => News::find($id)
+            'discovery_details' => Discovery::find($id)
         ];
         return view('user/details-page-news')->with($data);
+    }
+
+    // Controller Page Collections Books
+    public function pageCollectionsBooks()
+    {
+        $data = [
+            'books' => Books::paginate(4)
+        ];
+        return view('user/collections-page-books')->with($data);
     }
 }

@@ -13,11 +13,15 @@ Route::group(['prefix' => ''], function () {
     Route::get('/collections-planets', [CosmicExplorerController::class, 'pageCollectionsPlanets'])->name('collections-planets');
     Route::get('/collections-observatories', [CosmicExplorerController::class, 'pageCollectionsObservatories'])->name('collections-observatories');
     Route::get('/collections-constellations', [CosmicExplorerController::class, 'pageCollectionsConstellations'])->name('collections-constellations');
-    Route::get('/new-details', [CosmicExplorerController::class, 'pageDetailsNew'])->name('details-new');
+    Route::get('/collections-books', [CosmicExplorerController::class, 'pageCollectionsBooks'])->name('collections-books');
+    // News Page
+    Route::get('/news', [CosmicExplorerController::class, 'news'])->name('news');
+    Route::get('/new-details/{id}', [CosmicExplorerController::class, 'pageDetailsNew'])->name('details-new');
+    // Details Page
     Route::get('/planet-details/{id}', [CosmicExplorerController::class, 'pageDetailsPlanet'])->name('details-planet');
     Route::get('/observatory-details/{id}', [CosmicExplorerController::class, 'pageDetailsObservatory'])->name('details-observatory');
     Route::get('/constellation-details/{id}', [CosmicExplorerController::class, 'pageDetailsConstellation'])->name('details-constellation');
-    Route::get('/news-details/{id}', [CosmicExplorerController::class, 'pageDetailsNews'])->name('details-news');
+    Route::get('/discovery-details/{id}', [CosmicExplorerController::class, 'pageDetailsDiscovery'])->name('details-discovery');
 });
 
 
