@@ -78,8 +78,6 @@ class CosmicExplorerController extends Controller
     {
         $data = [
             'planets' => Planets::get(),
-            'constellations' => Constellations::orderBy('name', 'asc')->get(),
-            'observatories' => Observatories::orderBy('name', 'desc')->get(),
             'planet_details' => Planets::find($id)
         ];
         return view('user/details-page-planet')->with($data);
@@ -89,9 +87,7 @@ class CosmicExplorerController extends Controller
     public function pageDetailsConstellation($id)
     {
         $data = [
-            'planets' => Planets::get(),
             'constellations' => Constellations::orderBy('name', 'asc')->get(),
-            'observatories' => Observatories::orderBy('name', 'desc')->get(),
             'constellation_details' => Constellations::find($id)
         ];
         return view('user/details-page-constellation')->with($data);
@@ -101,8 +97,6 @@ class CosmicExplorerController extends Controller
     public function pageDetailsObservatory($id)
     {
         $data = [
-            'planets' => Planets::get(),
-            'constellations' => Constellations::orderBy('name', 'asc')->get(),
             'observatories' => Observatories::orderBy('name', 'desc')->get(),
             'observatory_details' => Observatories::find($id)
         ];
@@ -114,8 +108,6 @@ class CosmicExplorerController extends Controller
     {
         $data = [
             'planets' => Planets::get(),
-            'constellations' => Constellations::orderBy('name', 'asc')->get(),
-            'observatories' => Observatories::orderBy('name', 'desc')->get(),
             'discovery_details' => Discovery::find($id)
         ];
         return view('user/details-page-discovery')->with($data);
