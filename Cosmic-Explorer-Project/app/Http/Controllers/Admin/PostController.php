@@ -39,22 +39,29 @@ class PostController extends Controller
             'title' => 'required',
             'excerpt' => 'required',
             'content' => 'required',
-            'slug' => Str::slug($request->title),
             'category_id' => 'required|integer|exists:categories,id',
             'is_published' => 'required|boolean',
             'image' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
         ]);
 
+// tao slug khong trung khi title cac bai viet giong nhau
+        $slug = Str::slug($request->title);
+        $originalSlug = $slug;
+        $counter = 1;
+            while (Post::where('slug', $slug)->exists()) {
+                $slug = $originalSlug . '-' . $counter++;
+            }
+
+// xu ly anh:
         $imagePath = null;
         if ($request->hasFile('image')) {
             $imagePath = $request->file('image')->store('posts', 'public');
         }
 
-
         Post::create([
             'title' => $request->title,
             'excerpt' => $request->excerpt,
-            'slug' => Str::slug($request->title),
+            'slug' => $slug,
             'content' => $request->content,
             'category_id' => $request->category_id,
             'is_published' => $request->is_published,
@@ -84,7 +91,14 @@ class PostController extends Controller
         ]);
 
         $data = $request->only(['title', 'content', 'excerpt', 'category_id', 'is_published']);
-        $data['slug'] = Str::slug($request->title);
+        $slug = Str::slug($request->title);
+            $originalSlug = $slug;
+            $counter = 1;
+
+            while (Post::where('slug', $slug)->where('id', '!=', $post->id)->exists()) {
+                $slug = $originalSlug . '-' . $counter++;
+            }
+            $data['slug'] = $slug;
 
         if ($request->hasFile('image')) {
             // Xoá ảnh cũ nếu có
