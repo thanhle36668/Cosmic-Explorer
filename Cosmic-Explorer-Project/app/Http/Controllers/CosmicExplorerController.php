@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Books;
 use App\Models\Constellations;
-use App\Models\News;
 use App\Models\Observatories;
 use App\Models\Planets;
 use App\Models\Post;
@@ -24,6 +24,7 @@ class CosmicExplorerController extends Controller
         return view('user/home')->with($data);
     }
 
+    // Controller Page News
     public function news()
     {
         $data = [
@@ -114,5 +115,14 @@ class CosmicExplorerController extends Controller
             'discovery_details' => Discovery::find($id)
         ];
         return view('user/details-page-discovery')->with($data);
+    }
+
+    // Controller Page Collections Books
+    public function pageCollectionsBooks()
+    {
+        $data = [
+            'books' => Books::paginate(4)
+        ];
+        return view('user/collections-page-books')->with($data);
     }
 }
