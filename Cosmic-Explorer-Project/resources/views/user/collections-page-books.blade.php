@@ -1,7 +1,7 @@
 @extends('layouts.user.cosmic-explorer')
 
 @section('title')
-    <title>Planets Collections</title>
+    <title>Books</title>
 @endsection
 
 @section('section-change')
@@ -99,7 +99,7 @@
     <!-- ***** Main Banner Details End ***** -->
 
     <!-- ***** Collections Planets ***** -->
-    <section id="collections" class="px-5 py-5"
+    <section id="collections" class="px-2 py-2"
         style="background: url('{{ asset('storage/images') }}/background/background-collections.jpg')">
         <div class="container">
             <div class="space-y-5 mt-5 mx-auto" style="max-width: 1000px;">
@@ -113,20 +113,20 @@
                                 alt="{{ $book->name_book }}" class="img-fluid rounded-lg">
                         </div>
                         <div class="flex-grow-1">
-                            <h2>{{ $book->name_book }}</h2>
-                            <span class="d-block">
+                            <h2 class="mb-2">{{ $book->name_book }}</h2>
+                            <span class="d-block mb-2">
                                 <strong class="text-light">Author: {{ $book->author }}</strong>
                             </span>
-                            <span class="d-block">
+                            <span class="d-block mb-2">
                                 <strong class="text-light">Publication
                                     Date:{{ $book->publication_year }}
                                 </strong>
                             </span>
-                            <span class="d-block">
+                            <span class="d-block mb-2">
                                 <strong class="text-light">Genre:{{ $book->genre }}
                                 </strong>
                             </span>
-                            <span class="d-block">
+                            <span class="d-block mb-2">
                                 <strong class="text-light">Description:{{ $book->description }}
                                 </strong>
                             </span>

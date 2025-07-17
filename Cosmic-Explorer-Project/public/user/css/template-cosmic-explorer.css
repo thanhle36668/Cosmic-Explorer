@@ -994,15 +994,8 @@ Introduction
 .card img {
   border-radius: 50px;
   display: flex;
-  height: 400px;
+  height: 380px;
   width: 420px;
-  transition: all 0.3s ease-in-out;
-}
-
-.card .img-discovery {
-  border-radius: 50px;
-  display: flex;
-  height: 500px;
   transition: all 0.3s ease-in-out;
 }
 
@@ -1926,3 +1919,8 @@ body {
 }
 
 @media (max-width: 1200px) {}
+
+.news_photo img {
+  width: 50%;
+  height: 50%;
+}

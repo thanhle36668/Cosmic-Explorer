@@ -4,10 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Books;
 use App\Models\Constellations;
+use App\Models\Discovery;
 use App\Models\Observatories;
 use App\Models\Planets;
-use App\Models\Post;
-use App\Models\Discovery;
 
 class CosmicExplorerController extends Controller
 {
@@ -27,9 +26,7 @@ class CosmicExplorerController extends Controller
     // Controller Page News
     public function news()
     {
-        $data = [
-            'posts' => Post::paginate(4)
-        ];
+        $data = [];
         return view('user/news')->with($data);
     }
 
@@ -61,11 +58,9 @@ class CosmicExplorerController extends Controller
     }
 
     // Controller Page Details New
-    public function pageDetailsNew($id)
+    public function pageDetailsNew()
     {
-        $data = [
-            'post_details' => Post::find($id)
-        ];
+        $data = [];
         return view('user/details-page-new')->with($data);
     }
 
@@ -114,7 +109,7 @@ class CosmicExplorerController extends Controller
             'observatories' => Observatories::orderBy('name', 'desc')->get(),
             'discovery_details' => Discovery::find($id)
         ];
-        return view('user/details-page-discovery')->with($data);
+        return view('user/details-page-news')->with($data);
     }
 
     // Controller Page Collections Books

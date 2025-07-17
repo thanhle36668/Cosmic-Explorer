@@ -13,7 +13,7 @@
                     <nav class="main-nav">
                         <!-- ***** Logo Start ***** -->
                         <a href="{{ route('home') }}" class="logo">
-                            <img src="{{ asset('storage/images') }}/logo.svg" alt="Logo">
+                            <img src="{{ asset('images') }}/logo.svg" alt="Logo">
                         </a>
                         <!-- ***** Logo End ***** -->
 
@@ -83,8 +83,7 @@
     <!-- ***** Header End ***** -->
 
     <!-- ***** Main Banner Details ***** -->
-    <div class="page-heading"
-        style="background-image: url('{{ asset('storage/images') }}/background/background-banner-main.avif')"
+    <div class="page-heading" style="background-image: url('{{ asset('images') }}/background/background-banner-main.avif')"
         id="top">
         <div class="container">
             <div class="row">
@@ -102,30 +101,82 @@
     <section id="collections" class="px-3">
         <div class="container">
             <div class="space-y-5 mt-5 mx-auto" style="max-width: 1000px;">
-                @foreach ($posts as $post)
-                    <div id="Tên Category"
-                        class="card p-4 rounded-lg shadow-lg scroll-margin-top-120 d-md-flex flex-md-row align-items-md-center gap-5"
-                        style="height: auto">
-                        <div
-                            class="planet-image-fixed-size d-flex align-items-center justify-content-center overflow-hidden mb-2">
-                            <img src="{{ asset('storage/images') }}/constellations/leo-constellation.jpg" alt="tên ảnh"
-                                class="img-fluid rounded-lg">
-                        </div>
-                        <div class="flex-grow-1">
-                            <h3>{{ $post->title }}</h3>
-                            <p class="text-light lh-lg mb-3">
-                                {{ $post->content }}
-                            </p>
-                            <div class="main-button">
-                                <a href="{{ route('details-new', $post->id) }}">Continue Reading</a>
-                            </div>
+                <div id="Tên Category"
+                    class="card p-4 rounded-lg shadow-lg scroll-margin-top-120 d-md-flex flex-md-row align-items-md-center gap-5"
+                    style="height: auto">
+                    <div
+                        class="planet-image-fixed-size d-flex align-items-center justify-content-center overflow-hidden mb-2">
+                        <img src="{{ asset('images') }}/constellations/leo-constellation.jpg" alt="tên ảnh"
+                            class="img-fluid rounded-lg">
+                    </div>
+                    <div class="flex-grow-1">
+                        <h3>Tiêu đề bài viết</h3>
+                        <p class="text-light lh-lg mb-3">
+                            tóm tắt ngắn nội dung bài viết
+                        </p>
+                        <div class="main-button">
+                            <a href="{{ route('details-new') }}">Continue Reading</a>
                         </div>
                     </div>
-                @endforeach
+                </div>
+                <div id="Tên Category"
+                    class="card p-4 rounded-lg shadow-lg scroll-margin-top-120 d-md-flex flex-md-row align-items-md-center gap-5"
+                    style="height: auto">
+                    <div
+                        class="planet-image-fixed-size d-flex align-items-center justify-content-center overflow-hidden mb-2">
+                        <img src="{{ asset('images') }}/constellations/leo-constellation.jpg" alt="tên ảnh"
+                            class="img-fluid rounded-lg">
+                    </div>
+                    <div class="flex-grow-1">
+                        <h3>Tiêu đề bài viết</h3>
+                        <p class="text-light lh-lg mb-3">
+                            tóm tắt ngắn nội dung bài viết
+                        </p>
+                        <div class="main-button">
+                            <a href="{{ route('details-new') }}">Continue Reading</a>
+                        </div>
+                    </div>
+                </div>
+                <div id="Tên Category"
+                    class="card p-4 rounded-lg shadow-lg scroll-margin-top-120 d-md-flex flex-md-row align-items-md-center gap-5"
+                    style="height: auto">
+                    <div
+                        class="planet-image-fixed-size d-flex align-items-center justify-content-center overflow-hidden mb-2">
+                        <img src="{{ asset('images') }}/constellations/leo-constellation.jpg" alt="tên ảnh"
+                            class="img-fluid rounded-lg">
+                    </div>
+                    <div class="flex-grow-1">
+                        <h3>Tiêu đề bài viết</h3>
+                        <p class="text-light lh-lg mb-3">
+                            tóm tắt ngắn nội dung bài viết
+                        </p>
+                        <div class="main-button">
+                            <a href="{{ route('details-new') }}">Continue Reading</a>
+                        </div>
+                    </div>
+                </div>
+                <div id="Tên Category"
+                    class="card p-4 rounded-lg shadow-lg scroll-margin-top-120 d-md-flex flex-md-row align-items-md-center gap-5"
+                    style="height: auto">
+                    <div
+                        class="planet-image-fixed-size d-flex align-items-center justify-content-center overflow-hidden mb-2">
+                        <img src="{{ asset('images') }}/constellations/leo-constellation.jpg" alt="tên ảnh"
+                            class="img-fluid rounded-lg">
+                    </div>
+                    <div class="flex-grow-1">
+                        <h3>Tiêu đề bài viết</h3>
+                        <p class="text-light lh-lg mb-3">
+                            tóm tắt ngắn nội dung bài viết
+                        </p>
+                        <div class="main-button">
+                            <a href="{{ route('details-new') }}">Continue Reading</a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="pagination-links mt-4 mb-4">
-            {{ $posts->links('pagination::bootstrap-5') }}
+            Phân trang
         </div>
     </section>
     <!-- ***** Collections Planets End ***** -->

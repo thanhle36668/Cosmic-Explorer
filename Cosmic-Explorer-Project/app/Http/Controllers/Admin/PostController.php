@@ -45,14 +45,15 @@ class PostController extends Controller
             'image' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
         ]);
 
-        $imagePath = null;
-        if ($request->hasFile('image')) {
-            $imagePath = $request->file('image')->store('posts', 'public');
-        }
+            $imagePath = null;
+            if ($request->hasFile('image')) {
+                $imagePath = $request->file('image')->store('posts', 'public');
+                }
 
+                
         Post::create([
             'title' => $request->title,
-            'excerpt' => $request->excerpt,
+            'excerpt'=> $request->excerpt,
             'slug' => Str::slug($request->title),
             'content' => $request->content,
             'category_id' => $request->category_id,
@@ -66,7 +67,7 @@ class PostController extends Controller
 
     public function edit(Post $post)
     {
-        $categories = Category::all();
+        $categories = Category::all(); 
         return view('admin.posts.edit', compact('post', 'categories'));
     }
 
@@ -79,21 +80,21 @@ class PostController extends Controller
             'slug' => 'nullable|string|max:255',
             'category_id' => 'nullable|integer|exists:categories,id',
             'is_published' => 'nullable|boolean',
-            'image' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+            'image' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',        
         ]);
 
-        $data = $request->only(['title', 'content', 'excerpt', 'category_id', 'is_published']);
-        $data['slug'] = Str::slug($request->title);
+         $data = $request->only(['title', 'content', 'excerpt', 'category_id', 'is_published']);
+         $data['slug'] = Str::slug($request->title);
 
-        if ($request->hasFile('image')) {
-            // Xoá ảnh cũ nếu có
-            if ($post->image) {
-                Storage::disk('public')->delete($post->image);
+            if ($request->hasFile('image')) {
+                // Xoá ảnh cũ nếu có
+                if ($post->image) {
+                    Storage::disk('public')->delete($post->image);
+                }
+
+                // Lưu ảnh mới
+                $data['image'] = $request->file('image')->store('posts', 'public');
             }
-
-            // Lưu ảnh mới
-            $data['image'] = $request->file('image')->store('posts', 'public');
-        }
 
         $post->update($data);
 

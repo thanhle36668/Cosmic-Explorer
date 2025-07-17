@@ -14,11 +14,14 @@ class Discovery extends Model
 
     public $fillable = [
         'title',
+        'author',
         'description_short',
         'title_details',
         'description_details',
         'content_1',
         'content_2',
-        'photo'
+        'photo',
+        'name_photo',
+        'created_at',
     ];
 }
