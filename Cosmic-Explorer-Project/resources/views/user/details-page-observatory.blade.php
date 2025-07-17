@@ -67,10 +67,10 @@
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <li>
-                                        <a class="dropdown-item" href="#">Videos</a>
+                                        <a class="dropdown-item" href="{{ route('collections-books') }}">Books</a>
                                     </li>
                                     <li>
-                                        <a class="dropdown-item" href="#">Books</a>
+                                        <a class="dropdown-item" href="#">Videos</a>
                                     </li>
                                 </ul>
                             </li>
@@ -202,7 +202,8 @@
     <!-- ***** Observatory Collections End ***** -->
 
     <!-- ***** Contact ***** -->
-    <section class="contact" style="background-image: url('{{ asset('storage/images') }}/background-dark.jpg')">
+    <section class="contact"
+        style="background-image: url('{{ asset('storage/images') }}/background/background-dark.jpg')">
         <div class="contact-us">
             <div class="container">
                 <div class="row">

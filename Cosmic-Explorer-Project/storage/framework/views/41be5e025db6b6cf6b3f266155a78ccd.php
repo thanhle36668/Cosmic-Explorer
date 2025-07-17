@@ -61,10 +61,10 @@
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <li>
-                                        <a class="dropdown-item" href="#">Videos</a>
+                                        <a class="dropdown-item" href="<?php echo e(route('collections-books')); ?>">Books</a>
                                     </li>
                                     <li>
-                                        <a class="dropdown-item" href="<?php echo e(route('collections-books')); ?>">Books</a>
+                                        <a class="dropdown-item" href="#">Videos</a>
                                     </li>
                                 </ul>
                             </li>

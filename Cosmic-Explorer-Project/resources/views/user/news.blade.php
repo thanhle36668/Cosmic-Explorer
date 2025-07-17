@@ -13,7 +13,7 @@
                     <nav class="main-nav">
                         <!-- ***** Logo Start ***** -->
                         <a href="{{ route('home') }}" class="logo">
-                            <img src="{{ asset('images') }}/logo.svg" alt="Logo">
+                            <img src="{{ asset('storage/images') }}/logo.svg" alt="">
                         </a>
                         <!-- ***** Logo End ***** -->
 
@@ -26,7 +26,7 @@
                                 <a href="#">About</a>
                             </li>
                             <li>
-                                <a href="#">News</a>
+                                <a href="{{ route('news') }}">News</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownCollections"
@@ -63,10 +63,10 @@
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <li>
-                                        <a class="dropdown-item" href="#">Videos</a>
+                                        <a class="dropdown-item" href="{{ route('collections-books') }}">Books</a>
                                     </li>
                                     <li>
-                                        <a class="dropdown-item" href="#">Books</a>
+                                        <a class="dropdown-item" href="#">Videos</a>
                                     </li>
                                 </ul>
                             </li>
@@ -115,7 +115,7 @@
                             tóm tắt ngắn nội dung bài viết
                         </p>
                         <div class="main-button">
-                            <a href="{{ route('details-new') }}">Continue Reading</a>
+                            <a href="#">Continue Reading</a>
                         </div>
                     </div>
                 </div>
@@ -133,7 +133,7 @@
                             tóm tắt ngắn nội dung bài viết
                         </p>
                         <div class="main-button">
-                            <a href="{{ route('details-new') }}">Continue Reading</a>
+                            <a href="#">Continue Reading</a>
                         </div>
                     </div>
                 </div>
@@ -151,7 +151,7 @@
                             tóm tắt ngắn nội dung bài viết
                         </p>
                         <div class="main-button">
-                            <a href="{{ route('details-new') }}">Continue Reading</a>
+                            <a href="#">Continue Reading</a>
                         </div>
                     </div>
                 </div>
@@ -169,7 +169,7 @@
                             tóm tắt ngắn nội dung bài viết
                         </p>
                         <div class="main-button">
-                            <a href="{{ route('details-new') }}">Continue Reading</a>
+                            <a href="#">Continue Reading</a>
                         </div>
                     </div>
                 </div>

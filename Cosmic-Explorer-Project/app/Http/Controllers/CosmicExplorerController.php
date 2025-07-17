@@ -57,6 +57,15 @@ class CosmicExplorerController extends Controller
         return view('user/collections-page-observatories')->with($data);
     }
 
+    // Controller Page Collections Books
+    public function pageCollectionsBooks()
+    {
+        $data = [
+            'books' => Books::paginate(4)
+        ];
+        return view('user/collections-page-books')->with($data);
+    }
+
     // Controller Page Details New
     public function pageDetailsNew()
     {
@@ -109,15 +118,6 @@ class CosmicExplorerController extends Controller
             'observatories' => Observatories::orderBy('name', 'desc')->get(),
             'discovery_details' => Discovery::find($id)
         ];
-        return view('user/details-page-news')->with($data);
-    }
-
-    // Controller Page Collections Books
-    public function pageCollectionsBooks()
-    {
-        $data = [
-            'books' => Books::paginate(4)
-        ];
-        return view('user/collections-page-books')->with($data);
+        return view('user/details-page-discovery')->with($data);
     }
 }

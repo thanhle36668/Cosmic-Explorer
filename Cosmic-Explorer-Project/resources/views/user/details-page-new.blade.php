@@ -13,7 +13,7 @@
                     <nav class="main-nav">
                         <!-- ***** Logo Start ***** -->
                         <a href="{{ route('home') }}" class="logo">
-                            <img src="{{ asset('images') }}/logo.svg" alt="">
+                            <img src="{{ asset('storage/images') }}/logo.svg" alt="">
                         </a>
                         <!-- ***** Logo End ***** -->
 
@@ -63,10 +63,10 @@
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <li>
-                                        <a class="dropdown-item" href="#">Videos</a>
+                                        <a class="dropdown-item" href="{{ route('collections-books') }}">Books</a>
                                     </li>
                                     <li>
-                                        <a class="dropdown-item" href="#">Books</a>
+                                        <a class="dropdown-item" href="#">Videos</a>
                                     </li>
                                 </ul>
                             </li>
