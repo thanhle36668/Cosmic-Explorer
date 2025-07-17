@@ -118,15 +118,15 @@
                             </span>
                             <span class="d-block mb-2">
                                 <strong class="text-light">Publication
-                                    Date:{{ $book->publication_year }}
+                                    Date: {{ $book->publication_year }}
                                 </strong>
                             </span>
                             <span class="d-block mb-2">
-                                <strong class="text-light">Genre:{{ $book->genre }}
+                                <strong class="text-light">Genre: {{ $book->genre }}
                                 </strong>
                             </span>
                             <span class="d-block mb-2">
-                                <strong class="text-light">Description:{{ $book->description }}
+                                <strong class="text-light">Description: {{ $book->description }}
                                 </strong>
                             </span>
 

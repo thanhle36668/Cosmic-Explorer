@@ -123,19 +123,19 @@
                 <div class="col-lg-5 offset-lg-1">
                     <div class="owl-banner owl-carousel ">
                         <div class="item">
-                            <img class="rounded-circle" src="<?php echo e(asset('images')); ?>/planets/<?php echo e($planet_details->photo); ?>"
+                            <img class="rounded-3" src="<?php echo e(asset('images')); ?>/planets/<?php echo e($planet_details->photo); ?>"
                                 alt="" height="480px" width="480px">
                         </div>
                         <div class="item">
-                            <img class="rounded-circle" src="<?php echo e(asset('images')); ?>/planets/<?php echo e($planet_details->photo_2); ?>"
+                            <img class="rounded-3" src="<?php echo e(asset('images')); ?>/planets/<?php echo e($planet_details->photo_2); ?>"
                                 alt="" height="480px" width="480px">
                         </div>
                         <div class="item">
-                            <img class="rounded-circle" src="<?php echo e(asset('images')); ?>/planets/<?php echo e($planet_details->photo_3); ?>"
+                            <img class="rounded-3" src="<?php echo e(asset('images')); ?>/planets/<?php echo e($planet_details->photo_3); ?>"
                                 alt="" height="480px" width="480px">
                         </div>
                         <div class="item">
-                            <img class="rounded-circle" src="<?php echo e(asset('images')); ?>/planets/<?php echo e($planet_details->photo_4); ?>"
+                            <img class="rounded-3" src="<?php echo e(asset('images')); ?>/planets/<?php echo e($planet_details->photo_4); ?>"
                                 alt="" height="480px" width="480px">
                         </div>
                     </div>
@@ -146,8 +146,7 @@
     <!-- ***** Details Planet End ***** -->
 
     <!-- ***** Planet Collections ***** -->
-    <section class="categories-collections"
-        style="background: url('<?php echo e(asset('images')); ?>/background/background-collections.jpg')">
+    <section class="categories-collections" style="background-color: rgb(0,0,0)">
         <div class="container">
             <div class="row">
                 <!-- ***** planets Collections ***** -->

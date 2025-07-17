@@ -83,8 +83,8 @@
     <!-- ***** Header End ***** -->
 
     <!-- ***** Main Banner Details ***** -->
-    <section class="page-heading"
-        style="background: url('{{ asset('images') }}/background/background-banner-main.avif')" id="top">
+    <section class="page-heading" style="background: url('{{ asset('images') }}/background/background-banner-main.avif')"
+        id="top">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -148,8 +148,7 @@
     <!-- ***** Discovery Details End ***** -->
 
     <!-- ***** Planet Collections ***** -->
-    <section class="categories-collections"
-        style="background: url('{{ asset('images') }}/background/background-collections.jpg')">
+    <section class="categories-collections" style="background-color: rgb(0,0,0) ">
         <div class="container">
             <div class="row">
                 <!-- ***** planets Collections ***** -->
