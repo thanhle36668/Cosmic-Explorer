@@ -22,6 +22,7 @@ Route::group(['prefix' => ''], function () {
     Route::get('/observatory-details/{id}', [CosmicExplorerController::class, 'pageDetailsObservatory'])->name('details-observatory');
     Route::get('/constellation-details/{id}', [CosmicExplorerController::class, 'pageDetailsConstellation'])->name('details-constellation');
     Route::get('/discovery-details/{id}', [CosmicExplorerController::class, 'pageDetailsDiscovery'])->name('details-discovery');
+    Route::get('/book-details/{id}', [CosmicExplorerController::class, 'pageDetailsBook'])->name('details-book');
 });
 
 

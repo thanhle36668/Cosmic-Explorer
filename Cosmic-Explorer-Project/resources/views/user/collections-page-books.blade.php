@@ -97,7 +97,7 @@
     </div>
     <!-- ***** Main Banner Details End ***** -->
 
-    <!-- ***** Collections Planets ***** -->
+    <!-- ***** Collections Books ***** -->
     <section id="collections" class="px-2 py-2"
         style="background: url('{{ asset('images') }}/background/background-collections.jpg')">
         <div class="container">
@@ -131,7 +131,7 @@
                             </span>
 
                             <div class="main-button">
-                                <a href="#">View
+                                <a href="{{ route('details-book', $book->id) }}">View
                                     Details</a>
                             </div>
                         </div>
@@ -143,7 +143,7 @@
             {{ $books->links('pagination::bootstrap-5') }}
         </div>
     </section>
-    <!-- ***** Collections Planets End ***** -->
+    <!-- ***** Collections Books End ***** -->
 
     <!-- ***** Contact ***** -->
     <section class="contact" style="background: url('{{ asset('images') }}/background/background-dark.jpg')">

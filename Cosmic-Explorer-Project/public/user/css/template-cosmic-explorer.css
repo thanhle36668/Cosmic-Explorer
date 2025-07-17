@@ -994,7 +994,7 @@ Introduction
 .card img {
   border-radius: 50px;
   display: flex;
-  height: 380px;
+  height: 100%;
   width: 420px;
   transition: all 0.3s ease-in-out;
 }
@@ -1158,7 +1158,7 @@ Categories & Collections Style
 }
 
 .collections .item .down-content {
-  background-color: #282b2f;
+  background-color: transparent;
   border: 1px solid #404245;
   border-bottom-right-radius: 20px;
   border-bottom-left-radius: 20px;
@@ -1821,7 +1821,7 @@ Heading Page
 }
 
 .page-heading .inner-content h1 {
-  font-size: 4em;
+  font-size: 3em;
   font-weight: bold;
   color: #ffffff;
   text-transform: uppercase;

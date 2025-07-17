@@ -112,4 +112,14 @@ class CosmicExplorerController extends Controller
         ];
         return view('user/details-page-discovery')->with($data);
     }
+
+    // Controller Page Details Book
+    public function pageDetailsBook($id)
+    {
+        $data = [
+            'books' => Books::get(),
+            'book_details' => Books::find($id)
+        ];
+        return view('user/details-page-book')->with($data);
+    }
 }
