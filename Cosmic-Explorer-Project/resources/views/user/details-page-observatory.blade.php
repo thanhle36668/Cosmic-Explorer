@@ -30,7 +30,7 @@
                                 <a href="#">About</a>
                             </li>
                             <li>
-                                <a href="{{ route('news') }}">News</a>
+                                <a href="{{ route('all-news') }}">News</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownCollections"

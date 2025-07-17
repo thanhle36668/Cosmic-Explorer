@@ -19,11 +19,19 @@ class PostController extends Controller
         return view('admin.posts.index', compact('posts'));
     }
 
+    public function allnews()
+    {
+        $posts = Post::latest()->paginate(5);
+        return view('admin.posts.all-news', compact('posts'));
+
+    }
+
     public function create()
     {
         $categories = Category::all();
         return view('admin.posts.create', compact('categories'));
     }
+
 
 
     public function show($slug)
@@ -32,6 +40,7 @@ class PostController extends Controller
         return view('admin.posts.news', compact('post'));
     }
 
+    
 
     public function store(Request $request)
     {
