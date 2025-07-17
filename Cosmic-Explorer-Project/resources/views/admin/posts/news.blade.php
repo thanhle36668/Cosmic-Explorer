@@ -105,10 +105,10 @@
                     <h2 class="mb-3">{{ $post->title }}</h2>
                     <p class="mb-3">
                         <strong>Author: {{ $post->user->name ?? 'Ẩn danh' }} </strong>
-                    <br>
+                        <br>
                         <strong>Category: {{ $post->category->name ?? 'Chưa phân loại' }}</strong>
-                    <br>
-                       <strong>Ngày đăng: {{ $post->created_at->format('d/m/Y') }}</strong> 
+                        <br>
+                        <strong>Ngày đăng: {{ $post->created_at->format('d/m/Y') }}</strong>
                     </p>
                     <p class="mt-2">
                         {{ $post->excerpt }}
@@ -116,17 +116,18 @@
                     <div class="clearfix my-4 mt-lg-0 mt-5">
                         <div class="col-md-6 float-md-end mb-3 ms-md-3" data-aos="fade-up">
                             <figure class="figure">
-                                       Image:
+                                Image:
                                 @if ($post->image)
                                     <div class="mb-4">
-                                        <img src="{{ asset('storage/' . $post->image) }}" class="img-fluid" alt="{{ $post->title }}">
+                                        <img src="{{ asset('storage/' . $post->image) }}" class="img-fluid"
+                                            alt="{{ $post->title }}">
                                     </div>
                                 @endif
 
                             </figure>
                         </div>
                         <p>
-                           {!! nl2br(e($post->content)) !!}
+                            {!! nl2br(e($post->content)) !!}
                         </p>
                     </div>
                 </div>
@@ -139,7 +140,3 @@
     <!-- ***** Constellation Collections ***** -->
     <!-- ***** Constellation Collections End ***** -->
 @endsection
-
-
-
-

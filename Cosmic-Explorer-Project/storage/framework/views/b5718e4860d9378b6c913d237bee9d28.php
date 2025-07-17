@@ -11,7 +11,7 @@
                     <nav class="main-nav">
                         <!-- ***** Logo Start ***** -->
                         <a href="<?php echo e(route('home')); ?>" class="logo">
-                            <img src="<?php echo e(asset('storage/images')); ?>/logo.svg" alt="">
+                            <img src="<?php echo e(asset('images')); ?>/logo.svg" alt="">
                         </a>
                         <!-- ***** Logo End ***** -->
 
@@ -61,10 +61,10 @@
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <li>
-                                        <a class="dropdown-item" href="#">Videos</a>
+                                        <a class="dropdown-item" href="<?php echo e(route('collections-books')); ?>">Books</a>
                                     </li>
                                     <li>
-                                        <a class="dropdown-item" href="#">Books</a>
+                                        <a class="dropdown-item" href="#">Videos</a>
                                     </li>
                                 </ul>
                             </li>
@@ -81,8 +81,7 @@
     <!-- ***** Header End ***** -->
 
     <!-- ***** Main Banner Details ***** -->
-    <div class="page-heading"
-        style="background-image: url('<?php echo e(asset('storage/images')); ?>/background/background-banner-main.avif')"
+    <div class="page-heading" style="background: url('<?php echo e(asset('images')); ?>/background/background-banner-main.avif')"
         id="top">
         <div class="container">
             <div class="row">
@@ -98,7 +97,7 @@
 
     <!-- ***** Details Planet ***** -->
     <section class="main-banner-details"
-        style="background-image: url('<?php echo e(asset('storage/images')); ?>/background/background-banner-main.avif');">
+        style="background: url('<?php echo e(asset('images')); ?>/background/background-banner-main.avif');">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 align-self-center">
@@ -124,24 +123,20 @@
                 <div class="col-lg-5 offset-lg-1">
                     <div class="owl-banner owl-carousel ">
                         <div class="item">
-                            <img class="rounded-circle"
-                                src="<?php echo e(asset('storage/images')); ?>/planets/<?php echo e($planet_details->photo); ?>" alt=""
-                                height="480px" width="480px">
+                            <img class="rounded-circle" src="<?php echo e(asset('images')); ?>/planets/<?php echo e($planet_details->photo); ?>"
+                                alt="" height="480px" width="480px">
                         </div>
                         <div class="item">
-                            <img class="rounded-circle"
-                                src="<?php echo e(asset('storage/images')); ?>/planets/<?php echo e($planet_details->photo_2); ?>" alt=""
-                                height="480px" width="480px">
+                            <img class="rounded-circle" src="<?php echo e(asset('images')); ?>/planets/<?php echo e($planet_details->photo_2); ?>"
+                                alt="" height="480px" width="480px">
                         </div>
                         <div class="item">
-                            <img class="rounded-circle"
-                                src="<?php echo e(asset('storage/images')); ?>/planets/<?php echo e($planet_details->photo_3); ?>" alt=""
-                                height="480px" width="480px">
+                            <img class="rounded-circle" src="<?php echo e(asset('images')); ?>/planets/<?php echo e($planet_details->photo_3); ?>"
+                                alt="" height="480px" width="480px">
                         </div>
                         <div class="item">
-                            <img class="rounded-circle"
-                                src="<?php echo e(asset('storage/images')); ?>/planets/<?php echo e($planet_details->photo_4); ?>" alt=""
-                                height="480px" width="480px">
+                            <img class="rounded-circle" src="<?php echo e(asset('images')); ?>/planets/<?php echo e($planet_details->photo_4); ?>"
+                                alt="" height="480px" width="480px">
                         </div>
                     </div>
                 </div>
@@ -151,7 +146,8 @@
     <!-- ***** Details Planet End ***** -->
 
     <!-- ***** Planet Collections ***** -->
-    <section class="categories-collections" style="background-color: black">
+    <section class="categories-collections"
+        style="background: url('<?php echo e(asset('images')); ?>/background/background-collections.jpg')">
         <div class="container">
             <div class="row">
                 <!-- ***** planets Collections ***** -->
@@ -169,7 +165,7 @@
                                     <?php $__currentLoopData = $planets; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $planet): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                         <div class="item">
                                             <img class="img-planet"
-                                                src="<?php echo e(asset('storage/images')); ?>/planets/<?php echo e($planet->photo_extra); ?>"
+                                                src="<?php echo e(asset('images')); ?>/planets/<?php echo e($planet->photo_extra); ?>"
                                                 alt="<?php echo e($planet->name); ?>">
                                             <div class="down-content-discovery text-center p-3"
                                                 style="background-color: transparent; border: none">
@@ -193,7 +189,7 @@
     <!-- ***** Planet Collections End ***** -->
 
     <!-- ***** Contact ***** -->
-    <section class="contact" style="background-image: url('<?php echo e(asset('storage/images')); ?>/background-dark.jpg')">
+    <section class="contact" style="background: url('<?php echo e(asset('images')); ?>/background/background-dark.jpg')">
         <div class="contact-us">
             <div class="container">
                 <div class="row">

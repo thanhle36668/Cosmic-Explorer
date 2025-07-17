@@ -11,7 +11,7 @@
                     <nav class="main-nav">
                         <!-- ***** Logo Start ***** -->
                         <a href="<?php echo e(route('home')); ?>" class="logo">
-                            <img src="<?php echo e(asset('storage/images')); ?>/logo.svg" alt="">
+                            <img src="<?php echo e(asset('images')); ?>/logo.svg" alt="">
                         </a>
                         <!-- ***** Logo End ***** -->
 
@@ -61,10 +61,10 @@
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <li>
-                                        <a class="dropdown-item" href="#">Videos</a>
+                                        <a class="dropdown-item" href="<?php echo e(route('collections-books')); ?>">Books</a>
                                     </li>
                                     <li>
-                                        <a class="dropdown-item" href="<?php echo e(route('collections-books')); ?>">Books</a>
+                                        <a class="dropdown-item" href="#">Videos</a>
                                     </li>
                                 </ul>
                             </li>
@@ -82,7 +82,7 @@
 
     <!-- ***** Introduction ***** -->
     <section class="main-banner"
-        style="background-image: url('<?php echo e(asset('storage/images')); ?>/background/background-banner-main.avif');">
+        style="background: url('<?php echo e(asset('images')); ?>/background/background-banner-main.avif');">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 align-self-center">
@@ -118,8 +118,7 @@
                         <?php $__currentLoopData = $planets; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $planet): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <div class="item">
                                 <a href="<?php echo e(route('details-planet', $planet->id)); ?>">
-                                    <img class="rounded-circle"
-                                        src="<?php echo e(asset('storage/images')); ?>/planets/<?php echo e($planet->photo); ?>"
+                                    <img class="rounded-circle" src="<?php echo e(asset('images')); ?>/planets/<?php echo e($planet->photo); ?>"
                                         alt="<?php echo e($planet->name); ?>" height="480px" width="480px">
                                 </a>
                             </div>
@@ -146,7 +145,7 @@
                             </div>
                         </div>
                         <div class="col-md-4">
-                            <img src="<?php echo e(asset('storage/images')); ?>/discovery/<?php echo e($discoveries->photo); ?>"
+                            <img src="<?php echo e(asset('images')); ?>/discovery/<?php echo e($discoveries->photo); ?>"
                                 class="img-fluid img-discovery" alt="<?php echo e($discoveries->title); ?>">
                         </div>
                     </div>
@@ -155,7 +154,7 @@
                 <div class="card px-4 py-4">
                     <div class="row g-0">
                         <div class="col-md-4">
-                            <img src="<?php echo e(asset('storage/images')); ?>/discovery/<?php echo e($discoveries->photo); ?>" class="img-fluid"
+                            <img src="<?php echo e(asset('images')); ?>/discovery/<?php echo e($discoveries->photo); ?>" class="img-fluid"
                                 alt="<?php echo e($discoveries->title); ?>">
                         </div>
                         <div class="col-md-8 d-flex justify-content-center align-items-center">
@@ -174,8 +173,7 @@
     <!-- ***** Discovery (BigBang Theory - The Earth's Evolution - Comets ) End ***** -->
 
     <!-- ***** News ***** -->
-    <section class="news"
-        style="background-image: url('<?php echo e(asset('storage/images')); ?>/background/background-banner-main.avif');">
+    <section class="news" style="background: url('<?php echo e(asset('images')); ?>/background/background-banner-main.avif');">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -192,7 +190,7 @@
                                     <?php $__currentLoopData = $constellations; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $constellation): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                         <div class="item">
                                             <div class="thumb">
-                                                <img src="<?php echo e(asset('storage/images')); ?>/constellations/<?php echo e($constellation->photo); ?>"
+                                                <img src="<?php echo e(asset('images')); ?>/constellations/<?php echo e($constellation->photo); ?>"
                                                     alt="<?php echo e($constellation->name); ?>" style="border-radius: 20px;"
                                                     height="360" width="360">
                                                 <div class="hover-effect">
@@ -220,7 +218,7 @@
 
     <!-- ***** Collections (Planets - Constellations - Observatories) ***** -->
     <section class="categories-collections"
-        style="background: url('<?php echo e(asset('storage/images')); ?>/background/background-collections.jpg')">
+        style="background: url('<?php echo e(asset('images')); ?>/background/background-collections.jpg')">
         <div class="container">
             <div class="row">
                 <!-- ***** Planets Collections ***** -->
@@ -238,7 +236,7 @@
                                     <a href="<?php echo e(route('details-planet', $planet->id)); ?>">
                                         <div class="item">
                                             <div class="icon">
-                                                <img src="<?php echo e(asset('storage/images')); ?>/planets/<?php echo e($planet->photo); ?>"
+                                                <img src="<?php echo e(asset('images')); ?>/planets/<?php echo e($planet->photo); ?>"
                                                     alt="<?php echo e($planet->name); ?>">
                                             </div>
                                             <h4><?php echo e($planet->name); ?></h4>
@@ -269,7 +267,7 @@
                                 <div class="owl-collection owl-carousel">
                                     <?php $__currentLoopData = $constellations; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $constellation): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                         <div class="item">
-                                            <img src="<?php echo e(asset('storage/images')); ?>/constellations/<?php echo e($constellation->photo); ?>"
+                                            <img src="<?php echo e(asset('images')); ?>/constellations/<?php echo e($constellation->photo); ?>"
                                                 alt="<?php echo e($constellation->name); ?>">
                                             <div class="down-content text-center">
                                                 <h4><?php echo e($constellation->name); ?>
@@ -304,7 +302,7 @@
                                     <?php $__currentLoopData = $observatories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $observatory): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                         <div class="item">
                                             <img class="img-observatory"
-                                                src="<?php echo e(asset('storage/images')); ?>/observatories/<?php echo e($observatory->photo); ?>"
+                                                src="<?php echo e(asset('images')); ?>/observatories/<?php echo e($observatory->photo); ?>"
                                                 alt="<?php echo e($observatory->name); ?>">
                                             <div class="down-content text-center">
                                                 <h4><?php echo e($observatory->name); ?>
@@ -332,8 +330,7 @@
     <!-- ***** Collections (Planets - Constellations - Observatories) End ***** -->
 
     <!-- ***** Contact ***** -->
-    <section class="contact"
-        style="background-image: url('<?php echo e(asset('storage/images')); ?>/background/background-dark.jpg')">
+    <section class="contact" style="background: url('<?php echo e(asset('images')); ?>/background/background-dark.jpg')">
         <div class="contact-us">
             <div class="container">
                 <div class="row">

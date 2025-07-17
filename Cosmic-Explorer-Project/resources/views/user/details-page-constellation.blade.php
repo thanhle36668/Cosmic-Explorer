@@ -13,7 +13,7 @@
                     <nav class="main-nav">
                         <!-- ***** Logo Start ***** -->
                         <a href="{{ route('home') }}" class="logo">
-                            <img src="{{ asset('storage/images') }}/logo.svg" alt="">
+                            <img src="{{ asset('images') }}/logo.svg" alt="">
                         </a>
                         <!-- ***** Logo End ***** -->
 
@@ -63,10 +63,10 @@
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <li>
-                                        <a class="dropdown-item" href="#">Videos</a>
+                                        <a class="dropdown-item" href="{{ route('collections-books') }}">Books</a>
                                     </li>
                                     <li>
-                                        <a class="dropdown-item" href="#">Books</a>
+                                        <a class="dropdown-item" href="#">Videos</a>
                                     </li>
                                 </ul>
                             </li>
@@ -84,8 +84,7 @@
 
     <!-- ***** Main Banner Details ***** -->
     <section class="page-heading"
-        style="background-image: url('{{ asset('storage/images') }}/background/background-banner-main.avif')"
-        id="top">
+        style="background: url('{{ asset('images') }}/background/background-banner-main.avif')" id="top">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -100,7 +99,7 @@
 
     <!-- ***** Constellation Details  ***** -->
     <section class="main-banner-details"
-        style="background-image: url('{{ asset('storage/images') }}/background/background-banner-main.avif');">
+        style="background: url('{{ asset('images') }}/background/background-banner-main.avif');">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 align-self-center">
@@ -130,28 +129,28 @@
                     <div class="owl-banner owl-carousel ">
                         <div class="item">
                             <img class="rounded-3"
-                                src="{{ asset('storage/images') }}/constellations/{{ $constellation_details->photo }}"
+                                src="{{ asset('images') }}/constellations/{{ $constellation_details->photo }}"
                                 alt="{{ $constellation_details->name }}" height="480px" width="480px">
                         </div>
                         <div class="item">
                             <img class="rounded-3"
-                                src="{{ asset('storage/images') }}/constellations/{{ $constellation_details->photo_2 }}"
+                                src="{{ asset('images') }}/constellations/{{ $constellation_details->photo_2 }}"
                                 alt="{{ $constellation_details->name }}" height="480px" width="480px">
                         </div>
                         <div class="item">
                             <img class="rounded-3"
-                                src="{{ asset('storage/images') }}/constellations/{{ $constellation_details->photo_3 }}"
+                                src="{{ asset('images') }}/constellations/{{ $constellation_details->photo_3 }}"
                                 alt="{{ $constellation_details->name }}" height="480px" width="480px">
                         </div>
                         <div class="item">
                             <img class="rounded-3"
-                                src="{{ asset('storage/images') }}/constellations/{{ $constellation_details->photo_4 }}"
+                                src="{{ asset('images') }}/constellations/{{ $constellation_details->photo_4 }}"
                                 alt="{{ $constellation_details->name }}" height="480px" width="480px">
                         </div>
                         @if ($constellation_details->photo_5 !== '')
                             <div class="item">
                                 <img class="rounded-3"
-                                    src="{{ asset('storage/images') }}/constellations/{{ $constellation_details->photo_5 }}"
+                                    src="{{ asset('images') }}/constellations/{{ $constellation_details->photo_5 }}"
                                     alt="{{ $constellation_details->name }}" height="480px" width="480px">
                             </div>
                         @endif
@@ -163,7 +162,8 @@
     <!-- ***** Constellation Details  End ***** -->
 
     <!-- ***** Constellation Collections ***** -->
-    <section class="categories-collections" style="background-color: black">
+    <section class="categories-collections"
+        style="background: url('{{ asset('images') }}/background/background-collections.jpg');">
         <div class="container">
             <div class="row">
                 <!-- ***** Constellations Collections ***** -->
@@ -181,7 +181,7 @@
                                     @foreach ($constellations as $constellation)
                                         <div class="item">
                                             <img class="img-constellation"
-                                                src="{{ asset('storage/images') }}/constellations/{{ $constellation->photo }}"
+                                                src="{{ asset('images') }}/constellations/{{ $constellation->photo }}"
                                                 alt="{{ $constellation->name }}">
                                             <div class="down-content p-3" style="background-color: #282B2F;">
                                                 <div class="main-button main-button-constellation text-center">
@@ -204,7 +204,7 @@
     <!-- ***** Constellation Collections End ***** -->
 
     <!-- ***** Contact ***** -->
-    <section class="contact" style="background-image: url('{{ asset('storage/images') }}/background-dark.jpg')">
+    <section class="contact" style="background: url('{{ asset('images') }}/background/background-dark.jpg')">
         <div class="contact-us">
             <div class="container">
                 <div class="row">
