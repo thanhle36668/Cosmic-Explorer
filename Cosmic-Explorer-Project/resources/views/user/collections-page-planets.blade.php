@@ -117,7 +117,7 @@
                                 {{ $planet->title_short }}
                             </p>
                             <div class="main-button">
-                                <a href="{{ route('details-planet', $planet->id) }}">View
+                                <a href="{{ route('details-planet', $planet->slug) }}">View
                                     Details</a>
                             </div>
                         </div>

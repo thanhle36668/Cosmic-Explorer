@@ -17,13 +17,13 @@ Route::group(['prefix' => ''], function () {
     Route::get('/collections-videos', [CosmicExplorerController::class, 'pageCollectionsVideos'])->name('collections-videos');
     // News Page
     Route::get('/news', [CosmicExplorerController::class, 'news'])->name('news');
-    Route::get('/new-details/{id}', [CosmicExplorerController::class, 'pageDetailsNew'])->name('details-new');
+    Route::get('/details-new/{id}', [CosmicExplorerController::class, 'pageDetailsNew'])->name('details-new');
     // Details Page
-    Route::get('/planet-details/{id}', [CosmicExplorerController::class, 'pageDetailsPlanet'])->name('details-planet');
-    Route::get('/observatory-details/{id}', [CosmicExplorerController::class, 'pageDetailsObservatory'])->name('details-observatory');
-    Route::get('/constellation-details/{id}', [CosmicExplorerController::class, 'pageDetailsConstellation'])->name('details-constellation');
-    Route::get('/discovery-details/{id}', [CosmicExplorerController::class, 'pageDetailsDiscovery'])->name('details-discovery');
-    Route::get('/book-details/{id}', [CosmicExplorerController::class, 'pageDetailsBook'])->name('details-book');
+    Route::get('/details-planet/{slug}', [CosmicExplorerController::class, 'pageDetailsPlanet'])->name('details-planet');
+    Route::get('/details-observatory/{slug}', [CosmicExplorerController::class, 'pageDetailsObservatory'])->name('details-observatory');
+    Route::get('/details-constellation/{slug}', [CosmicExplorerController::class, 'pageDetailsConstellation'])->name('details-constellation');
+    Route::get('/details-discovery/{slug}', [CosmicExplorerController::class, 'pageDetailsDiscovery'])->name('details-discovery');
+    Route::get('/details-book/{slug}', [CosmicExplorerController::class, 'pageDetailsBook'])->name('details-book');
 });
 
 

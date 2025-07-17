@@ -117,7 +117,7 @@
                                 {{ $observatory->location }}
                             </p>
                             <div class="main-button">
-                                <a href="{{ route('details-observatory', $observatory->id) }}">View
+                                <a href="{{ route('details-observatory', $observatory->slug) }}">View
                                     Details</a>
                             </div>
                         </div>

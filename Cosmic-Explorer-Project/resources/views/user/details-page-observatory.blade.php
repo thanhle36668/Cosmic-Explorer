@@ -183,7 +183,7 @@
                                             <div class="down-content p-3" style="background-color: #282B2F;">
                                                 <div class="main-button main-button-observatory text-center">
                                                     <h4 class="mb-2">{{ $observatory->name }}</h4>
-                                                    <a href="{{ route('details-observatory', $observatory->id) }}">View
+                                                    <a href="{{ route('details-observatory', $observatory->slug) }}">View
                                                         Details</a>
                                                 </div>
                                             </div>

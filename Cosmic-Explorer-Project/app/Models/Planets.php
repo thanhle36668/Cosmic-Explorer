@@ -3,9 +3,14 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Sluggable\HasSlug;
+use Spatie\Sluggable\SlugOptions;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Planets extends Model
 {
+    use HasFactory, HasSlug;
+
     public $table = 'planets';
 
     public $primaryKey = 'id';
@@ -24,6 +29,14 @@ class Planets extends Model
         'diameter_km',
         'avg_distance_to_earth_km',
         'avg_distance_to_sun_km',
-        'brief_intro_composition'
+        'brief_intro_composition',
+        'slug',
     ];
+
+    public function getSlugOptions(): SlugOptions
+    {
+        return SlugOptions::create()
+            ->generateSlugsFrom('name')
+            ->saveSlugsTo('slug');
+    }
 }

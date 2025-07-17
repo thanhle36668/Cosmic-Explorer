@@ -131,7 +131,7 @@
                             </span>
 
                             <div class="main-button">
-                                <a href="{{ route('details-book', $book->id) }}">View
+                                <a href="{{ route('details-book', $book->slug) }}">View
                                     Details</a>
                             </div>
                         </div>

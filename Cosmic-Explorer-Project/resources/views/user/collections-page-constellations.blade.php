@@ -112,7 +112,7 @@
                                 {{ $constellation->identification }}
                             </p>
                             <div class="main-button">
-                                <a href="{{ route('details-constellation', $constellation->id) }}">View
+                                <a href="{{ route('details-constellation', $constellation->slug) }}">View
                                     Details</a>
                             </div>
                         </div>

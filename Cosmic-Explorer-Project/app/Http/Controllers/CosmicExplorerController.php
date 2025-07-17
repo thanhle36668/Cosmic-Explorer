@@ -85,51 +85,51 @@ class CosmicExplorerController extends Controller
     }
 
     // Controller Page Details Planet
-    public function pageDetailsPlanet($id)
+    public function pageDetailsPlanet($slug)
     {
         $data = [
             'planets' => Planets::get(),
-            'planet_details' => Planets::find($id)
+            'planet_details' => Planets::where('slug', $slug)->firstOrFail()
         ];
         return view('user/details-page-planet')->with($data);
     }
 
     // Controller Page Details Constellation
-    public function pageDetailsConstellation($id)
+    public function pageDetailsConstellation($slug)
     {
         $data = [
             'constellations' => Constellations::orderBy('name', 'asc')->get(),
-            'constellation_details' => Constellations::find($id)
+            'constellation_details' => Constellations::where('slug', $slug)->firstOrFail()
         ];
         return view('user/details-page-constellation')->with($data);
     }
 
     // Controller Page Details Observatory
-    public function pageDetailsObservatory($id)
+    public function pageDetailsObservatory($slug)
     {
         $data = [
             'observatories' => Observatories::orderBy('name', 'desc')->get(),
-            'observatory_details' => Observatories::find($id)
+            'observatory_details' => Observatories::where('slug', $slug)->firstOrFail()
         ];
         return view('user/details-page-observatory')->with($data);
     }
 
     // Controller Page Details Discovery
-    public function pageDetailsDiscovery($id)
+    public function pageDetailsDiscovery($slug)
     {
         $data = [
             'planets' => Planets::get(),
-            'discovery_details' => Discovery::find($id)
+            'discovery_details' => Discovery::where('slug', $slug)->firstOrFail()
         ];
         return view('user/details-page-discovery')->with($data);
     }
 
     // Controller Page Details Book
-    public function pageDetailsBook($id)
+    public function pageDetailsBook($slug)
     {
         $data = [
             'books' => Books::get(),
-            'book_details' => Books::find($id)
+            'book_details' => Books::where('slug', $slug)->firstOrFail()
         ];
         return view('user/details-page-book')->with($data);
     }

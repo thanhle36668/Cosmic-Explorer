@@ -3,9 +3,15 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Sluggable\HasSlug;
+use Spatie\Sluggable\SlugOptions;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Books extends Model
 {
+
+    use HasFactory, HasSlug;
+
     public $table = 'books';
 
     public $primaryKey = 'id';
@@ -23,5 +29,13 @@ class Books extends Model
         'main_content_1',
         'main_content_2',
         'photo_book',
+        'slug'
     ];
+
+    public function getSlugOptions(): SlugOptions
+    {
+        return SlugOptions::create()
+            ->generateSlugsFrom('name_book')
+            ->saveSlugsTo('slug');
+    }
 }

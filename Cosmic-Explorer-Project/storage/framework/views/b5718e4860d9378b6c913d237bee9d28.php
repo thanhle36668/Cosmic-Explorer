@@ -169,7 +169,7 @@
                                             <div class="down-content-discovery text-center p-3"
                                                 style="background-color: transparent; border: none">
                                                 <div class="main-button mt-0 mb-0">
-                                                    <a href="<?php echo e(route('details-planet', $planet->id)); ?>">View
+                                                    <a href="<?php echo e(route('details-planet', $planet->slug)); ?>">View
                                                         Details</a>
                                                 </div>
                                             </div>

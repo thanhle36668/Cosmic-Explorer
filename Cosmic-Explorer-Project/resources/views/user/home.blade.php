@@ -118,7 +118,7 @@
                     <div class="owl-banner owl-carousel ">
                         @foreach ($planets as $planet)
                             <div class="item">
-                                <a href="{{ route('details-planet', $planet->id) }}">
+                                <a href="{{ route('details-planet', $planet->slug) }}">
                                     <img class="rounded-circle" src="{{ asset('images') }}/planets/{{ $planet->photo }}"
                                         alt="{{ $planet->name }}" height="480px" width="480px">
                                 </a>
@@ -141,7 +141,7 @@
                             <div class="card-body">
                                 <h5 class="card-title">{{ $discoveries->title }}</h5>
                                 <p class="card-text">{{ $discoveries->description_short }}</p>
-                                <a href="{{ route('details-discovery', $discoveries->id) }}"
+                                <a href="{{ route('details-discovery', $discoveries->slug) }}"
                                     class="card-button badge rounded-pill bg-white">View Details</a>
                             </div>
                         </div>
@@ -162,7 +162,7 @@
                             <div class="card-body">
                                 <h5 class="card-title">{{ $discoveries->title }}</h5>
                                 <p class="card-text">{{ $discoveries->description_short }}</p>
-                                <a href="{{ route('details-discovery', $discoveries->id) }}"
+                                <a href="{{ route('details-discovery', $discoveries->slug) }}"
                                     class="card-button badge rounded-pill bg-white">View Details</a>
                             </div>
                         </div>
@@ -242,7 +242,7 @@
                                             </div>
                                             <h4>{{ $planet->name }}</h4>
                                             <div class="icon-button">
-                                                <a href="{{ route('details-planet', $planet->id) }}"><i
+                                                <a href="{{ route('details-planet', $planet->slug) }}"><i
                                                         class="fa fa-angle-right"></i></a>
                                             </div>
                                         </div>
@@ -274,7 +274,7 @@
                                                 <h4>{{ $constellation->name }}
                                                 </h4>
                                                 <div class="main-button">
-                                                    <a href="{{ route('details-constellation', $constellation->id) }}">View
+                                                    <a href="{{ route('details-constellation', $constellation->slug) }}">View
                                                         Details</a>
                                                 </div>
                                             </div>
@@ -309,7 +309,7 @@
                                                 </h4>
                                                 <p>{{ $observatory->location }}</p>
                                                 <div class="main-button">
-                                                    <a href="{{ route('details-observatory', $observatory->id) }}">View
+                                                    <a href="{{ route('details-observatory', $observatory->slug) }}">View
                                                         Details</a>
                                                 </div>
                                             </div>

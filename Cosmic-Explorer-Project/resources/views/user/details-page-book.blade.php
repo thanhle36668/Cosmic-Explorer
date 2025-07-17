@@ -139,7 +139,7 @@
                             <div class="col-lg-12 title">
                                 <div class="section-heading">
                                     <div class="line-dec"></div>
-                                    <h2>Observatories Collection</h2>
+                                    <h2>Books Collection</h2>
                                 </div>
                             </div>
                             <div class="col-lg-12 carousel">
@@ -153,7 +153,7 @@
                                                 <h4>{{ $book->name_book }}
                                                 </h4>
                                                 <div class="main-button">
-                                                    <a href="{{ route('details-book', $book->id) }}">View
+                                                    <a href="{{ route('details-book', $book->slug) }}">View
                                                         Details</a>
                                                 </div>
                                             </div>
