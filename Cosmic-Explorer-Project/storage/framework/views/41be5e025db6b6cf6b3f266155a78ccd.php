@@ -11,7 +11,7 @@
                     <nav class="main-nav">
                         <!-- ***** Logo Start ***** -->
                         <a href="<?php echo e(route('home')); ?>" class="logo">
-                            <img src="<?php echo e(asset('storage/images')); ?>/logo.svg" alt="">
+                            <img src="<?php echo e(asset('images')); ?>/logo.svg" alt="">
                         </a>
                         <!-- ***** Logo End ***** -->
 
@@ -82,7 +82,7 @@
 
     <!-- ***** Introduction ***** -->
     <section class="main-banner"
-        style="background-image: url('<?php echo e(asset('storage/images')); ?>/background/background-banner-main.avif');">
+        style="background-image: url('<?php echo e(asset('images')); ?>/background/background-banner-main.avif');">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 align-self-center">
@@ -103,12 +103,10 @@
                             college students. Ability levels span the range from novice to expert.</p>
                         <div class="buttons">
                             <div class="border-button">
-                                <a href="<?php echo e(route('collections-planets')); ?>">Planet
-                                    collections</a>
+                                <a href="#">Evolution of Earth</a>
                             </div>
                             <div class="border-button">
-                                <a href="<?php echo e(route('collections-constellations')); ?>" target="_blank">Constellation
-                                    collections</a>
+                                <a href="#" target="_blank">Constellation collections</a>
                             </div>
                         </div>
                     </div>
@@ -118,8 +116,7 @@
                         <?php $__currentLoopData = $planets; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $planet): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <div class="item">
                                 <a href="<?php echo e(route('details-planet', $planet->id)); ?>">
-                                    <img class="rounded-circle"
-                                        src="<?php echo e(asset('storage/images')); ?>/planets/<?php echo e($planet->photo); ?>"
+                                    <img class="rounded-circle" src="<?php echo e(asset('images')); ?>/planets/<?php echo e($planet->photo); ?>"
                                         alt="<?php echo e($planet->name); ?>" height="480px" width="480px">
                                 </a>
                             </div>
@@ -132,50 +129,66 @@
     <!-- ***** Introduction End ***** -->
 
     <!-- ***** Discovery (BigBang Theory - The Earth's Evolution - Comets ) ***** -->
-    <section class="discovery py-5 px-5" style="background-color: black">
-        <?php $__currentLoopData = $discovery; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $discoveries): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-            <?php if($discoveries->id % 2 == 0): ?>
-                <div class="card px-4 py-4">
-                    <div class="row g-0">
-                        <div class="col-md-8 d-flex justify-content-center align-items-center">
-                            <div class="card-body">
-                                <h5 class="card-title"><?php echo e($discoveries->title); ?></h5>
-                                <p class="card-text"><?php echo e($discoveries->description_short); ?></p>
-                                <a href="<?php echo e(route('details-discovery', $discoveries->id)); ?>"
-                                    class="card-button badge rounded-pill bg-white">View Details</a>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <img src="<?php echo e(asset('storage/images')); ?>/discovery/<?php echo e($discoveries->photo); ?>" class="img-fluid img-discovery"
-                                alt="<?php echo e($discoveries->title); ?>">
-                        </div>
+    <section class="discovery py-4" style="background-color: black">
+        <!-- ***** BigBang Theory ***** -->
+        <div class="card py-5 px-5">
+            <div class="row g-0">
+                <div class="col-md-4">
+                    <img src="<?php echo e(asset('images')); ?>/news/<?php echo e($news_bigbang_theory->photo); ?>" class="img-fluid"
+                        alt="<?php echo e($news_bigbang_theory->name); ?>">
+                </div>
+                <div class="col-md-8 d-flex justify-content-center align-items-center">
+                    <div class="card-body">
+                        <h5 class="card-title"><?php echo e($news_bigbang_theory->title); ?></h5>
+                        <p class="card-text"><?php echo e($news_bigbang_theory->description_short); ?></p>
+                        <a href="#" class="card-button badge rounded-pill bg-white">View Details</a>
                     </div>
                 </div>
-            <?php else: ?>
-                <div class="card px-4 py-4">
-                    <div class="row g-0">
-                        <div class="col-md-4">
-                            <img src="<?php echo e(asset('storage/images')); ?>/discovery/<?php echo e($discoveries->photo); ?>" class="img-fluid"
-                                alt="<?php echo e($discoveries->title); ?>">
-                        </div>
-                        <div class="col-md-8 d-flex justify-content-center align-items-center">
-                            <div class="card-body">
-                                <h5 class="card-title"><?php echo e($discoveries->title); ?></h5>
-                                <p class="card-text"><?php echo e($discoveries->description_short); ?></p>
-                                <a href="<?php echo e(route('details-discovery', $discoveries->id)); ?>"
-                                    class="card-button badge rounded-pill bg-white">View Details</a>
-                            </div>
-                        </div>
+            </div>
+        </div>
+
+        <!-- ***** The Earth's Evolution ***** -->
+        <div class="card py-5 px-5">
+            <div class="row g-0">
+                <div class="col-md-8 d-flex justify-content-center align-items-center">
+                    <div class="card-body">
+                        <h5 class="card-title"><?php echo e($news_earth_evolved->title); ?></h5>
+                        <p class="card-text">
+                            <?php echo e($news_earth_evolved->description_short); ?>
+
+                        </p>
+                        <a href="#" class="card-button badge rounded-pill bg-white">View Details</a>
                     </div>
                 </div>
-            <?php endif; ?>
-        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                <div class="col-md-4">
+                    <img src="<?php echo e(asset('images')); ?>/news/<?php echo e($news_earth_evolved->photo); ?>" class="img-fluid"
+                        alt="<?php echo e($news_earth_evolved->name); ?>">
+                </div>
+            </div>
+        </div>
+
+        <!-- ***** Comets ***** -->
+        <div class="card py-5 px-5">
+            <div class="row g-0">
+                <div class="col-md-4">
+                    <img src="<?php echo e(asset('images')); ?>/news/<?php echo e($news_comet->photo); ?>" class="img-fluid"
+                        alt="<?php echo e($news_comet->name); ?>">
+                </div>
+                <div class="col-md-8 d-flex justify-content-center align-items-center">
+                    <div class="card-body">
+                        <h5 class="card-title"><?php echo e($news_comet->title); ?></h5>
+                        <p class="card-text"><?php echo e($news_comet->description_short); ?></p>
+                        <a href="#" class="card-button badge rounded-pill bg-white">View Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
     <!-- ***** Discovery (BigBang Theory - The Earth's Evolution - Comets ) End ***** -->
 
     <!-- ***** News ***** -->
     <section class="news"
-        style="background-image: url('<?php echo e(asset('storage/images')); ?>/background/background-banner-main.avif');">
+        style="background-image: url('<?php echo e(asset('images')); ?>/background/background-banner-main.avif');">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -192,7 +205,7 @@
                                     <?php $__currentLoopData = $constellations; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $constellation): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                         <div class="item">
                                             <div class="thumb">
-                                                <img src="<?php echo e(asset('storage/images')); ?>/constellations/<?php echo e($constellation->photo); ?>"
+                                                <img src="<?php echo e(asset('images')); ?>/constellations/<?php echo e($constellation->photo); ?>"
                                                     alt="<?php echo e($constellation->name); ?>" style="border-radius: 20px;"
                                                     height="360" width="360">
                                                 <div class="hover-effect">
@@ -237,7 +250,7 @@
                                     <a href="<?php echo e(route('details-planet', $planet->id)); ?>">
                                         <div class="item">
                                             <div class="icon">
-                                                <img src="<?php echo e(asset('storage/images')); ?>/planets/<?php echo e($planet->photo); ?>"
+                                                <img src="<?php echo e(asset('images')); ?>/planets/<?php echo e($planet->photo); ?>"
                                                     alt="<?php echo e($planet->name); ?>">
                                             </div>
                                             <h4><?php echo e($planet->name); ?></h4>
@@ -268,7 +281,7 @@
                                 <div class="owl-collection owl-carousel">
                                     <?php $__currentLoopData = $constellations; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $constellation): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                         <div class="item">
-                                            <img src="<?php echo e(asset('storage/images')); ?>/constellations/<?php echo e($constellation->photo); ?>"
+                                            <img src="<?php echo e(asset('images')); ?>/constellations/<?php echo e($constellation->photo); ?>"
                                                 alt="<?php echo e($constellation->name); ?>">
                                             <div class="down-content text-center">
                                                 <h4><?php echo e($constellation->name); ?>
@@ -303,7 +316,7 @@
                                     <?php $__currentLoopData = $observatories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $observatory): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                         <div class="item">
                                             <img class="img-observatory"
-                                                src="<?php echo e(asset('storage/images')); ?>/observatories/<?php echo e($observatory->photo); ?>"
+                                                src="<?php echo e(asset('images')); ?>/observatories/<?php echo e($observatory->photo); ?>"
                                                 alt="<?php echo e($observatory->name); ?>">
                                             <div class="down-content text-center">
                                                 <h4><?php echo e($observatory->name); ?>

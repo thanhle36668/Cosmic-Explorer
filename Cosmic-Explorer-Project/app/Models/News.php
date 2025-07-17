@@ -4,9 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Discovery extends Model
+class News extends Model
 {
-    public $table = 'discovery';
+    public $table = 'news';
 
     public $primaryKey = 'id';
 
@@ -15,10 +15,6 @@ class Discovery extends Model
     public $fillable = [
         'title',
         'description_short',
-        'title_details',
-        'description_details',
-        'content_1',
-        'content_2',
         'photo'
     ];
 }

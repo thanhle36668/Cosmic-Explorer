@@ -4,9 +4,9 @@
 
 @section('content')
 
-    <form action="{{ route('admin.posts.update', $post->id) }}" method="POST" enctype="multipart/form-data">
-        @csrf
-        @method('PUT')
+<form action="{{ route('admin.posts.update', $post->id) }}" method="POST" enctype="multipart/form-data">
+    @csrf
+    @method('PUT')
 
     <section class="content">
         <div class="card card-primary">
@@ -51,14 +51,15 @@
                     <input type="file" name="image" class="form-control-file">
                 </div>
             </div>
+        </div>
 
-            <div class="row">
-                <div class="col-12">
-                    <a href="{{ route('admin.posts.index') }}" class="btn btn-secondary">Cancel</a>
-                    <input type="submit" value="Update" class="btn btn-success float-right">
-                </div>
+        <div class="row">
+            <div class="col-12">
+                <a href="{{ route('admin.posts.index') }}" class="btn btn-secondary">Cancel</a>
+                <input type="submit" value="Update" class="btn btn-success float-right">
             </div>
-        </section>
-    </form>
+        </div>
+    </section>
+</form>
 
 @endsection

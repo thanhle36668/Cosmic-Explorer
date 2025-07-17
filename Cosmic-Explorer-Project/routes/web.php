@@ -9,18 +9,15 @@ use Illuminate\Support\Facades\Route;
 // User
 Route::group(['prefix' => ''], function () {
     Route::get('/', [CosmicExplorerController::class, 'home'])->name('home');
-    // Collections Page
+    Route::get('/news', [CosmicExplorerController::class, 'news'])->name('news');
     Route::get('/collections-planets', [CosmicExplorerController::class, 'pageCollectionsPlanets'])->name('collections-planets');
     Route::get('/collections-observatories', [CosmicExplorerController::class, 'pageCollectionsObservatories'])->name('collections-observatories');
     Route::get('/collections-constellations', [CosmicExplorerController::class, 'pageCollectionsConstellations'])->name('collections-constellations');
-    // News Page
-    Route::get('/news', [CosmicExplorerController::class, 'news'])->name('news');
-    Route::get('/new-details/{id}', [CosmicExplorerController::class, 'pageDetailsNew'])->name('details-new');
-    // Details Page
+    Route::get('/new-details', [CosmicExplorerController::class, 'pageDetailsNew'])->name('details-new');
     Route::get('/planet-details/{id}', [CosmicExplorerController::class, 'pageDetailsPlanet'])->name('details-planet');
     Route::get('/observatory-details/{id}', [CosmicExplorerController::class, 'pageDetailsObservatory'])->name('details-observatory');
     Route::get('/constellation-details/{id}', [CosmicExplorerController::class, 'pageDetailsConstellation'])->name('details-constellation');
-    Route::get('/discovery-details/{id}', [CosmicExplorerController::class, 'pageDetailsDiscovery'])->name('details-discovery');
+    Route::get('/news-details/{id}', [CosmicExplorerController::class, 'pageDetailsNews'])->name('details-news');
 });
 
 
@@ -36,8 +33,6 @@ Route::middleware(['auth', 'is_admin'])
     });
 
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
-
-// News Page
 Route::get('/posts/{slug}', [PostController::class, 'show'])->name('posts.show');
 
 Route::post('/process-login', [AuthController::class, 'processLogin'])->name('process-login');

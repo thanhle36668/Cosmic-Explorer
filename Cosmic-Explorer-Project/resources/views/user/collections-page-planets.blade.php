@@ -13,7 +13,7 @@
                     <nav class="main-nav">
                         <!-- ***** Logo Start ***** -->
                         <a href="{{ route('home') }}" class="logo">
-                            <img src="{{ asset('storage/images') }}/logo.svg" alt="">
+                            <img src="{{ asset('images') }}/logo.svg" alt="">
                         </a>
                         <!-- ***** Logo End ***** -->
 
@@ -83,8 +83,7 @@
     <!-- ***** Header End ***** -->
 
     <!-- ***** Main Banner Details ***** -->
-    <div class="page-heading"
-        style="background-image: url('{{ asset('storage/images') }}/background/background-banner-main.avif')"
+    <div class="page-heading" style="background-image: url('{{ asset('images') }}/background/background-banner-main.avif')"
         id="top">
         <div class="container">
             <div class="row">
@@ -108,8 +107,8 @@
                         style="height: auto">
                         <div
                             class="planet-image-fixed-size d-flex align-items-center justify-content-center overflow-hidden mb-2">
-                            <img src="{{ asset('storage/images') }}/planets/{{ $planet->photo }}"
-                                alt="{{ $planet->name }}" class="img-fluid rounded-lg">
+                            <img src="{{ asset('images') }}/planets/{{ $planet->photo }}" alt="{{ $planet->name }}"
+                                class="img-fluid rounded-lg">
                         </div>
                         <div class="flex-grow-1">
                             <h3>{{ $planet->name }}</h3>

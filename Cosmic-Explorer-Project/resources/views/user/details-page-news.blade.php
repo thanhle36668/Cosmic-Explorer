@@ -1,7 +1,7 @@
 @extends('layouts.user.details-page')
 
 @section('title')
-    <title>{{ $discovery_details->title }}</title>
+        <title>{{ $news_details->name }}</title>
 @endsection
 
 @section('section-change')
@@ -13,7 +13,7 @@
                     <nav class="main-nav">
                         <!-- ***** Logo Start ***** -->
                         <a href="{{ route('home') }}" class="logo">
-                            <img src="{{ asset('storage/images') }}/logo.svg" alt="">
+                            <img src="{{ asset('images') }}/logo.svg" alt="">
                         </a>
                         <!-- ***** Logo End ***** -->
 
@@ -24,9 +24,6 @@
                             </li>
                             <li>
                                 <a href="#">About</a>
-                            </li>
-                            <li>
-                                <a href="{{ route('news') }}">News</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownCollections"
@@ -41,16 +38,18 @@
                                         </a>
                                     </li>
 
-                                    <li class="nav-item">
-                                        <a class="dropdown-item" href="{{ route('collections-constellations') }}"
-                                            id="navbarDropdownConstellations">
+                                    <li class="nav-item dropdown">
+                                        <a class="dropdown-item dropdown-toggle" href="#"
+                                            id="navbarDropdownConstellations" role="button" data-bs-toggle="dropdown"
+                                            aria-expanded="true">
                                             Constellations
                                         </a>
                                     </li>
 
-                                    <li class="nav-item">
-                                        <a class="dropdown-item" href="{{ route('collections-observatories') }}"
-                                            id="navbarDropdownObservatories">
+                                    <li class="nav-item dropdown">
+                                        <a class="dropdown-item dropdown-toggle" href="#"
+                                            id="navbarDropdownObservatories" role="button" data-bs-toggle="dropdown"
+                                            aria-expanded="true">
                                             Observatories
                                         </a>
                                     </li>
@@ -84,13 +83,12 @@
 
     <!-- ***** Main Banner Details ***** -->
     <section class="page-heading"
-        style="background-image: url('{{ asset('storage/images') }}/background/background-banner-main.avif')"
-        id="top">
+        style="background-image: url('{{ asset('images') }}/background/background-banner-main.avif')" id="top">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="inner-content">
-                        <h1 style="text-transform: uppercase">Discovery</h1>
+                        <h2 style="text-transform: uppercase">{{ $news_details->title }}</h2>
                     </div>
                 </div>
             </div>
@@ -98,81 +96,49 @@
     </section>
     <!-- ***** Main Banner Details End ***** -->
 
-    <!-- ***** Discovery Details  ***** -->
+    <!-- ***** News Details  ***** -->
     <section class="main-banner-details"
-        style="background-image: url('{{ asset('storage/images') }}/background/background-banner-main.avif');">
+        style="background-image: url('{{ asset('images') }}/background/background-banner-main.avif');">
         <div class="container">
             <div class="row">
-                <div class="col-lg-8 col-10 mx-auto">
-                    <h2>{{ $discovery_details->title_details }}</h2>
-                    <span class="me-2">
-                        <strong class="text-light">Author: {{ $discovery_details->author }}</strong>
-                    </span>
-                    <span class="me-2">
-                        <strong class="text-light">Publication
-                            Date:{{ \Carbon\Carbon::parse($discovery_details->created_at)->format('d-m-Y') }}
-                        </strong>
-                    </span>
-                    <p class="mt-2">{{ $discovery_details->description_details }}</p>
-                    <div class="clearfix mt-lg-0 mt-2">
-                        <div class="col-md-6 float-md-end mb-3 ms-md-3 mt-3">
-                            <figure class="figure">
-                                <img src="{{ asset('storage/images') }}/discovery/{{ $discovery_details->photo }}"
-                                    class="img-fluid news-image" alt="{{ $discovery_details->name_photo }}">
-                                <figcaption class="figure-caption text-start text-light mt-2">Picture:
-                                    {{ $discovery_details->name_photo }}
-                                </figcaption>
-                            </figure>
-                        </div>
-                        <p class="mt-2">
-                            {{ $discovery_details->content_1 }}
-                        </p>
+                <div class="col-lg-12 align-self-center">
+                    <div>
+                        <h4>{{ $news_details->description_short }}</h4>
                     </div>
-                    <div class="clearfix mt-lg-0 mt-2">
-                        <div class="col-md-6 float-md-start me-3 mt-3">
-                            <figure class="figure">
-                                <img src="{{ asset('storage/images') }}/discovery/{{ $discovery_details->photo_2 }}"
-                                    class="img-fluid news-image" alt="{{ $discovery_details->name_photo }}">
-                                <figcaption class="figure-caption text-start text-light mt-2">Picture:
-                                    {{ $discovery_details->name_photo }}
-                                </figcaption>
-                            </figure>
-                        </div>
-                        <p class="mt-2">
-                            {{ $discovery_details->content_2 }}
-                        </p>
+                    <div class="news_photo" align="center">
+                        <img src="{{ asset('images') }}/news/{{ $news_details->photo }}" alt="">
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <!-- ***** Discovery Details End ***** -->
+    <!-- ***** News Details  End ***** -->
 
-    <!-- ***** Planet Collections ***** -->
+    <!-- ***** Constellation Collections ***** -->
     <section class="categories-collections" style="background-color: black">
         <div class="container">
             <div class="row">
-                <!-- ***** planets Collections ***** -->
+                <!-- ***** Constellations Collections ***** -->
                 <div class="col-lg-12">
                     <div class="collections">
                         <div class="row">
                             <div class="col-lg-12 title">
                                 <div class="section-heading">
                                     <div class="line-dec"></div>
-                                    <h2>Planet Collection</h2>
+                                    <h2>Constellations Collection</h2>
                                 </div>
                             </div>
                             <div class="col-lg-12 carousel">
                                 <div class="owl-collection owl-carousel">
-                                    @foreach ($planets as $planet)
+                                    @foreach ($constellations as $constellation)
                                         <div class="item">
-                                            <img class="img-planet"
-                                                src="{{ asset('storage/images') }}/planets/{{ $planet->photo_extra }}"
-                                                alt="{{ $planet->name }}">
-                                            <div class="down-content-discovery text-center p-3"
-                                                style="background-color: transparent; border: none">
-                                                <div class="main-button mt-0 mb-0">
-                                                    <a href="{{ route('details-planet', $planet->id) }}">View
+                                            <img class="img-constellation"
+                                                src="{{ asset('images') }}/constellations/leo-constellation.jpg"
+                                                alt="{{ $constellation->name }}">
+                                            <div class="down-content p-3" style="background-color: #282B2F;">
+                                                <div class="main-button main-button-constellation text-center">
+                                                    <h4 class="mb-2">Leo (The Lion)</h4>
+                                                    <a href="{{ route('details-constellation', $constellation->id) }}">View
                                                         Details</a>
                                                 </div>
                                             </div>
@@ -183,10 +149,9 @@
                         </div>
                     </div>
                 </div>
-                <!-- ***** planets Collections End ***** -->
+                <!-- ***** Constellations Collections End ***** -->
             </div>
-            <!-- ***** planets Collections End ***** -->
         </div>
     </section>
-    <!-- ***** Planet Collections End ***** -->
+    <!-- ***** Constellation Collections End ***** -->
 @endsection

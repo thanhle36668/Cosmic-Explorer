@@ -47,7 +47,7 @@
     <!-- ***** Change Section End***** -->
 
     <!-- ***** Contact ***** -->
-    <section class="contact" style="background-image: url('{{ asset('storage/images') }}/background-dark.jpg')">
+    <section class="contact" style="background-image: url('{{ asset('images') }}/background-dark.jpg')">
         <div class="contact-us">
             <div class="container">
                 <div class="row">
