@@ -55,7 +55,7 @@
                             <br/>
                         </td>
                         <td>
-                          {{ $post->slug }}   
+                          {{ $post->excerpt }}   
                         </td>
                         <td class="project_progress">
                           <small>

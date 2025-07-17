@@ -36,6 +36,8 @@ Route::middleware(['auth', 'is_admin'])
     });
 
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
+
+// News Page
 Route::get('/posts/{slug}', [PostController::class, 'show'])->name('posts.show');
 
 Route::post('/process-login', [AuthController::class, 'processLogin'])->name('process-login');

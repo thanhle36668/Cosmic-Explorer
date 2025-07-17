@@ -117,7 +117,7 @@
                                 {{ $post->content }}
                             </p>
                             <div class="main-button">
-                                <a href="{{ route('details-new', $post->id) }}">Continue Reading</a>
+                                <a href="{{ route('posts.show', $post->slug) }}">Continue Reading</a>
                             </div>
                         </div>
                     </div>

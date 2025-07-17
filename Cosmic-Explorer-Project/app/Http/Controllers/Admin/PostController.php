@@ -25,7 +25,7 @@ class PostController extends Controller
         return view('admin.posts.create', compact('categories'));
     }
 
-
+    // Show news detail page
     public function show($slug)
     {
         $post = Post::where('slug', $slug)->firstOrFail();
@@ -83,6 +83,17 @@ class PostController extends Controller
         ]);
 
         $data = $request->only(['title', 'content', 'excerpt', 'category_id', 'is_published']);
+
+        $slug = Str::slug($request->title);
+        $originalSlug = $slug;
+        $counter = 1;
+
+        while (Post::where('slug', $slug)->where('id', '!=', $post->id)->exists()) {
+            $slug = $originalSlug . '-' . $counter++;
+        }
+
+        $data['slug'] = $slug;
+
         $data['slug'] = Str::slug($request->title);
 
         if ($request->hasFile('image')) {

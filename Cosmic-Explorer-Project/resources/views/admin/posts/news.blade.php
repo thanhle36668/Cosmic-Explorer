@@ -111,7 +111,7 @@
                         <strong>Ngày đăng: {{ $post->created_at->format('d/m/Y') }}</strong>
                     </p>
                     <p class="mt-2">
-                        {{ $post->slug }}
+                        {{ $post->excerpt }}
                     </p>
                     <div class="clearfix my-4 mt-lg-0 mt-5">
                         <div class="col-md-6 float-md-end mb-3 ms-md-3" data-aos="fade-up">
