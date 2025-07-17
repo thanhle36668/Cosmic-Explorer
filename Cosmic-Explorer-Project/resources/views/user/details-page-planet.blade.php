@@ -13,7 +13,7 @@
                     <nav class="main-nav">
                         <!-- ***** Logo Start ***** -->
                         <a href="{{ route('home') }}" class="logo">
-                            <img src="{{ asset('storage/images') }}/logo.svg" alt="">
+                            <img src="{{ asset('images') }}/logo.svg" alt="">
                         </a>
                         <!-- ***** Logo End ***** -->
 
@@ -83,8 +83,7 @@
     <!-- ***** Header End ***** -->
 
     <!-- ***** Main Banner Details ***** -->
-    <div class="page-heading"
-        style="background-image: url('{{ asset('storage/images') }}/background/background-banner-main.avif')"
+    <div class="page-heading" style="background: url('{{ asset('images') }}/background/background-banner-main.avif')"
         id="top">
         <div class="container">
             <div class="row">
@@ -100,7 +99,7 @@
 
     <!-- ***** Details Planet ***** -->
     <section class="main-banner-details"
-        style="background-image: url('{{ asset('storage/images') }}/background/background-banner-main.avif');">
+        style="background: url('{{ asset('images') }}/background/background-banner-main.avif');">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 align-self-center">
@@ -123,24 +122,20 @@
                 <div class="col-lg-5 offset-lg-1">
                     <div class="owl-banner owl-carousel ">
                         <div class="item">
-                            <img class="rounded-circle"
-                                src="{{ asset('storage/images') }}/planets/{{ $planet_details->photo }}" alt=""
-                                height="480px" width="480px">
+                            <img class="rounded-circle" src="{{ asset('images') }}/planets/{{ $planet_details->photo }}"
+                                alt="" height="480px" width="480px">
                         </div>
                         <div class="item">
-                            <img class="rounded-circle"
-                                src="{{ asset('storage/images') }}/planets/{{ $planet_details->photo_2 }}" alt=""
-                                height="480px" width="480px">
+                            <img class="rounded-circle" src="{{ asset('images') }}/planets/{{ $planet_details->photo_2 }}"
+                                alt="" height="480px" width="480px">
                         </div>
                         <div class="item">
-                            <img class="rounded-circle"
-                                src="{{ asset('storage/images') }}/planets/{{ $planet_details->photo_3 }}" alt=""
-                                height="480px" width="480px">
+                            <img class="rounded-circle" src="{{ asset('images') }}/planets/{{ $planet_details->photo_3 }}"
+                                alt="" height="480px" width="480px">
                         </div>
                         <div class="item">
-                            <img class="rounded-circle"
-                                src="{{ asset('storage/images') }}/planets/{{ $planet_details->photo_4 }}" alt=""
-                                height="480px" width="480px">
+                            <img class="rounded-circle" src="{{ asset('images') }}/planets/{{ $planet_details->photo_4 }}"
+                                alt="" height="480px" width="480px">
                         </div>
                     </div>
                 </div>
@@ -150,7 +145,8 @@
     <!-- ***** Details Planet End ***** -->
 
     <!-- ***** Planet Collections ***** -->
-    <section class="categories-collections" style="background-color: black">
+    <section class="categories-collections"
+        style="background: url('{{ asset('images') }}/background/background-collections.jpg')">
         <div class="container">
             <div class="row">
                 <!-- ***** planets Collections ***** -->
@@ -168,7 +164,7 @@
                                     @foreach ($planets as $planet)
                                         <div class="item">
                                             <img class="img-planet"
-                                                src="{{ asset('storage/images') }}/planets/{{ $planet->photo_extra }}"
+                                                src="{{ asset('images') }}/planets/{{ $planet->photo_extra }}"
                                                 alt="{{ $planet->name }}">
                                             <div class="down-content-discovery text-center p-3"
                                                 style="background-color: transparent; border: none">
@@ -192,8 +188,7 @@
     <!-- ***** Planet Collections End ***** -->
 
     <!-- ***** Contact ***** -->
-    <section class="contact"
-        style="background-image: url('{{ asset('storage/images') }}/background/background-dark.jpg')">
+    <section class="contact" style="background: url('{{ asset('images') }}/background/background-dark.jpg')">
         <div class="contact-us">
             <div class="container">
                 <div class="row">

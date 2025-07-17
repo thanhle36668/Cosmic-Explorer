@@ -13,7 +13,7 @@
                     <nav class="main-nav">
                         <!-- ***** Logo Start ***** -->
                         <a href="{{ route('home') }}" class="logo">
-                            <img src="{{ asset('storage/images') }}/logo.svg" alt="">
+                            <img src="{{ asset('images') }}/logo.svg" alt="">
                         </a>
                         <!-- ***** Logo End ***** -->
 
@@ -84,7 +84,7 @@
 
     <!-- ***** Main Banner Details ***** -->
     <div class="page-heading"
-        style="background-image: url('{{ asset('storage/images') }}/background/background-banner-main.avif')"
+        style="background: url('{{ asset('images') }}/background/background-banner-main.avif')"
         id="top">
         <div class="container">
             <div class="row">
@@ -100,7 +100,7 @@
 
     <!-- ***** Collections Planets ***** -->
     <section id="collections" class="px-5 py-5"
-        style="background: url('{{ asset('storage/images') }}/background/background-collections.jpg')">
+        style="background: url('{{ asset('images') }}/background/background-collections.jpg')">
         <div class="container">
             <div class="space-y-5 mt-5 mx-auto" style="max-width: 1000px;">
                 @foreach ($planets as $planet)
@@ -109,7 +109,7 @@
                         style="height: auto">
                         <div
                             class="planet-image-fixed-size d-flex align-items-center justify-content-center overflow-hidden mb-2">
-                            <img src="{{ asset('storage/images') }}/planets/{{ $planet->photo }}"
+                            <img src="{{ asset('images') }}/planets/{{ $planet->photo }}"
                                 alt="{{ $planet->name }}" class="img-fluid rounded-lg">
                         </div>
                         <div class="flex-grow-1">
@@ -133,7 +133,7 @@
     <!-- ***** Collections Planets End ***** -->
 
     <!-- ***** Contact ***** -->
-    <section class="contact" style="background-image: url('{{ asset('storage/images') }}/background/background-dark.jpg')">
+    <section class="contact" style="background: url('{{ asset('images') }}/background/background-dark.jpg')">
         <div class="contact-us">
             <div class="container">
                 <div class="row">

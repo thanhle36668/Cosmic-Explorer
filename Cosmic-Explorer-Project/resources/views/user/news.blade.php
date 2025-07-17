@@ -13,7 +13,7 @@
                     <nav class="main-nav">
                         <!-- ***** Logo Start ***** -->
                         <a href="{{ route('home') }}" class="logo">
-                            <img src="{{ asset('storage/images') }}/logo.svg" alt="">
+                            <img src="{{ asset('images') }}/logo.svg" alt="">
                         </a>
                         <!-- ***** Logo End ***** -->
 
@@ -83,7 +83,7 @@
     <!-- ***** Header End ***** -->
 
     <!-- ***** Main Banner Details ***** -->
-    <div class="page-heading" style="background-image: url('{{ asset('images') }}/background/background-banner-main.avif')"
+    <div class="page-heading" style="background: url('{{ asset('images') }}/background/background-banner-main.avif')"
         id="top">
         <div class="container">
             <div class="row">

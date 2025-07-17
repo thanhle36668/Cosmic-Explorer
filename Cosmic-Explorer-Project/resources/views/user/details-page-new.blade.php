@@ -13,7 +13,7 @@
                     <nav class="main-nav">
                         <!-- ***** Logo Start ***** -->
                         <a href="{{ route('home') }}" class="logo">
-                            <img src="{{ asset('storage/images') }}/logo.svg" alt="">
+                            <img src="{{ asset('images') }}/logo.svg" alt="">
                         </a>
                         <!-- ***** Logo End ***** -->
 
@@ -84,7 +84,7 @@
 
     <!-- ***** Main Banner Details ***** -->
     <section class="page-heading"
-        style="background-image: url('{{ asset('images') }}/background/background-banner-main.avif')" id="top">
+        style="background: url('{{ asset('images') }}/background/background-banner-main.avif')" id="top">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -162,7 +162,7 @@
     <!-- ***** Constellation Details  End ***** -->
 
     <!-- ***** Contact ***** -->
-    <section class="contact" style="background-image: url('{{ asset('storage/images') }}/background-dark.jpg')">
+    <section class="contact" style="background: url('{{ asset('images') }}/background-dark.jpg')">
         <div class="contact-us">
             <div class="container">
                 <div class="row">

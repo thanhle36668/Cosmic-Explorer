@@ -13,7 +13,7 @@
                     <nav class="main-nav">
                         <!-- ***** Logo Start ***** -->
                         <a href="{{ route('home') }}" class="logo">
-                            <img src="{{ asset('storage/images') }}/logo.svg" alt="">
+                            <img src="{{ asset('images') }}/logo.svg" alt="">
                         </a>
                         <!-- ***** Logo End ***** -->
 
@@ -84,8 +84,7 @@
 
     <!-- ***** Main Banner Details ***** -->
     <section class="page-heading"
-        style="background-image: url('{{ asset('storage/images') }}/background/background-banner-main.avif')"
-        id="top">
+        style="background: url('{{ asset('images') }}/background/background-banner-main.avif')" id="top">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -100,7 +99,7 @@
 
     <!-- ***** Discovery Details  ***** -->
     <section class="main-banner-details"
-        style="background-image: url('{{ asset('storage/images') }}/background/background-banner-main.avif');">
+        style="background: url('{{ asset('images') }}/background/background-banner-main.avif');">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-10 mx-auto">
@@ -117,7 +116,7 @@
                     <div class="clearfix mt-lg-0 mt-2">
                         <div class="col-md-6 float-md-end mb-3 ms-md-3 mt-3">
                             <figure class="figure">
-                                <img src="{{ asset('storage/images') }}/discovery/{{ $discovery_details->photo }}"
+                                <img src="{{ asset('images') }}/discovery/{{ $discovery_details->photo }}"
                                     class="img-fluid news-image" alt="{{ $discovery_details->name_photo }}">
                                 <figcaption class="figure-caption text-start text-light mt-2">Picture:
                                     {{ $discovery_details->name_photo }}
@@ -131,7 +130,7 @@
                     <div class="clearfix mt-lg-0 mt-2">
                         <div class="col-md-6 float-md-start me-3 mt-3">
                             <figure class="figure">
-                                <img src="{{ asset('storage/images') }}/discovery/{{ $discovery_details->photo_2 }}"
+                                <img src="{{ asset('images') }}/discovery/{{ $discovery_details->photo_2 }}"
                                     class="img-fluid news-image" alt="{{ $discovery_details->name_photo }}">
                                 <figcaption class="figure-caption text-start text-light mt-2">Picture:
                                     {{ $discovery_details->name_photo }}
@@ -149,7 +148,8 @@
     <!-- ***** Discovery Details End ***** -->
 
     <!-- ***** Planet Collections ***** -->
-    <section class="categories-collections" style="background-color: black">
+    <section class="categories-collections"
+        style="background: url('{{ asset('images') }}/background/background-collections.jpg')">
         <div class="container">
             <div class="row">
                 <!-- ***** planets Collections ***** -->
@@ -167,7 +167,7 @@
                                     @foreach ($planets as $planet)
                                         <div class="item">
                                             <img class="img-planet"
-                                                src="{{ asset('storage/images') }}/planets/{{ $planet->photo_extra }}"
+                                                src="{{ asset('images') }}/planets/{{ $planet->photo_extra }}"
                                                 alt="{{ $planet->name }}">
                                             <div class="down-content-discovery text-center p-3"
                                                 style="background-color: transparent; border: none">
@@ -191,7 +191,7 @@
     <!-- ***** Planet Collections End ***** -->
 
     <!-- ***** Contact ***** -->
-    <section class="contact" style="background-image: url('{{ asset('storage/images') }}/background-dark.jpg')">
+    <section class="contact" style="background: url('{{ asset('images') }}/background-dark.jpg')">
         <div class="contact-us">
             <div class="container">
                 <div class="row">

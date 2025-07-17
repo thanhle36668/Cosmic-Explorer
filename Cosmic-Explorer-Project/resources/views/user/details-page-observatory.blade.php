@@ -17,7 +17,7 @@
                     <nav class="main-nav">
                         <!-- ***** Logo Start ***** -->
                         <a href="{{ route('home') }}" class="logo">
-                            <img src="{{ asset('storage/images') }}/logo.svg" alt="">
+                            <img src="{{ asset('images') }}/logo.svg" alt="">
                         </a>
                         <!-- ***** Logo End ***** -->
 
@@ -88,8 +88,7 @@
 
     <!-- ***** Main Banner Details ***** -->
     <section class="page-heading"
-        style="background-image: url('{{ asset('storage/images') }}/background/background-banner-main.avif')"
-        id="top">
+        style="background: url('{{ asset('images') }}/background/background-banner-main.avif')" id="top">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -108,7 +107,7 @@
 
     <!-- ***** Observatory Details  ***** -->
     <section class="main-banner-details"
-        style="background-image: url('{{ asset('storage/images') }}/background/background-banner-main.avif');">
+        style="background: url('{{ asset('images') }}/background/background-banner-main.avif');">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 align-self-center">
@@ -134,22 +133,22 @@
                     <div class="owl-banner owl-carousel ">
                         <div class="item">
                             <img class="rounded-3"
-                                src="{{ asset('storage/images') }}/observatories/{{ $observatory_details->photo }}"
+                                src="{{ asset('images') }}/observatories/{{ $observatory_details->photo }}"
                                 alt="{{ $observatory_details->name }}" height="480px" width="480px">
                         </div>
                         <div class="item">
                             <img class="rounded-3"
-                                src="{{ asset('storage/images') }}/observatories/{{ $observatory_details->photo_2 }}"
+                                src="{{ asset('images') }}/observatories/{{ $observatory_details->photo_2 }}"
                                 alt="{{ $observatory_details->name }}" height="480px" width="480px">
                         </div>
                         <div class="item">
                             <img class="rounded-3"
-                                src="{{ asset('storage/images') }}/observatories/{{ $observatory_details->photo_3 }}"
+                                src="{{ asset('images') }}/observatories/{{ $observatory_details->photo_3 }}"
                                 alt="{{ $observatory_details->name }}" height="480px" width="480px">
                         </div>
                         <div class="item">
                             <img class="rounded-3"
-                                src="{{ asset('storage/images') }}/observatories/{{ $observatory_details->photo_4 }}"
+                                src="{{ asset('images') }}/observatories/{{ $observatory_details->photo_4 }}"
                                 alt="{{ $observatory_details->name }}" height="480px" width="480px">
                         </div>
                     </div>
@@ -160,7 +159,8 @@
     <!-- ***** Observatory Details  End ***** -->
 
     <!-- ***** Observatory Collections ***** -->
-    <section class="categories-collections" style="background-color: black">
+    <section class="categories-collections"
+        style="background: url('{{ asset('images') }}/background/background-collections.jpg')">
         <div class="container">
             <div class="row">
                 <!-- ***** Observatories Collections ***** -->
@@ -178,7 +178,7 @@
                                     @foreach ($observatories as $observatory)
                                         <div class="item">
                                             <img class="img-observatory"
-                                                src="{{ asset('storage/images') }}/observatories/{{ $observatory->photo }}"
+                                                src="{{ asset('images') }}/observatories/{{ $observatory->photo }}"
                                                 alt="{{ $observatory->name }}">
                                             <div class="down-content p-3" style="background-color: #282B2F;">
                                                 <div class="main-button main-button-observatory text-center">
@@ -202,8 +202,7 @@
     <!-- ***** Observatory Collections End ***** -->
 
     <!-- ***** Contact ***** -->
-    <section class="contact"
-        style="background-image: url('{{ asset('storage/images') }}/background/background-dark.jpg')">
+    <section class="contact" style="background: url('{{ asset('images') }}/background/background-dark.jpg')">
         <div class="contact-us">
             <div class="container">
                 <div class="row">
