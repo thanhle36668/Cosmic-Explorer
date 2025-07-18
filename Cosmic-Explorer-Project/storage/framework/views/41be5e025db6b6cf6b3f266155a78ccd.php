@@ -24,7 +24,7 @@
                                 <a href="#">About</a>
                             </li>
                             <li>
-                                <a href="<?php echo e(route('news')); ?>">News</a>
+                                <a href="<?php echo e(route('all-news')); ?>">News</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownCollections"
@@ -61,10 +61,10 @@
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <li>
-                                        <a class="dropdown-item" href="#">Videos</a>
+                                        <a class="dropdown-item" href="<?php echo e(route('collections-books')); ?>">Books</a>
                                     </li>
                                     <li>
-                                        <a class="dropdown-item" href="#">Books</a>
+                                        <a class="dropdown-item" href="<?php echo e(route('collections-videos')); ?>">Videos</a>
                                     </li>
                                 </ul>
                             </li>
@@ -81,8 +81,7 @@
     <!-- ***** Header End ***** -->
 
     <!-- ***** Introduction ***** -->
-    <section class="main-banner"
-        style="background-image: url('<?php echo e(asset('images')); ?>/background/background-banner-main.avif');">
+    <section class="main-banner" style="background: url('<?php echo e(asset('images')); ?>/background/background-banner-main.avif');">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 align-self-center">
@@ -103,10 +102,12 @@
                             college students. Ability levels span the range from novice to expert.</p>
                         <div class="buttons">
                             <div class="border-button">
-                                <a href="#">Evolution of Earth</a>
+                                <a href="<?php echo e(route('collections-planets')); ?>">Planet
+                                    collections</a>
                             </div>
                             <div class="border-button">
-                                <a href="#" target="_blank">Constellation collections</a>
+                                <a href="<?php echo e(route('collections-constellations')); ?>" target="_blank">Constellation
+                                    collections</a>
                             </div>
                         </div>
                     </div>
@@ -115,7 +116,7 @@
                     <div class="owl-banner owl-carousel ">
                         <?php $__currentLoopData = $planets; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $planet): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <div class="item">
-                                <a href="<?php echo e(route('details-planet', $planet->id)); ?>">
+                                <a href="<?php echo e(route('details-planet', $planet->slug)); ?>">
                                     <img class="rounded-circle" src="<?php echo e(asset('images')); ?>/planets/<?php echo e($planet->photo); ?>"
                                         alt="<?php echo e($planet->name); ?>" height="480px" width="480px">
                                 </a>
@@ -129,66 +130,49 @@
     <!-- ***** Introduction End ***** -->
 
     <!-- ***** Discovery (BigBang Theory - The Earth's Evolution - Comets ) ***** -->
-    <section class="discovery py-4" style="background-color: black">
-        <!-- ***** BigBang Theory ***** -->
-        <div class="card py-5 px-5">
-            <div class="row g-0">
-                <div class="col-md-4">
-                    <img src="<?php echo e(asset('images')); ?>/news/<?php echo e($news_bigbang_theory->photo); ?>" class="img-fluid"
-                        alt="<?php echo e($news_bigbang_theory->name); ?>">
-                </div>
-                <div class="col-md-8 d-flex justify-content-center align-items-center">
-                    <div class="card-body">
-                        <h5 class="card-title"><?php echo e($news_bigbang_theory->title); ?></h5>
-                        <p class="card-text"><?php echo e($news_bigbang_theory->description_short); ?></p>
-                        <a href="#" class="card-button badge rounded-pill bg-white">View Details</a>
+    <section class="discovery py-5 px-5" style="background-color: rgb(0,0,0);">
+        <?php $__currentLoopData = $discovery; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $discoveries): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+            <?php if($discoveries->id % 2 == 0): ?>
+                <div class="card px-4 py-4">
+                    <div class="row g-0">
+                        <div class="col-md-8 d-flex justify-content-center align-items-center">
+                            <div class="card-body">
+                                <h5 class="card-title"><?php echo e($discoveries->title); ?></h5>
+                                <p class="card-text"><?php echo e($discoveries->description_short); ?></p>
+                                <a href="<?php echo e(route('details-discovery', $discoveries->slug)); ?>"
+                                    class="card-button badge rounded-pill bg-white">View Details</a>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <img src="<?php echo e(asset('images')); ?>/discovery/<?php echo e($discoveries->photo); ?>"
+                                class="img-fluid img-discovery" alt="<?php echo e($discoveries->title); ?>">
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
-
-        <!-- ***** The Earth's Evolution ***** -->
-        <div class="card py-5 px-5">
-            <div class="row g-0">
-                <div class="col-md-8 d-flex justify-content-center align-items-center">
-                    <div class="card-body">
-                        <h5 class="card-title"><?php echo e($news_earth_evolved->title); ?></h5>
-                        <p class="card-text">
-                            <?php echo e($news_earth_evolved->description_short); ?>
-
-                        </p>
-                        <a href="#" class="card-button badge rounded-pill bg-white">View Details</a>
+            <?php else: ?>
+                <div class="card px-4 py-4">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img src="<?php echo e(asset('images')); ?>/discovery/<?php echo e($discoveries->photo); ?>" class="img-fluid"
+                                alt="<?php echo e($discoveries->title); ?>">
+                        </div>
+                        <div class="col-md-8 d-flex justify-content-center align-items-center">
+                            <div class="card-body">
+                                <h5 class="card-title"><?php echo e($discoveries->title); ?></h5>
+                                <p class="card-text"><?php echo e($discoveries->description_short); ?></p>
+                                <a href="<?php echo e(route('details-discovery', $discoveries->slug)); ?>"
+                                    class="card-button badge rounded-pill bg-white">View Details</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <img src="<?php echo e(asset('images')); ?>/news/<?php echo e($news_earth_evolved->photo); ?>" class="img-fluid"
-                        alt="<?php echo e($news_earth_evolved->name); ?>">
-                </div>
-            </div>
-        </div>
-
-        <!-- ***** Comets ***** -->
-        <div class="card py-5 px-5">
-            <div class="row g-0">
-                <div class="col-md-4">
-                    <img src="<?php echo e(asset('images')); ?>/news/<?php echo e($news_comet->photo); ?>" class="img-fluid"
-                        alt="<?php echo e($news_comet->name); ?>">
-                </div>
-                <div class="col-md-8 d-flex justify-content-center align-items-center">
-                    <div class="card-body">
-                        <h5 class="card-title"><?php echo e($news_comet->title); ?></h5>
-                        <p class="card-text"><?php echo e($news_comet->description_short); ?></p>
-                        <a href="#" class="card-button badge rounded-pill bg-white">View Details</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+            <?php endif; ?>
+        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
     </section>
     <!-- ***** Discovery (BigBang Theory - The Earth's Evolution - Comets ) End ***** -->
 
     <!-- ***** News ***** -->
-    <section class="news"
-        style="background-image: url('<?php echo e(asset('images')); ?>/background/background-banner-main.avif');">
+    <section class="news" style="background: url('<?php echo e(asset('images')); ?>/background/background-banner-main.avif');">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -232,7 +216,8 @@
     <!-- ***** News End ***** -->
 
     <!-- ***** Collections (Planets - Constellations - Observatories) ***** -->
-    <section class="categories-collections" style="background-color: black">
+    <section class="categories-collections"
+        style="background: url('<?php echo e(asset('images')); ?>/background/background-collections.jpg')">
         <div class="container">
             <div class="row">
                 <!-- ***** Planets Collections ***** -->
@@ -255,7 +240,7 @@
                                             </div>
                                             <h4><?php echo e($planet->name); ?></h4>
                                             <div class="icon-button">
-                                                <a href="<?php echo e(route('details-planet', $planet->id)); ?>"><i
+                                                <a href="<?php echo e(route('details-planet', $planet->slug)); ?>"><i
                                                         class="fa fa-angle-right"></i></a>
                                             </div>
                                         </div>
@@ -288,7 +273,7 @@
 
                                                 </h4>
                                                 <div class="main-button">
-                                                    <a href="<?php echo e(route('details-constellation', $constellation->id)); ?>">View
+                                                    <a href="<?php echo e(route('details-constellation', $constellation->slug)); ?>">View
                                                         Details</a>
                                                 </div>
                                             </div>
@@ -324,7 +309,7 @@
                                                 </h4>
                                                 <p><?php echo e($observatory->location); ?></p>
                                                 <div class="main-button">
-                                                    <a href="<?php echo e(route('details-observatory', $observatory->id)); ?>">View
+                                                    <a href="<?php echo e(route('details-observatory', $observatory->slug)); ?>">View
                                                         Details</a>
                                                 </div>
                                             </div>
@@ -342,6 +327,109 @@
         </div>
     </section>
     <!-- ***** Collections (Planets - Constellations - Observatories) End ***** -->
+
+    <!-- ***** Contact ***** -->
+    <section class="contact" style="background: url('<?php echo e(asset('images')); ?>/background/background-dark.jpg')">
+        <div class="contact-us">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div id="map">
+                            <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3694.5308998533724!2d106.7116196747655!3d10.806685889343925!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317529ed00409f09%3A0x11f7708a5c77d777!2zQXB0ZWNoIENvbXB1dGVyIEVkdWNhdGlvbiAtIEjhu4cgVGjhu5FuZyDEkMOgbyB04bqhbyBM4bqtcCBUcsOsbmggVmnDqm4gUXXhu5FjIHThur8gQXB0ZWNo!5e1!3m2!1svi!2s!4v1751729317282!5m2!1svi!2s"
+                                width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="section-heading">
+                            <h2>Say Hello. Don't Be Shy!</h2>
+                        </div>
+                        <form id="contact" action="" method="post">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <fieldset>
+                                        <input name="name" type="text" id="name" placeholder="Your name"
+                                            required="">
+                                    </fieldset>
+                                </div>
+                                <div class="col-lg-6">
+                                    <fieldset>
+                                        <input name="email" type="text" id="email" placeholder="Your email"
+                                            required="">
+                                    </fieldset>
+                                </div>
+                                <div class="col-lg-12">
+                                    <fieldset>
+                                        <textarea name="message" rows="6" id="message" placeholder="Your message" required=""></textarea>
+                                    </fieldset>
+                                </div>
+                                <div class="col-lg-12">
+                                    <fieldset>
+                                        <button type="submit" id="form-submit" class="main-dark-button"><i
+                                                class="fa fa-paper-plane"></i></button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="subscribe">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="section-heading">
+                            <h2>By Subscribing To Our Newsletter</h2>
+                        </div>
+                        <form id="subscribe" action="" method="get">
+                            <div class="row">
+                                <div class="col-lg-5">
+                                    <fieldset>
+                                        <input name="name" type="text" id="name" placeholder="Your Name"
+                                            required="">
+                                    </fieldset>
+                                </div>
+                                <div class="col-lg-5">
+                                    <fieldset>
+                                        <input name="email" type="text" id="email" pattern="[^ @]*@[^ @]*"
+                                            placeholder="Your Email Address" required="">
+                                    </fieldset>
+                                </div>
+                                <div class="col-lg-2">
+                                    <fieldset>
+                                        <button type="submit" id="form-submit" class="main-dark-button"><i
+                                                class="fa fa-paper-plane"></i></button>
+                                    </fieldset>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="row">
+                            <div class="col-6">
+                                <ul>
+                                    <li>Store Location:<br><span>Sunny Isles Beach, FL 33160, United States</span></li>
+                                    <li>Phone:<br><span>010-020-0340</span></li>
+                                    <li>Office Location:<br><span>North Miami Beach</span></li>
+                                </ul>
+                            </div>
+                            <div class="col-6">
+                                <ul>
+                                    <li>Work Hours:<br><span>07:30 AM - 9:30 PM Daily</span></li>
+                                    <li>Email:<br><span>info@company.com</span></li>
+                                    <li>Social Media:<br><span><a href="#">Facebook</a>, <a
+                                                href="#">Instagram</a>, <a href="#">Behance</a>,
+                                            <a href="#">Linkedin</a></span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ***** Contact End ***** -->
 <?php $__env->stopSection(); ?>
 
 <?php echo $__env->make('layouts.user.cosmic-explorer', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\Admin\Desktop\Cosmic-Explorer\Cosmic-Explorer-Project\resources\views/user/home.blade.php ENDPATH**/ ?>
