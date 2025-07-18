@@ -11,9 +11,9 @@ class IsAdmin
     public function handle(Request $request, Closure $next)
     {
         if (Auth::check() && Auth::user()->is_admin) {
-            return $next($request); // Nếu là admin thì cho phép truy cập
+            return $next($request);
         }
 
-        abort(403, 'Bạn không có quyền truy cập.');
+        abort(403, 'You do not have access.');
     }
 }
