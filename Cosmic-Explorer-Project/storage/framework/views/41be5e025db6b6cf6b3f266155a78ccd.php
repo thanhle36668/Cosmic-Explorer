@@ -106,7 +106,7 @@
                                     collections</a>
                             </div>
                             <div class="border-button">
-                                <a href="<?php echo e(route('collections-constellations')); ?>" target="_blank">Constellation
+                                <a href="<?php echo e(route('collections-constellations')); ?>">Constellation
                                     collections</a>
                             </div>
                         </div>
@@ -232,7 +232,7 @@
                             </div>
                             <?php $__currentLoopData = $planets; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $planet): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <div class="col-lg-3 col-sm-6">
-                                    <a href="<?php echo e(route('details-planet', $planet->id)); ?>">
+                                    <a href="<?php echo e(route('details-planet', $planet->slug)); ?>">
                                         <div class="item">
                                             <div class="icon">
                                                 <img src="<?php echo e(asset('images')); ?>/planets/<?php echo e($planet->photo); ?>"
@@ -409,18 +409,18 @@
                         <div class="row">
                             <div class="col-6">
                                 <ul>
-                                    <li>Store Location:<br><span>Sunny Isles Beach, FL 33160, United States</span></li>
-                                    <li>Phone:<br><span>010-020-0340</span></li>
-                                    <li>Office Location:<br><span>North Miami Beach</span></li>
+                                    <li>School Location:<br><span>35/6 D5 Street, Ward 25, Binh Thanh, Ho Chi Minh City 72308, Vietnam</span></li>
+                                    <li>Website:<br><span><a href="https://aptechvietnam.com.vn/">aptechvietnam.com.vn</a></span></li>
+                                    <li>Phone:<br><span>+84 1800 1779</span></li>
                                 </ul>
                             </div>
                             <div class="col-6">
                                 <ul>
-                                    <li>Work Hours:<br><span>07:30 AM - 9:30 PM Daily</span></li>
-                                    <li>Email:<br><span>info@company.com</span></li>
-                                    <li>Social Media:<br><span><a href="#">Facebook</a>, <a
-                                                href="#">Instagram</a>, <a href="#">Behance</a>,
-                                            <a href="#">Linkedin</a></span></li>
+                                    <li>Work Hours:<br><span>07:30 AM - 10:00 PM Daily (Except Sunday)</span></li>
+                                    <li>Email:<br><span>aptech2@aprotrain.com</span></li>
+                                    <li>Social Media:<br><span><a href="https://www.facebook.com/AptechVNLearning/">Facebook</a>, <a
+                                                href="https://www.instagram.com/aptechvn.official/">Instagram</a>, <a href="https://www.tiktok.com/@aptechvn.official">Tiktok</a>,
+                                            <a href="https://www.youtube.com/user/aprotrainaptechvn">Youtube</a></span></li>
                                 </ul>
                             </div>
                         </div>

@@ -71,6 +71,7 @@
     <script src="<?php echo e(asset('user')); ?>/js/tabs.js"></script>
     <script src="<?php echo e(asset('user')); ?>/js/popup.js"></script>
     <script src="<?php echo e(asset('user')); ?>/js/custom.js"></script>
+    <?php echo $__env->yieldContent('script-changeImageAndSetActive'); ?>
 
 </body>
 

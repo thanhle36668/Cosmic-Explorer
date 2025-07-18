@@ -120,22 +120,32 @@
                     </div>
                 </div>
                 <div class="col-lg-5 offset-lg-1">
-                    <div class="owl-banner owl-carousel ">
-                        <div class="item">
-                            <img class="rounded-3" src="{{ asset('images') }}/planets/{{ $planet_details->photo }}"
-                                alt="" height="480px" width="480px">
+                    <div class="container">
+                        <div class="row justify-content-center mb-4">
+                            <div class="col-md-12 text-center">
+                                <img src="{{ asset('images') }}/planets/{{ $planet_details->photo }}"
+                                    alt="{{ $planet_details->name }}" class="img-fluid img-main rounded shadow-sm"
+                                    id="parent">
+                            </div>
                         </div>
-                        <div class="item">
-                            <img class="rounded-3" src="{{ asset('images') }}/planets/{{ $planet_details->photo_2 }}"
-                                alt="" height="480px" width="480px">
-                        </div>
-                        <div class="item">
-                            <img class="rounded-3" src="{{ asset('images') }}/planets/{{ $planet_details->photo_3 }}"
-                                alt="" height="480px" width="480px">
-                        </div>
-                        <div class="item">
-                            <img class="rounded-3" src="{{ asset('images') }}/planets/{{ $planet_details->photo_4 }}"
-                                alt="" height="480px" width="480px">
+                        <div class="row justify-content-center g-2 person">
+                            <div class="col-3 col-sm-3 col-md-3 col-lg-3">
+                                <img src="{{ asset('images') }}/planets/{{ $planet_details->photo }}"
+                                    class="img-fluid rounded shadow-sm person1 active-thumbnail"
+                                    alt="{{ $planet_details->name }}">
+                            </div>
+                            <div class="col-3 col-sm-3 col-md-3 col-lg-3">
+                                <img src="{{ asset('images') }}/planets/{{ $planet_details->photo_2 }}"
+                                    class="img-fluid rounded shadow-sm person2" alt="{{ $planet_details->name }}">
+                            </div>
+                            <div class="col-3 col-sm-3 col-md-3 col-lg-3">
+                                <img src="{{ asset('images') }}/planets/{{ $planet_details->photo_3 }}"
+                                    class="img-fluid rounded shadow-sm person3" alt="{{ $planet_details->name }}">
+                            </div>
+                            <div class="col-3 col-sm-3 col-md-3 col-lg-3">
+                                <img src="{{ asset('images') }}/planets/{{ $planet_details->photo_4 }}"
+                                    class="img-fluid rounded shadow-sm person4" alt="{{ $planet_details->name }}">
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -290,4 +300,21 @@
         </div>
     </section>
     <!-- ***** Contact End ***** -->
+@endsection
+
+@section('script-changeImageAndSetActive')
+    <script type="text/javascript">
+        $(document).ready(function() {
+            function changeImageAndSetActive(thumbnailElement) {
+                var imgSrc = $(thumbnailElement).attr("src");
+                $("#parent").attr("src", imgSrc);
+                $(".person img").removeClass("active-thumbnail");
+                $(thumbnailElement).addClass("active-thumbnail");
+            }
+
+            $(".person img").click(function() {
+                changeImageAndSetActive(this);
+            });
+        });
+    </script>
 @endsection
