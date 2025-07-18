@@ -108,7 +108,7 @@
                                     collections</a>
                             </div>
                             <div class="border-button">
-                                <a href="{{ route('collections-constellations') }}" target="_blank">Constellation
+                                <a href="{{ route('collections-constellations') }}">Constellation
                                     collections</a>
                             </div>
                         </div>
