@@ -71,6 +71,7 @@
     <script src="{{ asset('user') }}/js/tabs.js"></script>
     <script src="{{ asset('user') }}/js/popup.js"></script>
     <script src="{{ asset('user') }}/js/custom.js"></script>
+    @yield('script-changeImageAndSetActive')
 
 </body>
 

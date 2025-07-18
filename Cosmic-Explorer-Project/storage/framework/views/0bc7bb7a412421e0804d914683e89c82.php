@@ -22,7 +22,6 @@
     <link rel="stylesheet" href="<?php echo e(asset('user')); ?>/css/owl.css">
     <link rel="stylesheet" href="<?php echo e(asset('user')); ?>/css/animate.css">
     <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
-
     <!--
 -->
 </head>
@@ -60,8 +59,8 @@
             </div>
         </div>
     </footer>
-    <!-- ***** Footer End ***** -->
 
+    <!-- ***** Footer End ***** -->
 
     <!-- Scripts -->
     <!-- Bootstrap core JavaScript -->
@@ -74,7 +73,6 @@
     <script src="<?php echo e(asset('user')); ?>/js/tabs.js"></script>
     <script src="<?php echo e(asset('user')); ?>/js/popup.js"></script>
     <script src="<?php echo e(asset('user')); ?>/js/custom.js"></script>
-
 </body>
 
 </html>

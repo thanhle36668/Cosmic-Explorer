@@ -232,7 +232,7 @@
                             </div>
                             <?php $__currentLoopData = $planets; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $planet): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <div class="col-lg-3 col-sm-6">
-                                    <a href="<?php echo e(route('details-planet', $planet->id)); ?>">
+                                    <a href="<?php echo e(route('details-planet', $planet->slug)); ?>">
                                         <div class="item">
                                             <div class="icon">
                                                 <img src="<?php echo e(asset('images')); ?>/planets/<?php echo e($planet->photo); ?>"

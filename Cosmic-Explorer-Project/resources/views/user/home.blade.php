@@ -234,7 +234,7 @@
                             </div>
                             @foreach ($planets as $planet)
                                 <div class="col-lg-3 col-sm-6">
-                                    <a href="{{ route('details-planet', $planet->id) }}">
+                                    <a href="{{ route('details-planet', $planet->slug) }}">
                                         <div class="item">
                                             <div class="icon">
                                                 <img src="{{ asset('images') }}/planets/{{ $planet->photo }}"
