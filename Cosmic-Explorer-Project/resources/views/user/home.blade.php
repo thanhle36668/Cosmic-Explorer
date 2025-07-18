@@ -350,18 +350,18 @@
                                 <div class="col-lg-6">
                                     <fieldset>
                                         <input name="name" type="text" id="name" placeholder="Your name"
-                                            required>
+                                            required="">
                                     </fieldset>
                                 </div>
                                 <div class="col-lg-6">
                                     <fieldset>
                                         <input name="email" type="text" id="email" placeholder="Your email"
-                                            required>
+                                            required="">
                                     </fieldset>
                                 </div>
                                 <div class="col-lg-12">
                                     <fieldset>
-                                        <textarea name="message" rows="6" id="message" placeholder="Your message" required></textarea>
+                                        <textarea name="message" rows="6" id="message" placeholder="Your message" required=""></textarea>
                                     </fieldset>
                                 </div>
                                 <div class="col-lg-12">
@@ -387,13 +387,13 @@
                                 <div class="col-lg-5">
                                     <fieldset>
                                         <input name="name" type="text" id="name" placeholder="Your Name"
-                                            required>
+                                            required="">
                                     </fieldset>
                                 </div>
                                 <div class="col-lg-5">
                                     <fieldset>
                                         <input name="email" type="text" id="email" pattern="[^ @]*@[^ @]*"
-                                            placeholder="Your Email Address" required>
+                                            placeholder="Your Email Address" required="">
                                     </fieldset>
                                 </div>
                                 <div class="col-lg-2">
