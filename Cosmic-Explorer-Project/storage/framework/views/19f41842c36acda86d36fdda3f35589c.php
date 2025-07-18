@@ -50,7 +50,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <p>Copyright © 2025 <a href="#">Cosmic Explorer </a>Aptech Learning Education. All rights reserved.
+                    <p>Copyright © 2025 <a href="#">Cosmic Explorer </a>Aptech Learning Education. All rights
+                        reserved.
                         &nbsp;&nbsp;
                         Designed by <a title="HTML CSS Templates" rel="sponsored" href="#">Team 1</a></p>
                 </div>
@@ -70,8 +71,7 @@
     <script src="<?php echo e(asset('user')); ?>/js/tabs.js"></script>
     <script src="<?php echo e(asset('user')); ?>/js/popup.js"></script>
     <script src="<?php echo e(asset('user')); ?>/js/custom.js"></script>
-    <?php echo $__env->yieldContent('script-changeImageAndSetActive'); ?>
-
+    <script src="<?php echo e(asset('user')); ?>/js/change-image-and-set-active.js"></script>
 </body>
 
 </html>
