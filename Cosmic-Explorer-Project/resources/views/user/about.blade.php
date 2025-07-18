@@ -1,7 +1,7 @@
 @extends('layouts.user.details-page')
 
 @section('title')
-    <title>{{ $discovery_details->title }}</title>
+    <title>About {{ $about->title }}</title>
 @endsection
 
 @section('section-change')
@@ -23,7 +23,7 @@
                                 <a href="{{ route('home') }}">Home</a>
                             </li>
                             <li>
-                                <a href="#">About</a>
+                                <a href="{{ route('about') }}">About</a>
                             </li>
                             <li>
                                 <a href="{{ route('all-news') }}">News</a>
@@ -83,114 +83,106 @@
     <!-- ***** Header End ***** -->
 
     <!-- ***** Main Banner Details ***** -->
-    <section class="page-heading" style="background: url('{{ asset('images') }}/background/background-banner-main.avif')"
+    <div class="page-heading" style="background: url('{{ asset('images') }}/background/background-banner-main.avif')"
         id="top">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="inner-content">
-                        <h1 style="text-transform: uppercase">Discovery</h1>
+                        <h1 style="text-transform: uppercase">About Our</h1>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
     <!-- ***** Main Banner Details End ***** -->
 
-    <!-- ***** Discovery Details  ***** -->
-    <section class="main-banner-details"
-        style="background: url('{{ asset('images') }}/background/background-banner-main.avif');">
+    <!-- ***** About ***** -->
+    <section class="categories-collections" style="background-color: rgb(0,0,0)">
         <div class="container">
             <div class="row">
-                <div class="col-lg-8 col-10 mx-auto">
-                    <h2>{{ $discovery_details->title_details }}</h2>
-                    <span class="me-2">
-                        <strong class="text-light">Author: {{ $discovery_details->author }}</strong>
-                    </span>
-                    <span class="me-2">
-                        <strong class="text-light">Publication
-                            Date:{{ \Carbon\Carbon::parse($discovery_details->created_at)->format('d-m-Y') }}
-                        </strong>
-                    </span>
-                    <p class="mt-2">{{ $discovery_details->description_details }}</p>
-                    <div class="clearfix mt-lg-0 mt-2">
-                        <div class="col-md-6 float-md-end mb-3 ms-md-3 mt-3">
-                            <figure class="figure">
-                                <img src="{{ asset('images') }}/discovery/{{ $discovery_details->photo }}"
-                                    class="img-fluid news-image" alt="{{ $discovery_details->name_photo }}">
-                                <figcaption class="figure-caption text-start text-light mt-2">Picture:
-                                    {{ $discovery_details->name_photo }}
-                                </figcaption>
-                            </figure>
-                        </div>
-                        <p class="mt-2">
-                            {{ $discovery_details->content_1 }}
-                        </p>
-                    </div>
-                    <div class="clearfix mt-lg-0 mt-2">
-                        <div class="col-md-6 float-md-start me-3 mt-3">
-                            <figure class="figure">
-                                <img src="{{ asset('images') }}/discovery/{{ $discovery_details->photo_2 }}"
-                                    class="img-fluid news-image" alt="{{ $discovery_details->name_photo }}">
-                                <figcaption class="figure-caption text-start text-light mt-2">Picture:
-                                    {{ $discovery_details->name_photo }}
-                                </figcaption>
-                            </figure>
-                        </div>
-                        <p class="mt-2">
-                            {{ $discovery_details->content_2 }}
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- ***** Discovery Details End ***** -->
-
-    <!-- ***** Planet Collections ***** -->
-    <section class="categories-collections" style="background-color: rgb(0,0,0) ">
-        <div class="container">
-            <div class="row">
-                <!-- ***** planets Collections ***** -->
-                <div class="col-lg-12">
-                    <div class="collections">
+                <section class="about-us">
+                    <div class="container">
                         <div class="row">
-                            <div class="col-lg-12 title">
-                                <div class="section-heading">
-                                    <div class="line-dec"></div>
-                                    <h2>Planet Collection</h2>
+                            <div class="col-lg-6">
+                                <div class="left-image">
+                                    <img src="{{ asset('images') }}/planets/earth-planet-2.png" alt="">
                                 </div>
                             </div>
-                            <div class="col-lg-12 carousel">
-                                <div class="owl-collection owl-carousel">
-                                    @foreach ($planets as $planet)
-                                        <div class="item">
-                                            <img class="img-planet"
-                                                src="{{ asset('images') }}/planets/{{ $planet->photo_extra }}"
-                                                alt="{{ $planet->name }}">
-                                            <div class="down-content-discovery text-center p-3"
-                                                style="background-color: transparent; border: none">
-                                                <div class="main-button mt-0 mb-0">
-                                                    <a href="{{ route('details-planet', $planet->id) }}">View
-                                                        Details</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    @endforeach
+                            <div class="col-lg-6">
+                                <div class="right-content">
+                                    <h4>About Us &amp; Our Skills</h4>
+                                    <p>{{ $about->description_1 }}</p>
+                                    <p>{{ $about->description_2 }}</p>
+                                    <ul>
+                                        <li>
+                                            <a href="#">
+                                                <i class="fa-brands fa-facebook"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="fa-brands fa-twitter"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="fa-brands fa-linkedin"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <!-- ***** planets Collections End ***** -->
+                </section>
+                <section class="our-services">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="section-heading">
+                                    <h2>Our Services</h2>
+                                    <span class="text-light">Details to details is what makes Hexashop different from the
+                                        other themes.</span>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="service-item">
+                                    <h4>Synther Vaporware</h4>
+                                    <p>Lorem ipsum dolor sit amet, consecteturti adipiscing elit, sed do eiusmod temp
+                                        incididunt ut
+                                        labore, et dolore quis ipsum suspend.</p>
+                                    <img src="{{ asset('images') }}/planets/earth-planet-2.png" alt="">
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="service-item">
+                                    <h4>Locavore Squidward</h4>
+                                    <p>Lorem ipsum dolor sit amet, consecteturti adipiscing elit, sed do eiusmod temp
+                                        incididunt ut
+                                        labore, et dolore quis ipsum suspend.</p>
+                                    <img src="{{ asset('images') }}/planets/earth-planet-2.png" alt="">
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="service-item">
+                                    <h4>Health Gothfam</h4>
+                                    <p>Lorem ipsum dolor sit amet, consecteturti adipiscing elit, sed do eiusmod temp
+                                        incididunt ut
+                                        labore, et dolore quis ipsum suspend.</p>
+                                    <img src="{{ asset('images') }}/planets/earth-planet-2.png" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
             </div>
-            <!-- ***** planets Collections End ***** -->
         </div>
     </section>
-    <!-- ***** Planet Collections End ***** -->
+    <!-- ***** About End ***** -->
 
     <!-- ***** Contact ***** -->
-    <section class="contact" style="background: url('{{ asset('images') }}/background-dark.jpg')">
+    <section class="contact" style="background: url('{{ asset('images') }}/background/background-dark.jpg')">
         <div class="contact-us">
             <div class="container">
                 <div class="row">
@@ -272,8 +264,10 @@
                         <div class="row">
                             <div class="col-6">
                                 <ul>
-                                    <li>School Location:<br><span>35/6 D5 Street, Ward 25, Binh Thanh, Ho Chi Minh City 72308, Vietnam</span></li>
-                                    <li>Website:<br><span><a href="https://aptechvietnam.com.vn/">aptechvietnam.com.vn</a></span></li>
+                                    <li>School Location:<br><span>35/6 D5 Street, Ward 25, Binh Thanh, Ho Chi Minh City
+                                            72308, Vietnam</span></li>
+                                    <li>Website:<br><span><a
+                                                href="https://aptechvietnam.com.vn/">aptechvietnam.com.vn</a></span></li>
                                     <li>Phone:<br><span>+84 1800 1779</span></li>
                                 </ul>
                             </div>
@@ -281,9 +275,12 @@
                                 <ul>
                                     <li>Work Hours:<br><span>07:30 AM - 10:00 PM Daily (Except Sunday)</span></li>
                                     <li>Email:<br><span>aptech2@aprotrain.com</span></li>
-                                    <li>Social Media:<br><span><a href="https://www.facebook.com/AptechVNLearning/">Facebook</a>, <a
-                                                href="https://www.instagram.com/aptechvn.official/">Instagram</a>, <a href="https://www.tiktok.com/@aptechvn.official">Tiktok</a>,
-                                            <a href="https://www.youtube.com/user/aprotrainaptechvn">Youtube</a></span></li>
+                                    <li>Social Media:<br><span><a
+                                                href="https://www.facebook.com/AptechVNLearning/">Facebook</a>, <a
+                                                href="https://www.instagram.com/aptechvn.official/">Instagram</a>, <a
+                                                href="https://www.tiktok.com/@aptechvn.official">Tiktok</a>,
+                                            <a href="https://www.youtube.com/user/aprotrainaptechvn">Youtube</a></span>
+                                    </li>
                                 </ul>
                             </div>
                         </div>

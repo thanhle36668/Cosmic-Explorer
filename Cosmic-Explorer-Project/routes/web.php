@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Route;
 Route::group(['prefix' => ''], function () {
     Route::get('/', [CosmicExplorerController::class, 'home'])->name('home');
     Route::get('/news', [CosmicExplorerController::class, 'news'])->name('news');
+    Route::get('/about', [CosmicExplorerController::class, 'about'])->name('about');
     Route::get('/collections-planets', [CosmicExplorerController::class, 'pageCollectionsPlanets'])->name('collections-planets');
     Route::get('/collections-observatories', [CosmicExplorerController::class, 'pageCollectionsObservatories'])->name('collections-observatories');
     Route::get('/collections-constellations', [CosmicExplorerController::class, 'pageCollectionsConstellations'])->name('collections-constellations');
