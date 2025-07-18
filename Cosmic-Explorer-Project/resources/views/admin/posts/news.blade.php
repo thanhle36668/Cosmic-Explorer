@@ -84,7 +84,7 @@
 
     <!-- ***** Main Banner Details ***** -->
     <section class="page-heading"
-        style="background-image: url('{{ asset('images') }}/background/background-banner-main.avif')" id="top">
+        style="background-image: url('{{ asset('images/background') }}/background-banner-main.avif')" id="top">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -98,7 +98,7 @@
     <!-- ***** Main Banner Details End ***** -->
 
     <!-- ***** Constellation Details  ***** -->
-    <section class="section-padding" style="background: url('{{ asset('images') }}/background/background-dark.jpg')">
+    <section class="section-padding" style="background: url('{{ asset('images/background')}}/background-dark.jpg')">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-10 mx-auto">
@@ -135,6 +135,38 @@
             </div>
         </div>
     </section>
+
+    <!-- comment -->
+    <section style="padding-top: 60px; padding-bottom: 60px; background-image: url('{{ asset('images/background')}}/background-banner-main.avif')">
+      <!-- Default box -->
+      <div class="container">
+        <div class="col">
+          <div class="col-lg-8 col-10 mx-auto">
+  
+              <h2 style="margin-bottom: 30px;">Leave a comment</h2>
+        
+          
+            <div class="form-group">
+              <label for="inputName" style="color: azure; margin-bottom: 5px" >Name</label>
+              <input type="text" id="inputName" class="form-control" />
+            </div>
+            <div class="form-group">
+              <label for="inputEmail" style="color: azure; margin-bottom: 5px; margin-top: 10px" >E-Mail</label>
+              <input type="email" id="inputEmail" class="form-control" />
+            </div>
+            <div class="form-group">
+              <label for="inputMessage" style="color: azure; margin-bottom: 5px; margin-top: 10px" >Your comment</label>
+              <textarea id="inputMessage" class="form-control" rows="4"></textarea>
+            </div>
+            <div class="form-group">
+              <input style="margin-top: 20px" type="submit" class="btn btn-primary" value="Send">
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
     <!-- ***** Constellation Details  End ***** -->
 
     <!-- ***** Constellation Collections ***** -->
