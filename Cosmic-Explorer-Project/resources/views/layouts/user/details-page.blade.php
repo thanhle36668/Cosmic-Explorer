@@ -56,8 +56,7 @@
                     <p>Copyright © 2025 <a href="#">Team 1</a> - Aptech Education. All rights reserved.
 >>>>>>> dev
                         &nbsp;&nbsp;
-                        Designed by <a title="HTML CSS Templates" rel="sponsored" href="https://templatemo.com"
-                            target="_blank">Team 1</a></p>
+                        Designed by <a title="HTML CSS Templates" rel="sponsored" href="#">Team 1</a></p>
                 </div>
             </div>
         </div>
