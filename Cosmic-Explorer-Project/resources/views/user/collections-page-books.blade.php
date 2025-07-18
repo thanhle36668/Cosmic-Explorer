@@ -23,7 +23,7 @@
                                 <a href="{{ route('home') }}">Home</a>
                             </li>
                             <li>
-                                <a href="#">About</a>
+                                <a href="{{ route('about') }}">About</a>
                             </li>
                             <li>
                                 <a href="{{ route('all-news') }}">News</a>
@@ -228,8 +228,10 @@
                         <div class="row">
                             <div class="col-6">
                                 <ul>
-                                    <li>School Location:<br><span>35/6 D5 Street, Ward 25, Binh Thanh, Ho Chi Minh City 72308, Vietnam</span></li>
-                                    <li>Website:<br><span><a href="https://aptechvietnam.com.vn/">aptechvietnam.com.vn</a></span></li>
+                                    <li>School Location:<br><span>35/6 D5 Street, Ward 25, Binh Thanh, Ho Chi Minh City
+                                            72308, Vietnam</span></li>
+                                    <li>Website:<br><span><a
+                                                href="https://aptechvietnam.com.vn/">aptechvietnam.com.vn</a></span></li>
                                     <li>Phone:<br><span>+84 1800 1779</span></li>
                                 </ul>
                             </div>
@@ -237,9 +239,12 @@
                                 <ul>
                                     <li>Work Hours:<br><span>07:30 AM - 10:00 PM Daily (Except Sunday)</span></li>
                                     <li>Email:<br><span>aptech2@aprotrain.com</span></li>
-                                    <li>Social Media:<br><span><a href="https://www.facebook.com/AptechVNLearning/">Facebook</a>, <a
-                                                href="https://www.instagram.com/aptechvn.official/">Instagram</a>, <a href="https://www.tiktok.com/@aptechvn.official">Tiktok</a>,
-                                            <a href="https://www.youtube.com/user/aprotrainaptechvn">Youtube</a></span></li>
+                                    <li>Social Media:<br><span><a
+                                                href="https://www.facebook.com/AptechVNLearning/">Facebook</a>, <a
+                                                href="https://www.instagram.com/aptechvn.official/">Instagram</a>, <a
+                                                href="https://www.tiktok.com/@aptechvn.official">Tiktok</a>,
+                                            <a href="https://www.youtube.com/user/aprotrainaptechvn">Youtube</a></span>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
