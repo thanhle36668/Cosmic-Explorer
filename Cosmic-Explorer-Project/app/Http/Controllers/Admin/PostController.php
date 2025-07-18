@@ -21,7 +21,9 @@ class PostController extends Controller
 
     public function allnews()
     {
-        $posts = Post::latest()->paginate(5);
+        $posts = Post::where('is_published', true)
+                 ->latest()
+                 ->paginate(5);
         return view('admin.posts.all-news', compact('posts'));
 
     }

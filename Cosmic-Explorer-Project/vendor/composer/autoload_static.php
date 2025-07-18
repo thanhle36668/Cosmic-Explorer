@@ -558,7 +558,6 @@ class ComposerStaticInit9c491b8531eec05ba41a11d9276a5749
         'App\\Models\\Comment' => __DIR__ . '/../..' . '/app/Models/Comment.php',
         'App\\Models\\Constellations' => __DIR__ . '/../..' . '/app/Models/Constellations.php',
         'App\\Models\\Discovery' => __DIR__ . '/../..' . '/app/Models/Discovery.php',
-        'App\\Models\\Example' => __DIR__ . '/../..' . '/app/Models/Example.php',
         'App\\Models\\News' => __DIR__ . '/../..' . '/app/Models/News.php',
         'App\\Models\\Observatories' => __DIR__ . '/../..' . '/app/Models/Observatories.php',
         'App\\Models\\Planets' => __DIR__ . '/../..' . '/app/Models/Planets.php',

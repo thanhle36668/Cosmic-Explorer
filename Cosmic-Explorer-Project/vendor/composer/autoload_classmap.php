@@ -29,7 +29,6 @@ return array(
     'App\\Models\\Comment' => $baseDir . '/app/Models/Comment.php',
     'App\\Models\\Constellations' => $baseDir . '/app/Models/Constellations.php',
     'App\\Models\\Discovery' => $baseDir . '/app/Models/Discovery.php',
-    'App\\Models\\Example' => $baseDir . '/app/Models/Example.php',
     'App\\Models\\News' => $baseDir . '/app/Models/News.php',
     'App\\Models\\Observatories' => $baseDir . '/app/Models/Observatories.php',
     'App\\Models\\Planets' => $baseDir . '/app/Models/Planets.php',
