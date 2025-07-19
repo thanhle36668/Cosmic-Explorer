@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\MessagesController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\CosmicExplorerController;
 use App\Http\Controllers\AuthController;
@@ -25,6 +26,7 @@ Route::group(['prefix' => ''], function () {
     Route::get('/details-constellation/{slug}', [CosmicExplorerController::class, 'pageDetailsConstellation'])->name('details-constellation');
     Route::get('/details-discovery/{slug}', [CosmicExplorerController::class, 'pageDetailsDiscovery'])->name('details-discovery');
     Route::get('/details-book/{slug}', [CosmicExplorerController::class, 'pageDetailsBook'])->name('details-book');
+    Route::post('/send-message', [MessagesController::class, 'sendMessage'])->name('send-message');
 });
 
 
@@ -37,6 +39,7 @@ Route::middleware(['auth', 'is_admin'])
             ->name('admin.dashboard');
         Route::resource('posts', PostController::class);
         Route::resource('comments', CommentController::class);
+        Route::get('/messages', [MessagesController::class, 'messages'])->name('messages');
     });
 
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
