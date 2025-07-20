@@ -74,6 +74,20 @@
     <script src="{{ asset('user') }}/js/tabs.js"></script>
     <script src="{{ asset('user') }}/js/popup.js"></script>
     <script src="{{ asset('user') }}/js/custom.js"></script>
+    @if (session('success-message'))
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                var successAlert = document.getElementById('successAlert');
+                if (successAlert) {
+                    setTimeout(function() {
+                        var bootstrapAlert = new bootstrap.Alert(
+                            successAlert);
+                        bootstrapAlert.close();
+                    }, 5000);
+                }
+            });
+        </script>
+    @endif
 </body>
 
 </html>

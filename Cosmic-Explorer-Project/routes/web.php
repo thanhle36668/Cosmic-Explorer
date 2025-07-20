@@ -40,6 +40,10 @@ Route::middleware(['auth', 'is_admin'])
         Route::resource('posts', PostController::class);
         Route::resource('comments', CommentController::class);
         Route::get('/messages', [MessagesController::class, 'messages'])->name('messages');
+        Route::get('/details-message/{id}', [MessagesController::class, 'detailsMessage'])->name('details-message');
+        Route::post('/reply-message', [MessagesController::class, 'replyMessage'])->name('reply-message');
+        Route::get('/delete-message/{id}', [MessagesController::class, 'deleteMessage'])->name('delete-message');
+        Route::post('/search-message', [MessagesController::class, 'searchMessage'])->name('search-message');
     });
 
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
