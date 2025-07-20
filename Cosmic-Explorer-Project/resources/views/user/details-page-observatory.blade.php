@@ -27,7 +27,7 @@
                                 <a href="{{ route('home') }}">Home</a>
                             </li>
                             <li>
-                                <a href="#">About</a>
+                                <a href="{{ route('about') }}">About</a>
                             </li>
                             <li>
                                 <a href="{{ route('all-news') }}">News</a>
@@ -284,18 +284,23 @@
                         <div class="row">
                             <div class="col-6">
                                 <ul>
-                                    <li>Store Location:<br><span>Sunny Isles Beach, FL 33160, United States</span></li>
-                                    <li>Phone:<br><span>010-020-0340</span></li>
-                                    <li>Office Location:<br><span>North Miami Beach</span></li>
+                                    <li>School Location:<br><span>35/6 D5 Street, Ward 25, Binh Thanh, Ho Chi Minh City
+                                            72308, Vietnam</span></li>
+                                    <li>Website:<br><span><a
+                                                href="https://aptechvietnam.com.vn/">aptechvietnam.com.vn</a></span></li>
+                                    <li>Phone:<br><span>+84 1800 1779</span></li>
                                 </ul>
                             </div>
                             <div class="col-6">
                                 <ul>
-                                    <li>Work Hours:<br><span>07:30 AM - 9:30 PM Daily</span></li>
-                                    <li>Email:<br><span>info@company.com</span></li>
-                                    <li>Social Media:<br><span><a href="#">Facebook</a>, <a
-                                                href="#">Instagram</a>, <a href="#">Behance</a>,
-                                            <a href="#">Linkedin</a></span></li>
+                                    <li>Work Hours:<br><span>07:30 AM - 10:00 PM Daily (Except Sunday)</span></li>
+                                    <li>Email:<br><span>aptech2@aprotrain.com</span></li>
+                                    <li>Social Media:<br><span><a
+                                                href="https://www.facebook.com/AptechVNLearning/">Facebook</a>, <a
+                                                href="https://www.instagram.com/aptechvn.official/">Instagram</a>, <a
+                                                href="https://www.tiktok.com/@aptechvn.official">Tiktok</a>,
+                                            <a href="https://www.youtube.com/user/aprotrainaptechvn">Youtube</a></span>
+                                    </li>
                                 </ul>
                             </div>
                         </div>

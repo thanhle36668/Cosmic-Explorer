@@ -3,14 +3,9 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Spatie\Sluggable\HasSlug;
-use Spatie\Sluggable\SlugOptions;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Discovery extends Model
 {
-    use HasFactory, HasSlug;
-
     public $table = 'discovery';
 
     public $primaryKey = 'id';
@@ -30,11 +25,4 @@ class Discovery extends Model
         'created_at',
         'slug'
     ];
-
-    public function getSlugOptions(): SlugOptions
-    {
-        return SlugOptions::create()
-            ->generateSlugsFrom('title')
-            ->saveSlugsTo('slug');
-    }
 }

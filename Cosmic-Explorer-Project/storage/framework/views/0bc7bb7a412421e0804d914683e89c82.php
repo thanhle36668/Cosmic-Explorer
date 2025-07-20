@@ -22,7 +22,6 @@
     <link rel="stylesheet" href="<?php echo e(asset('user')); ?>/css/owl.css">
     <link rel="stylesheet" href="<?php echo e(asset('user')); ?>/css/animate.css">
     <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
-
     <!--
 -->
 </head>
@@ -52,16 +51,15 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <p>Copyright © 2022 <a href="#">Liberty</a> NFT Marketplace Co., Ltd. All rights reserved.
+                    <p>Copyright © 2025 <a href="#">Cosmic Explorer </a>Aptech Learning Education. All rights reserved.
                         &nbsp;&nbsp;
-                        Designed by <a title="HTML CSS Templates" rel="sponsored" href="https://templatemo.com"
-                            target="_blank">TemplateMo</a></p>
+                        Designed by <a title="HTML CSS Templates" rel="sponsored" href="#">Team 1</a></p>
                 </div>
             </div>
         </div>
     </footer>
-    <!-- ***** Footer End ***** -->
 
+    <!-- ***** Footer End ***** -->
 
     <!-- Scripts -->
     <!-- Bootstrap core JavaScript -->
@@ -74,7 +72,6 @@
     <script src="<?php echo e(asset('user')); ?>/js/tabs.js"></script>
     <script src="<?php echo e(asset('user')); ?>/js/popup.js"></script>
     <script src="<?php echo e(asset('user')); ?>/js/custom.js"></script>
-
 </body>
 
 </html>
