@@ -3,7 +3,11 @@
         'name' => 'laravel/laravel',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
+<<<<<<< HEAD
         'reference' => '2d69adfefe2c4d84d00f3c90a5a845fa43d41a61',
+=======
+        'reference' => '771f7ed1ef9887badace898a1b555e7411e02231',
+>>>>>>> dev
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -382,7 +386,11 @@
         'laravel/laravel' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
+<<<<<<< HEAD
             'reference' => '2d69adfefe2c4d84d00f3c90a5a845fa43d41a61',
+=======
+            'reference' => '771f7ed1ef9887badace898a1b555e7411e02231',
+>>>>>>> dev
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -997,6 +1005,15 @@
             'install_path' => __DIR__ . '/../spatie/laravel-ignition',
             'aliases' => array(),
             'dev_requirement' => true,
+        ),
+        'spatie/laravel-sluggable' => array(
+            'pretty_version' => '3.7.5',
+            'version' => '3.7.5.0',
+            'reference' => 'e4fdd519e043a2af02b52eec2c3be2dd2e262e27',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../spatie/laravel-sluggable',
+            'aliases' => array(),
+            'dev_requirement' => false,
         ),
         'symfony/console' => array(
             'pretty_version' => 'v6.4.23',

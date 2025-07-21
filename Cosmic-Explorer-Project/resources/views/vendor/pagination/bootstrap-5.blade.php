@@ -31,7 +31,6 @@
         <div class="d-none d-sm-flex align-items-sm-center">
             <div>
             </div>
-
             <div>
                 <ul class="pagination">
                     {{-- Previous Page Link --}}

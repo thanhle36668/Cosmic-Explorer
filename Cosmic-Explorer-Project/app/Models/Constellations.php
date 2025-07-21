@@ -23,6 +23,7 @@ class Constellations extends Model
         'identification',
         'main_stars',
         'notable_features',
-        'myths_meaning'
+        'myths_meaning',
+        'slug',
     ];
 }

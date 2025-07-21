@@ -10,14 +10,21 @@ use Illuminate\Support\Facades\Route;
 Route::group(['prefix' => ''], function () {
     Route::get('/', [CosmicExplorerController::class, 'home'])->name('home');
     Route::get('/news', [CosmicExplorerController::class, 'news'])->name('news');
+    Route::get('/about', [CosmicExplorerController::class, 'about'])->name('about');
     Route::get('/collections-planets', [CosmicExplorerController::class, 'pageCollectionsPlanets'])->name('collections-planets');
     Route::get('/collections-observatories', [CosmicExplorerController::class, 'pageCollectionsObservatories'])->name('collections-observatories');
     Route::get('/collections-constellations', [CosmicExplorerController::class, 'pageCollectionsConstellations'])->name('collections-constellations');
-    Route::get('/new-details', [CosmicExplorerController::class, 'pageDetailsNew'])->name('details-new');
-    Route::get('/planet-details/{id}', [CosmicExplorerController::class, 'pageDetailsPlanet'])->name('details-planet');
-    Route::get('/observatory-details/{id}', [CosmicExplorerController::class, 'pageDetailsObservatory'])->name('details-observatory');
-    Route::get('/constellation-details/{id}', [CosmicExplorerController::class, 'pageDetailsConstellation'])->name('details-constellation');
-    Route::get('/news-details/{id}', [CosmicExplorerController::class, 'pageDetailsNews'])->name('details-news');
+    Route::get('/collections-books', [CosmicExplorerController::class, 'pageCollectionsBooks'])->name('collections-books');
+    Route::get('/collections-videos', [CosmicExplorerController::class, 'pageCollectionsVideos'])->name('collections-videos');
+    // News Page
+    Route::get('/news', [CosmicExplorerController::class, 'news'])->name('news');
+    Route::get('/details-new/{id}', [CosmicExplorerController::class, 'pageDetailsNew'])->name('details-new');
+    // Details Page
+    Route::get('/details-planet/{slug}', [CosmicExplorerController::class, 'pageDetailsPlanet'])->name('details-planet');
+    Route::get('/details-observatory/{slug}', [CosmicExplorerController::class, 'pageDetailsObservatory'])->name('details-observatory');
+    Route::get('/details-constellation/{slug}', [CosmicExplorerController::class, 'pageDetailsConstellation'])->name('details-constellation');
+    Route::get('/details-discovery/{slug}', [CosmicExplorerController::class, 'pageDetailsDiscovery'])->name('details-discovery');
+    Route::get('/details-book/{slug}', [CosmicExplorerController::class, 'pageDetailsBook'])->name('details-book');
 });
 
 
@@ -34,6 +41,6 @@ Route::middleware(['auth', 'is_admin'])
 
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::get('/posts/{slug}', [PostController::class, 'show'])->name('posts.show');
-
+Route::get('/all-news', [PostController::class, 'allnews'])->name('all-news');
 Route::post('/process-login', [AuthController::class, 'processLogin'])->name('process-login');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');

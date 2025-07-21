@@ -24,6 +24,7 @@ class Planets extends Model
         'diameter_km',
         'avg_distance_to_earth_km',
         'avg_distance_to_sun_km',
-        'brief_intro_composition'
+        'brief_intro_composition',
+        'slug',
     ];
 }
