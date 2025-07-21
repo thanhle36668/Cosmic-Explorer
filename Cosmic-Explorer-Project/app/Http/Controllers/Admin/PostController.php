@@ -34,8 +34,6 @@ class PostController extends Controller
         return view('admin.posts.create', compact('categories'));
     }
 
-
-
     public function show($slug)
     {
         $post = Post::where('slug', $slug)->firstOrFail();
@@ -47,8 +45,6 @@ class PostController extends Controller
 
         return view('admin.posts.news', compact('post', 'comments'));
     }
-
-    
 
     public function store(Request $request)
     {
