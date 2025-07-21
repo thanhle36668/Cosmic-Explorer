@@ -37,21 +37,21 @@
                                     <li class="nav-item">
                                         <a class="dropdown-item" href="{{ route('collections-planets') }}"
                                             id="navbarDropdownPlanets">
-                                            Planets
+                                            Planet
                                         </a>
                                     </li>
 
                                     <li class="nav-item">
                                         <a class="dropdown-item" href="{{ route('collections-constellations') }}"
                                             id="navbarDropdownConstellations">
-                                            Constellations
+                                            Constellation
                                         </a>
                                     </li>
 
                                     <li class="nav-item">
                                         <a class="dropdown-item" href="{{ route('collections-observatories') }}"
                                             id="navbarDropdownObservatories">
-                                            Observatories
+                                            Observatorie
                                         </a>
                                     </li>
                                 </ul>
@@ -142,17 +142,18 @@
                             <div class="col-lg-12">
                                 <div class="section-heading">
                                     <h2>Our Services</h2>
-                                    <span class="text-light">Explore the universe with us through immersive experiences, educational tools, and the latest cosmic discoveries.</span>
+                                    <span class="text-light">Explore the universe with us through immersive experiences,
+                                        educational tools, and the latest cosmic discoveries.</span>
                                 </div>
                             </div>
                             @foreach ($services as $service)
-                            <div class="col-lg-4">
-                                <div class="service-item">
-                                    <h4>{{ $service->name }}</h4>
-                                    <p>{{ $service->description }}</p>
-                                    <img src="{{ asset('images') }}/about/{{ $service->photo }}" alt="">
+                                <div class="col-lg-4">
+                                    <div class="service-item">
+                                        <h4>{{ $service->name }}</h4>
+                                        <p>{{ $service->description }}</p>
+                                        <img src="{{ asset('images') }}/about/{{ $service->photo }}" alt="">
+                                    </div>
                                 </div>
-                            </div>
                             @endforeach
                         </div>
                     </div>

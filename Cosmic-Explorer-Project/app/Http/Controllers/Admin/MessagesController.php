@@ -19,7 +19,7 @@ class MessagesController extends Controller
         ];
 
         Messages::create($message);
-        return redirect('/')->with('success-message', 'Your message has been sent successfully. Thank you.');
+        return redirect('/')->with('success-message', 'Your message has been sent. Thank you!');
     }
 
     public function messages()

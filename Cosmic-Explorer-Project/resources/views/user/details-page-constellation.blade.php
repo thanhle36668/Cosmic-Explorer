@@ -37,21 +37,21 @@
                                     <li class="nav-item">
                                         <a class="dropdown-item" href="{{ route('collections-planets') }}"
                                             id="navbarDropdownPlanets">
-                                            Planets
+                                            Planet
                                         </a>
                                     </li>
 
                                     <li class="nav-item">
                                         <a class="dropdown-item" href="{{ route('collections-constellations') }}"
                                             id="navbarDropdownConstellations">
-                                            Constellations
+                                            Constellation
                                         </a>
                                     </li>
 
                                     <li class="nav-item">
                                         <a class="dropdown-item" href="{{ route('collections-observatories') }}"
                                             id="navbarDropdownObservatories">
-                                            Observatories
+                                            Observatorie
                                         </a>
                                     </li>
                                 </ul>
@@ -126,34 +126,33 @@
                     </div>
                 </div>
                 <div class="col-lg-5 offset-lg-1">
-                    <div class="owl-banner owl-carousel ">
-                        <div class="item">
-                            <img class="rounded-3"
-                                src="{{ asset('images') }}/constellations/{{ $constellation_details->photo }}"
-                                alt="{{ $constellation_details->name }}" height="480px" width="480px">
-                        </div>
-                        <div class="item">
-                            <img class="rounded-3"
-                                src="{{ asset('images') }}/constellations/{{ $constellation_details->photo_2 }}"
-                                alt="{{ $constellation_details->name }}" height="480px" width="480px">
-                        </div>
-                        <div class="item">
-                            <img class="rounded-3"
-                                src="{{ asset('images') }}/constellations/{{ $constellation_details->photo_3 }}"
-                                alt="{{ $constellation_details->name }}" height="480px" width="480px">
-                        </div>
-                        <div class="item">
-                            <img class="rounded-3"
-                                src="{{ asset('images') }}/constellations/{{ $constellation_details->photo_4 }}"
-                                alt="{{ $constellation_details->name }}" height="480px" width="480px">
-                        </div>
-                        @if ($constellation_details->photo_5 !== '')
-                            <div class="item">
-                                <img class="rounded-3"
-                                    src="{{ asset('images') }}/constellations/{{ $constellation_details->photo_5 }}"
-                                    alt="{{ $constellation_details->name }}" height="480px" width="480px">
+                    <div class="container">
+                        <div class="row justify-content-center mb-4">
+                            <div class="col-md-12 text-center">
+                                <img src="{{ asset('images') }}/constellations/{{ $constellation_details->photo }}"
+                                    alt="{{ $constellation_details->name }}" class="img-fluid img-main rounded shadow-sm"
+                                    id="parent">
                             </div>
-                        @endif
+                        </div>
+                        <div class="row justify-content-center g-2 person">
+                            <div class="col-3 col-sm-3 col-md-3 col-lg-3">
+                                <img src="{{ asset('images') }}/constellations/{{ $constellation_details->photo }}"
+                                    class="img-fluid rounded shadow-sm person1 active-thumbnail"
+                                    alt="{{ $constellation_details->name }}">
+                            </div>
+                            <div class="col-3 col-sm-3 col-md-3 col-lg-3">
+                                <img src="{{ asset('images') }}/constellations/{{ $constellation_details->photo_2 }}"
+                                    class="img-fluid rounded shadow-sm person2" alt="{{ $constellation_details->name }}">
+                            </div>
+                            <div class="col-3 col-sm-3 col-md-3 col-lg-3">
+                                <img src="{{ asset('images') }}/constellations/{{ $constellation_details->photo_3 }}"
+                                    class="img-fluid rounded shadow-sm person3" alt="{{ $constellation_details->name }}">
+                            </div>
+                            <div class="col-3 col-sm-3 col-md-3 col-lg-3">
+                                <img src="{{ asset('images') }}/constellations/{{ $constellation_details->photo_4 }}"
+                                    class="img-fluid rounded shadow-sm person4" alt="{{ $constellation_details->name }}">
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -161,7 +160,7 @@
     </section>
     <!-- ***** Constellation Details  End ***** -->
 
-    <!-- ***** Constellation Collections ***** -->
+    <!-- ***** Constellation Collection ***** -->
     <section class="categories-collections"
         style="background: url('{{ asset('images') }}/background/background-collections.jpg');">
         <div class="container">
@@ -173,7 +172,7 @@
                             <div class="col-lg-12 title">
                                 <div class="section-heading">
                                     <div class="line-dec"></div>
-                                    <h2>Constellations Collection</h2>
+                                    <h2>Constellation Collection</h2>
                                 </div>
                             </div>
                             <div class="col-lg-12 carousel">
@@ -186,11 +185,7 @@
                                             <div class="down-content p-3" style="background-color: #282B2F;">
                                                 <div class="main-button main-button-constellation text-center">
                                                     <h4 class="mb-2">{{ $constellation->name }}</h4>
-<<<<<<< HEAD
-                                                    <a href="{{ route('details-constellation', $constellation->id) }}">View
-=======
                                                     <a href="{{ route('details-constellation', $constellation->slug) }}">View
->>>>>>> dev
                                                         Details</a>
                                                 </div>
                                             </div>
@@ -205,7 +200,7 @@
             </div>
         </div>
     </section>
-    <!-- ***** Constellation Collections End ***** -->
+    <!-- ***** Constellation Collection End ***** -->
 
     <!-- ***** Contact ***** -->
     <section class="contact" style="background: url('{{ asset('images') }}/background/background-dark.jpg')">
@@ -315,4 +310,21 @@
         </div>
     </section>
     <!-- ***** Contact End ***** -->
+@endsection
+
+@section('script-changeImageAndSetActive')
+    <script type="text/javascript">
+        $(document).ready(function() {
+            function changeImageAndSetActive(thumbnailElement) {
+                var imgSrc = $(thumbnailElement).attr("src");
+                $("#parent").attr("src", imgSrc);
+                $(".person img").removeClass("active-thumbnail");
+                $(thumbnailElement).addClass("active-thumbnail");
+            }
+
+            $(".person img").click(function() {
+                changeImageAndSetActive(this);
+            });
+        });
+    </script>
 @endsection

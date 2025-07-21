@@ -1,7 +1,7 @@
 @extends('layouts.user.cosmic-explorer')
 
 @section('title')
-    <title>Observatories Collections</title>
+    <title>Observatory Collection</title>
 @endsection
 
 @section('section-change')
@@ -37,21 +37,21 @@
                                     <li class="nav-item">
                                         <a class="dropdown-item" href="{{ route('collections-planets') }}"
                                             id="navbarDropdownPlanets">
-                                            Planets
+                                            Planet
                                         </a>
                                     </li>
 
                                     <li class="nav-item">
                                         <a class="dropdown-item" href="{{ route('collections-constellations') }}"
                                             id="navbarDropdownConstellations">
-                                            Constellations
+                                            Constellation
                                         </a>
                                     </li>
 
                                     <li class="nav-item">
                                         <a class="dropdown-item" href="{{ route('collections-observatories') }}"
                                             id="navbarDropdownObservatories">
-                                            Observatories
+                                            Observatorie
                                         </a>
                                     </li>
                                 </ul>
@@ -97,7 +97,7 @@
     </div>
     <!-- ***** Main Banner Details End ***** -->
 
-    <!-- ***** Collections Observatories ***** -->
+    <!-- ***** Collection Observatory ***** -->
     <section id="collections" class="px-5 py-5"
         style="background: url('{{ asset('images') }}/background/background-collections.jpg')">
         <div class="container">
@@ -129,7 +129,7 @@
             {{ $observatories->links('pagination::bootstrap-5') }}
         </div>
     </section>
-    <!-- ***** Collections Planets End ***** -->
+    <!-- ***** Collection Observatory End ***** -->
 
     <!-- ***** Contact ***** -->
     <section class="contact" style="background: url('{{ asset('images') }}/background/background-dark.jpg')">

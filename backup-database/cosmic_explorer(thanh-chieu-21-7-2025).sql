@@ -32,7 +32,7 @@ CREATE TABLE `about` (
   `title` varchar(250) NOT NULL,
   `description_1` text NOT NULL,
   `description_2` text NOT NULL,
-  `photo` varchar(250) NOT NULL,
+  `photo` varchar(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --

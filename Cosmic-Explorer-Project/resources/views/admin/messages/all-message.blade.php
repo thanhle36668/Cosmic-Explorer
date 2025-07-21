@@ -81,7 +81,7 @@
                                 {{ $message->sender_email }}
                             </td>
                             <td>
-                                {{ $message->time_received_message->format('Y-m-d H:i:s') }}
+                                {{ $message->time_received_message->format('d/m/Y - H:i:s') }}
                             </td>
                             <td>
                                 @if ($message->status)
@@ -93,7 +93,9 @@
                                 @endif
                             </td>
                             <td>
-                                {{ $message->time_reply_message }}
+                                @if ($message->time_reply_message)
+                                    {{ date('d/m/Y - H:i:s', strtotime($message->time_reply_message)) }}
+                                @endif
                             </td>
                             <td>
                                 @if ($message->status)

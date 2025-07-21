@@ -74,7 +74,7 @@
                                 {{ $person->email }}
                             </td>
                             <td>
-                                {{ $person->registration_date }}
+                                {{ $person->registration_date->format('d/m/Y - H:i:s') }}
                             </td>
                             <td>
                                 @if ($person->status)

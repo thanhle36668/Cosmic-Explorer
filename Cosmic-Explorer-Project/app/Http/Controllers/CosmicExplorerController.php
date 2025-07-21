@@ -7,6 +7,7 @@ use App\Models\About_services;
 use App\Models\Books;
 use App\Models\Constellations;
 use App\Models\Discovery;
+use App\Models\Introduction;
 use App\Models\Observatories;
 use App\Models\Planets;
 use App\Models\Videos;
@@ -18,6 +19,7 @@ class CosmicExplorerController extends Controller
     public function home()
     {
         $data = [
+            'introduction' => Introduction::get(),
             'planets' => Planets::get(),
             'constellations' => Constellations::orderBy('name', 'asc')->get(),
             'observatories' => Observatories::orderBy('name', 'desc')->get(),

@@ -4,7 +4,7 @@
     @if ($observatory_details->observatories)
         <title>{{ $observatory_details->name }}</title>
     @else
-        <title>{{ $observatory_details->name }} Observatory</title>
+        <title>{{ $observatory_details->name }}</title>
     @endif
 @endsection
 
@@ -27,17 +27,10 @@
                                 <a href="{{ route('home') }}">Home</a>
                             </li>
                             <li>
-<<<<<<< HEAD
-                                <a href="#">About</a>
-                            </li>
-                            <li>
-                                <a href="{{ route('news') }}">News</a>
-=======
                                 <a href="{{ route('about') }}">About</a>
                             </li>
                             <li>
                                 <a href="{{ route('all-news') }}">News</a>
->>>>>>> dev
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownCollections"
@@ -48,21 +41,21 @@
                                     <li class="nav-item">
                                         <a class="dropdown-item" href="{{ route('collections-planets') }}"
                                             id="navbarDropdownPlanets">
-                                            Planets
+                                            Planet
                                         </a>
                                     </li>
 
                                     <li class="nav-item">
                                         <a class="dropdown-item" href="{{ route('collections-constellations') }}"
                                             id="navbarDropdownConstellations">
-                                            Constellations
+                                            Constellation
                                         </a>
                                     </li>
 
                                     <li class="nav-item">
                                         <a class="dropdown-item" href="{{ route('collections-observatories') }}"
                                             id="navbarDropdownObservatories">
-                                            Observatories
+                                            Observatorie
                                         </a>
                                     </li>
                                 </ul>
@@ -74,17 +67,10 @@
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <li>
-<<<<<<< HEAD
-                                        <a class="dropdown-item" href="#">Videos</a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="#">Books</a>
-=======
                                         <a class="dropdown-item" href="{{ route('collections-books') }}">Books</a>
                                     </li>
                                     <li>
                                         <a class="dropdown-item" href="{{ route('collections-videos') }}">Videos</a>
->>>>>>> dev
                                     </li>
                                 </ul>
                             </li>
@@ -101,22 +87,13 @@
     <!-- ***** Header End ***** -->
 
     <!-- ***** Main Banner Details ***** -->
-<<<<<<< HEAD
-    <section class="page-heading"
-        style="background-image: url('{{ asset('images') }}/background/background-banner-main.avif')" id="top">
-=======
     <section class="page-heading" style="background: url('{{ asset('images') }}/background/background-banner-main.avif')"
         id="top">
->>>>>>> dev
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="inner-content">
-                        @if ($observatory_details->observatories)
-                            <h1 style="text-transform: uppercase">{{ $observatory_details->name }}</h1>
-                        @else
-                            <h1 style="text-transform: uppercase">{{ $observatory_details->name }} Observatory</h1>
-                        @endif
+                        <h1 style="text-transform: uppercase">{{ $observatory_details->name }}</h1>
                     </div>
                 </div>
             </div>
@@ -126,30 +103,13 @@
 
     <!-- ***** Observatory Details  ***** -->
     <section class="main-banner-details"
-<<<<<<< HEAD
-        style="background-image: url('{{ asset('images') }}/background/background-banner-main.avif');">
-=======
         style="background: url('{{ asset('images') }}/background/background-banner-main.avif');">
->>>>>>> dev
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 align-self-center">
                     <div class="header-text">
                         <h2>{{ $observatory_details->name }}</h2>
                         <ul class="info-list">
-<<<<<<< HEAD
-                            <li><strong>Location:</strong> {{ $observatory_details->location }}</li>
-                            <li><strong>Altitude and Advantage:</strong>{{ $observatory_details->altitude_meters }}</li>
-                            <li><strong>Established:</strong>{{ $observatory_details->established_year }}
-                            </li>
-                            <li><strong>Managing Organization:</strong>{{ $observatory_details->managing_organization }}
-                            </li>
-                            <li><strong>Main Instruments:</strong>{{ $observatory_details->main_instruments }}
-                            </li>
-                            <li><strong>Primary Research:</strong>{{ $observatory_details->primary_research_areas }}
-                            </li>
-                            <li><strong>Public Access:</strong>{{ $observatory_details->public_access_info }}
-=======
                             <li><strong>Location: </strong> {{ $observatory_details->location }}</li>
                             <li><strong>Altitude and Advantage: </strong>{{ $observatory_details->altitude_meters }}</li>
                             <li><strong>Established: </strong>{{ $observatory_details->established_year }}
@@ -161,52 +121,52 @@
                             <li><strong>Primary Research: </strong>{{ $observatory_details->primary_research_areas }}
                             </li>
                             <li><strong>Public Access: </strong>{{ $observatory_details->public_access_info }}
->>>>>>> dev
                             </li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-lg-5 offset-lg-1">
-                    <div class="owl-banner owl-carousel ">
-                        <div class="item">
-                            <img class="rounded-3"
-                                src="{{ asset('images') }}/observatories/{{ $observatory_details->photo }}"
-                                alt="{{ $observatory_details->name }}" height="480px" width="480px">
+                    <div class="container">
+                        <div class="row justify-content-center mb-4">
+                            <div class="col-md-12 text-center">
+                                <img src="{{ asset('images') }}/observatories/{{ $observatory_details->photo }}"
+                                    alt="{{ $observatory_details->name }}" class="img-fluid img-main rounded shadow-sm"
+                                    id="parent">
+                            </div>
                         </div>
-                        <div class="item">
-                            <img class="rounded-3"
-                                src="{{ asset('images') }}/observatories/{{ $observatory_details->photo_2 }}"
-                                alt="{{ $observatory_details->name }}" height="480px" width="480px">
-                        </div>
-                        <div class="item">
-                            <img class="rounded-3"
-                                src="{{ asset('images') }}/observatories/{{ $observatory_details->photo_3 }}"
-                                alt="{{ $observatory_details->name }}" height="480px" width="480px">
-                        </div>
-                        <div class="item">
-                            <img class="rounded-3"
-                                src="{{ asset('images') }}/observatories/{{ $observatory_details->photo_4 }}"
-                                alt="{{ $observatory_details->name }}" height="480px" width="480px">
+                        <div class="row justify-content-center g-2 person">
+                            <div class="col-3 col-sm-3 col-md-3 col-lg-3">
+                                <img src="{{ asset('images') }}/observatories/{{ $observatory_details->photo }}"
+                                    class="img-fluid rounded shadow-sm person1 active-thumbnail"
+                                    alt="{{ $observatory_details->name }}">
+                            </div>
+                            <div class="col-3 col-sm-3 col-md-3 col-lg-3">
+                                <img src="{{ asset('images') }}/observatories/{{ $observatory_details->photo_2 }}"
+                                    class="img-fluid rounded shadow-sm person2" alt="{{ $observatory_details->name }}">
+                            </div>
+                            <div class="col-3 col-sm-3 col-md-3 col-lg-3">
+                                <img src="{{ asset('images') }}/observatories/{{ $observatory_details->photo_3 }}"
+                                    class="img-fluid rounded shadow-sm person3" alt="{{ $observatory_details->name }}">
+                            </div>
+                            <div class="col-3 col-sm-3 col-md-3 col-lg-3">
+                                <img src="{{ asset('images') }}/observatories/{{ $observatory_details->photo_4 }}"
+                                    class="img-fluid rounded shadow-sm person4" alt="{{ $observatory_details->name }}">
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        </div>
     </section>
     <!-- ***** Observatory Details  End ***** -->
 
     <!-- ***** Observatory Collections ***** -->
-<<<<<<< HEAD
-    <section class="categories-collections" style="background-color: black">
-=======
-    <section class="categories-collections"
-        style="background: url('{{ asset('images') }}/background/background-collections.jpg')">
->>>>>>> dev
+    <section class="col-lg-12" style="background: url('{{ asset('images') }}/background/background-banner-main.avif');">
         <div class="container">
             <div class="row">
-                <!-- ***** Observatories Collections ***** -->
                 <div class="col-lg-12">
-                    <div class="collections">
+                    <div class="news">
                         <div class="row">
                             <div class="col-lg-12 title">
                                 <div class="section-heading">
@@ -214,22 +174,26 @@
                                     <h2>Observatory Collection</h2>
                                 </div>
                             </div>
-                            <div class="col-lg-12 carousel">
-                                <div class="owl-collection owl-carousel">
+                            <div class="col-lg-12">
+                                <div class="owl-features owl-carousel">
                                     @foreach ($observatories as $observatory)
                                         <div class="item">
-                                            <img class="img-observatory"
-                                                src="{{ asset('images') }}/observatories/{{ $observatory->photo }}"
-                                                alt="{{ $observatory->name }}">
-                                            <div class="down-content p-3" style="background-color: #282B2F;">
-                                                <div class="main-button main-button-observatory text-center">
-                                                    <h4 class="mb-2">{{ $observatory->name }}</h4>
-<<<<<<< HEAD
-                                                    <a href="{{ route('details-observatory', $observatory->id) }}">View
-=======
-                                                    <a href="{{ route('details-observatory', $observatory->slug) }}">View
->>>>>>> dev
-                                                        Details</a>
+                                            <div class="thumb">
+                                                <img src="{{ asset('images') }}/observatories/{{ $observatory->photo }}"
+                                                    alt="{{ $observatory->name }}" style="border-radius: 20px;"
+                                                    height="360" width="360">
+                                                <div class="hover-effect">
+                                                    <div class="content">
+                                                        <h4 class="mb-1">{{ $observatory->name }}</h4>
+                                                        <p>{{ $observatory->location }}</p>
+                                                        <span class="details">
+                                                            <div class="border-button">
+                                                                <a
+                                                                    href="{{ route('details-observatory', $observatory->slug) }}">View
+                                                                    Details</a>
+                                                            </div>
+                                                        </span>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -239,14 +203,10 @@
                         </div>
                     </div>
                 </div>
-                <!-- ***** planets Collections End ***** -->
             </div>
-            <!-- ***** planets Collections End ***** -->
         </div>
     </section>
     <!-- ***** Observatory Collections End ***** -->
-<<<<<<< HEAD
-=======
 
     <!-- ***** Contact ***** -->
     <section class="contact" style="background: url('{{ asset('images') }}/background/background-dark.jpg')">
@@ -356,5 +316,21 @@
         </div>
     </section>
     <!-- ***** Contact End ***** -->
->>>>>>> dev
+@endsection
+
+@section('script-changeImageAndSetActive')
+    <script type="text/javascript">
+        $(document).ready(function() {
+            function changeImageAndSetActive(thumbnailElement) {
+                var imgSrc = $(thumbnailElement).attr("src");
+                $("#parent").attr("src", imgSrc);
+                $(".person img").removeClass("active-thumbnail");
+                $(thumbnailElement).addClass("active-thumbnail");
+            }
+
+            $(".person img").click(function() {
+                changeImageAndSetActive(this);
+            });
+        });
+    </script>
 @endsection

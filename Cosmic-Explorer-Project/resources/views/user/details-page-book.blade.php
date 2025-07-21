@@ -37,21 +37,21 @@
                                     <li class="nav-item">
                                         <a class="dropdown-item" href="{{ route('collections-planets') }}"
                                             id="navbarDropdownPlanets">
-                                            Planets
+                                            Planet
                                         </a>
                                     </li>
 
                                     <li class="nav-item">
                                         <a class="dropdown-item" href="{{ route('collections-constellations') }}"
                                             id="navbarDropdownConstellations">
-                                            Constellations
+                                            Constellation
                                         </a>
                                     </li>
 
                                     <li class="nav-item">
                                         <a class="dropdown-item" href="{{ route('collections-observatories') }}"
                                             id="navbarDropdownObservatories">
-                                            Observatories
+                                            Observatorie
                                         </a>
                                     </li>
                                 </ul>
@@ -97,7 +97,7 @@
     </div>
     <!-- ***** Main Banner Details End ***** -->
 
-    <!-- ***** Details Planet ***** -->
+    <!-- ***** Details Book ***** -->
     <section class="main-banner-details"
         style="background: url('{{ asset('images') }}/background/background-banner-main.avif');">
         <div class="container">
@@ -127,9 +127,9 @@
             </div>
         </div>
     </section>
-    <!-- ***** Details Planet End ***** -->
+    <!-- ***** Details Book End ***** -->
 
-    <!-- ***** Books Collections ***** -->
+    <!-- ***** Book Collection ***** -->
     <section class="categories-collections" style="background-color: rgb(0,0,0)">
         <div class="container">
             <div class="row">
@@ -167,7 +167,7 @@
             </div>
         </div>
     </section>
-    <!-- ***** Books Collections End ***** -->
+    <!-- ***** Book Collection End ***** -->
 
     <!-- ***** Contact ***** -->
     <section class="contact" style="background: url('{{ asset('images') }}/background/background-dark.jpg')">

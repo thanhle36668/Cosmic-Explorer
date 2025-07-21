@@ -28,9 +28,9 @@
                     </div>
                     <div class="form-group">
                         <label for="registration_date">Subscribe Date</label>
-                        <input type="datetime-local" name="registration_date"
-                            value="{{ $details_subscribe->registration_date->format('Y-m-d\TH:i') }}" id="registration_date"
-                            class="form-control" disabled>
+                        <input type="text" name="registration_date"
+                            value="{{ $details_subscribe->registration_date->format('d/m/Y - H:i:s') }}"
+                            id="registration_date" class="form-control" disabled>
                     </div>
                     <div class="form-group">
                         <label for="status">Status</label>

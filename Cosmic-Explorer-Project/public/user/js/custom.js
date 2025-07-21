@@ -75,6 +75,7 @@
 		dots: false,
 		nav: true,
 		autoplay: true,
+		autoplayTimeout: 2500,
 		margin: 30,
 		responsive: {
 			0: {
@@ -87,7 +88,7 @@
 				items: 4
 			},
 			1800: {
-				items: 4
+				items: 3
 			}
 		}
 	})
@@ -98,6 +99,7 @@
 		dots: false,
 		nav: true,
 		autoplay: true,
+		autoplayTimeout: 2500,
 		margin: 0,
 		autoHeight: true,
 		responsive: {
@@ -119,6 +121,7 @@
 		dots: false,
 		nav: true,
 		autoplay: true,
+		autoplayTimeout: 3000,
 		margin: 30,
 		responsive: {
 			0: {

@@ -16,7 +16,7 @@ class SubscribeController extends Controller
                 'name' => $request->name,
                 'email' => $request->email,
                 'slug' => $request->email,
-                'status' => 0
+                'status' => 1
             ];
 
             Subscribe::create($person);
