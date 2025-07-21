@@ -39,7 +39,13 @@ class PostController extends Controller
     public function show($slug)
     {
         $post = Post::where('slug', $slug)->firstOrFail();
-        return view('admin.posts.news', compact('post'));
+
+        $comments = $post->comments()
+                     ->where('approved', true)
+                     ->latest()
+                     ->get();
+
+        return view('admin.posts.news', compact('post', 'comments'));
     }
 
     

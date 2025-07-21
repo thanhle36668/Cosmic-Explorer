@@ -142,27 +142,41 @@
     <div class="container">
         <div class="col-lg-8 col-10 mx-auto">
             <div class="row">
-                <div class="col-md-6">
-                    <h2 style="margin-bottom: 30px;">Leave a comment</h2>
-                    <div class="form-group">
-                    <label for="inputName" style="color: azure; margin-bottom: 5px" >Name</label>
-                    <input type="text" id="inputName" class="form-control" />
+                     
+                    <div class="col-md-6">
+
+                        <form action="{{ route('comments.store') }}" method="POST">
+                        @csrf
+                        <input type="hidden" name="post_id" value="{{ $post->id }}">
+
+                            <h2 style="margin-bottom: 30px;">Leave a comment</h2>
+                            @if (!Auth::check())
+                            <div class="form-group">
+                            <label for="inputName" style="color: azure; margin-bottom: 5px" >Name</label>
+                            <input type="text" name="name" id="inputName" class="form-control" required />
+                            </div>
+                            <div class="form-group">
+                            <label for="inputEmail" style="color: azure; margin-bottom: 5px; margin-top: 10px" >E-Mail</label>
+                            <input type="email" name="email" id="inputEmail" class="form-control" required/>
+                            </div>
+                            @endif
+
+                            <div class="form-group">
+                            <label for="inputMessage" style="color: azure; margin-bottom: 5px; margin-top: 10px" >Your comment</label>
+                            <textarea name="content" id="inputMessage" class="form-control" rows="4" required></textarea>
+                            </div>
+                            <div class="form-group">
+                            <input style="margin-top: 20px" type="submit" class="btn btn-primary" value="Send">
+                            </div>
+                            
+                        </form>
+
                     </div>
-                    <div class="form-group">
-                    <label for="inputEmail" style="color: azure; margin-bottom: 5px; margin-top: 10px" >E-Mail</label>
-                    <input type="email" id="inputEmail" class="form-control" />
-                    </div>
-                    <div class="form-group">
-                    <label for="inputMessage" style="color: azure; margin-bottom: 5px; margin-top: 10px" >Your comment</label>
-                    <textarea id="inputMessage" class="form-control" rows="4"></textarea>
-                    </div>
-                    <div class="form-group">
-                    <input style="margin-top: 20px" type="submit" class="btn btn-primary" value="Send">
-                    </div>
-                </div>
+
                 <div class="col-md-6">
                     <h3>All comments</h3>
                             {{-- Chèn vòng lặp hiển thị bình luận ở đây nếu có --}}
+                            
                     <div class="card mb-2">
                         <div class="card-body">
                             <strong>Nguyễn Văn A</strong>
