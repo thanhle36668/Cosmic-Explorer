@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\MessagesController;
 use App\Http\Controllers\Admin\PostController;
+use App\Http\Controllers\Admin\SubscribeController;
 use App\Http\Controllers\CosmicExplorerController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CommentController;
@@ -27,6 +28,7 @@ Route::group(['prefix' => ''], function () {
     Route::get('/details-discovery/{slug}', [CosmicExplorerController::class, 'pageDetailsDiscovery'])->name('details-discovery');
     Route::get('/details-book/{slug}', [CosmicExplorerController::class, 'pageDetailsBook'])->name('details-book');
     Route::post('/send-message', [MessagesController::class, 'sendMessage'])->name('send-message');
+    Route::post('/created-subscribe', [SubscribeController::class, 'createdSubscribe'])->name('created-subscribe');
 });
 
 
@@ -39,11 +41,18 @@ Route::middleware(['auth', 'is_admin'])
             ->name('admin.dashboard');
         Route::resource('posts', PostController::class);
         Route::resource('comments', CommentController::class);
+        // Dashboard Messages
         Route::get('/messages', [MessagesController::class, 'messages'])->name('messages');
-        Route::get('/details-message/{id}', [MessagesController::class, 'detailsMessage'])->name('details-message');
+        Route::get('/details-message/{id}', [MessagesController::class, 'editMessage'])->name('details-message');
         Route::post('/reply-message', [MessagesController::class, 'replyMessage'])->name('reply-message');
         Route::get('/delete-message/{id}', [MessagesController::class, 'deleteMessage'])->name('delete-message');
         Route::post('/search-message', [MessagesController::class, 'searchMessage'])->name('search-message');
+        // Dashboard Subscribe
+        Route::get('/subscribe', [SubscribeController::class, 'subscribe'])->name('subscribe');
+        Route::get('/details-subscribe/{slug}', [SubscribeController::class, 'editSubscribe'])->name('edit-subscribe');
+        Route::post('/updates-subscribe', [SubscribeController::class, 'updatesSubscribe'])->name('updates-subscribe');
+        Route::get('/delete-subscribe/{slug}', [SubscribeController::class, 'deleteSubscribe'])->name('delete-subscribe');
+        Route::post('/search-subscribe', [SubscribeController::class, 'searchSubscribe'])->name('search-subscribe');
     });
 
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');

@@ -1,19 +1,18 @@
 @extends('layouts.admin.admin')
 
 @section('title')
-    <title>Message</title>
+    <title>Subscribe</title>
 @endsection
 
 @section('content')
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title">All Message</h3>
+            <h3 class="card-title">All Subscribe</h3>
             <div class="card-tools">
-                <form action="{{ route('admin.search-message') }}" method="POST">
+                <form action="{{ route('admin.search-subscribe') }}" method="POST">
                     @csrf
                     <div class="input-group input-group-sm">
-                        <input type="text" name="search_email" class="form-control bg-secondary"
-                            placeholder="Search Message">
+                        <input type="text" name="email" class="form-control bg-secondary" placeholder="Search Subscribe">
                         <div class="input-group-append">
                             <button type="submit" class="btn btn-primary">
                                 <i class="fas fa-search"></i>
@@ -26,18 +25,18 @@
         <div class="card-body p-0">
             <div class="row">
                 <div class="col-12">
-                    @if (session('success-reply-message'))
+                    @if (session('success-update-subscribe'))
                         <div id="successAlert" class="alert alert-success alert-dismissible fade show mt-2 bg-success"
                             role="alert">
-                            {{ session('success-reply-message') }}
+                            {{ session('success-update-subscribe') }}
                         </div>
                     @endif
                 </div>
                 <div class="col-12">
-                    @if (session('success-delete-message'))
+                    @if (session('success-delete-subscribe'))
                         <div id="successAlert" class="alert alert-success alert-dismissible fade show mt-2 bg-danger"
                             role="alert">
-                            {{ session('success-delete-message') }}
+                            {{ session('success-delete-subscribe') }}
                         </div>
                     @endif
                 </div>
@@ -55,61 +54,45 @@
                             Email
                         </th>
                         <th style="width: 15%">
-                            Date
+                            Subscribe Date
                         </th>
                         <th style="width: 10%">
                             Status
-                        </th>
-                        <th style="width: 15%">
-                            Date Reply
-                        </th>
-                        <th style="width: 10%">
-                            Replied By
                         </th>
                         <th colspan="2" style="width: 15%">
                         </th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($messages as $message)
+                    @foreach ($subscribe as $person)
                         <tr class="text-center bg-secondary-subtle">
-                            <td>{{ $message->id }}</td>
+                            <td>{{ $person->id }}</td>
                             <td>
-                                {{ $message->sender_name }}
+                                {{ $person->name }}
                             </td>
                             <td>
-                                {{ $message->sender_email }}
+                                {{ $person->email }}
                             </td>
                             <td>
-                                {{ $message->time_received_message->format('Y-m-d H:i:s') }}
+                                {{ $person->registration_date }}
                             </td>
                             <td>
-                                @if ($message->status)
+                                @if ($person->status)
                                     <p class="bg-success mb-0" style="padding: 6px 12px; border-radius: 4px">
-                                        Replied</p>
+                                        Subscribe</p>
                                 @else
                                     <p class="bg-danger mb-0" style="padding: 6px 12px; border-radius: 4px">
-                                        Pending</p>
+                                        Unsubscribe</p>
                                 @endif
                             </td>
                             <td>
-                                {{ $message->time_reply_message }}
-                            </td>
-                            <td>
-                                @if ($message->status)
-                                    <p class="bg-success mb-0" style="padding: 6px 12px; border-radius: 4px">
-                                        {{ $message->replied_by }}</p>
-                                @endif
-                            </td>
-                            </td>
-                            <td>
-                                <a href="{{ route('admin.details-message', $message->id) }}" class="btn btn-info">
-                                    <i class="fas fa-reply"></i>
+                                <a href="{{ route('admin.edit-subscribe', $person->slug) }}" class="btn btn-info">
+                                    <i class="fas fa-edit"></i>
                                 </a>
                             </td>
                             <td>
-                                <a href="{{ route('admin.delete-message', $message->id) }}" class="btn btn-danger"
-                                    onclick="return confirm('Confirm deletion for item ID: {{ $message->slug }}?')">
+                                <a href="{{ route('admin.delete-subscribe', $person->slug) }}" class="btn btn-danger"
+                                    onclick="return confirm('Are you sure you want to delete the user with email: {{ $person->slug }}?')">
                                     <i class="fas fa-trash"></i>
                                 </a>
                             </td>
@@ -121,6 +104,6 @@
         <!-- /.card-body -->
     </div>
     <div class="pagination-links mt-2 mb-2">
-        {{ $messages->links('pagination::bootstrap-5') }}
+        {{ $subscribe->links('pagination::bootstrap-5') }}
     </div>
 @endsection

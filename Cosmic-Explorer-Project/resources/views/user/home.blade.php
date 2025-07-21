@@ -87,6 +87,23 @@
                         </div>
                     @endif
                 </div>
+                <div class="col-12">
+                    @if (session('success-subscribe'))
+                        <div id="successAlert" class="alert alert-success alert-dismissible fade show mt-2" role="alert">
+                            {{ session('success-subscribe') }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    @endif
+                </div>
+                <div class="col-12">
+                    @if (session('error-subscribe'))
+                        <div id="errorAlert" class="alert alert-error alert-dismissible fade show mt-2 bg-danger text-light"
+                            role="alert">
+                            {{ session('error-subscribe') }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    @endif
+                </div>
             </div>
         </div>
     </header>
@@ -367,7 +384,7 @@
                                 <div class="col-lg-6">
                                     <fieldset>
                                         <input name="sender_email" type="text" id="email"
-                                            placeholder="Your email" required>
+                                            placeholder="Your email" pattern="[^ @]*@[^ @]*" required>
                                     </fieldset>
                                 </div>
                                 <div class="col-lg-12">
@@ -393,18 +410,19 @@
                         <div class="section-heading">
                             <h2>By Subscribing To Our Newsletter</h2>
                         </div>
-                        <form id="subscribe" action="" method="get">
+                        <form id="subscribe" action="{{ route('created-subscribe') }}" method="POST">
+                            @csrf
                             <div class="row">
                                 <div class="col-lg-5">
                                     <fieldset>
                                         <input name="name" type="text" id="name" placeholder="Your Name"
-                                            required="">
+                                            required>
                                     </fieldset>
                                 </div>
                                 <div class="col-lg-5">
                                     <fieldset>
                                         <input name="email" type="text" id="email" pattern="[^ @]*@[^ @]*"
-                                            placeholder="Your Email Address" required="">
+                                            placeholder="Your Email Address" required>
                                     </fieldset>
                                 </div>
                                 <div class="col-lg-2">
@@ -447,3 +465,56 @@
     </section>
     <!-- ***** Contact End ***** -->
 @endsection
+
+<!-- ***** Open and close notifications (success and error) ***** -->
+@section('success-message')
+    @if (session('success-message'))
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                var successAlert = document.getElementById('successAlert');
+                if (successAlert) {
+                    setTimeout(function() {
+                        var bootstrapAlert = new bootstrap.Alert(
+                            successAlert);
+                        bootstrapAlert.close();
+                    }, 5000);
+                }
+            });
+        </script>
+    @endif
+@endsection
+
+@section('success-subscribe')
+    @if (session('success-subscribe'))
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                var successAlert = document.getElementById('successAlert');
+                if (successAlert) {
+                    setTimeout(function() {
+                        var bootstrapAlert = new bootstrap.Alert(
+                            successAlert);
+                        bootstrapAlert.close();
+                    }, 5000);
+                }
+            });
+        </script>
+    @endif
+@endsection
+
+@section('error-subscribe')
+    @if (session('error-subscribe'))
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                var errorAlert = document.getElementById('errorAlert');
+                if (errorAlert) {
+                    setTimeout(function() {
+                        var bootstrapAlert = new bootstrap.Alert(
+                            errorAlert);
+                        bootstrapAlert.close();
+                    }, 5000);
+                }
+            });
+        </script>
+    @endif
+@endsection
+<!-- ***** Open and close notifications (success and error) End ***** -->

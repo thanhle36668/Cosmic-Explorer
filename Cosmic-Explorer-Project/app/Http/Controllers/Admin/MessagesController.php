@@ -25,12 +25,12 @@ class MessagesController extends Controller
     public function messages()
     {
         $data = [
-            'messages' => Messages::orderBy('id', 'desc')->paginate(4)
+            'messages' => Messages::orderBy('id', 'desc')->paginate(6)
         ];
         return view('admin/messages/all-message')->with($data);
     }
 
-    public function detailsMessage($id)
+    public function editMessage($id)
     {
         $data = [
             'details_message' => Messages::find($id)

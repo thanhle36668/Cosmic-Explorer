@@ -37,23 +37,33 @@
                         <textarea name="message" id="message" class="form-control" rows="10" cols="10" disabled>{{ $details_message->message }}</textarea>
                     </div>
                     <div class="form-group">
-                        <label for="time_reply_message">Date Reply</label>
-                        <input type="datetime-local" name="time_reply_message"
-                            value="{{ $details_message->time_reply_message ? $details_message->time_reply_message : '' }}"
-                            id="time_reply_message" class="form-control">
+                        <label for="reply_message">Reply Message</label>
+                        @if ($details_message->status)
+                            <textarea name="reply_message" id="reply_message" class="form-control" rows="10" cols="10" disabled required>{{ $details_message->reply_message ? $details_message->reply_message : '' }}</textarea>
+                        @else
+                            <textarea name="reply_message" id="reply_message" class="form-control" rows="10" cols="10" required>{{ $details_message->reply_message ? $details_message->reply_message : '' }}</textarea>
+                        @endif
                     </div>
                     <div class="form-group">
-                        <label for="reply_message">Reply Message</label>
-                        <textarea name="reply_message" id="reply_message" class="form-control" rows="10" cols="10">{{ $details_message->reply_message ? $details_message->reply_message : '' }}</textarea>
+                        <label for="time_reply_message">Date Reply</label>
+                        @if ($details_message->status)
+                            <input type="datetime-local" name="time_reply_message"
+                                value="{{ $details_message->time_reply_message ? $details_message->time_reply_message : '' }}"
+                                id="time_reply_message" class="form-control" required disabled>
+                        @else
+                            <input type="datetime-local" name="time_reply_message"
+                                value="{{ $details_message->time_reply_message ? $details_message->time_reply_message : '' }}"
+                                id="time_reply_message" class="form-control" required>
+                        @endif
                     </div>
                     <div class="form-group">
                         <input type="hidden" name="status" value="1" class="form-control">
                         <input type="hidden" name="replied_by" value="Admin" class="form-control">
                     </div>
                 </div>
-                <div class="card-footer">
-                    <a href="{{ route('admin.messages') }}" class="btn btn-secondary">Cancel</a>
-                    <button type="submit" class="btn btn-primary float-right">Reply</button>
+                <div class="d-flex justify-content-end card-footer">
+                    <a href="{{ route('admin.messages') }}" class="btn btn-secondary mr-2 px-5 py-2">Cancel</a>
+                    <button type="submit" class="btn btn-primary float-right px-5 py-2">Reply</button>
                 </div>
             </div>
         </section>
