@@ -26,6 +26,7 @@ class Observatories extends Model
         'main_instruments',
         'primary_research_areas',
         'public_access_info',
-        'additional_notes'
+        'additional_notes',
+        'slug',
     ];
 }

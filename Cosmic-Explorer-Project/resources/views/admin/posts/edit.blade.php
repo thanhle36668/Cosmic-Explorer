@@ -1,31 +1,67 @@
-@extends('layouts.admin')
+@extends('layouts.admin.admin')
 
-@section('title', 'Chỉnh sửa bài viết')
+@section('title', 'Sửa bài viết')
 
 @section('content')
-    <h2>Chỉnh sửa: {{ $post->title }}</h2>
 
-    <form method="POST" action="{{ route('admin.posts.update', $post) }}">
+    <form action="{{ route('admin.posts.update', $post->id) }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
 
-        <div class="mb-3">
-            <label for="title" class="form-label">Tiêu đề</label>
-            <input type="text" name="title" class="form-control" value="{{ old('title', $post->title) }}">
-            @error('title')
-                <small class="text-danger">{{ $message }}</small>
-            @enderror
-        </div>
+        <section class="content">
+            <div class="card card-primary">
+                <div class="card-header">
+                    <h3 class="card-title">Edit Post</h3>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label>Title</label>
+                        <input type="text" name="title" value="{{ old('title', $post->title) }}" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>Introduction</label>
+                        <input type="text" name="excerpt" value="{{ old('excerpt', $post->excerpt) }}"
+                            class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>Main content</label>
+                        <textarea name="content" rows="5" class="form-control">{{ old('content', $post->content) }}</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Category</label>
+                        <select name="category_id" class="form-control">
+                            @foreach ($categories as $category)
+                                <option value="{{ $category->id }}"
+                                    {{ $post->category_id == $category->id ? 'selected' : '' }}>
+                                    {{ $category->name }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Status</label>
+                        <select name="is_published" class="form-control">
+                            <option value="1" {{ $post->is_published ? 'selected' : '' }}>Publish</option>
+                            <option value="0" {{ !$post->is_published ? 'selected' : '' }}>Private</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Image</label><br>
+                        @if ($post->image)
+                            <img src="{{ asset('storage/' . $post->image) }}" width="150">
+                        @endif
+                        <input type="file" name="image" class="form-control-file">
+                    </div>
+                </div>
+            </div>
 
-        <div class="mb-3">
-            <label for="content" class="form-label">Nội dung</label>
-            <textarea name="content" class="form-control" rows="6">{{ old('content', $post->content) }}</textarea>
-            @error('content')
-                <small class="text-danger">{{ $message }}</small>
-            @enderror
-        </div>
-
-        <button type="submit" class="btn btn-success">Cập nhật</button>
-        <a href="{{ route('admin.posts.index') }}" class="btn btn-secondary">Quay lại</a>
+            <div class="row">
+                <div class="col-12">
+                    <a href="{{ route('admin.posts.index') }}" class="btn btn-secondary">Cancel</a>
+                    <input type="submit" value="Update" class="btn btn-success float-right">
+                </div>
+            </div>
+        </section>
     </form>
+
 @endsection
