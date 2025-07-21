@@ -33,20 +33,39 @@ CREATE TABLE `about` (
   `description_1` text NOT NULL,
   `description_2` text NOT NULL,
   `photo` varchar(250) NOT NULL,
-  `photo_2` varchar(250) NOT NULL,
-  `photo_3` varchar(250) NOT NULL,
-  `photo_4` varchar(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `about`
 --
 
-INSERT INTO `about` (`id`, `title`, `description_1`, `description_2`, `photo`, `photo_2`, `photo_3`, `photo_4`) VALUES
-(1, 'Cosmic Explorer', 'Cosmic Explorer is a journey into the wonders of the universe. Our project is dedicated to making space science accessible, inspiring curiosity, and connecting people with the cosmos through interactive content, educational tools, and the latest discoveries. Whether you\'re a student, enthusiast, or lifelong learner, Cosmic Explorer invites you to look up, learn, and explore the mysteries of the universe with us.', 'At Cosmic Explorer, we provide a range of services designed to bring the universe closer to you. From educational resources and astronomy guides to interactive tools and space news updates, our platform is built to inspire and inform. Whether you\'re looking to learn about the stars, follow the latest space missions, or dive into cosmic phenomena, we’re here to make space exploration engaging and accessible for all.', 'about_1.jpg', 'about_2.jpg', 'about_3.jpg', 'about_4.jpg');
+INSERT INTO `about` (`id`, `title`, `description_1`, `description_2`, `photo`) VALUES
+(1, 'Cosmic Explorer', 'Cosmic Explorer is a journey into the wonders of the universe. Our project is dedicated to making space science accessible, inspiring curiosity, and connecting people with the cosmos through interactive content, educational tools, and the latest discoveries. Whether you\'re a student, enthusiast, or lifelong learner, Cosmic Explorer invites you to look up, learn, and explore the mysteries of the universe with us.', 'At Cosmic Explorer, we provide a range of services designed to bring the universe closer to you. From educational resources and astronomy guides to interactive tools and space news updates, our platform is built to inspire and inform. Whether you\'re looking to learn about the stars, follow the latest space missions, or dive into cosmic phenomena, we’re here to make space exploration engaging and accessible for all.', 'about.jpg');
+
 
 -- --------------------------------------------------------
 
+--
+-- Table structure for table `about_services`
+--
+
+CREATE TABLE `about_services` (
+  `id` int(11) NOT NULL,
+  `name` varchar(250) NOT NULL,
+  `description` text NOT NULL,
+  `photo` varchar(250) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `about_services`
+--
+
+INSERT INTO `about_services` (`id`, `name`, `description`, `photo`) VALUES
+(1, 'Virtual Stargazing Tours', 'Embark on breathtaking journeys across the universe with our immersive virtual stargazing experiences. Explore constellations, galaxies, and celestial events—all from the comfort of your screen.', 'about_services_1.jpg'),
+(2, 'Astronomy Learning Hub', 'Discover the wonders of the cosmos through our interactive courses, guides, and expert-curated content. Whether you\'re a curious beginner or a budding astronomer, there’s something here for every explorer.', 'about_services_2.jpg'),
+(3, 'Space News & Discoveries', 'Stay up-to-date with the latest cosmic breakthroughs and space missions. Our curated space newsfeed brings you exciting updates from NASA, ESA, and the farthest corners of the known universe.', 'about_services_3.jpg');
+
+-- --------------------------------------------------------
 --
 -- Table structure for table `books`
 --
@@ -108,11 +127,21 @@ CREATE TABLE `comments` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `content` text NOT NULL,
   `approved` tinyint(1) NOT NULL DEFAULT 0,
-  `user_id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
   `post_id` bigint(20) UNSIGNED NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `comments`
+--
+
+INSERT INTO `comments` (`id`, `content`, `approved`, `user_id`, `name`, `email`, `post_id`, `created_at`, `updated_at`) VALUES
+(1, 'alo', 0, 1, NULL, NULL, 8, '2025-07-21 02:20:53', '2025-07-21 02:20:53'),
+(2, 'xin chao', 0, NULL, 'Linh', 'linh@yahoo.com', 8, '2025-07-21 02:22:45', '2025-07-21 02:22:45');
 
 -- --------------------------------------------------------
 
@@ -380,7 +409,8 @@ CREATE TABLE `posts` (
 --
 
 INSERT INTO `posts` (`id`, `title`, `excerpt`, `slug`, `image`, `category_id`, `is_published`, `content`, `user_id`, `created_at`, `updated_at`) VALUES
-(7, 'asd', 'asd', 'asd', 'posts/OfdiaZPaApHa9vm62UyhTsprZUA62scNHKguBg89.png', 1, 1, 'asd', 1, '2025-07-17 20:12:04', '2025-07-17 20:12:04');
+(7, 'asd', 'asd', 'asd', 'posts/OfdiaZPaApHa9vm62UyhTsprZUA62scNHKguBg89.png', 1, 1, 'asd', 1, '2025-07-17 20:12:04', '2025-07-17 20:12:04'),
+(8, 'Sao Hoả', 'Sao Hỏa (tiếng Anh: Mars) hay Hỏa Tinh (chữ Hán: 火星) là hành tinh thứ tư ở Hệ Mặt Trời và là hành tinh đất đá ở xa Mặt Trời nhất, với bán kính bé thứ hai so với các hành tinh khác. Sao Hoả có màu cam đỏ do bề mặt của hành tinh được bao phủ bởi lớp vụn sắt(III) oxit, do đó còn có tên gọi khác là \"hành tinh đỏ\".[16][17] Vì bán cầu Bắc của Sao Hoả có bồn trũng Bắc Cực chiếm đến 40% diện tích hành tinh, so bán cầu Nam thì bán cầu Bắc phẳng hơn và ít hố va chạm hơn. Khí quyển của Sao Hoả khá mỏng với thành phần chính là cacbon dioxit. Ở hai cực Sao Hoả là lớp băng được làm bằng nước. Sao Hoả có hai vệ tinh tự nhiên: Phobos và Deimos.', 'sao-hoa', 'posts/mrFTDNawOmawbMdw00fKuHP329ETylQJZTw8P84z.png', 1, 1, 'Một ngày ở trên Sao Hoả dài khoảng 24,5 tiếng và Sao Hoả có các mùa giống như ở trên Trái Đất, vì hành tinh này có trục quay nghiêng 25°. Thời gian để Sao Hoả quay một vòng quanh Mặt Trời là 1,88 năm Trái Đất. Nhiệt độ trên bề mặt Sao Hoả biến thiên khá nhiều, thường rơi khoảng từ −110 °C đến 35 °C. Vỏ ngoài của Sao Hoả có nhiều nguyên tố silicon, oxy (trong dạng oxit) và sắt, lớp phủ ở bên trong vỏ chứa silicat rắn, còn lớp lõi ở bên trong cùng chứa nhiều nguyên tố sắt, niken và lưu huỳnh. Sao Hoả hiện tại có nhiều biến động về địa chất, với những cơn lốc xoáy làm bay bụi và các trận động đất xảy ra thường xuyên. Trên Sao Hoả có Olympus Mons là đỉnh núi cao nhất và hẻm núi Valles Marineris thuộc dạng dài nhất trong Hệ Mặt Trời.\r\n\r\nSao Hoả được hình thành 4,5 tỷ năm trước. Ở Kỷ Noachian từ khoảng 4,1 đến 3,7 tỷ năm trước, trên bề mặt hành tinh bị phong hoá rất mạnh và thiên thạch đâm rất nhiều, hình thành nên các dãy núi lửa, thung lũng, vùng trũng và biển. Kỷ Hesperian từ 3,7 đến khoảng 3,2–2 tỷ năm trước được đánh dấu bởi các vụ phun trào núi lửa và lũ lụt mạnh, tạo ra những bãi hạ nguồn ngoằn nghèo trên bề mặt. Kỷ Amazonian từ đó đến nay thì so với các kỷ trước thì ít hoạt động địa chất hơn. Dù có nhiều bằng chứng cho thấy nước ở dạng lỏng đã từng tồn tại khá lâu ở trên Sao Hoả, chưa có bằng chứng cụ thể nào cho thấy sự sống đã từng tồn tại trên Sao Hỏa.\r\n\r\nSao Hoả là một trong những vật sáng nhất trên bầu trời, khi nhìn vào thì có màu đỏ rất đặc trưng. Vì vậy, người Hoa và Việt Nam đã đặt tên hành tinh này từ nguyên tố hoả (lửa) trong Ngũ hành. Trong nhiều thứ tiếng ở châu Âu thì Sao Hoả được đặt tên từ vị thần chiến tranh Hi Lạp Mars. Từ cuối thế kỷ 20, các tàu thám hiểm Sao Hoả như là Mariner 4 (tàu đầu tiên bay qua Sao Hoả năm 1965), Mars 2 (vệ tinh nhân tạo Sao Hoả đầu tiên, năm 1971), và Viking 1 (đáp lần đầu trên Sao Hoả năm 1976) đã tăng sự hiểu biết của loài người về hành tinh này. Hiện tại, năm 2023 có ít nhất 11 tàu còn đang hoạt động trên Sao Hoả đến từ nhiều nước khác nhau. Do nhiều yếu tố, Sao Hoả khả năng cao sẽ là hành tinh thứ hai mà con người đáp xuống và khám phá.', 1, '2025-07-21 00:44:27', '2025-07-21 00:45:30');
 
 -- --------------------------------------------------------
 
