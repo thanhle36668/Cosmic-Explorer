@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\About;
+use App\Models\About_services;
 use App\Models\Books;
 use App\Models\Constellations;
 use App\Models\Discovery;
@@ -29,6 +31,16 @@ class CosmicExplorerController extends Controller
     {
         $data = [];
         return view('user/news')->with($data);
+    }
+
+    // Controller Page About
+    public function about()
+    {
+        $data = [
+            'about' => About::firstOrFail(),
+            'services' => About_services::get()
+        ];
+        return view('user/about')->with($data);
     }
 
     // Controller Page Collections Planets

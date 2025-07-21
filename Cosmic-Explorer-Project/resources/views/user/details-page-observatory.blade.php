@@ -27,10 +27,17 @@
                                 <a href="{{ route('home') }}">Home</a>
                             </li>
                             <li>
+<<<<<<< HEAD
                                 <a href="#">About</a>
                             </li>
                             <li>
+                                <a href="{{ route('news') }}">News</a>
+=======
+                                <a href="{{ route('about') }}">About</a>
+                            </li>
+                            <li>
                                 <a href="{{ route('all-news') }}">News</a>
+>>>>>>> dev
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownCollections"
@@ -67,10 +74,17 @@
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <li>
+<<<<<<< HEAD
+                                        <a class="dropdown-item" href="#">Videos</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="#">Books</a>
+=======
                                         <a class="dropdown-item" href="{{ route('collections-books') }}">Books</a>
                                     </li>
                                     <li>
                                         <a class="dropdown-item" href="{{ route('collections-videos') }}">Videos</a>
+>>>>>>> dev
                                     </li>
                                 </ul>
                             </li>
@@ -87,8 +101,13 @@
     <!-- ***** Header End ***** -->
 
     <!-- ***** Main Banner Details ***** -->
+<<<<<<< HEAD
+    <section class="page-heading"
+        style="background-image: url('{{ asset('images') }}/background/background-banner-main.avif')" id="top">
+=======
     <section class="page-heading" style="background: url('{{ asset('images') }}/background/background-banner-main.avif')"
         id="top">
+>>>>>>> dev
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -107,13 +126,30 @@
 
     <!-- ***** Observatory Details  ***** -->
     <section class="main-banner-details"
+<<<<<<< HEAD
+        style="background-image: url('{{ asset('images') }}/background/background-banner-main.avif');">
+=======
         style="background: url('{{ asset('images') }}/background/background-banner-main.avif');">
+>>>>>>> dev
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 align-self-center">
                     <div class="header-text">
                         <h2>{{ $observatory_details->name }}</h2>
                         <ul class="info-list">
+<<<<<<< HEAD
+                            <li><strong>Location:</strong> {{ $observatory_details->location }}</li>
+                            <li><strong>Altitude and Advantage:</strong>{{ $observatory_details->altitude_meters }}</li>
+                            <li><strong>Established:</strong>{{ $observatory_details->established_year }}
+                            </li>
+                            <li><strong>Managing Organization:</strong>{{ $observatory_details->managing_organization }}
+                            </li>
+                            <li><strong>Main Instruments:</strong>{{ $observatory_details->main_instruments }}
+                            </li>
+                            <li><strong>Primary Research:</strong>{{ $observatory_details->primary_research_areas }}
+                            </li>
+                            <li><strong>Public Access:</strong>{{ $observatory_details->public_access_info }}
+=======
                             <li><strong>Location: </strong> {{ $observatory_details->location }}</li>
                             <li><strong>Altitude and Advantage: </strong>{{ $observatory_details->altitude_meters }}</li>
                             <li><strong>Established: </strong>{{ $observatory_details->established_year }}
@@ -125,6 +161,7 @@
                             <li><strong>Primary Research: </strong>{{ $observatory_details->primary_research_areas }}
                             </li>
                             <li><strong>Public Access: </strong>{{ $observatory_details->public_access_info }}
+>>>>>>> dev
                             </li>
                         </ul>
                     </div>
@@ -159,8 +196,12 @@
     <!-- ***** Observatory Details  End ***** -->
 
     <!-- ***** Observatory Collections ***** -->
+<<<<<<< HEAD
+    <section class="categories-collections" style="background-color: black">
+=======
     <section class="categories-collections"
         style="background: url('{{ asset('images') }}/background/background-collections.jpg')">
+>>>>>>> dev
         <div class="container">
             <div class="row">
                 <!-- ***** Observatories Collections ***** -->
@@ -183,7 +224,11 @@
                                             <div class="down-content p-3" style="background-color: #282B2F;">
                                                 <div class="main-button main-button-observatory text-center">
                                                     <h4 class="mb-2">{{ $observatory->name }}</h4>
+<<<<<<< HEAD
+                                                    <a href="{{ route('details-observatory', $observatory->id) }}">View
+=======
                                                     <a href="{{ route('details-observatory', $observatory->slug) }}">View
+>>>>>>> dev
                                                         Details</a>
                                                 </div>
                                             </div>
@@ -200,6 +245,8 @@
         </div>
     </section>
     <!-- ***** Observatory Collections End ***** -->
+<<<<<<< HEAD
+=======
 
     <!-- ***** Contact ***** -->
     <section class="contact" style="background: url('{{ asset('images') }}/background/background-dark.jpg')">
@@ -284,18 +331,23 @@
                         <div class="row">
                             <div class="col-6">
                                 <ul>
-                                    <li>Store Location:<br><span>Sunny Isles Beach, FL 33160, United States</span></li>
-                                    <li>Phone:<br><span>010-020-0340</span></li>
-                                    <li>Office Location:<br><span>North Miami Beach</span></li>
+                                    <li>School Location:<br><span>35/6 D5 Street, Ward 25, Binh Thanh, Ho Chi Minh City
+                                            72308, Vietnam</span></li>
+                                    <li>Website:<br><span><a
+                                                href="https://aptechvietnam.com.vn/">aptechvietnam.com.vn</a></span></li>
+                                    <li>Phone:<br><span>+84 1800 1779</span></li>
                                 </ul>
                             </div>
                             <div class="col-6">
                                 <ul>
-                                    <li>Work Hours:<br><span>07:30 AM - 9:30 PM Daily</span></li>
-                                    <li>Email:<br><span>info@company.com</span></li>
-                                    <li>Social Media:<br><span><a href="#">Facebook</a>, <a
-                                                href="#">Instagram</a>, <a href="#">Behance</a>,
-                                            <a href="#">Linkedin</a></span></li>
+                                    <li>Work Hours:<br><span>07:30 AM - 10:00 PM Daily (Except Sunday)</span></li>
+                                    <li>Email:<br><span>aptech2@aprotrain.com</span></li>
+                                    <li>Social Media:<br><span><a
+                                                href="https://www.facebook.com/AptechVNLearning/">Facebook</a>, <a
+                                                href="https://www.instagram.com/aptechvn.official/">Instagram</a>, <a
+                                                href="https://www.tiktok.com/@aptechvn.official">Tiktok</a>,
+                                            <a href="https://www.youtube.com/user/aprotrainaptechvn">Youtube</a></span>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -305,4 +357,5 @@
         </div>
     </section>
     <!-- ***** Contact End ***** -->
+>>>>>>> dev
 @endsection

@@ -23,7 +23,7 @@
                                 <a href="{{ route('home') }}">Home</a>
                             </li>
                             <li>
-                                <a href="#">About</a>
+                                <a href="{{ route('about') }}">About</a>
                             </li>
                             <li>
                                 <a href="{{ route('all-news') }}">News</a>
