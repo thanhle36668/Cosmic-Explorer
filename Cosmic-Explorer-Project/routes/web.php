@@ -60,3 +60,5 @@ Route::get('/posts/{slug}', [PostController::class, 'show'])->name('posts.show')
 Route::get('/all-news', [PostController::class, 'allnews'])->name('all-news');
 Route::post('/process-login', [AuthController::class, 'processLogin'])->name('process-login');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+Route::post('/comments', [CommentController::class, 'store'])->name('comments.store');
+
