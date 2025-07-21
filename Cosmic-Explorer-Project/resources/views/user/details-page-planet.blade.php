@@ -23,7 +23,7 @@
                                 <a href="{{ route('home') }}">Home</a>
                             </li>
                             <li>
-                                <a href="#">About</a>
+                                <a href="{{ route('about') }}">About</a>
                             </li>
                             <li>
                                 <a href="{{ route('all-news') }}">News</a>
@@ -120,22 +120,32 @@
                     </div>
                 </div>
                 <div class="col-lg-5 offset-lg-1">
-                    <div class="owl-banner owl-carousel ">
-                        <div class="item">
-                            <img class="rounded-3" src="{{ asset('images') }}/planets/{{ $planet_details->photo }}"
-                                alt="" height="480px" width="480px">
+                    <div class="container">
+                        <div class="row justify-content-center mb-4">
+                            <div class="col-md-12 text-center">
+                                <img src="{{ asset('images') }}/planets/{{ $planet_details->photo }}"
+                                    alt="{{ $planet_details->name }}" class="img-fluid img-main rounded shadow-sm"
+                                    id="parent">
+                            </div>
                         </div>
-                        <div class="item">
-                            <img class="rounded-3" src="{{ asset('images') }}/planets/{{ $planet_details->photo_2 }}"
-                                alt="" height="480px" width="480px">
-                        </div>
-                        <div class="item">
-                            <img class="rounded-3" src="{{ asset('images') }}/planets/{{ $planet_details->photo_3 }}"
-                                alt="" height="480px" width="480px">
-                        </div>
-                        <div class="item">
-                            <img class="rounded-3" src="{{ asset('images') }}/planets/{{ $planet_details->photo_4 }}"
-                                alt="" height="480px" width="480px">
+                        <div class="row justify-content-center g-2 person">
+                            <div class="col-3 col-sm-3 col-md-3 col-lg-3">
+                                <img src="{{ asset('images') }}/planets/{{ $planet_details->photo }}"
+                                    class="img-fluid rounded shadow-sm person1 active-thumbnail"
+                                    alt="{{ $planet_details->name }}">
+                            </div>
+                            <div class="col-3 col-sm-3 col-md-3 col-lg-3">
+                                <img src="{{ asset('images') }}/planets/{{ $planet_details->photo_2 }}"
+                                    class="img-fluid rounded shadow-sm person2" alt="{{ $planet_details->name }}">
+                            </div>
+                            <div class="col-3 col-sm-3 col-md-3 col-lg-3">
+                                <img src="{{ asset('images') }}/planets/{{ $planet_details->photo_3 }}"
+                                    class="img-fluid rounded shadow-sm person3" alt="{{ $planet_details->name }}">
+                            </div>
+                            <div class="col-3 col-sm-3 col-md-3 col-lg-3">
+                                <img src="{{ asset('images') }}/planets/{{ $planet_details->photo_4 }}"
+                                    class="img-fluid rounded shadow-sm person4" alt="{{ $planet_details->name }}">
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -269,18 +279,23 @@
                         <div class="row">
                             <div class="col-6">
                                 <ul>
-                                    <li>Store Location:<br><span>Sunny Isles Beach, FL 33160, United States</span></li>
-                                    <li>Phone:<br><span>010-020-0340</span></li>
-                                    <li>Office Location:<br><span>North Miami Beach</span></li>
+                                    <li>School Location:<br><span>35/6 D5 Street, Ward 25, Binh Thanh, Ho Chi Minh City
+                                            72308, Vietnam</span></li>
+                                    <li>Website:<br><span><a
+                                                href="https://aptechvietnam.com.vn/">aptechvietnam.com.vn</a></span></li>
+                                    <li>Phone:<br><span>+84 1800 1779</span></li>
                                 </ul>
                             </div>
                             <div class="col-6">
                                 <ul>
-                                    <li>Work Hours:<br><span>07:30 AM - 9:30 PM Daily</span></li>
-                                    <li>Email:<br><span>info@company.com</span></li>
-                                    <li>Social Media:<br><span><a href="#">Facebook</a>, <a
-                                                href="#">Instagram</a>, <a href="#">Behance</a>,
-                                            <a href="#">Linkedin</a></span></li>
+                                    <li>Work Hours:<br><span>07:30 AM - 10:00 PM Daily (Except Sunday)</span></li>
+                                    <li>Email:<br><span>aptech2@aprotrain.com</span></li>
+                                    <li>Social Media:<br><span><a
+                                                href="https://www.facebook.com/AptechVNLearning/">Facebook</a>, <a
+                                                href="https://www.instagram.com/aptechvn.official/">Instagram</a>, <a
+                                                href="https://www.tiktok.com/@aptechvn.official">Tiktok</a>,
+                                            <a href="https://www.youtube.com/user/aprotrainaptechvn">Youtube</a></span>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -290,4 +305,21 @@
         </div>
     </section>
     <!-- ***** Contact End ***** -->
+@endsection
+
+@section('script-changeImageAndSetActive')
+    <script type="text/javascript">
+        $(document).ready(function() {
+            function changeImageAndSetActive(thumbnailElement) {
+                var imgSrc = $(thumbnailElement).attr("src");
+                $("#parent").attr("src", imgSrc);
+                $(".person img").removeClass("active-thumbnail");
+                $(thumbnailElement).addClass("active-thumbnail");
+            }
+
+            $(".person img").click(function() {
+                changeImageAndSetActive(this);
+            });
+        });
+    </script>
 @endsection
