@@ -186,7 +186,11 @@
                                             <div class="down-content p-3" style="background-color: #282B2F;">
                                                 <div class="main-button main-button-constellation text-center">
                                                     <h4 class="mb-2">{{ $constellation->name }}</h4>
+<<<<<<< HEAD
+                                                    <a href="{{ route('details-constellation', $constellation->id) }}">View
+=======
                                                     <a href="{{ route('details-constellation', $constellation->slug) }}">View
+>>>>>>> dev
                                                         Details</a>
                                                 </div>
                                             </div>
