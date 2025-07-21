@@ -89,7 +89,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="inner-content">
-                        <h1 style="text-transform: uppercase">About Our</h1>
+                        <h1 style="text-transform: uppercase">About Website</h1>
                     </div>
                 </div>
             </div>
@@ -106,7 +106,7 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="left-image">
-                                    <img src="{{ asset('images') }}/planets/earth-planet-2.png" alt="">
+                                    <img src="{{ asset('images') }}/about/{{ $about->photo }}" alt="">
                                 </div>
                             </div>
                             <div class="col-lg-6">
@@ -142,37 +142,18 @@
                             <div class="col-lg-12">
                                 <div class="section-heading">
                                     <h2>Our Services</h2>
-                                    <span class="text-light">Details to details is what makes Hexashop different from the
-                                        other themes.</span>
+                                    <span class="text-light">Explore the universe with us through immersive experiences, educational tools, and the latest cosmic discoveries.</span>
                                 </div>
                             </div>
+                            @foreach ($services as $service)
                             <div class="col-lg-4">
                                 <div class="service-item">
-                                    <h4>Synther Vaporware</h4>
-                                    <p>Lorem ipsum dolor sit amet, consecteturti adipiscing elit, sed do eiusmod temp
-                                        incididunt ut
-                                        labore, et dolore quis ipsum suspend.</p>
-                                    <img src="{{ asset('images') }}/planets/earth-planet-2.png" alt="">
+                                    <h4>{{ $service->name }}</h4>
+                                    <p>{{ $service->description }}</p>
+                                    <img src="{{ asset('images') }}/about/{{ $service->photo }}" alt="">
                                 </div>
                             </div>
-                            <div class="col-lg-4">
-                                <div class="service-item">
-                                    <h4>Locavore Squidward</h4>
-                                    <p>Lorem ipsum dolor sit amet, consecteturti adipiscing elit, sed do eiusmod temp
-                                        incididunt ut
-                                        labore, et dolore quis ipsum suspend.</p>
-                                    <img src="{{ asset('images') }}/planets/earth-planet-2.png" alt="">
-                                </div>
-                            </div>
-                            <div class="col-lg-4">
-                                <div class="service-item">
-                                    <h4>Health Gothfam</h4>
-                                    <p>Lorem ipsum dolor sit amet, consecteturti adipiscing elit, sed do eiusmod temp
-                                        incididunt ut
-                                        labore, et dolore quis ipsum suspend.</p>
-                                    <img src="{{ asset('images') }}/planets/earth-planet-2.png" alt="">
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                 </section>
