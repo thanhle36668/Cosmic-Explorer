@@ -7,37 +7,49 @@
 @section('content')
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title">All Discovery</h3>
-            <div class="card-tools">
-                <form action="#" method="POST">
-                    @csrf
-                    <div class="input-group input-group-sm">
-                        <input type="text" name="search_email" class="form-control bg-secondary"
-                            placeholder="Search Message">
-                        <div class="input-group-append">
-                            <button type="submit" class="btn btn-primary">
-                                <i class="fas fa-search"></i>
-                            </button>
+            <div class="row">
+                <h3 class="card-title col-8 d-flex align-items-center">All Discovery</h3>
+                <div class="card-tools col-4 d-flex justify-content-end align-items-center">
+                    <a href="{{ route('admin.create-discovery') }}" class="btn btn-info mr-2" style="padding: 3px 6px;">Create
+                        Post</a>
+                    <form action="{{ route('admin.search-discovery') }}" method="POST">
+                        @csrf
+                        <div class="input-group input-group-sm">
+                            <input type="text" name="search_title" class="form-control bg-secondary"
+                                placeholder="Search Title">
+                            <div class="input-group-append">
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                            </div>
                         </div>
-                    </div>
-                </form>
+                    </form>
+                </div>
             </div>
         </div>
         <div class="card-body p-0">
             <div class="row">
                 <div class="col-12">
-                    @if (session('success-reply-message'))
+                    @if (session('success-update-discovery'))
                         <div id="successAlert" class="alert alert-success alert-dismissible fade show mt-2 bg-success"
                             role="alert">
-                            {{ session('success-reply-message') }}
+                            {{ session('success-update-discovery') }}
                         </div>
                     @endif
                 </div>
                 <div class="col-12">
-                    @if (session('success-delete-message'))
+                    @if (session('success-create-discovery'))
+                        <div id="successAlert" class="alert alert-success alert-dismissible fade show mt-2 bg-success"
+                            role="alert">
+                            {{ session('success-create-discovery') }}
+                        </div>
+                    @endif
+                </div>
+                <div class="col-12">
+                    @if (session('success-delete-discovery'))
                         <div id="successAlert" class="alert alert-success alert-dismissible fade show mt-2 bg-danger"
                             role="alert">
-                            {{ session('success-delete-message') }}
+                            {{ session('success-delete-discovery') }}
                         </div>
                     @endif
                 </div>
@@ -48,7 +60,7 @@
                         <th style="width: 5%">
                             ID
                         </th>
-                        <th style="width: 30%">
+                        <th style="width: 50%">
                             Title
                         </th>
                         <th style="width: 5%">
@@ -65,37 +77,37 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($discovery as $item)
+                    @foreach ($discovery as $post)
                         <tr class="text-center bg-secondary-subtle">
-                            <td>{{ $item->id }}</td>
+                            <td>{{ $post->id }}</td>
                             <td>
-                                {{ $item->title }}
+                                {{ $post->title }}
                             </td>
-                            @if ($item->id)
+                            @if ($post->id)
                                 <td>
                                     <p class="bg-success mb-0" style="padding: 6px 12px; border-radius: 4px">
                                         Admin</p>
                                 </td>
                             @endif
                             <td>
-                                {{ $item->created_at->format('d/m/Y - H:i:s') }}
+                                {{ $post->created_at->format('d/m/Y - H:i:s') }}
                             </td>
                             <td>
-                                @if ($item->updated_at)
-                                    {{ $item->updated_at->format('d/m/Y - H:i:s') }}
+                                @if ($post->updated_at)
+                                    {{ $post->updated_at->format('d/m/Y - H:i:s') }}
                                 @else
                                     N/A
                                 @endif
                             </td>
                             </td>
                             <td>
-                                <a href="{{ route('admin.customization-edit-discovery') }}" class="btn btn-info">
+                                <a href="{{ route('admin.edit-discovery', $post->slug) }}" class="btn btn-info">
                                     <i class="nav-icon fas fa-edit"></i>
                                 </a>
                             </td>
                             <td>
-                                <a href="#" class="btn btn-danger"
-                                    onclick="return confirm('Please confirm deletion for the article: {{ $item->title }}?')">
+                                <a href="{{ route('admin.delete-discovery', $post->id) }}" class="btn btn-danger"
+                                    onclick="return confirm('Please confirm deletion for the article: {{ $post->title }}?')">
                                     <i class="nav-icon fas fa-trash"></i>
                                 </a>
                             </td>

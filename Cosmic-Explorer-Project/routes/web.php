@@ -60,10 +60,15 @@ Route::middleware(['auth', 'is_admin'])->prefix('admin')->name('admin.')
         Route::post('/search-subscribe', [SubscribeController::class, 'searchSubscribe'])->name('search-subscribe');
         // Customization Introduction
         Route::get('/customization-introduction', [CustomizationController::class, 'introduction'])->name('customization-introduction');
-        Route::put('/update-introduction', [CustomizationController::class, 'updateIntroduction'])->name('update-introduction');
+        Route::put('/updated-introduction', [CustomizationController::class, 'updatedIntroduction'])->name('updated-introduction');
         // Customization Discovery
         Route::get('/customization-discovery', [CustomizationController::class, 'discovery'])->name('customization-discovery');
-        Route::get('/edit-discovery', [CustomizationController::class, 'editDiscovery'])->name('customization-edit-discovery');
+        Route::get('/edit-discovery/{slug}', [CustomizationController::class, 'editDiscovery'])->name('edit-discovery');
+        Route::put('/updated-discovery', [CustomizationController::class, 'updatedDiscovery'])->name('updated-discovery');
+        Route::get('/create-discovery', [CustomizationController::class, 'createDiscovery'])->name('create-discovery');
+        Route::put('/save-post-discovery', [CustomizationController::class, 'savePostDiscovery'])->name('save-post-discovery');
+        Route::get('/delete-discovery/{id}', [CustomizationController::class, 'deleteDiscovery'])->name('delete-discovery');
+        Route::post('/search-discovery', [CustomizationController::class, 'searchDiscovery'])->name('search-discovery');
     });
 
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');

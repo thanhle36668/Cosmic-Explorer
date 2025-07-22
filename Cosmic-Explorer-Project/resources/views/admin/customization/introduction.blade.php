@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-    <form action="{{ route('admin.update-introduction') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('admin.updated-introduction') }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
         <section class="content">
