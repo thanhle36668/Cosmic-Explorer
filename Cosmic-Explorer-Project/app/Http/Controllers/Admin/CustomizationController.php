@@ -57,12 +57,12 @@ class CustomizationController extends Controller
             File::makeDirectory($destinationPath, 0755, true, true);
         }
 
-        $photoArr = ['photo'];
+        $photoArray = ['photo'];
         for ($i = 2; $i <= 8; $i++) {
-            $photoArr[] = 'photo_' . $i;
+            $photoArray[] = 'photo_' . $i;
         }
 
-        foreach ($photoArr as $item) {
+        foreach ($photoArray as $item) {
             if ($request->hasFile($item)) {
                 $imageFile = $request->file($item);
 
