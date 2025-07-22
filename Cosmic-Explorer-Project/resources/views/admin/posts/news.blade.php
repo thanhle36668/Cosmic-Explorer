@@ -174,21 +174,16 @@
                     </div>
 
                 <div class="col-md-6">
-                    <h3>All comments</h3>
-                            {{-- Chèn vòng lặp hiển thị bình luận ở đây nếu có --}}
-                            
-                    <div class="card mb-2">
+                    <h3 style="margin-bottom: 30px">All comments</h3>
+                    @forelse ($comments as $comment)
                         <div class="card-body">
-                            <strong>Nguyễn Văn A</strong>
-                            <p>Nội dung bình luận...</p>
+                            <strong class="text-info">{{ $comment->user->name ?? $comment->name }}</strong>
+                            <p>{{ $comment->content }}</p>
+                            <small class="text-secondary">{{ $comment->created_at->format('d/m/Y H:i') }}</small>
                         </div>
-                    </div>
-                    <div class="card mb-2">
-                        <div class="card-body">
-                            <strong>Trần Thị B</strong>
-                            <p>Bài viết rất hay, cảm ơn!</p>
-                        </div>
-                    </div>
+                    @empty
+                        <p>Chưa có bình luận nào.</p>
+                    @endforelse
                 </div>
             </div>
             </div>
