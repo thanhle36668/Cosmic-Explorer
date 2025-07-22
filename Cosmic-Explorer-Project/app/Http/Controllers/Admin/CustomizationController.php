@@ -51,7 +51,7 @@ class CustomizationController extends Controller
             'company_description' => $request->company_description
         ];
 
-        $destinationPath = public_path('images/planets');
+        $destinationPath = public_path('images/images-introduction');
 
         if (!File::isDirectory($destinationPath)) {
             File::makeDirectory($destinationPath, 0755, true, true);
@@ -67,7 +67,7 @@ class CustomizationController extends Controller
                 $imageFile = $request->file($item);
 
                 if ($introduction->$item) {
-                    $oldImagePath = public_path('images/planets' . '/' . $introduction->$item);
+                    $oldImagePath = public_path('images/images-introduction' . '/' . $introduction->$item);
                     if (File::exists($oldImagePath)) {
                         File::delete($oldImagePath);
                     }
@@ -77,7 +77,7 @@ class CustomizationController extends Controller
 
                 $imageFile->move($destinationPath, $imageName);
 
-                $data_update[$item] = $imageName;
+                $data_update[$item] = 'images/images-introduction/' . $imageName;
             }
         }
         $introduction->update($data_update);
