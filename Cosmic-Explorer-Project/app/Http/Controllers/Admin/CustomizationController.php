@@ -23,9 +23,25 @@ class CustomizationController extends Controller
 
     public function updateIntroduction(Request $request)
     {
+        $validationRules = [
+            'website_name' => 'required|string|max:255',
+            'short_introduction' => 'required|string',
+            'short_introduction_2' => 'nullable|string',
+            'company_description' => 'required|string',
+        ];
+
+
+        $validationRules['photo'] = 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048';
+
+        for ($i = 2; $i <= 8; $i++) {
+            $validationRules['photo_' . $i] = 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048';
+        }
+
+        $request->validate($validationRules);
+
         $introduction = Introduction::find($request->id);
         if (!$introduction) {
-            return redirect()->back()->with('error', 'Không tìm thấy thông tin giới thiệu để cập nhật.');
+            return redirect()->back()->with('error', '404 Not Found');
         }
 
         $data_update = [
@@ -35,23 +51,23 @@ class CustomizationController extends Controller
             'company_description' => $request->company_description
         ];
 
-        $destinationPath = public_path('images/images-introduction');
+        $destinationPath = public_path('images/planets');
 
         if (!File::isDirectory($destinationPath)) {
             File::makeDirectory($destinationPath, 0755, true, true);
         }
 
-        $photoFields = ['photo'];
+        $photoArr = ['photo'];
         for ($i = 2; $i <= 8; $i++) {
-            $photoFields[] = 'photo_' . $i;
+            $photoArr[] = 'photo_' . $i;
         }
 
-        foreach ($photoFields as $field) {
-            if ($request->hasFile($field)) {
-                $imageFile = $request->file($field);
+        foreach ($photoArr as $item) {
+            if ($request->hasFile($item)) {
+                $imageFile = $request->file($item);
 
-                if ($introduction->$field) {
-                    $oldImagePath = public_path('images/images-introduction' . '/' . $introduction->$field);
+                if ($introduction->$item) {
+                    $oldImagePath = public_path('images/planets' . '/' . $introduction->$item);
                     if (File::exists($oldImagePath)) {
                         File::delete($oldImagePath);
                     }
@@ -61,7 +77,7 @@ class CustomizationController extends Controller
 
                 $imageFile->move($destinationPath, $imageName);
 
-                $data_update[$field] = $imageName;
+                $data_update[$item] = $imageName;
             }
         }
         $introduction->update($data_update);

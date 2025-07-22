@@ -50,8 +50,6 @@
                     <div class="form-group">
                         <label for="photo" class="mr-3">Photo: </label>
                         <input type="file" id="photo" name="photo">
-                        <img src="{{ asset('images') }}/images-introduction/{{ $information->photo }}" alt=""
-                            height="100px" width="100px">
                     </div>
                     <div class="form-group">
                         <label for="photo_2" class="mr-2">Photo 2:</label>

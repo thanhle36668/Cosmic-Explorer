@@ -130,43 +130,42 @@
                     <div class="owl-banner owl-carousel ">
                         <div class="item">
                             <a href="#">
-                                <img class="rounded-circle"
-                                    src="{{ asset('images') }}/images-introduction/{{ $information->photo }}"
+                                <img class="rounded-circle" src="{{ asset('images') }}/planets/{{ $information->photo }}"
                                     alt="{{ $information->photo }}" height="480px" width="480px">
                             </a>
                         </div>
                         <div class="item">
                             <a href="#">
                                 <img class="rounded-circle"
-                                    src="{{ asset('images') }}/images-introduction/{{ $information->photo_2 }}"
+                                    src="{{ asset('images') }}/planets/{{ $information->photo_2 }}"
                                     alt="{{ $information->photo_2 }}" height="480px" width="480px">
                             </a>
                         </div>
                         <div class="item">
                             <a href="#">
                                 <img class="rounded-circle"
-                                    src="{{ asset('images') }}/images-introduction/{{ $information->photo_3 }}"
+                                    src="{{ asset('images') }}/planets/{{ $information->photo_3 }}"
                                     alt="{{ $information->photo_3 }}" height="480px" width="480px">
                             </a>
                         </div>
                         <div class="item">
                             <a href="#">
                                 <img class="rounded-circle"
-                                    src="{{ asset('images') }}/images-introduction/{{ $information->photo_4 }}"
+                                    src="{{ asset('images') }}/planets/{{ $information->photo_4 }}"
                                     alt="{{ $information->photo_4 }}" height="480px" width="480px">
                             </a>
                         </div>
                         <div class="item">
                             <a href="#">
                                 <img class="rounded-circle"
-                                    src="{{ asset('images') }}/images-introduction/{{ $information->photo_5 }}"
+                                    src="{{ asset('images') }}/planets/{{ $information->photo_5 }}"
                                     alt="{{ $information->photo_5 }}" height="480px" width="480px">
                             </a>
                         </div>
                         <div class="item">
                             <a href="#">
                                 <img class="rounded-circle"
-                                    src="{{ asset('images') }}/images-introduction/{{ $information->photo_6 }}"
+                                    src="{{ asset('images') }}/planets/{{ $information->photo_6 }}"
                                     alt="{{ $information->photo_6 }}" height="480px" width="480px">
                             </a>
                         </div>
