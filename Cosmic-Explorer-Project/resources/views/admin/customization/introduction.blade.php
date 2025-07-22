@@ -47,37 +47,234 @@
                         <textarea id="company_description" name="company_description" id="company_description" class="form-control"
                             rows="10" cols="10" required>{{ $information->company_description }}</textarea>
                     </div>
-                    <div class="form-group">
-                        <label for="photo" class="mr-3">Photo: </label>
-                        <input type="file" id="photo" name="photo">
-                    </div>
-                    <div class="form-group">
-                        <label for="photo_2" class="mr-2">Photo 2:</label>
-                        <input type="file" id="photo_2" id="photo_2" name="photo_2">
-                    </div>
-                    <div class="form-group">
-                        <label for="photo_3" class="mr-2">Photo 3:</label>
-                        <input type="file" id="photo_3" id="photo_3" name="photo_3">
-                    </div>
-                    <div class="form-group">
-                        <label for="photo_4" class="mr-2">Photo 4:</label>
-                        <input type="file" id="photo_4" id="photo_4" name="photo_4">
-                    </div>
-                    <div class="form-group">
-                        <label for="photo_5" class="mr-2">Photo 5:</label>
-                        <input type="file" id="photo_5" id="photo_5" name="photo_5">
-                    </div>
-                    <div class="form-group">
-                        <label for="photo_6" class="mr-2">Photo 6:</label>
-                        <input type="file" id="photo_6" id="photo_6" name="photo_6">
-                    </div>
-                    <div class="form-group">
-                        <label for="photo_7" class="mr-2">Photo 7:</label>
-                        <input type="file" id="photo_7" id="photo_7" name="photo_7">
-                    </div>
-                    <div class="form-group">
-                        <label for="photo_8" class="mr-2">Photo 8:</label>
-                        <input type="file" id="photo_8" id="photo_8" name="photo_8">
+                    <div class="row">
+                        <div class="form-group mb-4 col-12 col-md-6">
+                            <label for="photo" class="form-label d-block mb-2">Photo:</label>
+                            <div class="row align-items-center g-3">
+                                <div class="col-12 col-sm-4 col-md-12 col-lg-3">
+                                    @if ($information->photo)
+                                        <div class="d-flex flex-column flex-sm-row align-items-start align-items-sm-center">
+                                            <img src="{{ asset($information->photo) }}" alt="{{ $information->photo }}"
+                                                class="img-thumbnail me-sm-3 mb-2 mb-sm-0"
+                                                style="height: 140px; width: 140px;">
+                                        </div>
+                                    @else
+                                        <p class="text-muted">No photo uploaded yet.</p>
+                                    @endif
+                                </div>
+                                <div class="col-12 col-sm-8 col-md-12 col-lg-9">
+                                    <input type="file" id="photo" name="photo" accept="image/*">
+                                    <small class="form-text text-muted mt-2">
+                                        Please select a new image file (JPG, PNG, GIF, WebP). Max size 2MB.
+                                    </small>
+                                    @if ($information->photo)
+                                        <small class="form-text text-muted">
+                                            To keep the current photo, leave this field empty.
+                                        </small>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group mb-4 col-12 col-md-6">
+                            <label for="photo_2" class="form-label d-block mb-2">Photo 2:</label>
+                            <div class="row align-items-center g-3">
+                                <div class="col-12 col-sm-4 col-md-12 col-lg-3">
+                                    @if ($information->photo_2)
+                                        <div class="d-flex flex-column flex-sm-row align-items-start align-items-sm-center">
+                                            <img src="{{ asset($information->photo_2) }}" alt="{{ $information->photo_2 }}"
+                                                class="img-thumbnail me-sm-3 mb-2 mb-sm-0"
+                                                style="height: 140px; width: 140px;">
+                                        </div>
+                                    @else
+                                        <p class="text-muted">No photo uploaded yet.</p>
+                                    @endif
+                                </div>
+                                <div class="col-12 col-sm-8 col-md-12 col-lg-9">
+                                    <input type="file" id="photo_2" name="photo_2" accept="image/*">
+                                    <small class="form-text text-muted mt-2">
+                                        Please select a new image file (JPG, PNG, GIF, WebP).
+                                    </small>
+                                    @if ($information->photo)
+                                        <small class="form-text text-muted">
+                                            To keep the current photo, leave this field empty.
+                                        </small>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group mb-4 col-12 col-md-6">
+                            <label for="photo_3" class="form-label d-block mb-2">Photo 3:</label>
+                            <div class="row align-items-center g-3">
+                                <div class="col-12 col-sm-4 col-md-12 col-lg-3">
+                                    @if ($information->photo_3)
+                                        <div class="d-flex flex-column flex-sm-row align-items-start align-items-sm-center">
+                                            <img src="{{ asset($information->photo_3) }}"
+                                                alt="{{ $information->photo_3 }}"
+                                                class="img-thumbnail me-sm-3 mb-2 mb-sm-0"
+                                                style="height: 140px; width: 140px;">
+                                        </div>
+                                    @else
+                                        <p class="text-muted">No photo uploaded yet.</p>
+                                    @endif
+                                </div>
+                                <div class="col-12 col-sm-8 col-md-12 col-lg-9">
+                                    <input type="file" id="photo_3" name="photo_3" accept="image/*">
+                                    <small class="form-text text-muted mt-2">
+                                        Please select a new image file (JPG, PNG, GIF, WebP).
+                                    </small>
+                                    @if ($information->photo)
+                                        <small class="form-text text-muted">
+                                            To keep the current photo, leave this field empty.
+                                        </small>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group mb-4 col-12 col-md-6">
+                            <label for="photo_4" class="form-label d-block mb-2">Photo 4:</label>
+                            <div class="row align-items-center g-3">
+                                <div class="col-12 col-sm-4 col-md-12 col-lg-3">
+                                    @if ($information->photo_4)
+                                        <div
+                                            class="d-flex flex-column flex-sm-row align-items-start align-items-sm-center">
+                                            <img src="{{ asset($information->photo_4) }}"
+                                                alt="{{ $information->photo_4 }}"
+                                                class="img-thumbnail me-sm-3 mb-2 mb-sm-0"
+                                                style="height: 140px; width: 140px;">
+                                        </div>
+                                    @else
+                                        <p class="text-muted">No photo uploaded yet.</p>
+                                    @endif
+                                </div>
+                                <div class="col-12 col-sm-8 col-md-12 col-lg-9">
+                                    <input type="file" id="photo_4" name="photo_4" accept="image/*">
+                                    <small class="form-text text-muted mt-2">
+                                        Please select a new image file (JPG, PNG, GIF, WebP).
+                                    </small>
+                                    @if ($information->photo)
+                                        <small class="form-text text-muted">
+                                            To keep the current photo, leave this field empty.
+                                        </small>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group mb-4 col-12 col-md-6">
+                            <label for="photo_5" class="form-label d-block mb-2">Photo 5:</label>
+                            <div class="row align-items-center g-3">
+                                <div class="col-12 col-sm-4 col-md-12 col-lg-3">
+                                    @if ($information->photo_5)
+                                        <div
+                                            class="d-flex flex-column flex-sm-row align-items-start align-items-sm-center">
+                                            <img src="{{ asset($information->photo_5) }}"
+                                                alt="{{ $information->photo_5 }}"
+                                                class="img-thumbnail me-sm-3 mb-2 mb-sm-0"
+                                                style="height: 140px; width: 140px;">
+                                        </div>
+                                    @else
+                                        <p class="text-muted">No photo uploaded yet.</p>
+                                    @endif
+                                </div>
+                                <div class="col-12 col-sm-8 col-md-12 col-lg-9">
+                                    <input type="file" id="photo_5" name="photo_5" accept="image/*">
+                                    <small class="form-text text-muted mt-2">
+                                        Please select a new image file (JPG, PNG, GIF, WebP).
+                                    </small>
+                                    @if ($information->photo)
+                                        <small class="form-text text-muted">
+                                            To keep the current photo, leave this field empty.
+                                        </small>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group mb-4 col-12 col-md-6">
+                            <label for="photo_6" class="form-label d-block mb-2">Photo 6:</label>
+                            <div class="row align-items-center g-3">
+                                <div class="col-12 col-sm-4 col-md-12 col-lg-3">
+                                    @if ($information->photo_6)
+                                        <div
+                                            class="d-flex flex-column flex-sm-row align-items-start align-items-sm-center">
+                                            <img src="{{ asset($information->photo_6) }}"
+                                                alt="{{ $information->photo_6 }}"
+                                                class="img-thumbnail me-sm-3 mb-2 mb-sm-0"
+                                                style="height: 140px; width: 140px;">
+                                        </div>
+                                    @else
+                                        <p class="text-muted">No photo uploaded yet.</p>
+                                    @endif
+                                </div>
+                                <div class="col-12 col-sm-8 col-md-12 col-lg-9">
+                                    <input type="file" id="photo_6" name="photo_6" accept="image/*">
+                                    <small class="form-text text-muted mt-2">
+                                        Please select a new image file (JPG, PNG, GIF, WebP).
+                                    </small>
+                                    @if ($information->photo)
+                                        <small class="form-text text-muted">
+                                            To keep the current photo, leave this field empty.
+                                        </small>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group mb-4 col-12 col-md-6">
+                            <label for="photo_7" class="form-label d-block mb-2">Photo 7:</label>
+                            <div class="row align-items-center g-3">
+                                <div class="col-12 col-sm-4 col-md-12 col-lg-3">
+                                    @if ($information->photo_7)
+                                        <div
+                                            class="d-flex flex-column flex-sm-row align-items-start align-items-sm-center">
+                                            <img src="{{ asset($information->photo_7) }}"
+                                                alt="{{ $information->photo_7 }}"
+                                                class="img-thumbnail me-sm-3 mb-2 mb-sm-0"
+                                                style="height: 140px; width: 140px;">
+                                        </div>
+                                    @else
+                                        <p class="text-muted">No photo uploaded yet.</p>
+                                    @endif
+                                </div>
+                                <div class="col-12 col-sm-8 col-md-12 col-lg-9">
+                                    <input type="file" id="photo_7" name="photo_7" accept="image/*">
+                                    <small class="form-text text-muted mt-2">
+                                        Please select a new image file (JPG, PNG, GIF, WebP).
+                                    </small>
+                                    @if ($information->photo)
+                                        <small class="form-text text-muted">
+                                            To keep the current photo, leave this field empty.
+                                        </small>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group mb-4 col-12 col-md-6">
+                            <label for="photo_8" class="form-label d-block mb-2">Photo 8:</label>
+                            <div class="row align-items-center g-3">
+                                <div class="col-12 col-sm-4 col-md-12 col-lg-3">
+                                    @if ($information->photo_8)
+                                        <div
+                                            class="d-flex flex-column flex-sm-row align-items-start align-items-sm-center">
+                                            <img src="{{ asset($information->photo_8) }}"
+                                                alt="{{ $information->photo_8 }}"
+                                                class="img-thumbnail me-sm-3 mb-2 mb-sm-0"
+                                                style="height: 140px; width: 140px;">
+                                        </div>
+                                    @else
+                                        <p class="text-muted">No photo uploaded yet.</p>
+                                    @endif
+                                </div>
+                                <div class="col-12 col-sm-8 col-md-12 col-lg-9">
+                                    <input type="file" id="photo_8" name="photo_8" accept="image/*">
+                                    <small class="form-text text-muted mt-2">
+                                        Please select a new image file (JPG, PNG, GIF, WebP).
+                                    </small>
+                                    @if ($information->photo)
+                                        <small class="form-text text-muted">
+                                            To keep the current photo, leave this field empty.
+                                        </small>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="d-flex justify-content-end card-footer">
