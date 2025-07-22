@@ -8,7 +8,11 @@
 =======
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
+<<<<<<< HEAD
         'reference' => '771f7ed1ef9887badace898a1b555e7411e02231',
+>>>>>>> dev
+=======
+        'reference' => 'a120b5a70603f22428eb3c0cff37e95bd5cd3b9e',
 >>>>>>> dev
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
@@ -393,7 +397,11 @@
 =======
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
+<<<<<<< HEAD
             'reference' => '771f7ed1ef9887badace898a1b555e7411e02231',
+>>>>>>> dev
+=======
+            'reference' => 'a120b5a70603f22428eb3c0cff37e95bd5cd3b9e',
 >>>>>>> dev
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',

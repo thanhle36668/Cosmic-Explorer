@@ -37,21 +37,21 @@
                                     <li class="nav-item">
                                         <a class="dropdown-item" href="{{ route('collections-planets') }}"
                                             id="navbarDropdownPlanets">
-                                            Planets
+                                            Planet
                                         </a>
                                     </li>
 
                                     <li class="nav-item">
                                         <a class="dropdown-item" href="{{ route('collections-constellations') }}"
                                             id="navbarDropdownConstellations">
-                                            Constellations
+                                            Constellation
                                         </a>
                                     </li>
 
                                     <li class="nav-item">
                                         <a class="dropdown-item" href="{{ route('collections-observatories') }}"
                                             id="navbarDropdownObservatories">
-                                            Observatories
+                                            Observatorie
                                         </a>
                                     </li>
                                 </ul>
@@ -78,6 +78,33 @@
                     </nav>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-12">
+                    @if (session('success-message'))
+                        <div id="successAlert" class="alert alert-success alert-dismissible fade show mt-2" role="alert">
+                            {{ session('success-message') }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    @endif
+                </div>
+                <div class="col-12">
+                    @if (session('success-subscribe'))
+                        <div id="successAlert" class="alert alert-success alert-dismissible fade show mt-2" role="alert">
+                            {{ session('success-subscribe') }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    @endif
+                </div>
+                <div class="col-12">
+                    @if (session('error-subscribe'))
+                        <div id="errorAlert" class="alert alert-error alert-dismissible fade show mt-2 bg-danger text-light"
+                            role="alert">
+                            {{ session('error-subscribe') }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    @endif
+                </div>
+            </div>
         </div>
     </header>
     <!-- ***** Header End ***** -->
@@ -88,42 +115,67 @@
             <div class="row">
                 <div class="col-lg-6 align-self-center">
                     <div class="header-text">
-                        <h1>COSMIC EXPLORER</h1>
-                        <h3>Astronomical information
-                            <br class="hidden">
-                            about the universe
-                        </h3>
-                        <p>We are a group of amateur astronomers working together to improve astronomical
-                            knowledge and
-                            observational skills. We make ourselves and our instruments available to promote public
-                            interest in
-                            astronomy. Cosmos members are a varied group of colleagues who share a curiosity about the
-                            sky. Some
-                            members are scientists or engineers, while others are artists or craftspeople, building
-                            contractors or
-                            college students. Ability levels span the range from novice to expert.</p>
-                        <div class="buttons">
-                            <div class="border-button">
-                                <a href="{{ route('collections-planets') }}">Planet
-                                    collections</a>
-                            </div>
-                            <div class="border-button">
-                                <a href="{{ route('collections-constellations') }}">Constellation
-                                    collections</a>
-                            </div>
-                        </div>
+                        @foreach ($introduction as $information)
+                            <h1>{{ $information->website_name }}
+                            </h1>
+                            <h3>{{ $information->short_introduction }}
+                                <br class="hidden">
+                                {{ $information->short_introduction_2 }}
+                            </h3>
+                            <p>{{ $information->company_description }}</p>
+                        @endforeach
                     </div>
                 </div>
                 <div class="col-lg-5 offset-lg-1">
                     <div class="owl-banner owl-carousel ">
-                        @foreach ($planets as $planet)
-                            <div class="item">
-                                <a href="{{ route('details-planet', $planet->slug) }}">
-                                    <img class="rounded-circle" src="{{ asset('images') }}/planets/{{ $planet->photo }}"
-                                        alt="{{ $planet->name }}" height="480px" width="480px">
-                                </a>
-                            </div>
-                        @endforeach
+                        <div class="item">
+                            <a href="#">
+                                <img class="rounded-circle" src="{{ asset($information->photo) }}"
+                                    alt="{{ $information->photo }}" height="480px" width="480px">
+                            </a>
+                        </div>
+                        <div class="item">
+                            <a href="#">
+                                <img class="rounded-circle" src="{{ asset($information->photo_2) }}"
+                                    alt="{{ $information->photo_2 }}" height="480px" width="480px">
+                            </a>
+                        </div>
+                        <div class="item">
+                            <a href="#">
+                                <img class="rounded-circle" src="{{ asset($information->photo_3) }}"
+                                    alt="{{ $information->photo_3 }}" height="480px" width="480px">
+                            </a>
+                        </div>
+                        <div class="item">
+                            <a href="#">
+                                <img class="rounded-circle" src="{{ asset($information->photo_4) }}"
+                                    alt="{{ $information->photo_4 }}" height="480px" width="480px">
+                            </a>
+                        </div>
+                        <div class="item">
+                            <a href="#">
+                                <img class="rounded-circle" src="{{ asset($information->photo_5) }}"
+                                    alt="{{ $information->photo_5 }}" height="480px" width="480px">
+                            </a>
+                        </div>
+                        <div class="item">
+                            <a href="#">
+                                <img class="rounded-circle" src="{{ asset($information->photo_6) }}"
+                                    alt="{{ $information->photo_6 }}" height="480px" width="480px">
+                            </a>
+                        </div>
+                        <div class="item">
+                            <a href="#">
+                                <img class="rounded-circle" src="{{ asset($information->photo_7) }}"
+                                    alt="{{ $information->photo_7 }}" height="480px" width="480px">
+                            </a>
+                        </div>
+                        <div class="item">
+                            <a href="#">
+                                <img class="rounded-circle" src="{{ asset($information->photo_8) }}"
+                                    alt="{{ $information->photo_8 }}" height="480px" width="480px">
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -217,19 +269,19 @@
     </section>
     <!-- ***** News End ***** -->
 
-    <!-- ***** Collections (Planets - Constellations - Observatories) ***** -->
+    <!-- ***** Collections (Planet - Constellation - Observatorie) ***** -->
     <section class="categories-collections"
         style="background: url('{{ asset('images') }}/background/background-collections.jpg')">
         <div class="container">
             <div class="row">
-                <!-- ***** Planets Collections ***** -->
-                <div class="col-lg-12">
+                <!-- ***** Planet Collection ***** -->
+                <section class="col-lg-12">
                     <div class="categories">
                         <div class="row">
                             <div class="col-lg-12 mt-0">
                                 <div class="section-heading">
                                     <div class="line-dec"></div>
-                                    <h2>Planets Collections</h2>
+                                    <h2>Planet Collection</h2>
                                 </div>
                             </div>
                             @foreach ($planets as $planet)
@@ -251,11 +303,11 @@
                             @endforeach
                         </div>
                     </div>
-                </div>
-                <!-- ***** Planets Collections End ***** -->
+                </section>
+                <!-- ***** Planet Collection End ***** -->
 
-                <!-- ***** Constellations Collections ***** -->
-                <div class="col-lg-12">
+                <!-- ***** Constellation Collection ***** -->
+                <section class="col-lg-12">
                     <div class="collections">
                         <div class="row">
                             <div class="col-lg-12 title">
@@ -284,49 +336,60 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <!-- ***** Constellations Collections End ***** -->
+                </section>
+                <!-- ***** Constellation Collection End ***** -->
 
-                <!-- ***** Observatories Collections ***** -->
-                <div class="col-lg-12">
-                    <div class="collections">
+                <!-- ***** Observatorie Collection ***** -->
+                <section class="col-lg-12"
+                    style="background: url('{{ asset('images') }}/background/background-banner-main.avif');">
+                    <div class="container">
                         <div class="row">
-                            <div class="col-lg-12 title">
-                                <div class="section-heading">
-                                    <div class="line-dec"></div>
-                                    <h2>Observatories Collection</h2>
-                                </div>
-                            </div>
-                            <div class="col-lg-12 carousel">
-                                <div class="owl-collection owl-carousel">
-                                    @foreach ($observatories as $observatory)
-                                        <div class="item">
-                                            <img class="img-observatory"
-                                                src="{{ asset('images') }}/observatories/{{ $observatory->photo }}"
-                                                alt="{{ $observatory->name }}">
-                                            <div class="down-content text-center">
-                                                <h4>{{ $observatory->name }}
-                                                </h4>
-                                                <p>{{ $observatory->location }}</p>
-                                                <div class="main-button">
-                                                    <a href="{{ route('details-observatory', $observatory->slug) }}">View
-                                                        Details</a>
-                                                </div>
+                            <div class="col-lg-12">
+                                <div class="news">
+                                    <div class="row">
+                                        <div class="col-lg-12 title">
+                                            <div class="section-heading">
+                                                <div class="line-dec"></div>
+                                                <h2>Observatory Collection</h2>
                                             </div>
                                         </div>
-                                    @endforeach
+                                        <div class="col-lg-12">
+                                            <div class="owl-features owl-carousel">
+                                                @foreach ($observatories as $observatory)
+                                                    <div class="item">
+                                                        <div class="thumb">
+                                                            <img src="{{ asset('images') }}/observatories/{{ $observatory->photo }}"
+                                                                alt="{{ $observatory->name }}"
+                                                                style="border-radius: 20px;" height="360"
+                                                                width="360">
+                                                            <div class="hover-effect">
+                                                                <div class="content">
+                                                                    <h4 class="mb-1">{{ $observatory->name }}</h4>
+                                                                    <p>{{ $observatory->location }}</p>
+                                                                    <span class="details">
+                                                                        <div class="border-button">
+                                                                            <a
+                                                                                href="{{ route('details-observatory', $observatory->slug) }}">View
+                                                                                Details</a>
+                                                                        </div>
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                @endforeach
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <!-- ***** Observatories Collections End ***** -->
-
+                </section>
+                <!-- ***** Observatorie Collection End ***** -->
             </div>
-            <!-- ***** Constellations Collections End ***** -->
-        </div>
     </section>
-    <!-- ***** Collections (Planets - Constellations - Observatories) End ***** -->
+    <!-- ***** Collections (Planet - Constellation - Observatorie) End ***** -->
 
     <!-- ***** Contact ***** -->
     <section class="contact" style="background: url('{{ asset('images') }}/background/background-dark.jpg')">
@@ -345,23 +408,24 @@
                         <div class="section-heading">
                             <h2>Say Hello. Don't Be Shy!</h2>
                         </div>
-                        <form id="contact" action="" method="post">
+                        <form id="contact" action="{{ route('send-message') }}" method="post">
+                            @csrf
                             <div class="row">
                                 <div class="col-lg-6">
                                     <fieldset>
-                                        <input name="name" type="text" id="name" placeholder="Your name"
-                                            required="">
+                                        <input name="sender_name" type="text" id="name" placeholder="Your name"
+                                            required>
                                     </fieldset>
                                 </div>
                                 <div class="col-lg-6">
                                     <fieldset>
-                                        <input name="email" type="text" id="email" placeholder="Your email"
-                                            required="">
+                                        <input name="sender_email" type="text" id="email"
+                                            placeholder="Your email" pattern="[^ @]*@[^ @]*" required>
                                     </fieldset>
                                 </div>
                                 <div class="col-lg-12">
                                     <fieldset>
-                                        <textarea name="message" rows="6" id="message" placeholder="Your message" required=""></textarea>
+                                        <textarea name="message" rows="6" id="message" placeholder="Your message" required></textarea>
                                     </fieldset>
                                 </div>
                                 <div class="col-lg-12">
@@ -382,18 +446,19 @@
                         <div class="section-heading">
                             <h2>By Subscribing To Our Newsletter</h2>
                         </div>
-                        <form id="subscribe" action="" method="get">
+                        <form id="subscribe" action="{{ route('created-subscribe') }}" method="POST">
+                            @csrf
                             <div class="row">
                                 <div class="col-lg-5">
                                     <fieldset>
                                         <input name="name" type="text" id="name" placeholder="Your Name"
-                                            required="">
+                                            required>
                                     </fieldset>
                                 </div>
                                 <div class="col-lg-5">
                                     <fieldset>
                                         <input name="email" type="text" id="email" pattern="[^ @]*@[^ @]*"
-                                            placeholder="Your Email Address" required="">
+                                            placeholder="Your Email Address" required>
                                     </fieldset>
                                 </div>
                                 <div class="col-lg-2">
@@ -436,3 +501,56 @@
     </section>
     <!-- ***** Contact End ***** -->
 @endsection
+
+<!-- ***** Open and close notifications (success and error) ***** -->
+@section('success-message')
+    @if (session('success-message'))
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                var successAlert = document.getElementById('successAlert');
+                if (successAlert) {
+                    setTimeout(function() {
+                        var bootstrapAlert = new bootstrap.Alert(
+                            successAlert);
+                        bootstrapAlert.close();
+                    }, 5000);
+                }
+            });
+        </script>
+    @endif
+@endsection
+
+@section('success-subscribe')
+    @if (session('success-subscribe'))
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                var successAlert = document.getElementById('successAlert');
+                if (successAlert) {
+                    setTimeout(function() {
+                        var bootstrapAlert = new bootstrap.Alert(
+                            successAlert);
+                        bootstrapAlert.close();
+                    }, 5000);
+                }
+            });
+        </script>
+    @endif
+@endsection
+
+@section('error-subscribe')
+    @if (session('error-subscribe'))
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                var errorAlert = document.getElementById('errorAlert');
+                if (errorAlert) {
+                    setTimeout(function() {
+                        var bootstrapAlert = new bootstrap.Alert(
+                            errorAlert);
+                        bootstrapAlert.close();
+                    }, 5000);
+                }
+            });
+        </script>
+    @endif
+@endsection
+<!-- ***** Open and close notifications (success and error) End ***** -->
