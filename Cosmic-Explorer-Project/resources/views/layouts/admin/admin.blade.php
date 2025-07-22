@@ -286,6 +286,14 @@
                                         </p>
                                     </a>
                                 </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.customization-discovery') }}" class="nav-link">
+                                        <i class="nav-icon fas fa-info-circle"></i>
+                                        <p>
+                                            Discovery
+                                        </p>
+                                    </a>
+                                </li>
                             </ul>
                         </li>
                     </ul>

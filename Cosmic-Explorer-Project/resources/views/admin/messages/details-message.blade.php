@@ -47,8 +47,8 @@
                     <div class="form-group">
                         <label for="time_reply_message">Date Reply</label>
                         @if ($details_message->status)
-                            <input type="datetime-local" name="time_reply_message"
-                                value="{{ $details_message->time_reply_message ? $details_message->time_reply_message->format('Y-m-d\TH:i') : '' }}"
+                            <input type="text" name="time_reply_message"
+                                value="{{ $details_message->time_reply_message->format('d/m/Y - H:i:s') }}"
                                 id="time_reply_message" class="form-control" required disabled>
                         @else
                             <input type="datetime-local" name="time_reply_message"

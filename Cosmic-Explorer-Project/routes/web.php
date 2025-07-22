@@ -41,7 +41,7 @@ Route::middleware(['auth', 'is_admin'])->prefix('admin')->name('admin.')
         Route::get('/', fn() => view('admin.dashboard'))
             ->name('admin.dashboard');
         Route::resource('posts', PostController::class);
-       // Route::resource('comments', CommentController::class);
+        // Route::resource('comments', CommentController::class);
         // Dashboard Comments
         Route::resource('comments', CommentsController::class)->names('comments');
 
@@ -61,6 +61,9 @@ Route::middleware(['auth', 'is_admin'])->prefix('admin')->name('admin.')
         // Customization Introduction
         Route::get('/customization-introduction', [CustomizationController::class, 'introduction'])->name('customization-introduction');
         Route::put('/update-introduction', [CustomizationController::class, 'updateIntroduction'])->name('update-introduction');
+        // Customization Discovery
+        Route::get('/customization-discovery', [CustomizationController::class, 'discovery'])->name('customization-discovery');
+        Route::get('/edit-discovery', [CustomizationController::class, 'editDiscovery'])->name('customization-edit-discovery');
     });
 
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');

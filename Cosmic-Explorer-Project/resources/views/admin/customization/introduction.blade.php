@@ -1,7 +1,7 @@
 @extends('layouts.admin.admin')
 
 @section('title')
-    <title>Discovery Dashboard</title>
+    <title>Introduction Dashboard</title>
 @endsection
 
 @section('content')

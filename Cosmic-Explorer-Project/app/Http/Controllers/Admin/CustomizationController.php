@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Discovery;
 use App\Models\Introduction;
 use Illuminate\Support\Str; // Để tạo tên file ngẫu nhiên
 use Illuminate\Support\Facades\File; // Để kiểm tra/tạo thư mục và xóa file
@@ -83,5 +84,15 @@ class CustomizationController extends Controller
         $introduction->update($data_update);
 
         return redirect()->route('admin.customization-introduction')->with('success-update-introduction', 'You have successfully changed!');
+    }
+
+    // Customization Introduction
+    public function discovery()
+    {
+        $data = [
+            'discovery' => Discovery::orderBy('id')->get()
+        ];
+
+        return view('admin/customization/discovery')->with($data);
     }
 }
