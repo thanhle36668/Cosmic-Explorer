@@ -4,9 +4,11 @@ use App\Http\Controllers\Admin\CustomizationController;
 use App\Http\Controllers\Admin\MessagesController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\SubscribeController;
+use App\Http\Controllers\Admin\CommentsController;
 use App\Http\Controllers\CosmicExplorerController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CommentController;
+
 use Illuminate\Support\Facades\Route;
 
 // User
@@ -34,14 +36,16 @@ Route::group(['prefix' => ''], function () {
 
 
 // Admin 
-Route::middleware(['auth', 'is_admin'])
-    ->prefix('admin')
-    ->name('admin.')
+Route::middleware(['auth', 'is_admin'])->prefix('admin')->name('admin.')
     ->group(function () {
         Route::get('/', fn() => view('admin.dashboard'))
             ->name('admin.dashboard');
         Route::resource('posts', PostController::class);
-        Route::resource('comments', CommentController::class);
+       // Route::resource('comments', CommentController::class);
+        // Dashboard Comments
+        Route::resource('comments', CommentsController::class)->names('comments');
+
+
         // Dashboard Messages
         Route::get('/messages', [MessagesController::class, 'messages'])->name('messages');
         Route::get('/details-message/{id}', [MessagesController::class, 'editMessage'])->name('details-message');
