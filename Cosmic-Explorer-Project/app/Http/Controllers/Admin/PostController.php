@@ -67,8 +67,20 @@ class PostController extends Controller
 
 // xu ly anh:
         $imagePath = null;
+
         if ($request->hasFile('image')) {
-            $imagePath = $request->file('image')->store('posts', 'public');
+            $file = $request->file('image');
+            $filename = time() . '_' . Str::random(10) . '.' . $file->getClientOriginalExtension();
+
+
+        $destination = public_path('uploads/post');
+        if (!file_exists($destination)) {
+            mkdir($destination, 0755, true);
+        }
+
+            $file->move(public_path('uploads/post'), $filename);
+
+            $imagePath = 'uploads/post/' . $filename; // <-- lưu đường dẫn để ghi vào DB
         }
 
         Post::create([
@@ -115,12 +127,21 @@ class PostController extends Controller
 
         if ($request->hasFile('image')) {
             // Xoá ảnh cũ nếu có
-            if ($post->image) {
-                Storage::disk('public')->delete($post->image);
+            if ($post->image && file_exists(public_path($post->image))) {
+                unlink(public_path($post->image));
             }
 
             // Lưu ảnh mới
-            $data['image'] = $request->file('image')->store('posts', 'public');
+           $file = $request->file('image');
+            $filename = time() . '_' . Str::random(10) . '.' . $file->getClientOriginalExtension();
+
+            $destinationPath = public_path('uploads/post');
+            if (!file_exists($destinationPath)) {
+                mkdir($destinationPath, 0755, true);
+            }
+
+            $file->move($destinationPath, $filename);
+            $data['image'] = 'uploads/post/' . $filename;
         }
 
         $post->update($data);
@@ -130,11 +151,9 @@ class PostController extends Controller
 
     public function destroy(Post $post)
     {
-        if ($post->image && Storage::disk('public')->exists($post->image)) {
-            Storage::disk('public')->delete($post->image);
-        }
-
-        $post->delete();
-        return redirect()->route('admin.posts.index')->with('success', 'Đã xoá');
+if ($post->image && file_exists(public_path($post->image))) {
+    unlink(public_path($post->image));
+}
+$post->delete();
     }
 }

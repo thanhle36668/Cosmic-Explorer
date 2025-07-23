@@ -107,7 +107,7 @@
                         style="height: auto">
                         <div
                             class="planet-image-fixed-size d-flex align-items-center justify-content-center overflow-hidden mb-2">
-                            <img src="{{ asset('storage/' . $post->image) }}" alt="tên ảnh"
+                            <img src="{{ asset($post->image) }}" alt="tên ảnh"
                                 class="img-fluid rounded-lg">
                         </div>
                         <div class="flex-grow-1">

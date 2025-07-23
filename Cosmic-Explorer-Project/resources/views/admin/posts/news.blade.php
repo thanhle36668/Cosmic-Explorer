@@ -119,7 +119,7 @@
                                 Image:
                                 @if ($post->image)
                                     <div class="mb-4">
-                                        <img src="{{ asset('storage/' . $post->image) }}" class="img-fluid"
+                                        <img src="{{ asset($post->image) }}" class="img-fluid"
                                             alt="{{ $post->title }}">
                                     </div>
                                 @endif

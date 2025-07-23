@@ -48,7 +48,7 @@
                     <div class="form-group">
                         <label>Image</label><br>
                         @if ($post->image)
-                            <img src="{{ asset('storage/' . $post->image) }}" width="150">
+                            <img src="{{ asset($post->image) }}" width="150">
                         @endif
                         <input type="file" name="image" class="form-control-file">
                     </div>
