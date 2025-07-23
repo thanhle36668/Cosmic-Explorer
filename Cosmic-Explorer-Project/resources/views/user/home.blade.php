@@ -51,7 +51,7 @@
                                     <li class="nav-item">
                                         <a class="dropdown-item" href="{{ route('collections-observatories') }}"
                                             id="navbarDropdownObservatories">
-                                            Observatorie
+                                            Observatory
                                         </a>
                                     </li>
                                 </ul>
@@ -186,40 +186,42 @@
     <!-- ***** Discovery (BigBang Theory - The Earth's Evolution - Comets ) ***** -->
     <section class="discovery py-5 px-5" style="background-color: rgb(0,0,0);">
         @foreach ($discovery as $discoveries)
-            @if ($discoveries->id % 2 == 0)
-                <div class="card px-4 py-4">
-                    <div class="row g-0">
-                        <div class="col-md-8 d-flex justify-content-center align-items-center">
-                            <div class="card-body">
-                                <h5 class="card-title">{{ $discoveries->title }}</h5>
-                                <p class="card-text">{{ $discoveries->description_short }}</p>
-                                <a href="{{ route('details-discovery', $discoveries->slug) }}"
-                                    class="card-button badge rounded-pill bg-white">View Details</a>
+            @if ($discoveries->status)
+                @if ($discoveries->id % 2 == 0)
+                    <div class="card px-4 py-4">
+                        <div class="row g-0">
+                            <div class="col-md-8 d-flex justify-content-center align-items-center">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ $discoveries->title }}</h5>
+                                    <p class="card-text">{{ $discoveries->description_short }}</p>
+                                    <a href="{{ route('details-discovery', $discoveries->slug) }}"
+                                        class="card-button badge rounded-pill bg-white">View Details</a>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-4">
-                            <img src="{{ asset($discoveries->photo) }}" class="img-fluid img-discovery"
-                                alt="{{ $discoveries->title }}">
-                        </div>
-                    </div>
-                </div>
-            @else
-                <div class="card px-4 py-4">
-                    <div class="row g-0">
-                        <div class="col-md-4">
-                            <img src="{{ asset($discoveries->photo) }}" class="img-fluid"
-                                alt="{{ $discoveries->title }}">
-                        </div>
-                        <div class="col-md-8 d-flex justify-content-center align-items-center">
-                            <div class="card-body">
-                                <h5 class="card-title">{{ $discoveries->title }}</h5>
-                                <p class="card-text">{{ $discoveries->description_short }}</p>
-                                <a href="{{ route('details-discovery', $discoveries->slug) }}"
-                                    class="card-button badge rounded-pill bg-white">View Details</a>
+                            <div class="col-md-4">
+                                <img src="{{ asset($discoveries->photo) }}" class="img-fluid img-discovery"
+                                    alt="{{ $discoveries->title }}">
                             </div>
                         </div>
                     </div>
-                </div>
+                @else
+                    <div class="card px-4 py-4">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <img src="{{ asset($discoveries->photo) }}" class="img-fluid"
+                                    alt="{{ $discoveries->title }}">
+                            </div>
+                            <div class="col-md-8 d-flex justify-content-center align-items-center">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ $discoveries->title }}</h5>
+                                    <p class="card-text">{{ $discoveries->description_short }}</p>
+                                    <a href="{{ route('details-discovery', $discoveries->slug) }}"
+                                        class="card-button badge rounded-pill bg-white">View Details</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endif
             @endif
         @endforeach
     </section>
@@ -240,15 +242,14 @@
                             </div>
                             <div class="col-lg-12">
                                 <div class="owl-features owl-carousel">
-                                    @foreach ($constellations as $constellation)
+                                    @foreach ($post as $item)
                                         <div class="item">
                                             <div class="thumb">
-                                                <img src="{{ asset('images') }}/constellations/{{ $constellation->photo }}"
-                                                    alt="{{ $constellation->name }}" style="border-radius: 20px;"
-                                                    height="360" width="360">
+                                                <img src="{{ asset($item->image) }}" alt="{{ $item->photo }}"
+                                                    style="border-radius: 20px;" height="360" width="360">
                                                 <div class="hover-effect">
                                                     <div class="content">
-                                                        <h4>James Webb: Unveiling Cosmic Secrets</h4>
+                                                        <h4>{{ $item->title }}</h4>
                                                         <span class="details">
                                                             <div class="border-button">
                                                                 <a href="#">View Details</a>

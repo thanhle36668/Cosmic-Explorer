@@ -10,6 +10,7 @@ use App\Models\Discovery;
 use App\Models\Introduction;
 use App\Models\Observatories;
 use App\Models\Planets;
+use App\Models\Post;
 use App\Models\Videos;
 
 class CosmicExplorerController extends Controller
@@ -23,16 +24,10 @@ class CosmicExplorerController extends Controller
             'planets' => Planets::get(),
             'constellations' => Constellations::orderBy('name', 'asc')->get(),
             'observatories' => Observatories::orderBy('name', 'desc')->get(),
-            'discovery' => Discovery::get()
+            'discovery' => Discovery::get(),
+            'post' => Post::get(),
         ];
         return view('user/home')->with($data);
-    }
-
-    // Controller Page News
-    public function news()
-    {
-        $data = [];
-        return view('user/news')->with($data);
     }
 
     // Controller Page About

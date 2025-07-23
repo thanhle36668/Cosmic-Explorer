@@ -1,7 +1,7 @@
 @extends('layouts.user.cosmic-explorer')
 
 @section('title')
-    <title>Observatory Collection</title>
+    <title>Collection of Observatories</title>
 @endsection
 
 @section('section-change')
@@ -51,7 +51,7 @@
                                     <li class="nav-item">
                                         <a class="dropdown-item" href="{{ route('collections-observatories') }}"
                                             id="navbarDropdownObservatories">
-                                            Observatorie
+                                            Observatory
                                         </a>
                                     </li>
                                 </ul>
@@ -89,7 +89,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="inner-content">
-                        <h1 style="text-transform: uppercase">Observatories Collections</h1>
+                        <h1 style="text-transform: uppercase">Collection of Observatories</h1>
                     </div>
                 </div>
             </div>
@@ -97,7 +97,7 @@
     </div>
     <!-- ***** Main Banner Details End ***** -->
 
-    <!-- ***** Collection Observatory ***** -->
+    <!-- ***** Collection of Observatories ***** -->
     <section id="collections" class="px-5 py-5"
         style="background: url('{{ asset('images') }}/background/background-collections.jpg')">
         <div class="container">
@@ -129,7 +129,7 @@
             {{ $observatories->links('pagination::bootstrap-5') }}
         </div>
     </section>
-    <!-- ***** Collection Observatory End ***** -->
+    <!-- ***** Collection of Observatories ***** -->
 
     <!-- ***** Contact ***** -->
     <section class="contact" style="background: url('{{ asset('images') }}/background/background-dark.jpg')">

@@ -32,6 +32,7 @@ class Discovery extends Model
         'name_photo_2',
         'created_at',
         'updated_at',
-        'slug'
+        'slug',
+        'status',
     ];
 }

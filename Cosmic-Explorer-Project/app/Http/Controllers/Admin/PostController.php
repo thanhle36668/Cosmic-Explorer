@@ -22,10 +22,9 @@ class PostController extends Controller
     public function allnews()
     {
         $posts = Post::where('is_published', true)
-                 ->latest()
-                 ->paginate(5);
+            ->latest()
+            ->paginate(5);
         return view('admin.posts.all-news', compact('posts'));
-
     }
 
     public function create()
@@ -39,9 +38,9 @@ class PostController extends Controller
         $post = Post::where('slug', $slug)->firstOrFail();
 
         $comments = $post->comments()
-                     ->where('approved', true)
-                     ->latest()
-                     ->get();
+            ->where('approved', true)
+            ->latest()
+            ->get();
 
         return view('admin.posts.news', compact('post', 'comments'));
     }
@@ -57,15 +56,15 @@ class PostController extends Controller
             'image' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
         ]);
 
-// tao slug khong trung khi title cac bai viet giong nhau
+        // tao slug khong trung khi title cac bai viet giong nhau
         $slug = Str::slug($request->title);
         $originalSlug = $slug;
         $counter = 1;
-            while (Post::where('slug', $slug)->exists()) {
-                $slug = $originalSlug . '-' . $counter++;
-            }
+        while (Post::where('slug', $slug)->exists()) {
+            $slug = $originalSlug . '-' . $counter++;
+        }
 
-// xu ly anh:
+        // xu ly anh:
         $imagePath = null;
 
         if ($request->hasFile('image')) {
@@ -73,10 +72,10 @@ class PostController extends Controller
             $filename = time() . '_' . Str::random(10) . '.' . $file->getClientOriginalExtension();
 
 
-        $destination = public_path('uploads/post');
-        if (!file_exists($destination)) {
-            mkdir($destination, 0755, true);
-        }
+            $destination = public_path('uploads/post');
+            if (!file_exists($destination)) {
+                mkdir($destination, 0755, true);
+            }
 
             $file->move(public_path('uploads/post'), $filename);
 
@@ -117,13 +116,13 @@ class PostController extends Controller
 
         $data = $request->only(['title', 'content', 'excerpt', 'category_id', 'is_published']);
         $slug = Str::slug($request->title);
-            $originalSlug = $slug;
-            $counter = 1;
+        $originalSlug = $slug;
+        $counter = 1;
 
-            while (Post::where('slug', $slug)->where('id', '!=', $post->id)->exists()) {
-                $slug = $originalSlug . '-' . $counter++;
-            }
-            $data['slug'] = $slug;
+        while (Post::where('slug', $slug)->where('id', '!=', $post->id)->exists()) {
+            $slug = $originalSlug . '-' . $counter++;
+        }
+        $data['slug'] = $slug;
 
         if ($request->hasFile('image')) {
             // Xoá ảnh cũ nếu có
@@ -132,7 +131,7 @@ class PostController extends Controller
             }
 
             // Lưu ảnh mới
-           $file = $request->file('image');
+            $file = $request->file('image');
             $filename = time() . '_' . Str::random(10) . '.' . $file->getClientOriginalExtension();
 
             $destinationPath = public_path('uploads/post');
@@ -151,9 +150,9 @@ class PostController extends Controller
 
     public function destroy(Post $post)
     {
-if ($post->image && file_exists(public_path($post->image))) {
-    unlink(public_path($post->image));
-}
-$post->delete();
+        if ($post->image && file_exists(public_path($post->image))) {
+            unlink(public_path($post->image));
+        }
+        $post->delete();
     }
 }
