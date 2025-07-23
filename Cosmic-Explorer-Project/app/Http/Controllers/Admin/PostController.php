@@ -151,9 +151,10 @@ class PostController extends Controller
 
     public function destroy(Post $post)
     {
-if ($post->image && file_exists(public_path($post->image))) {
-    unlink(public_path($post->image));
-}
-$post->delete();
+        if ($post->image && file_exists(public_path($post->image))) {
+            unlink(public_path($post->image));
+        }
+        $post->delete();
+        return redirect()->route('admin.posts.index')->with('success', 'Đã xoá bài viết');
     }
 }
