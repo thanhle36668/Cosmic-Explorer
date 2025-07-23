@@ -98,13 +98,13 @@
     <!-- ***** Main Banner Details End ***** -->
 
     <!-- ***** Collection Planet ***** -->
-    <section id="collections" class="px-5 py-5"
+    <section id="collections" class="px-4 py-4"
         style="background: url('{{ asset('images') }}/background/background-collections.jpg')">
         <div class="container">
             <div class="space-y-5 mt-5 mx-auto" style="max-width: 1000px;">
                 @foreach ($planets as $planet)
                     <div id="{{ $planet->name }}"
-                        class="card p-4 rounded-lg shadow-lg scroll-margin-top-120 d-md-flex flex-md-row align-items-md-center gap-5"
+                        class="card p-5 rounded-lg shadow-lg scroll-margin-top-120 d-md-flex flex-md-row align-items-md-center gap-5"
                         style="height: auto">
                         <div
                             class="planet-image-fixed-size d-flex align-items-center justify-content-center overflow-hidden mb-2">

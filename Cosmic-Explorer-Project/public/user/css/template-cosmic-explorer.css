@@ -1824,8 +1824,8 @@ body {
 
 .img-main {
   width: 100%;
-  max-width: 600px;
-  height: 500px;
+  max-width: 400px;
+  height: 400px;
   display: block;
   margin: 0 auto;
 }

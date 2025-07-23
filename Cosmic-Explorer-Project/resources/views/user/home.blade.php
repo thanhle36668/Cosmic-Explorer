@@ -198,8 +198,8 @@
                             </div>
                         </div>
                         <div class="col-md-4">
-                            <img src="{{ asset('images') }}/discovery/{{ $discoveries->photo }}"
-                                class="img-fluid img-discovery" alt="{{ $discoveries->title }}">
+                            <img src="{{ asset($discoveries->photo) }}" class="img-fluid img-discovery"
+                                alt="{{ $discoveries->title }}">
                         </div>
                     </div>
                 </div>
@@ -207,7 +207,7 @@
                 <div class="card px-4 py-4">
                     <div class="row g-0">
                         <div class="col-md-4">
-                            <img src="{{ asset('images') }}/discovery/{{ $discoveries->photo }}" class="img-fluid"
+                            <img src="{{ asset($discoveries->photo) }}" class="img-fluid"
                                 alt="{{ $discoveries->title }}">
                         </div>
                         <div class="col-md-8 d-flex justify-content-center align-items-center">
