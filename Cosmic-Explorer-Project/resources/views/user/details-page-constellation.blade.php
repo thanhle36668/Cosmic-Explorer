@@ -51,7 +51,7 @@
                                     <li class="nav-item">
                                         <a class="dropdown-item" href="{{ route('collections-observatories') }}"
                                             id="navbarDropdownObservatories">
-                                            Observatorie
+                                            Observatory
                                         </a>
                                     </li>
                                 </ul>
@@ -182,9 +182,9 @@
                                             <img class="img-constellation"
                                                 src="{{ asset('images') }}/constellations/{{ $constellation->photo }}"
                                                 alt="{{ $constellation->name }}">
-                                            <div class="down-content p-3" style="background-color: #282B2F;">
+                                            <div class="down-content p-4" style="background-color: #282B2F;">
                                                 <div class="main-button main-button-constellation text-center">
-                                                    <h4 class="mb-2">{{ $constellation->name }}</h4>
+                                                    <h4 class="mb-3">{{ $constellation->name }}</h4>
                                                     <a href="{{ route('details-constellation', $constellation->slug) }}">View
                                                         Details</a>
                                                 </div>
