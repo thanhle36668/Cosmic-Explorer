@@ -28,24 +28,6 @@
             </div>
         </div>
         <div class="card-body p-0">
-            <div class="row">
-                <div class="col-12">
-                    @if (session('success-create-discovery'))
-                        <div id="successAlert" class="alert alert-success alert-dismissible fade show mt-2 bg-success"
-                            role="alert">
-                            {{ session('success-create-discovery') }}
-                        </div>
-                    @endif
-                </div>
-                <div class="col-12">
-                    @if (session('success-delete-discovery'))
-                        <div id="successAlert" class="alert alert-success alert-dismissible fade show mt-2 bg-danger"
-                            role="alert">
-                            {{ session('success-delete-discovery') }}
-                        </div>
-                    @endif
-                </div>
-            </div>
             <table class="table table-striped projects">
                 <thead>
                     <tr class="text-center bg-primary">

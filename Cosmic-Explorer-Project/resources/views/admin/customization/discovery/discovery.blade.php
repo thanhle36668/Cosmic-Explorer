@@ -11,7 +11,7 @@
                 <h3 class="card-title col-8 d-flex align-items-center">All Discovery</h3>
                 <div class="card-tools col-4 d-flex justify-content-end align-items-center">
                     <a href="{{ route('admin.create-discovery') }}" class="btn btn-info mr-2" style="padding: 3px 6px;">Create
-                        Post</a>
+                        New</a>
                     <form action="{{ route('admin.search-discovery') }}" method="POST">
                         @csrf
                         <div class="input-group input-group-sm">
@@ -29,30 +29,18 @@
         </div>
         <div class="card-body p-0">
             <div class="row">
-                <div class="col-12">
-                    @if (session('error-not-found'))
-                        <div id="successAlert" class="alert alert-success alert-dismissible fade show mt-2 bg-danger"
-                            role="alert">
-                            {{ session('error-not-found') }}
-                        </div>
-                    @endif
-                </div>
-                <div class="col-12">
-                    @if (session('success-create-discovery'))
-                        <div id="successAlert" class="alert alert-success alert-dismissible fade show mt-2 bg-success"
-                            role="alert">
-                            {{ session('success-create-discovery') }}
-                        </div>
-                    @endif
-                </div>
-                <div class="col-12">
-                    @if (session('success-delete-discovery'))
-                        <div id="successAlert" class="alert alert-success alert-dismissible fade show mt-2 bg-success"
-                            role="alert">
-                            {{ session('success-delete-discovery') }}
-                        </div>
-                    @endif
-                </div>
+                @if (session('success-create-discovery'))
+                    <div id="successAlert" class="col-12 alert alert-success alert-dismissible fade show mt-2 bg-success"
+                        role="alert">
+                        {{ session('success-create-discovery') }}
+                    </div>
+                @endif
+                @if (session('success-delete-discovery'))
+                    <div id="successAlert" class="col-12 alert alert-success alert-dismissible fade show mt-2 bg-success"
+                        role="alert">
+                        {{ session('success-delete-discovery') }}
+                    </div>
+                @endif
             </div>
             <table class="table table-striped projects">
                 <thead>

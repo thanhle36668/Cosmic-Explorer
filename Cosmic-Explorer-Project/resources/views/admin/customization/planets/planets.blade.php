@@ -11,12 +11,12 @@
                 <h3 class="card-title col-8 d-flex align-items-center">All Planets</h3>
                 <div class="card-tools col-4 d-flex justify-content-end align-items-center">
                     <a href="{{ route('admin.create-planet') }}" class="btn btn-info mr-2" style="padding: 3px 6px;">Create
-                        Planet</a>
-                    <form action="#" method="POST">
+                        New</a>
+                    <form action="{{ route('admin.search-planet') }}" method="POST">
                         @csrf
                         <div class="input-group input-group-sm">
-                            <input type="text" name="search_title" class="form-control bg-secondary"
-                                placeholder="Search Title">
+                            <input type="text" name="search_name" class="form-control bg-secondary"
+                                placeholder="Search Name Planet">
                             <div class="input-group-append">
                                 <button type="submit" class="btn btn-primary">
                                     <i class="fas fa-search"></i>
@@ -30,14 +30,6 @@
         <div class="card-body p-0">
             <div class="row">
                 <div class="col-12">
-                    @if (session('error-not-found'))
-                        <div id="successAlert" class="alert alert-success alert-dismissible fade show mt-2 bg-danger"
-                            role="alert">
-                            {{ session('error-not-found') }}
-                        </div>
-                    @endif
-                </div>
-                <div class="col-12">
                     @if (session('success-create-planet'))
                         <div id="successAlert" class="alert alert-success alert-dismissible fade show mt-2 bg-success"
                             role="alert">
@@ -46,10 +38,10 @@
                     @endif
                 </div>
                 <div class="col-12">
-                    @if (session('success-delete-discovery'))
+                    @if (session('success-delete-planet'))
                         <div id="successAlert" class="alert alert-success alert-dismissible fade show mt-2 bg-success"
                             role="alert">
-                            {{ session('success-delete-discovery') }}
+                            {{ session('success-delete-planet') }}
                         </div>
                     @endif
                 </div>
@@ -85,8 +77,8 @@
                             <td>{{ $planet->id }}</td>
                             <td>
                                 @if ($planet->photo)
-                                    <img src="{{ asset('images') }}/planets/{{ $planet->photo }}" alt=""
-                                        height="150" width="150" class="me-sm-3 mb-2 mb-sm-0">
+                                    <img src="{{ asset($planet->photo) }}" alt="{{ $planet->name }}" height="150"
+                                        width="150" class="me-sm-3 mb-2 mb-sm-0">
                                 @else
                                     <img src="{{ asset('images') }}/planets/no-photo.jpg" alt="" height="150"
                                         width="150">
@@ -116,13 +108,13 @@
                             </td>
                             </td>
                             <td>
-                                <a href="#" class="btn btn-info">
+                                <a href="{{ route('admin.edit-planet', $planet->slug) }}" class="btn btn-info">
                                     <i class="nav-icon fas fa-edit"></i>
                                 </a>
                             </td>
                             <td>
-                                <a href="#" class="btn btn-danger"
-                                    onclick="return confirm('Please confirm deletion for the article:?')">
+                                <a href="{{ route('admin.delete-planet', $planet->id) }}" class="btn btn-danger"
+                                    onclick="return confirm('Are you sure you want to delete planet with ID: {{ $planet->id }}?')">
                                     <i class="nav-icon fas fa-trash"></i>
                                 </a>
                             </td>

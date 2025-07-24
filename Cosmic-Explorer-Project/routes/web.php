@@ -59,16 +59,20 @@ Route::middleware(['auth', 'is_admin'])->prefix('admin')->name('admin.')
         Route::put('/updated-introduction', [CustomizationController::class, 'updatedIntroduction'])->name('updated-introduction');
         // Customization Discovery
         Route::get('/customization-discovery', [CustomizationController::class, 'discovery'])->name('customization-discovery');
-        Route::get('/edit-discovery/{slug}', [CustomizationController::class, 'editDiscovery'])->name('edit-discovery');
-        Route::put('/updated-discovery', [CustomizationController::class, 'updatedDiscovery'])->name('updated-discovery');
         Route::get('/create-discovery', [CustomizationController::class, 'createDiscovery'])->name('create-discovery');
         Route::put('/save-post-discovery', [CustomizationController::class, 'savePostDiscovery'])->name('save-post-discovery');
+        Route::get('/edit-discovery/{slug}', [CustomizationController::class, 'editDiscovery'])->name('edit-discovery');
+        Route::put('/updated-discovery', [CustomizationController::class, 'updatedDiscovery'])->name('updated-discovery');
         Route::get('/delete-discovery/{id}', [CustomizationController::class, 'deleteDiscovery'])->name('delete-discovery');
         Route::post('/search-discovery', [CustomizationController::class, 'searchDiscovery'])->name('search-discovery');
-        // Customization Discovery
+        // Customization Planets
         Route::get('/customization-planets', [CustomizationController::class, 'planets'])->name('customization-planets');
         Route::get('/create-planet', [CustomizationController::class, 'createPlanet'])->name('create-planet');
         Route::put('/save-planet', [CustomizationController::class, 'savePlanet'])->name('save-planet');
+        Route::get('/delete-planet/{id}', [CustomizationController::class, 'deletePlanet'])->name('delete-planet');
+        Route::get('/edit-planet/{slug}', [CustomizationController::class, 'editPlanet'])->name('edit-planet');
+        Route::put('/updated-planet', [CustomizationController::class, 'updatedPlanet'])->name('updated-planet');
+        Route::post('/search-planet', [CustomizationController::class, 'searchPlanet'])->name('search-planet');
     });
 
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');

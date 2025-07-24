@@ -5,11 +5,6 @@
 @endsection
 
 @section('content')
-    @if (session('error-create-discovery'))
-        <div class="alert alert-danger">
-            {{ session('error-create-discovery') }}
-        </div>
-    @endif
     @if ($errors->any())
         <div class="alert alert-danger">
             <ul>

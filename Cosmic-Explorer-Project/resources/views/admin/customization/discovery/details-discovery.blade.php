@@ -85,7 +85,7 @@
                         <div class="form-group mb-4 col-12 col-md-6">
                             <label for="photo" class="form-label d-block mb-2">Photo 1 (Featured):</label>
                             <div class="row align-items-center g-3">
-                                <div class="col-12 col-sm-4 col-md-12 col-lg-6">
+                                <div class="col-12 col-sm-4 col-md-12 col-lg-5">
                                     @if ($post->photo)
                                         <div class="d-flex flex-column flex-sm-row align-items-start align-items-sm-center">
                                             <img src="{{ asset($post->photo) }}" alt="{{ $post->photo }}"
@@ -96,10 +96,10 @@
                                         <p class="text-muted">No photo uploaded yet.</p>
                                     @endif
                                 </div>
-                                <div class="col-12 col-sm-8 col-md-12 col-lg-6">
+                                <div class="col-12 col-sm-8 col-md-12 col-lg-7">
                                     <input type="file" id="photo" name="photo" accept="image/*">
                                     <small class="form-text text-muted mt-2">
-                                        Please select a new image file (JPG, PNG, GIF, WebP)
+                                        Please select a new image file (JPG, JPEG, GIF, PNG, SVG, WEBP)
                                     </small>
                                     @if ($post->photo)
                                         <small class="form-text text-muted">
@@ -112,7 +112,7 @@
                         <div class="form-group mb-4 col-12 col-md-6">
                             <label for="photo_2 " class="form-label d-block mb-2">Photo 2:</label>
                             <div class="row align-items-center g-3">
-                                <div class="col-12 col-sm-4 col-md-12 col-lg-6">
+                                <div class="col-12 col-sm-4 col-md-12 col-lg-5">
                                     @if ($post->photo_2)
                                         <div
                                             class="d-flex flex-column flex-sm-row align-items-start align-items-sm-center">
@@ -124,10 +124,10 @@
                                         <p class="text-muted">No photo uploaded yet.</p>
                                     @endif
                                 </div>
-                                <div class="col-12 col-sm-8 col-md-12 col-lg-6">
+                                <div class="col-12 col-sm-8 col-md-12 col-lg-7">
                                     <input type="file" id="photo_2" name="photo_2" accept="image/*">
                                     <small class="form-text text-muted mt-2">
-                                        Please select a new image file (JPG, PNG, GIF, WebP)
+                                        Please select a new image file (JPG, JPEG, GIF, PNG, SVG, WEBP)
                                     </small>
                                     @if ($post->photo)
                                         <small class="form-text text-muted">

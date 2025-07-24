@@ -286,21 +286,22 @@
                                 </div>
                             </div>
                             @foreach ($planets as $planet)
-                                <div class="col-lg-3 col-sm-6">
-                                    <a href="{{ route('details-planet', $planet->slug) }}">
-                                        <div class="item">
-                                            <div class="icon">
-                                                <img src="{{ asset('images') }}/planets/{{ $planet->photo }}"
-                                                    alt="{{ $planet->name }}">
+                                @if ($planet->status)
+                                    <div class="col-lg-3 col-sm-6">
+                                        <a href="{{ route('details-planet', $planet->slug) }}">
+                                            <div class="item">
+                                                <div class="icon">
+                                                    <img src="{{ asset($planet->photo) }}" alt="{{ $planet->name }}">
+                                                </div>
+                                                <h4>{{ $planet->name }}</h4>
+                                                <div class="icon-button">
+                                                    <a href="{{ route('details-planet', $planet->slug) }}"><i
+                                                            class="fa fa-angle-right"></i></a>
+                                                </div>
                                             </div>
-                                            <h4>{{ $planet->name }}</h4>
-                                            <div class="icon-button">
-                                                <a href="{{ route('details-planet', $planet->slug) }}"><i
-                                                        class="fa fa-angle-right"></i></a>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
+                                        </a>
+                                    </div>
+                                @endif
                             @endforeach
                         </div>
                     </div>

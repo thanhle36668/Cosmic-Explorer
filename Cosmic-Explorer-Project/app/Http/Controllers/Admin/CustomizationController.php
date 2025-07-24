@@ -10,7 +10,6 @@ use App\Models\Planets;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Log;
 
 use Illuminate\Http\Request;
 
@@ -35,7 +34,6 @@ class CustomizationController extends Controller
             'company_description' => 'required|string',
         ];
 
-
         $validationRules['photo'] = 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048';
 
         for ($i = 2; $i <= 8; $i++) {
@@ -45,9 +43,6 @@ class CustomizationController extends Controller
         $request->validate($validationRules);
 
         $introduction = Introduction::find($request->id);
-        if (!$introduction) {
-            return redirect()->back()->with('error-not-found', '404 Not Found');
-        }
 
         $data_update = [
             'website_name' => $request->website_name,
@@ -129,9 +124,6 @@ class CustomizationController extends Controller
         $request->validate($validationRules);
 
         $post = Discovery::find($request->id);
-        if (!$post) {
-            return redirect('/customization-discovery')->with('error-not-found', '404 Not Found');
-        }
 
         $data_update = [
             'title' => $request->title,
@@ -249,7 +241,25 @@ class CustomizationController extends Controller
 
     public function deleteDiscovery($id)
     {
-        Discovery::find($id)->delete();
+        $post = Discovery::find($id);
+
+        $photoArray = ['photo'];
+        for ($i = 2; $i <= 8; $i++) {
+            $photoArray[] = 'photo_' . $i;
+        }
+
+        foreach ($photoArray as $item) {
+            if ($post->$item) {
+                $fullPath = public_path($post->$item);
+
+                if (File::exists($fullPath)) {
+                    File::delete($fullPath);
+                }
+            }
+        }
+
+        $post->delete();
+
         return redirect()->route('admin.customization-discovery')->with('success-delete-discovery', 'You have deleted successfully.');
     }
 
@@ -259,7 +269,7 @@ class CustomizationController extends Controller
             'search_discovery' => Discovery::Where('title', 'LIKE', '%' . $request->search_title . '%')->get()
         ];
 
-        return view('admin/customization/discovery/search-discovery')->with($data)->with('success-search-discovery', 'Search was successful');
+        return view('admin/customization/discovery/search-discovery')->with($data);
     }
 
     // Customization Planets
@@ -338,8 +348,117 @@ class CustomizationController extends Controller
 
             return redirect()->route('admin.customization-planets')->with('success-create-planet', 'You have successfully created a planet.');
         } catch (Exception $e) {
-            Log::error("Failed to create planet: " . $e->getMessage());
             return redirect()->back()->with('error-create-planet', 'Failed to create post due to an internal error. Please try again.');
         }
+    }
+
+    public function deletePlanet($id)
+    {
+        $planet = Planets::find($id);
+
+        $photoArray = ['photo'];
+        for ($i = 2; $i <= 5; $i++) {
+            $photoArray[] = 'photo_' . $i;
+        }
+
+        foreach ($photoArray as $item) {
+            if ($planet->$item) {
+                $fullPath = public_path($planet->$item);
+                if (File::exists($fullPath)) {
+                    File::delete($fullPath);
+                }
+            }
+        }
+
+        $planet->delete();
+
+        return redirect()->route('admin.customization-planets')->with('success-delete-planet', 'You have deleted successfully.');
+    }
+
+    public function editPlanet($slug)
+    {
+        $data = [
+            'planet' => Planets::where('slug', $slug)->firstOrFail()
+        ];
+
+        return view('admin/customization/planets/details-planet')->with($data);
+    }
+
+    public function updatedPlanet(Request $request)
+    {
+        $validationRules = [
+            'name' => 'string|max:100|unique:planets,name,' . $request->id,
+            'slug' => 'string|max:255|unique:planets,slug,' . $request->id,
+            'status' => 'required|boolean',
+            'title_short' => 'required|string|',
+            'brief_intro_composition' => 'required|string',
+            'discovery_date' => 'required|max:250|string',
+            'diameter_km' => 'required|max:250|string',
+            'avg_distance_to_earth_km' => 'required|max:250|string',
+            'avg_distance_to_sun_km' => 'required|max:250|string',
+            'photo' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
+            'photo_2' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
+            'photo_3' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
+            'photo_4' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
+            'photo_5' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
+        ];
+
+        $request->validate($validationRules);
+
+        $planet = Planets::find($request->id);
+
+        $data_updated = [
+            'name' => $request->name,
+            'slug' => Str::slug($request->slug),
+            'status' => $request->status,
+            'title_short' => $request->title_short,
+            'brief_intro_composition' => $request->brief_intro_composition,
+            'discovery_date' => $request->discovery_date,
+            'diameter_km' => $request->diameter_km,
+            'avg_distance_to_earth_km' => $request->avg_distance_to_earth_km,
+            'avg_distance_to_sun_km' => $request->avg_distance_to_sun_km,
+        ];
+
+        $destinationPath = public_path('images/planets');
+
+        if (!File::isDirectory($destinationPath)) {
+            File::makeDirectory($destinationPath, 0755, true, true);
+        }
+
+        $photoArray = ['photo'];
+        for ($i = 2; $i <= 5; $i++) {
+            $photoArray[] = 'photo_' . $i;
+        }
+
+        foreach ($photoArray as $item) {
+            if ($request->hasFile($item)) {
+                $imageFile = $request->file($item);
+
+                $oldImagePathFromDb = $planet->$item;
+                $oldImagePath = public_path($oldImagePathFromDb);
+                if ($oldImagePathFromDb && $oldImagePath) {
+                    File::delete($oldImagePath);
+                }
+
+                $imageName = 'update' . '_' . Str::ramdom(10) . '.' . $imageFile->getClientOriginalExtension();
+
+                $imageFile->move($destinationPath, $imageName);
+
+                $data_update[$item] = 'images/planets' . $imageName;
+            }
+        }
+
+        $planet->update($data_updated);
+
+        return redirect()->route('admin.edit-planet', $planet->slug)->with('success-update-planet', 'You have successfully changed!');
+    }
+
+    public function searchPlanet(Request $request)
+    {
+        $data = [
+            'search_planet' => Planets::where('slug', 'LIKE', '%' . $request->search_name . '%')->get()
+        ];
+
+        return view('admin/customization/planets/search-planet')->with($data);
     }
 }

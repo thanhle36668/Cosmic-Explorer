@@ -16,12 +16,6 @@
                         {{ session('success-update-introduction') }}
                     </div>
                 @endif
-                @if (session('error-not-found'))
-                    <div id="successAlert" class="alert alert-success alert-dismissible fade show mt-2 bg-danger"
-                        role="alert">
-                        {{ session('error-not-found') }}
-                    </div>
-                @endif
                 <div class="card-header">
                     <h3 class="card-title">Details Introduction</h3>
                 </div>
@@ -56,7 +50,8 @@
                                 <div class="col-12 col-sm-4 col-md-12 col-lg-3">
                                     @if ($information->photo)
                                         <div class="d-flex flex-column flex-sm-row align-items-start align-items-sm-center">
-                                            <img src="{{ asset($information->photo) }}" alt="{{ $information->photo }}"
+                                            <img src="{{ asset($information->photo) }}"
+                                                alt="{{ basename($information->photo) }}"
                                                 class="img-thumbnail me-sm-3 mb-2 mb-sm-0"
                                                 style="height: 140px; width: 140px;">
                                         </div>
@@ -65,7 +60,7 @@
                                     @endif
                                 </div>
                                 <div class="col-12 col-sm-8 col-md-12 col-lg-9">
-                                    <input type="file" id="photo" name="photo" accept="image/*">
+                                    <input type="file" id="photo" name="photo" accept="image/*" required>
                                     <small class="form-text text-muted mt-2">
                                         Please select a new image file (JPG, PNG, GIF, WebP). Max size 2MB.
                                     </small>
@@ -84,7 +79,7 @@
                                     @if ($information->photo_2)
                                         <div class="d-flex flex-column flex-sm-row align-items-start align-items-sm-center">
                                             <img src="{{ asset($information->photo_2) }}"
-                                                alt="{{ $information->photo_2 }}"
+                                                alt="{{ basename($information->photo_2) }}"
                                                 class="img-thumbnail me-sm-3 mb-2 mb-sm-0"
                                                 style="height: 140px; width: 140px;">
                                         </div>
@@ -93,7 +88,7 @@
                                     @endif
                                 </div>
                                 <div class="col-12 col-sm-8 col-md-12 col-lg-9">
-                                    <input type="file" id="photo_2" name="photo_2" accept="image/*">
+                                    <input type="file" id="photo_2" name="photo_2" accept="image/*" required>
                                     <small class="form-text text-muted mt-2">
                                         Please select a new image file (JPG, PNG, GIF, WebP).
                                     </small>
@@ -112,7 +107,7 @@
                                     @if ($information->photo_3)
                                         <div class="d-flex flex-column flex-sm-row align-items-start align-items-sm-center">
                                             <img src="{{ asset($information->photo_3) }}"
-                                                alt="{{ $information->photo_3 }}"
+                                                alt="{{ basename($information->photo_3) }}"
                                                 class="img-thumbnail me-sm-3 mb-2 mb-sm-0"
                                                 style="height: 140px; width: 140px;">
                                         </div>
@@ -121,7 +116,7 @@
                                     @endif
                                 </div>
                                 <div class="col-12 col-sm-8 col-md-12 col-lg-9">
-                                    <input type="file" id="photo_3" name="photo_3" accept="image/*">
+                                    <input type="file" id="photo_3" name="photo_3" accept="image/*" required>
                                     <small class="form-text text-muted mt-2">
                                         Please select a new image file (JPG, PNG, GIF, WebP).
                                     </small>
@@ -141,7 +136,7 @@
                                         <div
                                             class="d-flex flex-column flex-sm-row align-items-start align-items-sm-center">
                                             <img src="{{ asset($information->photo_4) }}"
-                                                alt="{{ $information->photo_4 }}"
+                                                alt="{{ basename($information->photo_4) }}"
                                                 class="img-thumbnail me-sm-3 mb-2 mb-sm-0"
                                                 style="height: 140px; width: 140px;">
                                         </div>
@@ -150,7 +145,7 @@
                                     @endif
                                 </div>
                                 <div class="col-12 col-sm-8 col-md-12 col-lg-9">
-                                    <input type="file" id="photo_4" name="photo_4" accept="image/*">
+                                    <input type="file" id="photo_4" name="photo_4" accept="image/*" required>
                                     <small class="form-text text-muted mt-2">
                                         Please select a new image file (JPG, PNG, GIF, WebP).
                                     </small>
@@ -170,7 +165,7 @@
                                         <div
                                             class="d-flex flex-column flex-sm-row align-items-start align-items-sm-center">
                                             <img src="{{ asset($information->photo_5) }}"
-                                                alt="{{ $information->photo_5 }}"
+                                                alt="{{ basename($information->photo_5) }}"
                                                 class="img-thumbnail me-sm-3 mb-2 mb-sm-0"
                                                 style="height: 140px; width: 140px;">
                                         </div>
@@ -179,7 +174,7 @@
                                     @endif
                                 </div>
                                 <div class="col-12 col-sm-8 col-md-12 col-lg-9">
-                                    <input type="file" id="photo_5" name="photo_5" accept="image/*">
+                                    <input type="file" id="photo_5" name="photo_5" accept="image/*" required>
                                     <small class="form-text text-muted mt-2">
                                         Please select a new image file (JPG, PNG, GIF, WebP).
                                     </small>
@@ -199,7 +194,7 @@
                                         <div
                                             class="d-flex flex-column flex-sm-row align-items-start align-items-sm-center">
                                             <img src="{{ asset($information->photo_6) }}"
-                                                alt="{{ $information->photo_6 }}"
+                                                alt="{{ basename($information->photo_6) }}"
                                                 class="img-thumbnail me-sm-3 mb-2 mb-sm-0"
                                                 style="height: 140px; width: 140px;">
                                         </div>
@@ -208,7 +203,7 @@
                                     @endif
                                 </div>
                                 <div class="col-12 col-sm-8 col-md-12 col-lg-9">
-                                    <input type="file" id="photo_6" name="photo_6" accept="image/*">
+                                    <input type="file" id="photo_6" name="photo_6" accept="image/*" required>
                                     <small class="form-text text-muted mt-2">
                                         Please select a new image file (JPG, PNG, GIF, WebP).
                                     </small>
@@ -228,7 +223,7 @@
                                         <div
                                             class="d-flex flex-column flex-sm-row align-items-start align-items-sm-center">
                                             <img src="{{ asset($information->photo_7) }}"
-                                                alt="{{ $information->photo_7 }}"
+                                                alt="{{ basename($information->photo_7) }}"
                                                 class="img-thumbnail me-sm-3 mb-2 mb-sm-0"
                                                 style="height: 140px; width: 140px;">
                                         </div>
@@ -237,7 +232,7 @@
                                     @endif
                                 </div>
                                 <div class="col-12 col-sm-8 col-md-12 col-lg-9">
-                                    <input type="file" id="photo_7" name="photo_7" accept="image/*">
+                                    <input type="file" id="photo_7" name="photo_7" accept="image/*" required>
                                     <small class="form-text text-muted mt-2">
                                         Please select a new image file (JPG, PNG, GIF, WebP).
                                     </small>
@@ -257,7 +252,7 @@
                                         <div
                                             class="d-flex flex-column flex-sm-row align-items-start align-items-sm-center">
                                             <img src="{{ asset($information->photo_8) }}"
-                                                alt="{{ $information->photo_8 }}"
+                                                alt="{{ basename($information->photo_8) }}"
                                                 class="img-thumbnail me-sm-3 mb-2 mb-sm-0"
                                                 style="height: 140px; width: 140px;">
                                         </div>
@@ -266,7 +261,7 @@
                                     @endif
                                 </div>
                                 <div class="col-12 col-sm-8 col-md-12 col-lg-9">
-                                    <input type="file" id="photo_8" name="photo_8" accept="image/*">
+                                    <input type="file" id="photo_8" name="photo_8" accept="image/*" required>
                                     <small class="form-text text-muted mt-2">
                                         Please select a new image file (JPG, PNG, GIF, WebP).
                                     </small>
