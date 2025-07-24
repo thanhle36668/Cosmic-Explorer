@@ -154,5 +154,7 @@ class PostController extends Controller
             unlink(public_path($post->image));
         }
         $post->delete();
+            return redirect()->route('admin.posts.index')->with('success', 'delete done');
+
     }
 }
