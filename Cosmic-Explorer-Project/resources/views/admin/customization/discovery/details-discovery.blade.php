@@ -44,10 +44,10 @@
                         <select name="status" id="status" class="form-control">
                             @if ($post->status)
                                 <option value="0">Private</option>
-                                <option value="1" selected>Public</option>
+                                <option value="1" selected>Publish</option>
                             @else
                                 <option value="0" selected>Private</option>
-                                <option value="1">Public</option>
+                                <option value="1">Publish</option>
                             @endif
                         </select>
                     </div>

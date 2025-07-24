@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Str;
 
 class Discovery extends Model
 {
@@ -30,8 +29,6 @@ class Discovery extends Model
         'photo_2',
         'name_photo',
         'name_photo_2',
-        'created_at',
-        'updated_at',
         'slug',
         'status',
     ];

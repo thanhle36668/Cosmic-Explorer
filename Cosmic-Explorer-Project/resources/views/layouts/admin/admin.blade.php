@@ -294,6 +294,14 @@
                                         </p>
                                     </a>
                                 </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.customization-planets') }}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>
+                                            Planets
+                                        </p>
+                                    </a>
+                                </li>
                             </ul>
                         </li>
                     </ul>
