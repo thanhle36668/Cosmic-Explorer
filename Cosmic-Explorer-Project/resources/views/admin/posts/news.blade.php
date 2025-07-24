@@ -89,7 +89,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="inner-content">
-                        <h1 style="text-transform: uppercase">{{ $post->category->name ?? 'Chưa phân loại' }}</h1>
+                        <h1 style="text-transform: uppercase">{{ $post->category->name ?? 'unclassified' }}</h1>
                     </div>
                 </div>
             </div>
@@ -104,11 +104,11 @@
                 <div class="col-lg-8 col-10 mx-auto">
                     <h2 class="mb-3">{{ $post->title }}</h2>
                     <p class="mb-3">
-                        <strong>Author: {{ $post->user->name ?? 'Ẩn danh' }} </strong>
+                        <strong>Author: {{ $post->user->name ?? 'No name' }} </strong>
                         <br>
-                        <strong>Category: {{ $post->category->name ?? 'Chưa phân loại' }}</strong>
+                        <strong>Category: {{ $post->category->name ?? 'unclassified' }}</strong>
                         <br>
-                        <strong>Ngày đăng: {{ $post->created_at->format('d/m/Y') }}</strong>
+                        <strong>Creation date: {{ $post->created_at->format('d/m/Y') }}</strong>
                     </p>
                     <p class="mt-2">
                         {{ $post->excerpt }}
@@ -184,7 +184,7 @@
                                 <small class="text-secondary">{{ $comment->created_at->format('d/m/Y H:i') }}</small>
                             </div>
                         @empty
-                            <p>Chưa có bình luận nào.</p>
+                            <p>There are no comments yet.</p>
                         @endforelse
                     </div>
                 </div>
