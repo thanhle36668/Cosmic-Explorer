@@ -172,8 +172,8 @@
                                 <div class="owl-collection owl-carousel">
                                     @foreach ($planets as $planet)
                                         <div class="item">
-                                            <img class="img-planet"
-                                                src="{{ asset('images') }}/planets/{{ $planet->photo_extra }}"
+                                            <img class="img-planet" 
+                                                src="{{ asset($planet->photo_5) }}"
                                                 alt="{{ $planet->name }}">
                                             <div class="down-content-discovery text-center p-3"
                                                 style="background-color: transparent; border: none">
