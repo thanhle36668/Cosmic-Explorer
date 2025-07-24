@@ -14,12 +14,17 @@ use Illuminate\Support\Facades\Route;
 // User
 Route::group(['prefix' => ''], function () {
     Route::get('/', [CosmicExplorerController::class, 'home'])->name('home');
+
+    // About Page
     Route::get('/about', [CosmicExplorerController::class, 'about'])->name('about');
+
+    // Collection Page
     Route::get('/collection-planet', [CosmicExplorerController::class, 'pageCollectionsPlanets'])->name('collections-planets');
     Route::get('/collection-observatory', [CosmicExplorerController::class, 'pageCollectionsObservatories'])->name('collections-observatories');
     Route::get('/collection-constellation', [CosmicExplorerController::class, 'pageCollectionsConstellations'])->name('collections-constellations');
     Route::get('/collection-book', [CosmicExplorerController::class, 'pageCollectionsBooks'])->name('collections-books');
     Route::get('/collection-video', [CosmicExplorerController::class, 'pageCollectionsVideos'])->name('collections-videos');
+
     // Details Page
     Route::get('/details-planet/{slug}', [CosmicExplorerController::class, 'pageDetailsPlanet'])->name('details-planet');
     Route::get('/details-observatory/{slug}', [CosmicExplorerController::class, 'pageDetailsObservatory'])->name('details-observatory');
@@ -41,22 +46,24 @@ Route::middleware(['auth', 'is_admin'])->prefix('admin')->name('admin.')
         // Dashboard Comments
         Route::resource('comments', CommentsController::class)->names('comments');
 
-
         // Dashboard Messages
         Route::get('/messages', [MessagesController::class, 'messages'])->name('messages');
         Route::get('/details-message/{id}', [MessagesController::class, 'editMessage'])->name('details-message');
         Route::post('/reply-message', [MessagesController::class, 'replyMessage'])->name('reply-message');
         Route::get('/delete-message/{id}', [MessagesController::class, 'deleteMessage'])->name('delete-message');
         Route::post('/search-message', [MessagesController::class, 'searchMessage'])->name('search-message');
+
         // Dashboard Subscribe
         Route::get('/subscribe', [SubscribeController::class, 'subscribe'])->name('subscribe');
         Route::get('/details-subscribe/{slug}', [SubscribeController::class, 'editSubscribe'])->name('edit-subscribe');
         Route::post('/updates-subscribe', [SubscribeController::class, 'updatesSubscribe'])->name('updates-subscribe');
         Route::get('/delete-subscribe/{slug}', [SubscribeController::class, 'deleteSubscribe'])->name('delete-subscribe');
         Route::post('/search-subscribe', [SubscribeController::class, 'searchSubscribe'])->name('search-subscribe');
+
         // Customization Introduction
         Route::get('/customization-introduction', [CustomizationController::class, 'introduction'])->name('customization-introduction');
         Route::put('/updated-introduction', [CustomizationController::class, 'updatedIntroduction'])->name('updated-introduction');
+
         // Customization Discovery
         Route::get('/customization-discovery', [CustomizationController::class, 'discovery'])->name('customization-discovery');
         Route::get('/create-discovery', [CustomizationController::class, 'createDiscovery'])->name('create-discovery');
@@ -65,6 +72,7 @@ Route::middleware(['auth', 'is_admin'])->prefix('admin')->name('admin.')
         Route::put('/updated-discovery', [CustomizationController::class, 'updatedDiscovery'])->name('updated-discovery');
         Route::get('/delete-discovery/{id}', [CustomizationController::class, 'deleteDiscovery'])->name('delete-discovery');
         Route::post('/search-discovery', [CustomizationController::class, 'searchDiscovery'])->name('search-discovery');
+
         // Customization Planets
         Route::get('/customization-planets', [CustomizationController::class, 'planets'])->name('customization-planets');
         Route::get('/create-planet', [CustomizationController::class, 'createPlanet'])->name('create-planet');

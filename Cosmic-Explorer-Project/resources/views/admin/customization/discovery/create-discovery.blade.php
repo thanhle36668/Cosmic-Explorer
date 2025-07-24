@@ -25,11 +25,13 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label for="title">Title</label>
-                        <input id="title" name="title" class="form-control" value="{{ old('title') }}" required>
+                        <input id="title" name="title" class="form-control" value="{{ old('title') }}"
+                            placeholder="e.g., Penicillin Discovered" required>
                     </div>
                     <div class="form-group">
                         <label for="slug">Slug</label>
-                        <input id="slug" name="slug" class="form-control" value="{{ old('slug') }}" required>
+                        <input id="slug" name="slug" class="form-control" value="{{ old('slug') }}"
+                            placeholder="e.g., Penicillin Discovered" required>
                     </div>
                     <div class="form-group">
                         <label for="author">Author</label>
@@ -41,24 +43,28 @@
                     <div class="form-group">
                         <label for="title_details">Title Details</label>
                         <input id="title_details" name="title_details" class="form-control"
-                            value="{{ old('title_details') }}" required>
+                            value="{{ old('title_details') }}"
+                            placeholder="e.g., The Story of Penicillin: From Mold to Miracle Drug" required>
                     </div>
                     <div class="form-group">
                         <label for="description_short">Description Short</label>
-                        <textarea id="description_short" name="description_short" class="form-control" rows="10" cols="10" required>{{ old('description_short') }}</textarea>
+                        <textarea id="description_short" name="description_short" class="form-control" rows="10" cols="10"
+                            placeholder="e.g., The accidental find that revolutionized medicine." required>{{ old('description_short') }}</textarea>
                     </div>
                     <div class="form-group">
                         <label for="description_details">Description Details</label>
                         <textarea id="description_details" name="description_details" class="form-control" rows="10" cols="10"
-                            required>{{ old('description_details') }}</textarea>
+                            placeholder="e.g., A detailed look at Alexander Fleming's groundbreaking discovery and its impact." required>{{ old('description_details') }}</textarea>
                     </div>
                     <div class="form-group">
                         <label for="content_1">Content 1:</label>
-                        <textarea id="content_1" name="content_1" class="form-control" rows="10" cols="10" required>{{ old('content_1') }}</textarea>
+                        <textarea id="content_1" name="content_1" class="form-control" rows="10" cols="10"
+                            placeholder="e.g., In 1928, Fleming noticed mold killing bacteria in his lab..." required>{{ old('content_1') }}</textarea>
                     </div>
                     <div class="form-group">
                         <label for="content_2">Content 2:</label>
-                        <textarea id="content_2" name="content_2" class="form-control" rows="10" cols="10" required>{{ old('content_2') }}</textarea>
+                        <textarea id="content_2" name="content_2" class="form-control" rows="10" cols="10"
+                            placeholder="e.g., Its mass production during WWII saved countless lives..." required>{{ old('content_2') }}</textarea>
                     </div>
                     <div class="row">
                         <div class="form-group mb-4 col-12 col-md-6">
@@ -73,7 +79,7 @@
                             </div>
                             <label for="name_photo" class="mt-2">Name Photo 1:</label>
                             <input type="text" id="name_photo" name="name_photo" class="form-control"
-                                value="{{ old('name_photo') }}" required>
+                                value="{{ old('name_photo') }}" placeholder="e.g., Alexander Fleming" required>
                         </div>
                         <div class="form-group mb-4 col-12 col-md-6">
                             <label for="photo_2" class="form-label d-block mb-2">Photo 2:</label>
@@ -87,7 +93,7 @@
                             </div>
                             <label for="name_photo_2" class="mt-2">Name Photo 2:</label>
                             <input type="text" id="name_photo_2" name="name_photo_2" class="form-control"
-                                value="{{ old('name_photo_2') }}" required>
+                                value="{{ old('name_photo_2') }}" required placeholder="e.g., Penicillin culture">
                         </div>
                     </div>
                 </div>

@@ -1,7 +1,7 @@
 @extends('layouts.admin.admin')
 
 @section('title')
-    <title>Edit Subscribe</title>
+    <title>Subscribe Dashboard</title>
 @endsection
 
 @section('content')

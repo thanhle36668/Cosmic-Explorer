@@ -243,22 +243,24 @@
                             <div class="col-lg-12">
                                 <div class="owl-features owl-carousel">
                                     @foreach ($post as $item)
-                                        <div class="item">
-                                            <div class="thumb">
-                                                <img src="{{ asset($item->image) }}" alt="{{ $item->photo }}"
-                                                    style="border-radius: 20px;" height="360" width="360">
-                                                <div class="hover-effect">
-                                                    <div class="content">
-                                                        <h4>{{ $item->title }}</h4>
-                                                        <span class="details">
-                                                            <div class="border-button">
-                                                                <a href="#">View Details</a>
-                                                            </div>
-                                                        </span>
+                                        @if ($item->is_published)
+                                            <div class="item">
+                                                <div class="thumb">
+                                                    <img src="{{ asset($item->image) }}" alt="{{ $item->photo }}"
+                                                        style="border-radius: 20px;" height="360" width="360">
+                                                    <div class="hover-effect">
+                                                        <div class="content">
+                                                            <h4>{{ $item->title }}</h4>
+                                                            <span class="details">
+                                                                <div class="border-button">
+                                                                    <a href="#">View Details</a>
+                                                                </div>
+                                                            </span>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        @endif
                                     @endforeach
                                 </div>
                             </div>
@@ -434,6 +436,7 @@
                                     <fieldset>
                                         <button type="submit" id="form-submit" class="main-dark-button"><i
                                                 class="fa fa-paper-plane"></i></button>
+                                    </fieldset>
                                 </div>
                             </div>
                         </form>

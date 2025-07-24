@@ -48,7 +48,7 @@ class MessagesController extends Controller
         ];
 
         Messages::where('id', $request->id)->update($message);
-        return redirect()->route('admin.messages')->with('success-reply-message', 'You have successfully replied to the message.');
+        return redirect()->route('admin.messages', $request->id)->with('success-reply-message', 'You have successfully replied to the message.');
     }
 
     public function deleteMessage($id)
