@@ -37,21 +37,21 @@
                                     <li class="nav-item">
                                         <a class="dropdown-item" href="{{ route('collections-planets') }}"
                                             id="navbarDropdownPlanets">
-                                            Planets
+                                            Planet
                                         </a>
                                     </li>
 
                                     <li class="nav-item">
                                         <a class="dropdown-item" href="{{ route('collections-constellations') }}"
                                             id="navbarDropdownConstellations">
-                                            Constellations
+                                            Constellation
                                         </a>
                                     </li>
 
                                     <li class="nav-item">
                                         <a class="dropdown-item" href="{{ route('collections-observatories') }}"
                                             id="navbarDropdownObservatories">
-                                            Observatories
+                                            Observatory
                                         </a>
                                     </li>
                                 </ul>
@@ -89,7 +89,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="inner-content">
-                        <h1 style="text-transform: uppercase">About Our</h1>
+                        <h1 style="text-transform: uppercase">About Website</h1>
                     </div>
                 </div>
             </div>
@@ -106,7 +106,7 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="left-image">
-                                    <img src="{{ asset('images') }}/planets/earth-planet-2.png" alt="">
+                                    <img src="{{ asset('images') }}/about/{{ $about->photo }}" alt="">
                                 </div>
                             </div>
                             <div class="col-lg-6">
@@ -142,37 +142,19 @@
                             <div class="col-lg-12">
                                 <div class="section-heading">
                                     <h2>Our Services</h2>
-                                    <span class="text-light">Details to details is what makes Hexashop different from the
-                                        other themes.</span>
+                                    <span class="text-light">Explore the universe with us through immersive experiences,
+                                        educational tools, and the latest cosmic discoveries.</span>
                                 </div>
                             </div>
-                            <div class="col-lg-4">
-                                <div class="service-item">
-                                    <h4>Synther Vaporware</h4>
-                                    <p>Lorem ipsum dolor sit amet, consecteturti adipiscing elit, sed do eiusmod temp
-                                        incididunt ut
-                                        labore, et dolore quis ipsum suspend.</p>
-                                    <img src="{{ asset('images') }}/planets/earth-planet-2.png" alt="">
+                            @foreach ($services as $service)
+                                <div class="col-lg-4">
+                                    <div class="service-item">
+                                        <h4>{{ $service->name }}</h4>
+                                        <p>{{ $service->description }}</p>
+                                        <img src="{{ asset('images') }}/about/{{ $service->photo }}" alt="">
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-lg-4">
-                                <div class="service-item">
-                                    <h4>Locavore Squidward</h4>
-                                    <p>Lorem ipsum dolor sit amet, consecteturti adipiscing elit, sed do eiusmod temp
-                                        incididunt ut
-                                        labore, et dolore quis ipsum suspend.</p>
-                                    <img src="{{ asset('images') }}/planets/earth-planet-2.png" alt="">
-                                </div>
-                            </div>
-                            <div class="col-lg-4">
-                                <div class="service-item">
-                                    <h4>Health Gothfam</h4>
-                                    <p>Lorem ipsum dolor sit amet, consecteturti adipiscing elit, sed do eiusmod temp
-                                        incididunt ut
-                                        labore, et dolore quis ipsum suspend.</p>
-                                    <img src="{{ asset('images') }}/planets/earth-planet-2.png" alt="">
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                 </section>
@@ -192,31 +174,30 @@
                                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3694.5308998533724!2d106.7116196747655!3d10.806685889343925!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317529ed00409f09%3A0x11f7708a5c77d777!2zQXB0ZWNoIENvbXB1dGVyIEVkdWNhdGlvbiAtIEjhu4cgVGjhu5FuZyDEkMOgbyB04bqhbyBM4bqtcCBUcsOsbmggVmnDqm4gUXXhu5FjIHThur8gQXB0ZWNo!5e1!3m2!1svi!2s!4v1751729317282!5m2!1svi!2s"
                                 width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
                                 referrerpolicy="no-referrer-when-downgrade"></iframe>
-                            <!-- You can simply copy and paste "Embed a map" code from Google Maps for any location. -->
-
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <div class="section-heading">
                             <h2>Say Hello. Don't Be Shy!</h2>
                         </div>
-                        <form id="contact" action="" method="post">
+                        <form id="contact" action="{{ route('send-message') }}" method="post">
+                            @csrf
                             <div class="row">
                                 <div class="col-lg-6">
                                     <fieldset>
-                                        <input name="name" type="text" id="name" placeholder="Your name"
-                                            required="">
+                                        <input name="sender_name" type="text" id="name" placeholder="Your name"
+                                            required>
                                     </fieldset>
                                 </div>
                                 <div class="col-lg-6">
                                     <fieldset>
-                                        <input name="email" type="text" id="email" placeholder="Your email"
-                                            required="">
+                                        <input name="sender_email" type="text" id="email"
+                                            placeholder="Your email" required>
                                     </fieldset>
                                 </div>
                                 <div class="col-lg-12">
                                     <fieldset>
-                                        <textarea name="message" rows="6" id="message" placeholder="Your message" required=""></textarea>
+                                        <textarea name="message" rows="6" id="message" placeholder="Your message" required></textarea>
                                     </fieldset>
                                 </div>
                                 <div class="col-lg-12">

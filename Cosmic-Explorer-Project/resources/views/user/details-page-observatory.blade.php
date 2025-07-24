@@ -1,11 +1,7 @@
 @extends('layouts.user.details-page')
 
 @section('title')
-    @if ($observatory_details->observatories)
-        <title>{{ $observatory_details->name }}</title>
-    @else
-        <title>{{ $observatory_details->name }} Observatory</title>
-    @endif
+        <title>{{ $observatory_details->name }}</title>S
 @endsection
 
 @section('section-change')
@@ -41,21 +37,21 @@
                                     <li class="nav-item">
                                         <a class="dropdown-item" href="{{ route('collections-planets') }}"
                                             id="navbarDropdownPlanets">
-                                            Planets
+                                            Planet
                                         </a>
                                     </li>
 
                                     <li class="nav-item">
                                         <a class="dropdown-item" href="{{ route('collections-constellations') }}"
                                             id="navbarDropdownConstellations">
-                                            Constellations
+                                            Constellation
                                         </a>
                                     </li>
 
                                     <li class="nav-item">
                                         <a class="dropdown-item" href="{{ route('collections-observatories') }}"
                                             id="navbarDropdownObservatories">
-                                            Observatories
+                                            Observatory
                                         </a>
                                     </li>
                                 </ul>
@@ -93,11 +89,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="inner-content">
-                        @if ($observatory_details->observatories)
-                            <h1 style="text-transform: uppercase">{{ $observatory_details->name }}</h1>
-                        @else
-                            <h1 style="text-transform: uppercase">{{ $observatory_details->name }} Observatory</h1>
-                        @endif
+                        <h1 style="text-transform: uppercase">{{ $observatory_details->name }}</h1>
                     </div>
                 </div>
             </div>
@@ -130,61 +122,74 @@
                     </div>
                 </div>
                 <div class="col-lg-5 offset-lg-1">
-                    <div class="owl-banner owl-carousel ">
-                        <div class="item">
-                            <img class="rounded-3"
-                                src="{{ asset('images') }}/observatories/{{ $observatory_details->photo }}"
-                                alt="{{ $observatory_details->name }}" height="480px" width="480px">
+                    <div class="container">
+                        <div class="row justify-content-center mb-4">
+                            <div class="col-md-12 text-center">
+                                <img src="{{ asset('images') }}/observatories/{{ $observatory_details->photo }}"
+                                    alt="{{ $observatory_details->name }}" class="img-fluid img-main rounded shadow-sm"
+                                    id="parent">
+                            </div>
                         </div>
-                        <div class="item">
-                            <img class="rounded-3"
-                                src="{{ asset('images') }}/observatories/{{ $observatory_details->photo_2 }}"
-                                alt="{{ $observatory_details->name }}" height="480px" width="480px">
-                        </div>
-                        <div class="item">
-                            <img class="rounded-3"
-                                src="{{ asset('images') }}/observatories/{{ $observatory_details->photo_3 }}"
-                                alt="{{ $observatory_details->name }}" height="480px" width="480px">
-                        </div>
-                        <div class="item">
-                            <img class="rounded-3"
-                                src="{{ asset('images') }}/observatories/{{ $observatory_details->photo_4 }}"
-                                alt="{{ $observatory_details->name }}" height="480px" width="480px">
+                        <div class="row justify-content-center g-2 person">
+                            <div class="col-3 col-sm-3 col-md-3 col-lg-3">
+                                <img src="{{ asset('images') }}/observatories/{{ $observatory_details->photo }}"
+                                    class="img-fluid rounded shadow-sm person1 active-thumbnail"
+                                    alt="{{ $observatory_details->name }}">
+                            </div>
+                            <div class="col-3 col-sm-3 col-md-3 col-lg-3">
+                                <img src="{{ asset('images') }}/observatories/{{ $observatory_details->photo_2 }}"
+                                    class="img-fluid rounded shadow-sm person2" alt="{{ $observatory_details->name }}">
+                            </div>
+                            <div class="col-3 col-sm-3 col-md-3 col-lg-3">
+                                <img src="{{ asset('images') }}/observatories/{{ $observatory_details->photo_3 }}"
+                                    class="img-fluid rounded shadow-sm person3" alt="{{ $observatory_details->name }}">
+                            </div>
+                            <div class="col-3 col-sm-3 col-md-3 col-lg-3">
+                                <img src="{{ asset('images') }}/observatories/{{ $observatory_details->photo_4 }}"
+                                    class="img-fluid rounded shadow-sm person4" alt="{{ $observatory_details->name }}">
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        </div>
     </section>
     <!-- ***** Observatory Details  End ***** -->
 
     <!-- ***** Observatory Collections ***** -->
-    <section class="categories-collections"
-        style="background: url('{{ asset('images') }}/background/background-collections.jpg')">
+    <section class="col-lg-12" style="background: url('{{ asset('images') }}/background/background-banner-main.avif');">
         <div class="container">
             <div class="row">
-                <!-- ***** Observatories Collections ***** -->
                 <div class="col-lg-12">
-                    <div class="collections">
+                    <div class="news">
                         <div class="row">
                             <div class="col-lg-12 title">
                                 <div class="section-heading">
                                     <div class="line-dec"></div>
-                                    <h2>Observatory Collection</h2>
+                                    <h2>Observatory Collections</h2>
                                 </div>
                             </div>
-                            <div class="col-lg-12 carousel">
-                                <div class="owl-collection owl-carousel">
+                            <div class="col-lg-12">
+                                <div class="owl-features owl-carousel">
                                     @foreach ($observatories as $observatory)
                                         <div class="item">
-                                            <img class="img-observatory"
-                                                src="{{ asset('images') }}/observatories/{{ $observatory->photo }}"
-                                                alt="{{ $observatory->name }}">
-                                            <div class="down-content p-3" style="background-color: #282B2F;">
-                                                <div class="main-button main-button-observatory text-center">
-                                                    <h4 class="mb-2">{{ $observatory->name }}</h4>
-                                                    <a href="{{ route('details-observatory', $observatory->slug) }}">View
-                                                        Details</a>
+                                            <div class="thumb">
+                                                <img src="{{ asset('images') }}/observatories/{{ $observatory->photo }}"
+                                                    alt="{{ $observatory->name }}" style="border-radius: 20px;"
+                                                    height="360" width="360">
+                                                <div class="hover-effect">
+                                                    <div class="content">
+                                                        <h4 class="mb-1">{{ $observatory->name }}</h4>
+                                                        <p>{{ $observatory->location }}</p>
+                                                        <span class="details">
+                                                            <div class="border-button">
+                                                                <a
+                                                                    href="{{ route('details-observatory', $observatory->slug) }}">View
+                                                                    Details</a>
+                                                            </div>
+                                                        </span>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -194,9 +199,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- ***** planets Collections End ***** -->
             </div>
-            <!-- ***** planets Collections End ***** -->
         </div>
     </section>
     <!-- ***** Observatory Collections End ***** -->
@@ -212,31 +215,30 @@
                                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3694.5308998533724!2d106.7116196747655!3d10.806685889343925!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317529ed00409f09%3A0x11f7708a5c77d777!2zQXB0ZWNoIENvbXB1dGVyIEVkdWNhdGlvbiAtIEjhu4cgVGjhu5FuZyDEkMOgbyB04bqhbyBM4bqtcCBUcsOsbmggVmnDqm4gUXXhu5FjIHThur8gQXB0ZWNo!5e1!3m2!1svi!2s!4v1751729317282!5m2!1svi!2s"
                                 width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
                                 referrerpolicy="no-referrer-when-downgrade"></iframe>
-                            <!-- You can simply copy and paste "Embed a map" code from Google Maps for any location. -->
-
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <div class="section-heading">
                             <h2>Say Hello. Don't Be Shy!</h2>
                         </div>
-                        <form id="contact" action="" method="post">
+                        <form id="contact" action="{{ route('send-message') }}" method="post">
+                            @csrf
                             <div class="row">
                                 <div class="col-lg-6">
                                     <fieldset>
-                                        <input name="name" type="text" id="name" placeholder="Your name"
-                                            required="">
+                                        <input name="sender_name" type="text" id="name" placeholder="Your name"
+                                            required>
                                     </fieldset>
                                 </div>
                                 <div class="col-lg-6">
                                     <fieldset>
-                                        <input name="email" type="text" id="email" placeholder="Your email"
-                                            required="">
+                                        <input name="sender_email" type="text" id="email"
+                                            placeholder="Your email" required>
                                     </fieldset>
                                 </div>
                                 <div class="col-lg-12">
                                     <fieldset>
-                                        <textarea name="message" rows="6" id="message" placeholder="Your message" required=""></textarea>
+                                        <textarea name="message" rows="6" id="message" placeholder="Your message" required></textarea>
                                     </fieldset>
                                 </div>
                                 <div class="col-lg-12">
@@ -310,4 +312,21 @@
         </div>
     </section>
     <!-- ***** Contact End ***** -->
+@endsection
+
+@section('script-changeImageAndSetActive')
+    <script type="text/javascript">
+        $(document).ready(function() {
+            function changeImageAndSetActive(thumbnailElement) {
+                var imgSrc = $(thumbnailElement).attr("src");
+                $("#parent").attr("src", imgSrc);
+                $(".person img").removeClass("active-thumbnail");
+                $(thumbnailElement).addClass("active-thumbnail");
+            }
+
+            $(".person img").click(function() {
+                changeImageAndSetActive(this);
+            });
+        });
+    </script>
 @endsection

@@ -37,21 +37,21 @@
                                     <li class="nav-item">
                                         <a class="dropdown-item" href="{{ route('collections-planets') }}"
                                             id="navbarDropdownPlanets">
-                                            Planets
+                                            Planet
                                         </a>
                                     </li>
 
                                     <li class="nav-item">
                                         <a class="dropdown-item" href="{{ route('collections-constellations') }}"
                                             id="navbarDropdownConstellations">
-                                            Constellations
+                                            Constellation
                                         </a>
                                     </li>
 
                                     <li class="nav-item">
                                         <a class="dropdown-item" href="{{ route('collections-observatories') }}"
                                             id="navbarDropdownObservatories">
-                                            Observatories
+                                            Observatory
                                         </a>
                                     </li>
                                 </ul>
@@ -105,19 +105,26 @@
                 <div class="col-lg-8 col-10 mx-auto">
                     <h2>{{ $discovery_details->title_details }}</h2>
                     <span class="me-2">
-                        <strong class="text-light">Author: {{ $discovery_details->author }}</strong>
+                        <strong class="text-light" style="opacity: .7">Author: {{ $discovery_details->author }}</strong>
                     </span>
                     <span class="me-2">
-                        <strong class="text-light">Publication
-                            Date:{{ \Carbon\Carbon::parse($discovery_details->created_at)->format('d-m-Y') }}
+                        <strong class="text-light" style="opacity: .7">Publication
+                            Date:{{ $discovery_details->created_at->format('d/m/Y - H:i:s') }}
                         </strong>
                     </span>
+                    @if ($discovery_details->updated_at)
+                        <span class="me-2">
+                            <strong class="text-light" style="opacity: .7">Last Updated:
+                                {{ $discovery_details->updated_at->format('d/m/Y - H:i:s') }}
+                            </strong>
+                        </span>
+                    @endif
                     <p class="mt-2">{{ $discovery_details->description_details }}</p>
                     <div class="clearfix mt-lg-0 mt-2">
-                        <div class="col-md-6 float-md-end mb-3 ms-md-3 mt-3">
+                        <div class="col-md-6 float-md-end mb-1 ms-md-3">
                             <figure class="figure">
-                                <img src="{{ asset('images') }}/discovery/{{ $discovery_details->photo }}"
-                                    class="img-fluid news-image" alt="{{ $discovery_details->name_photo }}">
+                                <img src="{{ asset($discovery_details->photo) }}" class="img-fluid news-image"
+                                    alt="{{ $discovery_details->name_photo }}">
                                 <figcaption class="figure-caption text-start text-light mt-2">Picture:
                                     {{ $discovery_details->name_photo }}
                                 </figcaption>
@@ -128,10 +135,10 @@
                         </p>
                     </div>
                     <div class="clearfix mt-lg-0 mt-2">
-                        <div class="col-md-6 float-md-start me-3 mt-3">
+                        <div class="col-md-6 float-md-start me-3">
                             <figure class="figure">
-                                <img src="{{ asset('images') }}/discovery/{{ $discovery_details->photo_2 }}"
-                                    class="img-fluid news-image" alt="{{ $discovery_details->name_photo }}">
+                                <img src="{{ asset($discovery_details->photo_2) }}" class="img-fluid news-image"
+                                    alt="{{ $discovery_details->name_photo }}">
                                 <figcaption class="figure-caption text-start text-light mt-2">Picture:
                                     {{ $discovery_details->name_photo }}
                                 </figcaption>
@@ -147,7 +154,7 @@
     </section>
     <!-- ***** Discovery Details End ***** -->
 
-    <!-- ***** Planet Collections ***** -->
+    <!-- ***** Planet Collection ***** -->
     <section class="categories-collections" style="background-color: rgb(0,0,0) ">
         <div class="container">
             <div class="row">
@@ -171,7 +178,7 @@
                                             <div class="down-content-discovery text-center p-3"
                                                 style="background-color: transparent; border: none">
                                                 <div class="main-button mt-0 mb-0">
-                                                    <a href="{{ route('details-planet', $planet->id) }}">View
+                                                    <a href="{{ route('details-planet', $planet->slug) }}">View
                                                         Details</a>
                                                 </div>
                                             </div>
@@ -190,7 +197,7 @@
     <!-- ***** Planet Collections End ***** -->
 
     <!-- ***** Contact ***** -->
-    <section class="contact" style="background: url('{{ asset('images') }}/background-dark.jpg')">
+    <section class="contact" style="background: url('{{ asset('images') }}/background/background-dark.jpg')">
         <div class="contact-us">
             <div class="container">
                 <div class="row">
@@ -200,31 +207,30 @@
                                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3694.5308998533724!2d106.7116196747655!3d10.806685889343925!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317529ed00409f09%3A0x11f7708a5c77d777!2zQXB0ZWNoIENvbXB1dGVyIEVkdWNhdGlvbiAtIEjhu4cgVGjhu5FuZyDEkMOgbyB04bqhbyBM4bqtcCBUcsOsbmggVmnDqm4gUXXhu5FjIHThur8gQXB0ZWNo!5e1!3m2!1svi!2s!4v1751729317282!5m2!1svi!2s"
                                 width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
                                 referrerpolicy="no-referrer-when-downgrade"></iframe>
-                            <!-- You can simply copy and paste "Embed a map" code from Google Maps for any location. -->
-
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <div class="section-heading">
                             <h2>Say Hello. Don't Be Shy!</h2>
                         </div>
-                        <form id="contact" action="" method="post">
+                        <form id="contact" action="{{ route('send-message') }}" method="post">
+                            @csrf
                             <div class="row">
                                 <div class="col-lg-6">
                                     <fieldset>
-                                        <input name="name" type="text" id="name" placeholder="Your name"
-                                            required="">
+                                        <input name="sender_name" type="text" id="name" placeholder="Your name"
+                                            required>
                                     </fieldset>
                                 </div>
                                 <div class="col-lg-6">
                                     <fieldset>
-                                        <input name="email" type="text" id="email" placeholder="Your email"
-                                            required="">
+                                        <input name="sender_email" type="text" id="email"
+                                            placeholder="Your email" required>
                                     </fieldset>
                                 </div>
                                 <div class="col-lg-12">
                                     <fieldset>
-                                        <textarea name="message" rows="6" id="message" placeholder="Your message" required=""></textarea>
+                                        <textarea name="message" rows="6" id="message" placeholder="Your message" required></textarea>
                                     </fieldset>
                                 </div>
                                 <div class="col-lg-12">

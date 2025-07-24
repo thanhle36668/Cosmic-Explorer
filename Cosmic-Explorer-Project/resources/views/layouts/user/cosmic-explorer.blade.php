@@ -51,7 +51,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <p>Copyright © 2025 <a href="#">Cosmic Explorer </a>Aptech Learning Education. All rights reserved.
+                    <p>Copyright © 2025 <a href="#">Cosmic Explorer </a>Aptech Learning Education. All rights
+                        reserved.
                         &nbsp;&nbsp;
                         Designed by <a title="HTML CSS Templates" rel="sponsored" href="#">Team 1</a></p>
                 </div>
@@ -66,12 +67,19 @@
     <script src="{{ asset('user') }}/jquery/jquery.min.js"></script>
     <script src="{{ asset('user') }}/bootstrap/js/bootstrap.min.js"></script>
 
+
     <script src="{{ asset('user') }}/js/isotope.min.js"></script>
     <script src="{{ asset('user') }}/js/owl-carousel.js"></script>
 
     <script src="{{ asset('user') }}/js/tabs.js"></script>
     <script src="{{ asset('user') }}/js/popup.js"></script>
     <script src="{{ asset('user') }}/js/custom.js"></script>
+
+    <!-- ***** Open and close notifications (success and error) ***** -->
+    @yield('success-message')
+    @yield('success-subscribe')
+    @yield('error-subscribe')
+    <!-- ***** Open and close notifications (success and error) End ***** -->
 </body>
 
 </html>

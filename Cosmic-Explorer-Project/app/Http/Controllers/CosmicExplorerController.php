@@ -3,11 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\About;
+use App\Models\About_services;
 use App\Models\Books;
 use App\Models\Constellations;
 use App\Models\Discovery;
+use App\Models\Introduction;
 use App\Models\Observatories;
 use App\Models\Planets;
+use App\Models\Post;
 use App\Models\Videos;
 
 class CosmicExplorerController extends Controller
@@ -17,26 +20,22 @@ class CosmicExplorerController extends Controller
     public function home()
     {
         $data = [
+            'introduction' => Introduction::get(),
             'planets' => Planets::get(),
             'constellations' => Constellations::orderBy('name', 'asc')->get(),
             'observatories' => Observatories::orderBy('name', 'desc')->get(),
-            'discovery' => Discovery::get()
+            'discovery' => Discovery::get(),
+            'post' => Post::get(),
         ];
         return view('user/home')->with($data);
-    }
-
-    // Controller Page News
-    public function news()
-    {
-        $data = [];
-        return view('user/news')->with($data);
     }
 
     // Controller Page About
     public function about()
     {
         $data = [
-            'about' => About::firstOrFail()
+            'about' => About::firstOrFail(),
+            'services' => About_services::get()
         ];
         return view('user/about')->with($data);
     }

@@ -1,7 +1,7 @@
 @extends('layouts.user.cosmic-explorer')
 
 @section('title')
-    <title>Planets Collections</title>
+    <title>Collection of Planets</title>
 @endsection
 
 @section('section-change')
@@ -37,21 +37,21 @@
                                     <li class="nav-item">
                                         <a class="dropdown-item" href="{{ route('collections-planets') }}"
                                             id="navbarDropdownPlanets">
-                                            Planets
+                                            Planet
                                         </a>
                                     </li>
 
                                     <li class="nav-item">
                                         <a class="dropdown-item" href="{{ route('collections-constellations') }}"
                                             id="navbarDropdownConstellations">
-                                            Constellations
+                                            Constellation
                                         </a>
                                     </li>
 
                                     <li class="nav-item">
                                         <a class="dropdown-item" href="{{ route('collections-observatories') }}"
                                             id="navbarDropdownObservatories">
-                                            Observatories
+                                            Observatory
                                         </a>
                                     </li>
                                 </ul>
@@ -89,7 +89,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="inner-content">
-                        <h1 style="text-transform: uppercase">Planets Collections</h1>
+                        <h1 style="text-transform: uppercase">Collection of Planets</h1>
                     </div>
                 </div>
             </div>
@@ -97,19 +97,18 @@
     </div>
     <!-- ***** Main Banner Details End ***** -->
 
-    <!-- ***** Collections Planets ***** -->
-    <section id="collections" class="px-5 py-5"
+    <!-- ***** Collection of Planets ***** -->
+    <section id="collections" class="px-4 py-4"
         style="background: url('{{ asset('images') }}/background/background-collections.jpg')">
         <div class="container">
             <div class="space-y-5 mt-5 mx-auto" style="max-width: 1000px;">
                 @foreach ($planets as $planet)
                     <div id="{{ $planet->name }}"
-                        class="card p-4 rounded-lg shadow-lg scroll-margin-top-120 d-md-flex flex-md-row align-items-md-center gap-5"
+                        class="card p-5 rounded-lg shadow-lg scroll-margin-top-120 d-md-flex flex-md-row align-items-md-center gap-5"
                         style="height: auto">
                         <div
                             class="planet-image-fixed-size d-flex align-items-center justify-content-center overflow-hidden mb-2">
-                            <img src="{{ asset('images') }}/planets/{{ $planet->photo }}" alt="{{ $planet->name }}"
-                                class="img-fluid rounded-lg">
+                            <img src="{{ asset($planet->photo) }}" alt="{{ $planet->name }}" class="img-fluid rounded-lg">
                         </div>
                         <div class="flex-grow-1">
                             <h3>{{ $planet->name }}</h3>
@@ -129,7 +128,7 @@
             {{ $planets->links('pagination::bootstrap-5') }}
         </div>
     </section>
-    <!-- ***** Collections Planets End ***** -->
+    <!-- ***** Collection of Planets End ***** -->
 
     <!-- ***** Contact ***** -->
     <section class="contact" style="background: url('{{ asset('images') }}/background/background-dark.jpg')">
@@ -142,31 +141,30 @@
                                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3694.5308998533724!2d106.7116196747655!3d10.806685889343925!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317529ed00409f09%3A0x11f7708a5c77d777!2zQXB0ZWNoIENvbXB1dGVyIEVkdWNhdGlvbiAtIEjhu4cgVGjhu5FuZyDEkMOgbyB04bqhbyBM4bqtcCBUcsOsbmggVmnDqm4gUXXhu5FjIHThur8gQXB0ZWNo!5e1!3m2!1svi!2s!4v1751729317282!5m2!1svi!2s"
                                 width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
                                 referrerpolicy="no-referrer-when-downgrade"></iframe>
-                            <!-- You can simply copy and paste "Embed a map" code from Google Maps for any location. -->
-
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <div class="section-heading">
                             <h2>Say Hello. Don't Be Shy!</h2>
                         </div>
-                        <form id="contact" action="" method="post">
+                        <form id="contact" action="{{ route('send-message') }}" method="post">
+                            @csrf
                             <div class="row">
                                 <div class="col-lg-6">
                                     <fieldset>
-                                        <input name="name" type="text" id="name" placeholder="Your name"
-                                            required="">
+                                        <input name="sender_name" type="text" id="name" placeholder="Your name"
+                                            required>
                                     </fieldset>
                                 </div>
                                 <div class="col-lg-6">
                                     <fieldset>
-                                        <input name="email" type="text" id="email" placeholder="Your email"
-                                            required="">
+                                        <input name="sender_email" type="text" id="email"
+                                            placeholder="Your email" required>
                                     </fieldset>
                                 </div>
                                 <div class="col-lg-12">
                                     <fieldset>
-                                        <textarea name="message" rows="6" id="message" placeholder="Your message" required=""></textarea>
+                                        <textarea name="message" rows="6" id="message" placeholder="Your message" required></textarea>
                                     </fieldset>
                                 </div>
                                 <div class="col-lg-12">
