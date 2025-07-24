@@ -7,7 +7,6 @@ use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Category;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 
@@ -36,12 +35,10 @@ class PostController extends Controller
     public function show($slug)
     {
         $post = Post::where('slug', $slug)->firstOrFail();
-
         $comments = $post->comments()
             ->where('approved', true)
             ->latest()
             ->get();
-
         return view('admin.posts.news', compact('post', 'comments'));
     }
 
@@ -56,7 +53,6 @@ class PostController extends Controller
             'image' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
         ]);
 
-        // tao slug khong trung khi title cac bai viet giong nhau
         $slug = Str::slug($request->title);
         $originalSlug = $slug;
         $counter = 1;
@@ -64,22 +60,18 @@ class PostController extends Controller
             $slug = $originalSlug . '-' . $counter++;
         }
 
-        // xu ly anh:
         $imagePath = null;
 
         if ($request->hasFile('image')) {
             $file = $request->file('image');
             $filename = time() . '_' . Str::random(10) . '.' . $file->getClientOriginalExtension();
 
-
             $destination = public_path('uploads/post');
             if (!file_exists($destination)) {
                 mkdir($destination, 0755, true);
             }
-
             $file->move(public_path('uploads/post'), $filename);
-
-            $imagePath = 'uploads/post/' . $filename; // <-- lưu đường dẫn để ghi vào DB
+            $imagePath = 'uploads/post/' . $filename; 
         }
 
         Post::create([
@@ -125,12 +117,12 @@ class PostController extends Controller
         $data['slug'] = $slug;
 
         if ($request->hasFile('image')) {
-            // Xoá ảnh cũ nếu có
+            // delete old image if have
             if ($post->image && file_exists(public_path($post->image))) {
                 unlink(public_path($post->image));
             }
 
-            // Lưu ảnh mới
+            // Save new image
             $file = $request->file('image');
             $filename = time() . '_' . Str::random(10) . '.' . $file->getClientOriginalExtension();
 
@@ -138,14 +130,13 @@ class PostController extends Controller
             if (!file_exists($destinationPath)) {
                 mkdir($destinationPath, 0755, true);
             }
-
             $file->move($destinationPath, $filename);
             $data['image'] = 'uploads/post/' . $filename;
         }
 
-        $post->update($data);
+            $post->update($data);
 
-        return redirect()->route('admin.posts.index')->with('success', 'Đã cập nhật');
+        return redirect()->route('admin.posts.index')->with('success', 'Updated');
     }
 
     public function destroy(Post $post)
