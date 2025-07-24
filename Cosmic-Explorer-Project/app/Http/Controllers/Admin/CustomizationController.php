@@ -3,12 +3,14 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use Exception;
 use App\Models\Discovery;
 use App\Models\Introduction;
-use Exception;
+use App\Models\Planets;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Log;
 
 use Illuminate\Http\Request;
 
@@ -89,7 +91,7 @@ class CustomizationController extends Controller
         return redirect()->route('admin.customization-introduction')->with('success-update-introduction', 'You have successfully changed!');
     }
 
-    // Customization Introduction
+    // Customization Discovery
     public function discovery()
     {
         $data = [
@@ -206,7 +208,7 @@ class CustomizationController extends Controller
         try {
             $data_create = [
                 'title' => $request->title,
-                'slug' => Str::slug($request->slug),
+                'slug' => $processedSlug,
                 'status' => 0,
                 'author' => $request->author,
                 'description_short' => $request->description_short,
@@ -214,8 +216,6 @@ class CustomizationController extends Controller
                 'description_details' => $request->description_details,
                 'content_1' => $request->content_1,
                 'content_2' => $request->content_2,
-                'photo' => $request->photo,
-                'photo_2' => $request->photo_2,
                 'name_photo' => $request->name_photo,
                 'name_photo_2' => $request->name_photo_2,
             ];
@@ -259,6 +259,87 @@ class CustomizationController extends Controller
             'search_discovery' => Discovery::Where('title', 'LIKE', '%' . $request->search_title . '%')->get()
         ];
 
-        return view('admin/customization/discovery/search-discovery')->with($data)->with('success-search-discovery', 'Tìm kiếm thành công');
+        return view('admin/customization/discovery/search-discovery')->with($data)->with('success-search-discovery', 'Search was successful');
+    }
+
+    // Customization Planets
+    public function planets()
+    {
+        $data = [
+            'planets' => Planets::paginate(4)
+        ];
+        return view('admin/customization/planets/planets')->with($data);
+    }
+
+    public function createPlanet()
+    {
+        return view('admin/customization/planets/create-planet');
+    }
+
+    public function savePlanet(Request $request)
+    {
+        $processedSlug = Str::slug($request->slug);
+        $dataForValidation = $request->all();
+        $dataForValidation['slug'] = $processedSlug;
+
+        $validationRules = [
+            'name' => 'required|string|max:100|unique:planets,name',
+            'slug' => 'required|string|max:255|unique:planets,slug',
+            'title_short' => 'required|string',
+            'brief_intro_composition' => 'required|string',
+            'discovery_date' => 'required|string|max:250',
+            'diameter_km' => 'required|string|max:250',
+            'avg_distance_to_earth_km' => 'required|string|max:250',
+            'avg_distance_to_sun_km' => 'required|string|max:250',
+            'photo' => 'required|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
+            'photo_2' => 'required|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
+            'photo_3' => 'required|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
+            'photo_4' => 'required|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
+            'photo_5' => 'required|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
+        ];
+
+        $validator = Validator::make($dataForValidation, $validationRules);
+        $validator->validate();
+
+        try {
+            $data_create = [
+                'name' => $request->name,
+                'slug' => $processedSlug,
+                'title_short' => $request->title_short,
+                'status' => 0,
+                'discovery_date' => $request->discovery_date,
+                'diameter_km' => $request->diameter_km,
+                'avg_distance_to_earth_km' => $request->avg_distance_to_earth_km,
+                'avg_distance_to_sun_km' => $request->avg_distance_to_sun_km,
+                'brief_intro_composition' => $request->brief_intro_composition,
+            ];
+
+            $destinationPath = public_path('images/planets');
+
+            if (!File::isDirectory($destinationPath)) {
+                File::makeDirectory($destinationPath, 0755, true, true);
+            }
+
+            $photoArray = ['photo', 'photo_2', 'photo_3', 'photo_4', 'photo_5'];
+
+            foreach ($photoArray as $item) {
+                if ($request->hasFile($item)) {
+                    $imageFile = $request->file($item);
+
+                    $imageName = time() . '_' . Str::random(10) . '.' . $imageFile->getClientOriginalExtension();
+
+                    $imageFile->move($destinationPath, $imageName);
+
+                    $data_create[$item] = 'images/planets/' . $imageName;
+                }
+            }
+
+            Planets::create($data_create);
+
+            return redirect()->route('admin.customization-planets')->with('success-create-planet', 'You have successfully created a planet.');
+        } catch (Exception $e) {
+            Log::error("Failed to create planet: " . $e->getMessage());
+            return redirect()->back()->with('error-create-planet', 'Failed to create post due to an internal error. Please try again.');
+        }
     }
 }

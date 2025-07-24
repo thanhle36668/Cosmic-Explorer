@@ -65,6 +65,10 @@ Route::middleware(['auth', 'is_admin'])->prefix('admin')->name('admin.')
         Route::put('/save-post-discovery', [CustomizationController::class, 'savePostDiscovery'])->name('save-post-discovery');
         Route::get('/delete-discovery/{id}', [CustomizationController::class, 'deleteDiscovery'])->name('delete-discovery');
         Route::post('/search-discovery', [CustomizationController::class, 'searchDiscovery'])->name('search-discovery');
+        // Customization Discovery
+        Route::get('/customization-planets', [CustomizationController::class, 'planets'])->name('customization-planets');
+        Route::get('/create-planet', [CustomizationController::class, 'createPlanet'])->name('create-planet');
+        Route::put('/save-planet', [CustomizationController::class, 'savePlanet'])->name('save-planet');
     });
 
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');

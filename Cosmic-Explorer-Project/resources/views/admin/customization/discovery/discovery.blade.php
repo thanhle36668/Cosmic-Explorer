@@ -93,7 +93,7 @@
                             <td>
                                 @if ($post->status)
                                     <p class="bg-success mb-0" style="padding: 6px 12px; border-radius: 4px">
-                                        Public</p>
+                                        Publish</p>
                                 @else
                                     <p class="bg-danger mb-0" style="padding: 6px 12px; border-radius: 4px">
                                         Private</p>
