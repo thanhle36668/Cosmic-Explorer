@@ -106,10 +106,18 @@
                     <div id="{{ $planet->name }}"
                         class="card p-5 rounded-lg shadow-lg scroll-margin-top-120 d-md-flex flex-md-row align-items-md-center gap-5"
                         style="height: auto">
-                        <div
-                            class="planet-image-fixed-size d-flex align-items-center justify-content-center overflow-hidden mb-2">
-                            <img src="{{ asset($planet->photo) }}" alt="{{ $planet->name }}" class="img-fluid rounded-lg">
-                        </div>
+                        @if ($planet->photo)
+                            <div
+                                class="planet-image-fixed-size d-flex align-items-center justify-content-center overflow-hidden mb-2">
+                                <img src="{{ asset($planet->photo) }}" alt="{{ $planet->name }}"
+                                    class="img-fluid rounded-lg">
+                            </div>
+                        @else
+                            <div class="icon">
+                                <img src="{{ asset('images') }}/planets/no-photo.jpg" alt="no-photo.jpg"
+                                    style="height: 380px; width: 360px">
+                            </div>
+                        @endif
                         <div class="flex-grow-1">
                             <h3>{{ $planet->name }}</h3>
                             <p class="text-light lh-lg mb-3">

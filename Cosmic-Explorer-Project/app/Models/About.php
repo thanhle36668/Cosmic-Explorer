@@ -17,5 +17,8 @@ class About extends Model
         'description_1',
         'description_2',
         'photo',
+        'link_1',
+        'link_2',
+        'link_3',
     ];
 }

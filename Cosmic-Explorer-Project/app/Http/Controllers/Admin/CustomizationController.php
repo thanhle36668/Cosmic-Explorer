@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\About;
+use App\Models\About_services;
 use Exception;
 use App\Models\Discovery;
 use App\Models\Introduction;
@@ -84,6 +86,72 @@ class CustomizationController extends Controller
         $introduction->update($data_update);
 
         return redirect()->route('admin.customization-introduction')->with('success-update-introduction', 'You have successfully changed!');
+    }
+
+    // Customization About
+    public function about()
+    {
+        $data = [
+            'about' => About::firstOrFail(),
+            'about_services' => About_services::get(),
+        ];
+
+        return view('admin/customization/about/about')->with($data);
+    }
+
+    public function updatedAbout(Request $request)
+    {
+        $validationRules = [
+            'title' => 'required|string|max:255',
+            'description_1' => 'required|string',
+            'description_2' => 'required|string',
+            'photo' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
+        ];
+
+        $request->validate($validationRules);
+
+        $about = About::find($request->id);
+
+        $data_updated = [
+            'title' => $request->title,
+            'description_1' => $request->description_1,
+            'description_2' => $request->description_2
+        ];
+
+        $destinationPath = public_path('images/about');
+
+        if (!File::isDirectory($destinationPath)) {
+            File::makeDirectory($destinationPath, 0755, true, true);
+        }
+
+        if ($request->hasFile('photo')) {
+            $imageFile = $request->file('photo');
+
+            $oldImagePathFromDb = $about->photo;
+
+            if ($oldImagePathFromDb && File::exists(public_path($oldImagePathFromDb))) {
+                File::delete(public_path($oldImagePathFromDb));
+            }
+
+            $imageName = 'updated' . '_' . Str::random(10) . '.' . $imageFile->getClientOriginalExtension();
+
+            $imageFile->move($destinationPath, $imageName);
+
+            $data_updated['photo'] = 'images/about/' . $imageName;
+        } elseif ($request->has('delete_photo') && $request->delete_photo == 1) {
+            $oldImagePathFromDb = $about->photo;
+            $oldImagePath = public_path($oldImagePathFromDb);
+
+            if ($oldImagePathFromDb && File::exists($oldImagePath)) {
+                File::delete($oldImagePath);
+            }
+
+            $data_updated['photo'] = null;
+        }
+
+        $about->update($data_updated);
+
+        return redirect()->route('admin.customization-about')->with('success-update-about', 'You have successfully changed!');
     }
 
     // Customization Discovery
@@ -301,7 +369,7 @@ class CustomizationController extends Controller
             'diameter_km' => 'required|string|max:250',
             'avg_distance_to_earth_km' => 'required|string|max:250',
             'avg_distance_to_sun_km' => 'required|string|max:250',
-            'photo' => 'required|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
+            'photo' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
             'photo_2' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
             'photo_3' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
             'photo_4' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',

@@ -83,7 +83,7 @@
                     </div>
                     <div class="row">
                         <div class="form-group mb-4 col-12 col-md-6">
-                            <label for="photo" class="form-label d-block mb-2">Photo 1 (Featured)(*):</label>
+                            <label for="photo" class="form-label d-block mb-2">Photo 1 (Featured):</label>
                             <div class="row align-items-center g-3">
                                 <div class="col-12 col-sm-4 col-md-12 col-lg-5">
                                     @if ($planet->photo)
@@ -92,6 +92,9 @@
                                                 class="img-thumbnail me-sm-3 mb-2 mb-sm-0"
                                                 style="height: 250px; width: 250px;">
                                         </div>
+                                    @else
+                                        <img src="{{ asset('images') }}/planets/no-photo.jpg" alt="" height="250"
+                                            width="250">
                                     @endif
                                 </div>
                                 <div class="col-12 col-sm-8 col-md-12 col-lg-7">

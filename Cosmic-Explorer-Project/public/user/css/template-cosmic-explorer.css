@@ -999,7 +999,7 @@ Introduction
 
 .card img:hover {
   border-radius: 0;
-  transform: translateY(-6px);
+  transform: scale(1.1);
 }
 
 .card .collections {
@@ -1827,6 +1827,12 @@ body {
   height: 400px;
   display: block;
   margin: 0 auto;
+  transition: all 0.3s ease-in-out;
+}
+
+.img-main:hover {
+  transform: scale(1.1);
+  border-radius: 0;
 }
 
 .person img {

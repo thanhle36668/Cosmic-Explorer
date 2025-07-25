@@ -89,7 +89,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="inner-content">
-                        <h1 style="text-transform: uppercase">About Website</h1>
+                        <h1 style="text-transform: uppercase">About</h1>
                     </div>
                 </div>
             </div>
@@ -106,7 +106,11 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="left-image">
-                                    <img src="{{ asset('images') }}/about/{{ $about->photo }}" alt="">
+                                    @if ($about->photo)
+                                        <img src="{{ asset($about->photo) }}" alt="{{ basename($about->photo) }}">
+                                    @else
+                                        <img src="{{ asset('images') }}/about/no-photo.jpg" alt="No Photo">
+                                    @endif
                                 </div>
                             </div>
                             <div class="col-lg-6">

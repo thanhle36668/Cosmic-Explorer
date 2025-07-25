@@ -90,7 +90,7 @@
                                 <small class="form-text text-muted mt-2">
                                     Please select a new image file (JPG, PNG, GIF, WebP).
                                 </small>
-                                @if ($information->photo)
+                                @if ($information->photo_2)
                                     <small class="form-text text-muted">
                                         To keep the current photo, leave this field empty.
                                     </small>
@@ -118,7 +118,7 @@
                                 <small class="form-text text-muted mt-2">
                                     Please select a new image file (JPG, PNG, GIF, WebP).
                                 </small>
-                                @if ($information->photo)
+                                @if ($information->photo_3)
                                     <small class="form-text text-muted">
                                         To keep the current photo, leave this field empty.
                                     </small>
@@ -147,7 +147,7 @@
                                 <small class="form-text text-muted mt-2">
                                     Please select a new image file (JPG, PNG, GIF, WebP).
                                 </small>
-                                @if ($information->photo)
+                                @if ($information->photo_4)
                                     <small class="form-text text-muted">
                                         To keep the current photo, leave this field empty.
                                     </small>
@@ -176,7 +176,7 @@
                                 <small class="form-text text-muted mt-2">
                                     Please select a new image file (JPG, PNG, GIF, WebP).
                                 </small>
-                                @if ($information->photo)
+                                @if ($information->photo_5)
                                     <small class="form-text text-muted">
                                         To keep the current photo, leave this field empty.
                                     </small>
@@ -205,7 +205,7 @@
                                 <small class="form-text text-muted mt-2">
                                     Please select a new image file (JPG, PNG, GIF, WebP).
                                 </small>
-                                @if ($information->photo)
+                                @if ($information->photo_6)
                                     <small class="form-text text-muted">
                                         To keep the current photo, leave this field empty.
                                     </small>
@@ -234,7 +234,7 @@
                                 <small class="form-text text-muted mt-2">
                                     Please select a new image file (JPG, PNG, GIF, WebP).
                                 </small>
-                                @if ($information->photo)
+                                @if ($information->photo_7)
                                     <small class="form-text text-muted">
                                         To keep the current photo, leave this field empty.
                                     </small>
@@ -263,7 +263,7 @@
                                 <small class="form-text text-muted mt-2">
                                     Please select a new image file (JPG, PNG, GIF, WebP).
                                 </small>
-                                @if ($information->photo)
+                                @if ($information->photo_8)
                                     <small class="form-text text-muted">
                                         To keep the current photo, leave this field empty.
                                     </small>

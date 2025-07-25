@@ -108,6 +108,7 @@
 }
 
 .owl-carousel.owl-drag .owl-item {
+  cursor: pointer !important;
   -ms-touch-action: pan-y;
   touch-action: pan-y;
   -webkit-user-select: none;

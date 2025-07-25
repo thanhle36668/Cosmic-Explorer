@@ -281,6 +281,11 @@
                                                         <img src="{{ asset($planet->photo) }}"
                                                             alt="{{ $planet->name }}">
                                                     </div>
+                                                @else
+                                                    <div class="icon">
+                                                        <img src="{{ asset('images') }}/planets/no-photo.jpg"
+                                                            alt="no-photo.jpg">
+                                                    </div>
                                                 @endif
                                                 <h4>{{ $planet->name }}</h4>
                                                 <div class="icon-button">

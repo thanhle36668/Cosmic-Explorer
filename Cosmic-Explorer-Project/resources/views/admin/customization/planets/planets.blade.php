@@ -77,6 +77,11 @@
                                 @if ($planet->photo)
                                     <img src="{{ asset($planet->photo) }}" alt="{{ $planet->name }}" height="150"
                                         width="150" class="me-sm-3 mb-2 mb-sm-0">
+                                @else
+                                    <div class="icon">
+                                        <img src="{{ asset('images') }}/planets/no-photo.jpg" alt="no-photo.jpg"
+                                            height="150" width="150">
+                                    </div>
                                 @endif
                             </td>
                             <td>

@@ -287,6 +287,14 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
+                                    <a href="{{ route('admin.customization-about') }}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>
+                                            About
+                                        </p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
                                     <a href="{{ route('admin.customization-discovery') }}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>
