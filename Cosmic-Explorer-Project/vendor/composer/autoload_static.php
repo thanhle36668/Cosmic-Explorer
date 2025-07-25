@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitc12a7c6aabf2facec2c378531c99c7ea
+class ComposerStaticInit220875f99e81b949c88e4ef4a8d4a2e1
 {
     public static $files = array (
         '6e3fae29631ef280660b3cdad06f25a8' => __DIR__ . '/..' . '/symfony/deprecation-contracts/function.php',
@@ -318,13 +318,13 @@ class ComposerStaticInitc12a7c6aabf2facec2c378531c99c7ea
         ),
         'Spatie\\LaravelIgnition\\' => 
         array (
-            0 => __DIR__ . '/..' . '/spatie/laravel-ignition/src',
-            1 => __DIR__ . '/..' . '/spatie/error-solutions/legacy/laravel-ignition',
+            0 => __DIR__ . '/..' . '/spatie/error-solutions/legacy/laravel-ignition',
+            1 => __DIR__ . '/..' . '/spatie/laravel-ignition/src',
         ),
         'Spatie\\Ignition\\' => 
         array (
-            0 => __DIR__ . '/..' . '/spatie/ignition/src',
-            1 => __DIR__ . '/..' . '/spatie/error-solutions/legacy/ignition',
+            0 => __DIR__ . '/..' . '/spatie/error-solutions/legacy/ignition',
+            1 => __DIR__ . '/..' . '/spatie/ignition/src',
         ),
         'Spatie\\FlareClient\\' => 
         array (
@@ -360,8 +360,8 @@ class ComposerStaticInitc12a7c6aabf2facec2c378531c99c7ea
         ),
         'Psr\\Http\\Message\\' => 
         array (
-            0 => __DIR__ . '/..' . '/psr/http-factory/src',
-            1 => __DIR__ . '/..' . '/psr/http-message/src',
+            0 => __DIR__ . '/..' . '/psr/http-message/src',
+            1 => __DIR__ . '/..' . '/psr/http-factory/src',
         ),
         'Psr\\Http\\Client\\' => 
         array (
@@ -537,6 +537,8 @@ class ComposerStaticInitc12a7c6aabf2facec2c378531c99c7ea
     public static $classMap = array (
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
+        'App\\Http\\Controllers\\Admin\\CommentsController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/CommentsController.php',
+        'App\\Http\\Controllers\\Admin\\CustomizationController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/CustomizationController.php',
         'App\\Http\\Controllers\\Admin\\MessagesController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/MessagesController.php',
         'App\\Http\\Controllers\\Admin\\PostController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/PostController.php',
         'App\\Http\\Controllers\\Admin\\SubscribeController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/SubscribeController.php',
@@ -562,6 +564,7 @@ class ComposerStaticInitc12a7c6aabf2facec2c378531c99c7ea
         'App\\Models\\Comment' => __DIR__ . '/../..' . '/app/Models/Comment.php',
         'App\\Models\\Constellations' => __DIR__ . '/../..' . '/app/Models/Constellations.php',
         'App\\Models\\Discovery' => __DIR__ . '/../..' . '/app/Models/Discovery.php',
+        'App\\Models\\Introduction' => __DIR__ . '/../..' . '/app/Models/Introduction.php',
         'App\\Models\\Messages' => __DIR__ . '/../..' . '/app/Models/Messages.php',
         'App\\Models\\Observatories' => __DIR__ . '/../..' . '/app/Models/Observatories.php',
         'App\\Models\\Planets' => __DIR__ . '/../..' . '/app/Models/Planets.php',
@@ -6678,9 +6681,9 @@ class ComposerStaticInitc12a7c6aabf2facec2c378531c99c7ea
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitc12a7c6aabf2facec2c378531c99c7ea::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitc12a7c6aabf2facec2c378531c99c7ea::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInitc12a7c6aabf2facec2c378531c99c7ea::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit220875f99e81b949c88e4ef4a8d4a2e1::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit220875f99e81b949c88e4ef4a8d4a2e1::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit220875f99e81b949c88e4ef4a8d4a2e1::$classMap;
 
         }, null, ClassLoader::class);
     }
