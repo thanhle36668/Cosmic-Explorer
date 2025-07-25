@@ -1,6 +1,6 @@
 @extends('layouts.admin.admin')
 
-@section('title', 'Trang quản trị')
+@section('title', 'Admin Dashboard')
 
 @section('content')
     <section class="content">
