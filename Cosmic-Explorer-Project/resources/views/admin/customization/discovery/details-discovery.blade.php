@@ -142,7 +142,7 @@
                 <div class="d-flex justify-content-end card-footer">
                     <a href="{{ route('admin.customization-discovery') }}"
                         class="btn btn-secondary mr-2 px-5 py-2">Cancel</a>
-                    <button type="submit" class="btn btn-primary float-right px-5 py-2">Save</button>
+                    <button type="submit" class="btn btn-primary float-right px-5 py-2">Update</button>
                 </div>
             </div>
         </section>

@@ -276,7 +276,7 @@ class CustomizationController extends Controller
     public function planets()
     {
         $data = [
-            'planets' => Planets::paginate(4)
+            'planets' => Planets::orderBy('id', 'desc')->paginate(4)
         ];
         return view('admin/customization/planets/planets')->with($data);
     }
@@ -302,10 +302,10 @@ class CustomizationController extends Controller
             'avg_distance_to_earth_km' => 'required|string|max:250',
             'avg_distance_to_sun_km' => 'required|string|max:250',
             'photo' => 'required|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
-            'photo_2' => 'required|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
-            'photo_3' => 'required|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
-            'photo_4' => 'required|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
-            'photo_5' => 'required|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
+            'photo_2' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
+            'photo_3' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
+            'photo_4' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
+            'photo_5' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
         ];
 
         $validator = Validator::make($dataForValidation, $validationRules);
@@ -440,11 +440,11 @@ class CustomizationController extends Controller
                     File::delete($oldImagePath);
                 }
 
-                $imageName = 'update' . '_' . Str::ramdom(10) . '.' . $imageFile->getClientOriginalExtension();
+                $imageName = 'update' . '_' . Str::random(10) . '.' . $imageFile->getClientOriginalExtension();
 
                 $imageFile->move($destinationPath, $imageName);
 
-                $data_update[$item] = 'images/planets' . $imageName;
+                $data_updated[$item] = 'images/planets/' . $imageName;
             }
         }
 

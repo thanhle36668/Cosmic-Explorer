@@ -25,7 +25,7 @@
         <section class="content">
             <div class="card card-primary">
                 <div class="card-header">
-                    <h3 class="card-title">Details Planet: {{ $planet->title }}</h3>
+                    <h3 class="card-title">Details Planet: {{ $planet->name }}</h3>
                 </div>
                 <div class="card-body">
                     <div class="form-group">
@@ -83,7 +83,7 @@
                     </div>
                     <div class="row">
                         <div class="form-group mb-4 col-12 col-md-6">
-                            <label for="photo" class="form-label d-block mb-2">Photo 1 (Featured):</label>
+                            <label for="photo" class="form-label d-block mb-2">Photo 1 (Featured)(*):</label>
                             <div class="row align-items-center g-3">
                                 <div class="col-12 col-sm-4 col-md-12 col-lg-5">
                                     @if ($planet->photo)
@@ -92,8 +92,6 @@
                                                 class="img-thumbnail me-sm-3 mb-2 mb-sm-0"
                                                 style="height: 250px; width: 250px;">
                                         </div>
-                                    @else
-                                        <p class="text-muted">No photo uploaded yet.</p>
                                     @endif
                                 </div>
                                 <div class="col-12 col-sm-8 col-md-12 col-lg-7">
@@ -122,7 +120,8 @@
                                                 style="height: 250px; width: 250px;">
                                         </div>
                                     @else
-                                        <p class="text-muted">No photo uploaded yet.</p>
+                                        <img src="{{ asset('images') }}/planets/no-photo.jpg" alt=""
+                                            height="250" width="250">
                                     @endif
                                 </div>
                                 <div class="col-12 col-sm-8 col-md-12 col-lg-7">
@@ -151,7 +150,8 @@
                                                 style="height: 250px; width: 250px;">
                                         </div>
                                     @else
-                                        <p class="text-muted">No photo uploaded yet.</p>
+                                        <img src="{{ asset('images') }}/planets/no-photo.jpg" alt=""
+                                            height="250" width="250">
                                     @endif
                                 </div>
                                 <div class="col-12 col-sm-8 col-md-12 col-lg-7">
@@ -180,7 +180,8 @@
                                                 style="height: 250px; width: 250px;">
                                         </div>
                                     @else
-                                        <p class="text-muted">No photo uploaded yet.</p>
+                                        <img src="{{ asset('images') }}/planets/no-photo.jpg" alt=""
+                                            height="250" width="250">
                                     @endif
                                 </div>
                                 <div class="col-12 col-sm-8 col-md-12 col-lg-7">
@@ -209,7 +210,8 @@
                                                 style="height: 250px; width: 250px;">
                                         </div>
                                     @else
-                                        <p class="text-muted">No photo uploaded yet.</p>
+                                        <img src="{{ asset('images') }}/planets/no-photo.jpg" alt=""
+                                            height="250" width="250">
                                     @endif
                                 </div>
                                 <div class="col-12 col-sm-8 col-md-12 col-lg-7">
@@ -230,7 +232,7 @@
                 <div class="d-flex justify-content-end card-footer">
                     <a href="{{ route('admin.customization-planets') }}"
                         class="btn btn-secondary mr-2 px-5 py-2">Cancel</a>
-                    <button type="submit" class="btn btn-primary float-right px-5 py-2">Save</button>
+                    <button type="submit" class="btn btn-primary float-right px-5 py-2">Update</button>
                 </div>
             </div>
         </section>

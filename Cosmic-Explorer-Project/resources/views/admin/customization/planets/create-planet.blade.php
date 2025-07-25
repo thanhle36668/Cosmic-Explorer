@@ -73,7 +73,7 @@
                     </div>
                     <div class="row">
                         <div class="form-group mb-4 col-12 col-md-6">
-                            <label for="photo" class="form-label d-block mb-2">Photo 1 (Featured):</label>
+                            <label for="photo" class="form-label d-block mb-2">Photo 1 (Featured)(*):</label>
                             <div class="row align-items-center g-3">
                                 <div class="col-12 col-sm-8 col-md-12 col-lg-12">
                                     <input type="file" id="photo" name="photo" accept="image/*" required>
@@ -87,7 +87,7 @@
                             <label for="photo_2" class="form-label d-block mb-2">Photo 2:</label>
                             <div class="row align-items-center g-3">
                                 <div class="col-12 col-sm-8 col-md-12 col-lg-12">
-                                    <input type="file" id="photo_2" name="photo_2" accept="image/*" required>
+                                    <input type="file" id="photo_2" name="photo_2" accept="image/*">
                                     <small class="form-text text-muted mt-2">
                                         Please select a new image file (JPG, JPEG, PNG, GIF, WEBP, SVG)
                                     </small>
@@ -98,7 +98,7 @@
                             <label for="photo_3" class="form-label d-block mb-2">Photo 3:</label>
                             <div class="row align-items-center g-3">
                                 <div class="col-12 col-sm-8 col-md-12 col-lg-12">
-                                    <input type="file" id="photo_3" name="photo_3" accept="image/*" required>
+                                    <input type="file" id="photo_3" name="photo_3" accept="image/*">
                                     <small class="form-text text-muted mt-2">
                                         Please select a new image file (JPG, JPEG, PNG, GIF, WEBP, SVG)
                                     </small>
@@ -109,7 +109,7 @@
                             <label for="photo_4" class="form-label d-block mb-2">Photo 4:</label>
                             <div class="row align-items-center g-3">
                                 <div class="col-12 col-sm-8 col-md-12 col-lg-12">
-                                    <input type="file" id="photo_4" name="photo_4" accept="image/*" required>
+                                    <input type="file" id="photo_4" name="photo_4" accept="image/*">
                                     <small class="form-text text-muted mt-2">
                                         Please select a new image file (JPG, JPEG, PNG, GIF, WEBP, SVG)
                                     </small>
@@ -120,7 +120,7 @@
                             <label for="photo_5" class="form-label d-block mb-2">Photo 5 (Carousel Image):</label>
                             <div class="row align-items-center g-3">
                                 <div class="col-12 col-sm-8 col-md-12 col-lg-12">
-                                    <input type="file" id="photo_5" name="photo_5" accept="image/*" required>
+                                    <input type="file" id="photo_5" name="photo_5" accept="image/*">
                                     <small class="form-text text-muted mt-2">
                                         Please select a new image file (JPG, JPEG, PNG, GIF, WEBP, SVG)
                                     </small>
