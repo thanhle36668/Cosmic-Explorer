@@ -513,7 +513,8 @@ Header Style
 .header-area .main-nav .nav .nav-item .dropdown-menu {
   border: none !important;
   border-radius: 20px;
-  transform: translate3d(0px, 0px, 0px) !important;
+  transform: translate3d(-8px, 38px, 0px) !important;
+  background-color: rgba(0, 0, 0, 0.5) !important;
 }
 
 .header-area .main-nav .nav .nav-item .dropdown-menu .dropdown-item {
@@ -588,7 +589,7 @@ Header Style
   -o-transition: all 0.4s;
   -webkit-transition: all 0.4s;
   transition: all 0.4s;
-  background-color: #fff;
+  background-color: #7453fc;
   display: block;
   position: absolute;
   width: 30px;
@@ -599,7 +600,7 @@ Header Style
 .background-header .main-nav .menu-trigger span,
 .background-header .main-nav .menu-trigger span:before,
 .background-header .main-nav .menu-trigger span:after {
-  background-color: #fff;
+  background-color: #7453fc;
 }
 
 .header-area .main-nav .menu-trigger span:before,
@@ -608,19 +609,18 @@ Header Style
   -o-transition: all 0.4s;
   -webkit-transition: all 0.4s;
   transition: all 0.4s;
-  background-color: #fff;
+  background-color: #7453fc;
   display: block;
   position: absolute;
   width: 30px;
   height: 2px;
   left: 0;
   width: 75%;
-  background-color: #fff;
 }
 
 .background-header .main-nav .menu-trigger span:before,
 .background-header .main-nav .menu-trigger span:after {
-  background-color: #fff;
+  background-color: #7453fc;
 }
 
 .header-area .main-nav .menu-trigger span:before,
@@ -661,11 +661,11 @@ Header Style
   -ms-transform: translateY(6px) translateX(1px) rotate(45deg);
   -webkit-transform: translateY(6px) translateX(1px) rotate(45deg);
   transform: translateY(6px) translateX(1px) rotate(45deg);
-  background-color: #fff;
+  background-color: #7453fc;
 }
 
 .background-header .main-nav .menu-trigger.active span:before {
-  background-color: #fff;
+  background-color: #7453fc;
 }
 
 .header-area .main-nav .menu-trigger.active span:after {
@@ -673,11 +673,11 @@ Header Style
   -ms-transform: translateY(-6px) translateX(1px) rotate(-45deg);
   -webkit-transform: translateY(-6px) translateX(1px) rotate(-45deg);
   transform: translateY(-6px) translateX(1px) rotate(-45deg);
-  background-color: #fff;
+  background-color: #7453fc;
 }
 
 .background-header .main-nav .menu-trigger.active span:after {
-  background-color: #fff;
+  background-color: #7453fc;
 }
 
 
@@ -742,7 +742,7 @@ Header Style
   }
 
   .header-area {
-    background-color: transparent;
+    background-color: #f7f7f7;
     padding: 0px 15px;
     height: 100px;
     box-shadow: none;
