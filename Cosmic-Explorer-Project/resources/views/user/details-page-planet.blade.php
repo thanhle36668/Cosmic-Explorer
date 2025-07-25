@@ -123,27 +123,52 @@
                     <div class="container">
                         <div class="row justify-content-center mb-4">
                             <div class="col-md-12 text-center">
-                                <img src="{{ asset($planet_details->photo) }}" alt="{{ $planet_details->name }}"
-                                    class="img-fluid img-main rounded shadow-sm" id="parent">
+                                @if ($planet_details->photo)
+                                    <img src="{{ asset($planet_details->photo) }}" alt="{{ $planet_details->name }}"
+                                        class="img-fluid img-main rounded shadow-sm" id="parent">
+                                @else
+                                    <img src="{{ asset('images') }}/planets/no-photo.jpg" alt=""
+                                        class="img-fluid rounded shadow-sm person1">
+                                @endif
                             </div>
                         </div>
                         <div class="row justify-content-center g-2 person">
                             <div class="col-3 col-sm-3 col-md-3 col-lg-3">
-                                <img src="{{ asset($planet_details->photo) }}"
-                                    class="img-fluid rounded shadow-sm person1 active-thumbnail"
-                                    alt="{{ $planet_details->name }}">
+                                @if ($planet_details->photo)
+                                    <img src="{{ asset($planet_details->photo) }}"
+                                        class="img-fluid rounded shadow-sm person1 active-thumbnail"
+                                        alt="{{ $planet_details->name }}">
+                                @else
+                                    <img src="{{ asset('images') }}/planets/no-photo.jpg" alt=""
+                                        class="img-fluid rounded shadow-sm person1">
+                                @endif
                             </div>
                             <div class="col-3 col-sm-3 col-md-3 col-lg-3">
-                                <img src="{{ asset($planet_details->photo_2) }}"
-                                    class="img-fluid rounded shadow-sm person2" alt="{{ $planet_details->name }}">
+                                @if ($planet_details->photo_2)
+                                    <img src="{{ asset($planet_details->photo_2) }}"
+                                        class="img-fluid rounded shadow-sm person2" alt="{{ $planet_details->name }}">
+                                @else
+                                    <img src="{{ asset('images') }}/planets/no-photo.jpg" alt=""
+                                        class="img-fluid rounded shadow-sm person1">
+                                @endif
                             </div>
                             <div class="col-3 col-sm-3 col-md-3 col-lg-3">
-                                <img src="{{ asset($planet_details->photo_3) }}"
-                                    class="img-fluid rounded shadow-sm person3" alt="{{ $planet_details->name }}">
+                                @if ($planet_details->photo_3)
+                                    <img src="{{ asset($planet_details->photo_3) }}"
+                                        class="img-fluid rounded shadow-sm person3" alt="{{ $planet_details->name }}">
+                                @else
+                                    <img src="{{ asset('images') }}/planets/no-photo.jpg" alt=""
+                                        class="img-fluid rounded shadow-sm person1">
+                                @endif
                             </div>
                             <div class="col-3 col-sm-3 col-md-3 col-lg-3">
-                                <img src="{{ asset($planet_details->photo_4) }}"
-                                    class="img-fluid rounded shadow-sm person4" alt="{{ $planet_details->name }}">
+                                @if ($planet_details->photo_4)
+                                    <img src="{{ asset($planet_details->photo_4) }}"
+                                        class="img-fluid rounded shadow-sm person4" alt="{{ $planet_details->name }}">
+                                @else
+                                    <img src="{{ asset('images') }}/planets/no-photo.jpg" alt=""
+                                        class="img-fluid rounded shadow-sm person1">
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -171,8 +196,7 @@
                                 <div class="owl-collection owl-carousel">
                                     @foreach ($planets as $planet)
                                         <div class="item">
-                                            <img class="img-planet" 
-                                                src="{{ asset($planet->photo_5) }}"
+                                            <img class="img-planet" src="{{ asset($planet->photo_5) }}"
                                                 alt="{{ $planet->name }}">
                                             <div class="down-content-discovery text-center p-3"
                                                 style="background-color: transparent; border: none">

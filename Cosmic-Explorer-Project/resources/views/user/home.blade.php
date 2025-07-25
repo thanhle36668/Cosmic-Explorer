@@ -127,15 +127,39 @@
                     </div>
                 </div>
                 <div class="col-lg-5 offset-lg-1">
-                    <div class="owl-banner owl-carousel ">
-                        @foreach($planets as $planet)
+                    <div class="owl-banner owl-carousel">
                         <div class="item">
-                            <a href="{{ route('details-planet', $planet->slug) }}">
-                                <img class="rounded-circle" src="{{ asset($planet->photo) }}"
-                                    alt="{{ $planet->photo }}" height="480px" width="480px">
-                            </a>
+                            <img class="rounded-circle" src="{{ asset($information->photo) }}"
+                                alt="{{ basename($information->photo) }}" height="480px">
                         </div>
-                        @endforeach
+                        <div class="item">
+                            <img class="rounded-circle" src="{{ asset($information->photo_2) }}"
+                                alt="{{ basename($information->photo_2) }}" height="480px">
+                        </div>
+                        <div class="item">
+                            <img class="rounded-circle" src="{{ asset($information->photo_3) }}"
+                                alt="{{ basename($information->photo_3) }}" height="480px">
+                        </div>
+                        <div class="item">
+                            <img class="rounded-circle" src="{{ asset($information->photo_4) }}"
+                                alt="{{ basename($information->photo_4) }}" height="480px">
+                        </div>
+                        <div class="item">
+                            <img class="rounded-circle" src="{{ asset($information->photo_5) }}"
+                                alt="{{ basename($information->photo_5) }}" height="480px">
+                        </div>
+                        <div class="item">
+                            <img class="rounded-circle" src="{{ asset($information->photo_6) }}"
+                                alt="{{ basename($information->photo_6) }}" height="480px">
+                        </div>
+                        <div class="item">
+                            <img class="rounded-circle" src="{{ asset($information->photo_7) }}"
+                                alt="{{ basename($information->photo_7) }}" height="480px">
+                        </div>
+                        <div class="item">
+                            <img class="rounded-circle" src="{{ asset($information->photo_8) }}"
+                                alt="{{ basename($information->photo_8) }}" height="480px">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -252,9 +276,12 @@
                                     <div class="col-lg-3 col-sm-6">
                                         <a href="{{ route('details-planet', $planet->slug) }}">
                                             <div class="item">
-                                                <div class="icon">
-                                                    <img src="{{ asset($planet->photo) }}" alt="{{ $planet->name }}">
-                                                </div>
+                                                @if ($planet->photo)
+                                                    <div class="icon">
+                                                        <img src="{{ asset($planet->photo) }}"
+                                                            alt="{{ $planet->name }}">
+                                                    </div>
+                                                @endif
                                                 <h4>{{ $planet->name }}</h4>
                                                 <div class="icon-button">
                                                     <a href="{{ route('details-planet', $planet->slug) }}"><i
