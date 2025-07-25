@@ -51,7 +51,7 @@
                                     <li class="nav-item">
                                         <a class="dropdown-item" href="{{ route('collections-observatories') }}"
                                             id="navbarDropdownObservatories">
-                                            Observatorie
+                                            Observatory
                                         </a>
                                     </li>
                                 </ul>
@@ -105,19 +105,26 @@
                 <div class="col-lg-8 col-10 mx-auto">
                     <h2>{{ $discovery_details->title_details }}</h2>
                     <span class="me-2">
-                        <strong class="text-light">Author: {{ $discovery_details->author }}</strong>
+                        <strong class="text-light" style="opacity: .7">Author: {{ $discovery_details->author }}</strong>
                     </span>
                     <span class="me-2">
-                        <strong class="text-light">Publication
-                            Date:{{ \Carbon\Carbon::parse($discovery_details->created_at)->format('d-m-Y') }}
+                        <strong class="text-light" style="opacity: .7">Publication
+                            Date:{{ $discovery_details->created_at->format('d/m/Y - H:i:s') }}
                         </strong>
                     </span>
+                    @if ($discovery_details->updated_at)
+                        <span class="me-2">
+                            <strong class="text-light" style="opacity: .7">Last Updated:
+                                {{ $discovery_details->updated_at->format('d/m/Y - H:i:s') }}
+                            </strong>
+                        </span>
+                    @endif
                     <p class="mt-2">{{ $discovery_details->description_details }}</p>
                     <div class="clearfix mt-lg-0 mt-2">
-                        <div class="col-md-6 float-md-end mb-3 ms-md-3 mt-3">
+                        <div class="col-md-6 float-md-end mb-1 ms-md-3">
                             <figure class="figure">
-                                <img src="{{ asset('images') }}/discovery/{{ $discovery_details->photo }}"
-                                    class="img-fluid news-image" alt="{{ $discovery_details->name_photo }}">
+                                <img src="{{ asset($discovery_details->photo) }}" class="img-fluid news-image"
+                                    alt="{{ $discovery_details->name_photo }}">
                                 <figcaption class="figure-caption text-start text-light mt-2">Picture:
                                     {{ $discovery_details->name_photo }}
                                 </figcaption>
@@ -128,10 +135,10 @@
                         </p>
                     </div>
                     <div class="clearfix mt-lg-0 mt-2">
-                        <div class="col-md-6 float-md-start me-3 mt-3">
+                        <div class="col-md-6 float-md-start me-3">
                             <figure class="figure">
-                                <img src="{{ asset('images') }}/discovery/{{ $discovery_details->photo_2 }}"
-                                    class="img-fluid news-image" alt="{{ $discovery_details->name_photo }}">
+                                <img src="{{ asset($discovery_details->photo_2) }}" class="img-fluid news-image"
+                                    alt="{{ $discovery_details->name_photo }}">
                                 <figcaption class="figure-caption text-start text-light mt-2">Picture:
                                     {{ $discovery_details->name_photo }}
                                 </figcaption>
@@ -171,7 +178,7 @@
                                             <div class="down-content-discovery text-center p-3"
                                                 style="background-color: transparent; border: none">
                                                 <div class="main-button mt-0 mb-0">
-                                                    <a href="{{ route('details-planet', $planet->id) }}">View
+                                                    <a href="{{ route('details-planet', $planet->slug) }}">View
                                                         Details</a>
                                                 </div>
                                             </div>

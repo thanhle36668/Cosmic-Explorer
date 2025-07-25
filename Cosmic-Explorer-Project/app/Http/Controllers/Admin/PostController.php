@@ -22,10 +22,9 @@ class PostController extends Controller
     public function allnews()
     {
         $posts = Post::where('is_published', true)
-                 ->latest()
-                 ->paginate(5);
+            ->latest()
+            ->paginate(5);
         return view('admin.posts.all-news', compact('posts'));
-
     }
 
     public function create()
@@ -39,9 +38,9 @@ class PostController extends Controller
         $post = Post::where('slug', $slug)->firstOrFail();
 
         $comments = $post->comments()
-                     ->where('approved', true)
-                     ->latest()
-                     ->get();
+            ->where('approved', true)
+            ->latest()
+            ->get();
 
         return view('admin.posts.news', compact('post', 'comments'));
     }
@@ -57,18 +56,30 @@ class PostController extends Controller
             'image' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
         ]);
 
-// tao slug khong trung khi title cac bai viet giong nhau
+        // tao slug khong trung khi title cac bai viet giong nhau
         $slug = Str::slug($request->title);
         $originalSlug = $slug;
         $counter = 1;
-            while (Post::where('slug', $slug)->exists()) {
-                $slug = $originalSlug . '-' . $counter++;
+        while (Post::where('slug', $slug)->exists()) {
+            $slug = $originalSlug . '-' . $counter++;
+        }
+
+        // xu ly anh:
+        $imagePath = null;
+
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $filename = time() . '_' . Str::random(10) . '.' . $file->getClientOriginalExtension();
+
+
+            $destination = public_path('uploads/post');
+            if (!file_exists($destination)) {
+                mkdir($destination, 0755, true);
             }
 
-// xu ly anh:
-        $imagePath = null;
-        if ($request->hasFile('image')) {
-            $imagePath = $request->file('image')->store('posts', 'public');
+            $file->move(public_path('uploads/post'), $filename);
+
+            $imagePath = 'uploads/post/' . $filename; // <-- lưu đường dẫn để ghi vào DB
         }
 
         Post::create([
@@ -105,22 +116,31 @@ class PostController extends Controller
 
         $data = $request->only(['title', 'content', 'excerpt', 'category_id', 'is_published']);
         $slug = Str::slug($request->title);
-            $originalSlug = $slug;
-            $counter = 1;
+        $originalSlug = $slug;
+        $counter = 1;
 
-            while (Post::where('slug', $slug)->where('id', '!=', $post->id)->exists()) {
-                $slug = $originalSlug . '-' . $counter++;
-            }
-            $data['slug'] = $slug;
+        while (Post::where('slug', $slug)->where('id', '!=', $post->id)->exists()) {
+            $slug = $originalSlug . '-' . $counter++;
+        }
+        $data['slug'] = $slug;
 
         if ($request->hasFile('image')) {
             // Xoá ảnh cũ nếu có
-            if ($post->image) {
-                Storage::disk('public')->delete($post->image);
+            if ($post->image && file_exists(public_path($post->image))) {
+                unlink(public_path($post->image));
             }
 
             // Lưu ảnh mới
-            $data['image'] = $request->file('image')->store('posts', 'public');
+            $file = $request->file('image');
+            $filename = time() . '_' . Str::random(10) . '.' . $file->getClientOriginalExtension();
+
+            $destinationPath = public_path('uploads/post');
+            if (!file_exists($destinationPath)) {
+                mkdir($destinationPath, 0755, true);
+            }
+
+            $file->move($destinationPath, $filename);
+            $data['image'] = 'uploads/post/' . $filename;
         }
 
         $post->update($data);
@@ -130,11 +150,11 @@ class PostController extends Controller
 
     public function destroy(Post $post)
     {
-        if ($post->image && Storage::disk('public')->exists($post->image)) {
-            Storage::disk('public')->delete($post->image);
+        if ($post->image && file_exists(public_path($post->image))) {
+            unlink(public_path($post->image));
         }
-
         $post->delete();
-        return redirect()->route('admin.posts.index')->with('success', 'Đã xoá');
+            return redirect()->route('admin.posts.index')->with('success', 'delete done');
+
     }
 }

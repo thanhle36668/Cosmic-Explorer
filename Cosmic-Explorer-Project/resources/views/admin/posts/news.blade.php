@@ -23,10 +23,10 @@
                                 <a href="{{ route('home') }}">Home</a>
                             </li>
                             <li>
-                                <a href="#">About</a>
+                                <a href="{{ route('about') }}">About</a>
                             </li>
                             <li>
-                                <a href="{{ route('news') }}">News</a>
+                                <a href="{{ route('all-news') }}">News</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownCollections"
@@ -37,21 +37,21 @@
                                     <li class="nav-item">
                                         <a class="dropdown-item" href="{{ route('collections-planets') }}"
                                             id="navbarDropdownPlanets">
-                                            Planets
+                                            Planet
                                         </a>
                                     </li>
 
                                     <li class="nav-item">
                                         <a class="dropdown-item" href="{{ route('collections-constellations') }}"
                                             id="navbarDropdownConstellations">
-                                            Constellations
+                                            Constellation
                                         </a>
                                     </li>
 
                                     <li class="nav-item">
                                         <a class="dropdown-item" href="{{ route('collections-observatories') }}"
                                             id="navbarDropdownObservatories">
-                                            Observatories
+                                            Observatory
                                         </a>
                                     </li>
                                 </ul>
@@ -63,10 +63,10 @@
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <li>
-                                        <a class="dropdown-item" href="#">Videos</a>
+                                        <a class="dropdown-item" href="{{ route('collections-books') }}">Books</a>
                                     </li>
                                     <li>
-                                        <a class="dropdown-item" href="#">Books</a>
+                                        <a class="dropdown-item" href="{{ route('collections-videos') }}">Videos</a>
                                     </li>
                                 </ul>
                             </li>
@@ -89,7 +89,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="inner-content">
-                        <h1 style="text-transform: uppercase">{{ $post->category->name ?? 'Chưa phân loại' }}</h1>
+                        <h1 style="text-transform: uppercase">{{ $post->category->name ?? 'unclassified' }}</h1>
                     </div>
                 </div>
             </div>
@@ -98,17 +98,17 @@
     <!-- ***** Main Banner Details End ***** -->
 
     <!-- ***** Constellation Details  ***** -->
-    <section class="section-padding" style="background: url('{{ asset('images/background')}}/background-dark.jpg')">
+    <section class="section-padding" style="background: url('{{ asset('images/background') }}/background-dark.jpg')">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-10 mx-auto">
                     <h2 class="mb-3">{{ $post->title }}</h2>
                     <p class="mb-3">
-                        <strong>Author: {{ $post->user->name ?? 'Ẩn danh' }} </strong>
+                        <strong>Author: {{ $post->user->name ?? 'No name' }} </strong>
                         <br>
-                        <strong>Category: {{ $post->category->name ?? 'Chưa phân loại' }}</strong>
+                        <strong>Category: {{ $post->category->name ?? 'unclassified' }}</strong>
                         <br>
-                        <strong>Ngày đăng: {{ $post->created_at->format('d/m/Y') }}</strong>
+                        <strong>Creation date: {{ $post->created_at->format('d/m/Y') }}</strong>
                     </p>
                     <p class="mt-2">
                         {{ $post->excerpt }}
@@ -119,8 +119,7 @@
                                 Image:
                                 @if ($post->image)
                                     <div class="mb-4">
-                                        <img src="{{ asset('storage/' . $post->image) }}" class="img-fluid"
-                                            alt="{{ $post->title }}">
+                                        <img src="{{ asset($post->image) }}" class="img-fluid" alt="{{ $post->title }}">
                                     </div>
                                 @endif
 
@@ -137,62 +136,65 @@
     </section>
 
     <!-- comment -->
-    <section style="padding-top: 60px; padding-bottom: 60px; background-image: url('{{ asset('images/background')}}/background-banner-main.avif')">
-      <!-- Default box -->
-    <div class="container">
-        <div class="col-lg-8 col-10 mx-auto">
-            <div class="row">
-                     
+    <section
+        style="padding-top: 60px; padding-bottom: 60px; background-image: url('{{ asset('images/background') }}/background-banner-main.avif')">
+        <!-- Default box -->
+        <div class="container">
+            <div class="col-lg-8 col-10 mx-auto">
+                <div class="row">
+
                     <div class="col-md-6">
 
                         <form action="{{ route('comments.store') }}" method="POST">
-                        @csrf
-                        <input type="hidden" name="post_id" value="{{ $post->id }}">
+                            @csrf
+                            <input type="hidden" name="post_id" value="{{ $post->id }}">
 
                             <h2 style="margin-bottom: 30px;">Leave a comment</h2>
                             @if (!Auth::check())
-                            <div class="form-group">
-                            <label for="inputName" style="color: azure; margin-bottom: 5px" >Name</label>
-                            <input type="text" name="name" id="inputName" class="form-control" required />
-                            </div>
-                            <div class="form-group">
-                            <label for="inputEmail" style="color: azure; margin-bottom: 5px; margin-top: 10px" >E-Mail</label>
-                            <input type="email" name="email" id="inputEmail" class="form-control" required/>
-                            </div>
+                                <div class="form-group">
+                                    <label for="inputName" style="color: azure; margin-bottom: 5px">Name</label>
+                                    <input type="text" name="name" id="inputName" class="form-control" required />
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputEmail"
+                                        style="color: azure; margin-bottom: 5px; margin-top: 10px">E-Mail</label>
+                                    <input type="email" name="email" id="inputEmail" class="form-control" required />
+                                </div>
                             @endif
 
                             <div class="form-group">
-                            <label for="inputMessage" style="color: azure; margin-bottom: 5px; margin-top: 10px" >Your comment</label>
-                            <textarea name="content" id="inputMessage" class="form-control" rows="4" required></textarea>
+                                <label for="inputMessage" style="color: azure; margin-bottom: 5px; margin-top: 10px">Your
+                                    comment</label>
+                                <textarea name="content" id="inputMessage" class="form-control" rows="4" required></textarea>
                             </div>
                             <div class="form-group">
-                            <input style="margin-top: 20px" type="submit" class="btn btn-primary" value="Send">
+                                <input style="margin-top: 20px" type="submit" class="btn btn-primary" value="Send">
                             </div>
-                            
+
                         </form>
 
                     </div>
 
-                <div class="col-md-6">
-                    <h3 style="margin-bottom: 30px">All comments</h3>
-                    @forelse ($comments as $comment)
-                        <div class="card-body">
-                            <strong class="text-info">{{ $comment->user->name ?? $comment->name }}</strong>
-                            <p>{{ $comment->content }}</p>
-                            <small class="text-secondary">{{ $comment->created_at->format('d/m/Y H:i') }}</small>
-                        </div>
-                    @empty
-                        <p>Chưa có bình luận nào.</p>
-                    @endforelse
+                    <div class="col-md-6">
+                        <h3 style="margin-bottom: 30px">All comments</h3>
+                        @forelse ($comments as $comment)
+                            <div class="card-body">
+                                <strong class="text-info">{{ $comment->user->name ?? $comment->name }}</strong>
+                                <p>{{ $comment->content }}</p>
+                                <small class="text-secondary">{{ $comment->created_at->format('d/m/Y H:i') }}</small>
+                            </div>
+                        @empty
+                            <p>There are no comments yet.</p>
+                        @endforelse
+                    </div>
                 </div>
             </div>
-            </div>
         </div>
-    </div>
+        </div>
 
     </section>
 
-    
+
 
     <!-- ***** Constellation Details  End ***** -->
 

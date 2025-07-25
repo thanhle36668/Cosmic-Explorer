@@ -23,10 +23,10 @@
                                 <a href="{{ route('home') }}">Home</a>
                             </li>
                             <li>
-                                <a href="#">About</a>
+                                <a href="{{ route('about') }}">About</a>
                             </li>
                             <li>
-                                <a href="{{ route('news') }}">News</a>
+                                <a href="{{ route('all-news') }}">News</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownCollections"
@@ -37,21 +37,21 @@
                                     <li class="nav-item">
                                         <a class="dropdown-item" href="{{ route('collections-planets') }}"
                                             id="navbarDropdownPlanets">
-                                            Planets
+                                            Planet
                                         </a>
                                     </li>
 
                                     <li class="nav-item">
                                         <a class="dropdown-item" href="{{ route('collections-constellations') }}"
                                             id="navbarDropdownConstellations">
-                                            Constellations
+                                            Constellation
                                         </a>
                                     </li>
 
                                     <li class="nav-item">
                                         <a class="dropdown-item" href="{{ route('collections-observatories') }}"
                                             id="navbarDropdownObservatories">
-                                            Observatories
+                                            Observatory
                                         </a>
                                     </li>
                                 </ul>
@@ -66,7 +66,7 @@
                                         <a class="dropdown-item" href="{{ route('collections-books') }}">Books</a>
                                     </li>
                                     <li>
-                                        <a class="dropdown-item" href="#">Videos</a>
+                                        <a class="dropdown-item" href="{{ route('collections-videos') }}">Videos</a>
                                     </li>
                                 </ul>
                             </li>
@@ -99,7 +99,7 @@
 
     <!-- ***** News ***** -->
     <section id="collections" class="px-3">
-        @foreach($posts as $post)
+        @foreach ($posts as $post)
             <div class="container">
                 <div class="space-y-5 mt-5 mx-auto" style="max-width: 1000px;">
                     <div id="Tên Category"
@@ -107,13 +107,12 @@
                         style="height: auto">
                         <div
                             class="planet-image-fixed-size d-flex align-items-center justify-content-center overflow-hidden mb-2">
-                            <img src="{{ asset('storage/' . $post->image) }}" alt="tên ảnh"
-                                class="img-fluid rounded-lg">
+                            <img src="{{ asset($post->image) }}" alt="tên ảnh" class="img-fluid rounded-lg">
                         </div>
                         <div class="flex-grow-1">
-                            <h3>{{$post->title}}</h3>
+                            <h3>{{ $post->title }}</h3>
                             <p class="text-light lh-lg mb-3">
-                                {{$post->excerpt}}
+                                {{ $post->excerpt }}
                             </p>
                             <div class="main-button">
                                 <a href="{{ route('posts.show', $post->slug) }}">Continue Reading</a>

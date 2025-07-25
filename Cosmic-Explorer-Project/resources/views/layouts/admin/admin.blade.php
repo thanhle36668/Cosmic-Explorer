@@ -35,7 +35,7 @@
                             class="fas fa-bars"></i></a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a href="index3.html" class="nav-link">Home</a>
+                    <a href="{{ route('admin.admin.dashboard') }}" class="nav-link">Home</a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
                     <a href="#" class="nav-link">Contact</a>
@@ -174,7 +174,7 @@
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
-            <a href="index3.html" class="brand-link">
+            <a href="{{ route('admin.admin.dashboard') }}" class="brand-link">
                 <img src="{{ asset('admin-assets') }}/dist/img/AdminLTELogo.png" alt="AdminLTE Logo"
                     class="brand-image img-circle elevation-3" style="opacity: .8">
                 <span class="brand-text font-weight-light">Admin Dashboard</span>
@@ -252,7 +252,7 @@
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
                                     <a href="{{ route('admin.messages') }}" class="nav-link">
-                                        <i class="nav-icon fas fa-envelope"></i>
+                                        <i class="far fa-circle nav-icon"></i>
                                         <p>
                                             Message
                                         </p>
@@ -260,7 +260,7 @@
                                 </li>
                                 <li class="nav-item">
                                     <a href="{{ route('admin.subscribe') }}" class="nav-link">
-                                        <i class="nav-icon fas fa-bell"></i>
+                                        <i class="far fa-circle nav-icon"></i>
                                         <p>
                                             Subscribe
                                         </p>
@@ -280,9 +280,25 @@
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
                                     <a href="{{ route('admin.customization-introduction') }}" class="nav-link">
-                                        <i class="nav-icon fas fa-info-circle"></i>
+                                        <i class="far fa-circle nav-icon"></i>
                                         <p>
                                             Introduction
+                                        </p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.customization-discovery') }}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>
+                                            Discovery
+                                        </p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.customization-planets') }}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>
+                                            Planets
                                         </p>
                                     </a>
                                 </li>
@@ -342,10 +358,6 @@
     <script src="{{ asset('admin-assets') }}/plugins/jquery-mapael/maps/usa_states.min.js"></script>
     <!-- ChartJS -->
     <script src="{{ asset('admin-assets') }}/plugins/chart.js/Chart.min.js"></script>
-
-    <!-- AdminLTE for demo purposes -->
-    <!-- xoa file js pop up -->
-    <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
     <script src="{{ asset('admin-assets') }}/dist/js/pages/dashboard2.js"></script>
 </body>
 

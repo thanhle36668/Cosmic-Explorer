@@ -1,7 +1,7 @@
 @extends('layouts.user.cosmic-explorer')
 
 @section('title')
-    <title>Books</title>
+    <title>Collection of Books</title>
 @endsection
 
 @section('section-change')
@@ -51,7 +51,7 @@
                                     <li class="nav-item">
                                         <a class="dropdown-item" href="{{ route('collections-observatories') }}"
                                             id="navbarDropdownObservatories">
-                                            Observatorie
+                                            Observatory
                                         </a>
                                     </li>
                                 </ul>
@@ -89,7 +89,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="inner-content">
-                        <h1 style="text-transform: uppercase">Books</h1>
+                        <h1 style="text-transform: uppercase">Collection of Books</h1>
                     </div>
                 </div>
             </div>

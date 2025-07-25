@@ -12,6 +12,11 @@ class Discovery extends Model
 
     public $timestamps = false;
 
+    protected $casts = [
+        'created_at' => 'datetime',
+        'updated_at' => 'datetime',
+    ];
+
     public $fillable = [
         'title',
         'author',
@@ -21,8 +26,10 @@ class Discovery extends Model
         'content_1',
         'content_2',
         'photo',
+        'photo_2',
         'name_photo',
-        'created_at',
-        'slug'
+        'name_photo_2',
+        'slug',
+        'status',
     ];
 }

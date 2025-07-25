@@ -1,7 +1,7 @@
 @extends('layouts.admin.admin')
 
 @section('title')
-    <title>Details Message</title>
+    <title>Messages Dashboard</title>
 @endsection
 
 @section('content')
@@ -47,8 +47,8 @@
                     <div class="form-group">
                         <label for="time_reply_message">Date Reply</label>
                         @if ($details_message->status)
-                            <input type="datetime-local" name="time_reply_message"
-                                value="{{ $details_message->time_reply_message ? $details_message->time_reply_message->format('Y-m-d\TH:i') : '' }}"
+                            <input type="text" name="time_reply_message"
+                                value="{{ $details_message->time_reply_message->format('d/m/Y - H:i:s') }}"
                                 id="time_reply_message" class="form-control" required disabled>
                         @else
                             <input type="datetime-local" name="time_reply_message"
@@ -63,7 +63,11 @@
                 </div>
                 <div class="d-flex justify-content-end card-footer">
                     <a href="{{ route('admin.messages') }}" class="btn btn-secondary mr-2 px-5 py-2">Cancel</a>
-                    <button type="submit" class="btn btn-primary float-right px-5 py-2">Reply</button>
+                    @if ($details_message->status)
+                        <button type="submit" class="btn btn-primary float-right px-5 py-2" disabled>Reply</button>
+                    @else
+                        <button type="submit" class="btn btn-primary float-right px-5 py-2">Reply</button>
+                    @endif
                 </div>
             </div>
         </section>

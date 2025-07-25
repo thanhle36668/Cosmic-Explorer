@@ -1,7 +1,7 @@
 @extends('layouts.admin.admin')
 
 @section('title')
-    <title>Messages</title>
+    <title>Messages Dashboard</title>
 @endsection
 
 @section('content')

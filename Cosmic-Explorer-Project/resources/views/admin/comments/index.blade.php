@@ -1,8 +1,8 @@
-@extends('layouts.admin.admin') <!-- hoặc layout admin của bạn -->
+@extends('layouts.admin.admin')
 
 @section('content')
     <div class="container mt-4">
-        <h2>Quản lý bình luận</h2>
+        <h2>Comment management</h2>
 
         @if(session('success'))
             <div class="alert alert-success">{{ session('success') }}</div>
@@ -12,12 +12,12 @@
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Bài viết</th>
-                    <th>Người bình luận</th>
-                    <th>Nội dung</th>
-                    <th>Trạng thái</th>
-                    <th>Ngày tạo</th>
-                    <th>Hành động</th>
+                    <th>News Title</th>
+                    <th>Commenter</th>
+                    <th>Content</th>
+                    <th>Status</th>
+                    <th>Creation date</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -29,9 +29,9 @@
                         <td>{{ Str::limit($comment->content, 50) }}</td>
                         <td>
                             @if($comment->approved)
-                                <span class="badge bg-success">Đã duyệt</span>
+                                <span class="badge bg-success">Approved</span>
                             @else
-                                <span class="badge bg-warning">Chưa duyệt</span>
+                                <span class="badge bg-warning">Pending</span>
                             @endif
                         </td>
                         <td>{{ $comment->created_at->format('d/m/Y H:i') }}</td>
@@ -39,14 +39,14 @@
                             <form method="POST" action="{{ route('admin.comments.update', $comment->id) }}" class="d-inline">
                                 @csrf
                                 @method('PUT')
-                                <button class="btn btn-sm btn-info">Duyệt / Bỏ duyệt</button>
+                                <button class="btn btn-sm btn-info">Approved / Cancel</button>
                             </form>
 
                             <form method="POST" action="{{ route('admin.comments.destroy', $comment->id) }}" class="d-inline" 
-                                  onsubmit="return confirm('Bạn có chắc muốn xoá?')">
+                                  onsubmit="return confirm('Are you sure ?')">
                                 @csrf
                                 @method('DELETE')
-                                <button class="btn btn-sm btn-danger">Xoá</button>
+                                <button class="btn btn-sm btn-danger">Delete</button>
                             </form>
                         </td>
                     </tr>

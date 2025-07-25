@@ -1,11 +1,7 @@
 @extends('layouts.user.details-page')
 
 @section('title')
-    @if ($observatory_details->observatories)
-        <title>{{ $observatory_details->name }}</title>
-    @else
-        <title>{{ $observatory_details->name }}</title>
-    @endif
+        <title>{{ $observatory_details->name }}</title>S
 @endsection
 
 @section('section-change')
@@ -55,7 +51,7 @@
                                     <li class="nav-item">
                                         <a class="dropdown-item" href="{{ route('collections-observatories') }}"
                                             id="navbarDropdownObservatories">
-                                            Observatorie
+                                            Observatory
                                         </a>
                                     </li>
                                 </ul>
@@ -171,7 +167,7 @@
                             <div class="col-lg-12 title">
                                 <div class="section-heading">
                                     <div class="line-dec"></div>
-                                    <h2>Observatory Collection</h2>
+                                    <h2>Observatory Collections</h2>
                                 </div>
                             </div>
                             <div class="col-lg-12">

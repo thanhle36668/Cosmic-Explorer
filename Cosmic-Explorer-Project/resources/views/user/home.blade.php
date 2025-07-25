@@ -51,7 +51,7 @@
                                     <li class="nav-item">
                                         <a class="dropdown-item" href="{{ route('collections-observatories') }}"
                                             id="navbarDropdownObservatories">
-                                            Observatorie
+                                            Observatory
                                         </a>
                                     </li>
                                 </ul>
@@ -186,40 +186,42 @@
     <!-- ***** Discovery (BigBang Theory - The Earth's Evolution - Comets ) ***** -->
     <section class="discovery py-5 px-5" style="background-color: rgb(0,0,0);">
         @foreach ($discovery as $discoveries)
-            @if ($discoveries->id % 2 == 0)
-                <div class="card px-4 py-4">
-                    <div class="row g-0">
-                        <div class="col-md-8 d-flex justify-content-center align-items-center">
-                            <div class="card-body">
-                                <h5 class="card-title">{{ $discoveries->title }}</h5>
-                                <p class="card-text">{{ $discoveries->description_short }}</p>
-                                <a href="{{ route('details-discovery', $discoveries->slug) }}"
-                                    class="card-button badge rounded-pill bg-white">View Details</a>
+            @if ($discoveries->status)
+                @if ($discoveries->id % 2 == 0)
+                    <div class="card px-4 py-4">
+                        <div class="row g-0">
+                            <div class="col-md-8 d-flex justify-content-center align-items-center">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ $discoveries->title }}</h5>
+                                    <p class="card-text">{{ $discoveries->description_short }}</p>
+                                    <a href="{{ route('details-discovery', $discoveries->slug) }}"
+                                        class="card-button badge rounded-pill bg-white">View Details</a>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-4">
-                            <img src="{{ asset('images') }}/discovery/{{ $discoveries->photo }}"
-                                class="img-fluid img-discovery" alt="{{ $discoveries->title }}">
-                        </div>
-                    </div>
-                </div>
-            @else
-                <div class="card px-4 py-4">
-                    <div class="row g-0">
-                        <div class="col-md-4">
-                            <img src="{{ asset('images') }}/discovery/{{ $discoveries->photo }}" class="img-fluid"
-                                alt="{{ $discoveries->title }}">
-                        </div>
-                        <div class="col-md-8 d-flex justify-content-center align-items-center">
-                            <div class="card-body">
-                                <h5 class="card-title">{{ $discoveries->title }}</h5>
-                                <p class="card-text">{{ $discoveries->description_short }}</p>
-                                <a href="{{ route('details-discovery', $discoveries->slug) }}"
-                                    class="card-button badge rounded-pill bg-white">View Details</a>
+                            <div class="col-md-4">
+                                <img src="{{ asset($discoveries->photo) }}" class="img-fluid img-discovery"
+                                    alt="{{ $discoveries->title }}">
                             </div>
                         </div>
                     </div>
-                </div>
+                @else
+                    <div class="card px-4 py-4">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <img src="{{ asset($discoveries->photo) }}" class="img-fluid"
+                                    alt="{{ $discoveries->title }}">
+                            </div>
+                            <div class="col-md-8 d-flex justify-content-center align-items-center">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ $discoveries->title }}</h5>
+                                    <p class="card-text">{{ $discoveries->description_short }}</p>
+                                    <a href="{{ route('details-discovery', $discoveries->slug) }}"
+                                        class="card-button badge rounded-pill bg-white">View Details</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endif
             @endif
         @endforeach
     </section>
@@ -240,24 +242,25 @@
                             </div>
                             <div class="col-lg-12">
                                 <div class="owl-features owl-carousel">
-                                    @foreach ($constellations as $constellation)
-                                        <div class="item">
-                                            <div class="thumb">
-                                                <img src="{{ asset('images') }}/constellations/{{ $constellation->photo }}"
-                                                    alt="{{ $constellation->name }}" style="border-radius: 20px;"
-                                                    height="360" width="360">
-                                                <div class="hover-effect">
-                                                    <div class="content">
-                                                        <h4>James Webb: Unveiling Cosmic Secrets</h4>
-                                                        <span class="details">
-                                                            <div class="border-button">
-                                                                <a href="#">View Details</a>
-                                                            </div>
-                                                        </span>
+                                    @foreach ($post as $item)
+                                        @if ($item->is_published)
+                                            <div class="item">
+                                                <div class="thumb">
+                                                    <img src="{{ asset($item->image) }}" alt="{{ $item->photo }}"
+                                                        style="border-radius: 20px;" height="360" width="360">
+                                                    <div class="hover-effect">
+                                                        <div class="content">
+                                                            <h4>{{ $item->title }}</h4>
+                                                            <span class="details">
+                                                                <div class="border-button">
+                                                                    <a href="#">View Details</a>
+                                                                </div>
+                                                            </span>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        @endif
                                     @endforeach
                                 </div>
                             </div>
@@ -285,21 +288,22 @@
                                 </div>
                             </div>
                             @foreach ($planets as $planet)
-                                <div class="col-lg-3 col-sm-6">
-                                    <a href="{{ route('details-planet', $planet->slug) }}">
-                                        <div class="item">
-                                            <div class="icon">
-                                                <img src="{{ asset('images') }}/planets/{{ $planet->photo }}"
-                                                    alt="{{ $planet->name }}">
+                                @if ($planet->status)
+                                    <div class="col-lg-3 col-sm-6">
+                                        <a href="{{ route('details-planet', $planet->slug) }}">
+                                            <div class="item">
+                                                <div class="icon">
+                                                    <img src="{{ asset($planet->photo) }}" alt="{{ $planet->name }}">
+                                                </div>
+                                                <h4>{{ $planet->name }}</h4>
+                                                <div class="icon-button">
+                                                    <a href="{{ route('details-planet', $planet->slug) }}"><i
+                                                            class="fa fa-angle-right"></i></a>
+                                                </div>
                                             </div>
-                                            <h4>{{ $planet->name }}</h4>
-                                            <div class="icon-button">
-                                                <a href="{{ route('details-planet', $planet->slug) }}"><i
-                                                        class="fa fa-angle-right"></i></a>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
+                                        </a>
+                                    </div>
+                                @endif
                             @endforeach
                         </div>
                     </div>
@@ -432,6 +436,7 @@
                                     <fieldset>
                                         <button type="submit" id="form-submit" class="main-dark-button"><i
                                                 class="fa fa-paper-plane"></i></button>
+                                    </fieldset>
                                 </div>
                             </div>
                         </form>
