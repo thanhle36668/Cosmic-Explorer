@@ -128,54 +128,14 @@
                 </div>
                 <div class="col-lg-5 offset-lg-1">
                     <div class="owl-banner owl-carousel ">
+                        @foreach($planets as $planet)
                         <div class="item">
-                            <a href="#">
-                                <img class="rounded-circle" src="{{ asset($information->photo) }}"
-                                    alt="{{ $information->photo }}" height="480px" width="480px">
+                            <a href="{{ route('details-planet', $planet->slug) }}">
+                                <img class="rounded-circle" src="{{ asset($planet->photo) }}"
+                                    alt="{{ $planet->photo }}" height="480px" width="480px">
                             </a>
                         </div>
-                        <div class="item">
-                            <a href="#">
-                                <img class="rounded-circle" src="{{ asset($information->photo_2) }}"
-                                    alt="{{ $information->photo_2 }}" height="480px" width="480px">
-                            </a>
-                        </div>
-                        <div class="item">
-                            <a href="#">
-                                <img class="rounded-circle" src="{{ asset($information->photo_3) }}"
-                                    alt="{{ $information->photo_3 }}" height="480px" width="480px">
-                            </a>
-                        </div>
-                        <div class="item">
-                            <a href="#">
-                                <img class="rounded-circle" src="{{ asset($information->photo_4) }}"
-                                    alt="{{ $information->photo_4 }}" height="480px" width="480px">
-                            </a>
-                        </div>
-                        <div class="item">
-                            <a href="#">
-                                <img class="rounded-circle" src="{{ asset($information->photo_5) }}"
-                                    alt="{{ $information->photo_5 }}" height="480px" width="480px">
-                            </a>
-                        </div>
-                        <div class="item">
-                            <a href="#">
-                                <img class="rounded-circle" src="{{ asset($information->photo_6) }}"
-                                    alt="{{ $information->photo_6 }}" height="480px" width="480px">
-                            </a>
-                        </div>
-                        <div class="item">
-                            <a href="#">
-                                <img class="rounded-circle" src="{{ asset($information->photo_7) }}"
-                                    alt="{{ $information->photo_7 }}" height="480px" width="480px">
-                            </a>
-                        </div>
-                        <div class="item">
-                            <a href="#">
-                                <img class="rounded-circle" src="{{ asset($information->photo_8) }}"
-                                    alt="{{ $information->photo_8 }}" height="480px" width="480px">
-                            </a>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
