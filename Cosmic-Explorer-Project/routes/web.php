@@ -63,9 +63,11 @@ Route::middleware(['auth', 'is_admin'])->prefix('admin')->name('admin.')
         // Customization Introduction
         Route::get('/customization-introduction', [CustomizationController::class, 'introduction'])->name('customization-introduction');
         Route::put('/updated-introduction', [CustomizationController::class, 'updatedIntroduction'])->name('updated-introduction');
+
         // Customization About
         Route::get('/customization-about', [CustomizationController::class, 'about'])->name('customization-about');
         Route::put('/updated-about', [CustomizationController::class, 'updatedAbout'])->name('updated-about');
+        Route::put('/updated-about-services', [CustomizationController::class, 'updatedAboutServices'])->name('updated-about-services');
 
         // Customization Discovery
         Route::get('/customization-discovery', [CustomizationController::class, 'discovery'])->name('customization-discovery');

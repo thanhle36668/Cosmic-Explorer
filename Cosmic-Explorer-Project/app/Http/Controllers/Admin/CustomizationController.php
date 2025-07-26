@@ -151,7 +151,58 @@ class CustomizationController extends Controller
 
         $about->update($data_updated);
 
-        return redirect()->route('admin.customization-about')->with('success-update-about', 'You have successfully changed!');
+        return redirect()->route('admin.customization-about')->with('success-updated-about', 'You have successfully changed!');
+    }
+
+    public function updatedAboutServices(Request $request)
+    {
+        $validationRules = [
+            'name' => 'required|string|max:250|unique:about_services,name,' . $request->id,
+            'description' => 'required|string|unique:about_services,description,' . $request->id,
+            'photo' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
+        ];
+
+        $request->validate($validationRules);
+
+        $service = About_services::find($request->id);
+
+        $data_updated = [
+            'name' => $request->name,
+            'description' => $request->description
+        ];
+
+        $destinationPath = public_path('images/about');
+
+        if (!File::isDirectory($destinationPath)) {
+            File::makeDirectory($destinationPath, 0755, true, true);
+        }
+
+        if ($request->hasFile('photo')) {
+            $imageFile = $request->file('photo');
+
+            $oldImagePathFromDb = $service->photo;
+            $oldImagePath = public_path($oldImagePathFromDb);
+
+            if ($oldImagePathFromDb && File::exists($oldImagePath)) {
+                File::delete($oldImagePath);
+            }
+
+            $imageName = 'updated' . '_' . Str::random(10) . '.' . $imageFile->getClientOriginalExtension();
+
+            $imageFile->move($destinationPath, $imageName);
+            $data_updated['photo'] = 'images/about/' . $imageName;
+        } elseif ($request->has('delete_photo') && $request->delete_photo == 1) {
+            $oldImagePathFromDb = $request->photo;
+            $oldImagePath = public_path($oldImagePathFromDb);
+
+            if ($oldImagePathFromDb && File::exists($oldImagePath)) {
+                File::delete($oldImagePath);
+            }
+
+            $data_updated = null;
+        }
+
+        return redirect()->route('admin.customization-about')->with('success-updated-about-services', 'You have successfully changed!');
     }
 
     // Customization Discovery
