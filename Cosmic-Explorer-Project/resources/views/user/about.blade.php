@@ -89,7 +89,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="inner-content">
-                        <h1 style="text-transform: uppercase">About Website</h1>
+                        <h1 style="text-transform: uppercase">About</h1>
                     </div>
                 </div>
             </div>
@@ -106,7 +106,11 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="left-image">
-                                    <img src="{{ asset('images') }}/about/{{ $about->photo }}" alt="">
+                                    @if ($about->photo)
+                                        <img src="{{ asset($about->photo) }}" alt="{{ basename($about->photo) }}">
+                                    @else
+                                        <img src="{{ asset('images') }}/about/no-photo.jpg" alt="No Photo">
+                                    @endif
                                 </div>
                             </div>
                             <div class="col-lg-6">
@@ -116,18 +120,18 @@
                                     <p>{{ $about->description_2 }}</p>
                                     <ul>
                                         <li>
-                                            <a href="#">
+                                            <a href="{{ $about->link }}">
                                                 <i class="fa-brands fa-facebook"></i>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#">
+                                            <a href="{{ $about->link_2 }}">
                                                 <i class="fa-brands fa-twitter"></i>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#">
-                                                <i class="fa-brands fa-linkedin"></i>
+                                            <a href="{{ $about->link_3 }}">
+                                                <i class="fab fa-youtube"></i>
                                             </a>
                                         </li>
                                     </ul>
@@ -146,15 +150,27 @@
                                         educational tools, and the latest cosmic discoveries.</span>
                                 </div>
                             </div>
-                            @foreach ($services as $service)
-                                <div class="col-lg-4">
-                                    <div class="service-item">
-                                        <h4>{{ $service->name }}</h4>
-                                        <p>{{ $service->description }}</p>
-                                        <img src="{{ asset('images') }}/about/{{ $service->photo }}" alt="">
-                                    </div>
+                            <div class="col-lg-4">
+                                <div class="service-item">
+                                    <h4>{{ $service->name }}</h4>
+                                    <p>{{ $service->description }}</p>
+                                    <img src="{{ asset($service->photo) }}" alt="{{ basename($service->photo) }}">
                                 </div>
-                            @endforeach
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="service-item">
+                                    <h4>{{ $service->name }}</h4>
+                                    <p>{{ $service->description_2 }}</p>
+                                    <img src="{{ asset($service->photo_2) }}" alt="{{ basename($service->photo_2) }}">
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="service-item">
+                                    <h4>{{ $service->name }}</h4>
+                                    <p>{{ $service->description_3 }}</p>
+                                    <img src="{{ asset($service->photo_3) }}" alt="{{ basename($service->photo_3) }}">
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </section>

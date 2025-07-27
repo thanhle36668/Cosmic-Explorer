@@ -127,15 +127,55 @@
                     </div>
                 </div>
                 <div class="col-lg-5 offset-lg-1">
-                    <div class="owl-banner owl-carousel ">
-                        @foreach($planets as $planet)
-                        <div class="item">
-                            <a href="{{ route('details-planet', $planet->slug) }}">
-                                <img class="rounded-circle" src="{{ asset($planet->photo) }}"
-                                    alt="{{ $planet->photo }}" height="480px" width="480px">
-                            </a>
-                        </div>
-                        @endforeach
+                    <div class="owl-banner owl-carousel">
+                        @if ($information->photo)
+                            <div class="item">
+                                <img class="rounded-circle" src="{{ asset($information->photo) }}"
+                                    alt="{{ basename($information->photo) }}" height="480px">
+                            </div>
+                        @endif
+                        @if ($information->photo_2)
+                            <div class="item">
+                                <img class="rounded-circle" src="{{ asset($information->photo_2) }}"
+                                    alt="{{ basename($information->photo_2) }}" height="480px">
+                            </div>
+                        @endif
+                        @if ($information->photo_3)
+                            <div class="item">
+                                <img class="rounded-circle" src="{{ asset($information->photo_3) }}"
+                                    alt="{{ basename($information->photo_3) }}" height="480px">
+                            </div>
+                        @endif
+                        @if ($information->photo_4)
+                            <div class="item">
+                                <img class="rounded-circle" src="{{ asset($information->photo_4) }}"
+                                    alt="{{ basename($information->photo_4) }}" height="480px">
+                            </div>
+                        @endif
+                        @if ($information->photo_5)
+                            <div class="item">
+                                <img class="rounded-circle" src="{{ asset($information->photo_5) }}"
+                                    alt="{{ basename($information->photo_5) }}" height="480px">
+                            </div>
+                        @endif
+                        @if ($information->photo_6)
+                            <div class="item">
+                                <img class="rounded-circle" src="{{ asset($information->photo_6) }}"
+                                    alt="{{ basename($information->photo_6) }}" height="480px">
+                            </div>
+                        @endif
+                        @if ($information->photo_7)
+                            <div class="item">
+                                <img class="rounded-circle" src="{{ asset($information->photo_7) }}"
+                                    alt="{{ basename($information->photo_7) }}" height="480px">
+                            </div>
+                        @endif
+                        @if ($information->photo_8)
+                            <div class="item">
+                                <img class="rounded-circle" src="{{ asset($information->photo_8) }}"
+                                    alt="{{ basename($information->photo_8) }}" height="480px">
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -167,10 +207,16 @@
                 @else
                     <div class="card px-4 py-4">
                         <div class="row g-0">
-                            <div class="col-md-4">
-                                <img src="{{ asset($discoveries->photo) }}" class="img-fluid"
-                                    alt="{{ $discoveries->title }}">
-                            </div>
+                            @if ($discoveries->photo)
+                                <div class="col-md-4">
+                                    <img src="{{ asset($discoveries->photo) }}" class="img-fluid"
+                                        alt="{{ basename($discoveries->photo) }}">
+                                </div>
+                            @else
+                                <div class="icon">
+                                    <img src="{{ asset('images') }}/discovery/no-photo.jpg" alt="no-photo.jpg">
+                                </div>
+                            @endif
                             <div class="col-md-8 d-flex justify-content-center align-items-center">
                                 <div class="card-body">
                                     <h5 class="card-title">{{ $discoveries->title }}</h5>
@@ -252,9 +298,17 @@
                                     <div class="col-lg-3 col-sm-6">
                                         <a href="{{ route('details-planet', $planet->slug) }}">
                                             <div class="item">
-                                                <div class="icon">
-                                                    <img src="{{ asset($planet->photo) }}" alt="{{ $planet->name }}">
-                                                </div>
+                                                @if ($planet->photo)
+                                                    <div class="icon">
+                                                        <img src="{{ asset($planet->photo) }}"
+                                                            alt="{{ $planet->name }}">
+                                                    </div>
+                                                @else
+                                                    <div class="icon">
+                                                        <img src="{{ asset('images') }}/planets/no-photo.jpg"
+                                                            alt="no-photo.jpg">
+                                                    </div>
+                                                @endif
                                                 <h4>{{ $planet->name }}</h4>
                                                 <div class="icon-button">
                                                     <a href="{{ route('details-planet', $planet->slug) }}"><i
@@ -280,21 +334,40 @@
                                     <h2>Constellation Collection</h2>
                                 </div>
                             </div>
-                            <div class="col-lg-12 carousel">
+                            <div class="col-lg-12 carousel pb-5 pt-5">
                                 <div class="owl-collection owl-carousel">
                                     @foreach ($constellations as $constellation)
-                                        <div class="item">
-                                            <img src="{{ asset('images') }}/constellations/{{ $constellation->photo }}"
-                                                alt="{{ $constellation->name }}">
-                                            <div class="down-content text-center">
-                                                <h4>{{ $constellation->name }}
-                                                </h4>
-                                                <div class="main-button">
-                                                    <a href="{{ route('details-constellation', $constellation->slug) }}">View
-                                                        Details</a>
+                                        @if ($constellation->status)
+                                            @if ($constellation->photo)
+                                                <div class="item pb-5">
+                                                    <img src="{{ asset($constellation->photo) }}"
+                                                        alt="{{ basename($constellation->photo) }}">
+                                                    <div class="down-content text-center">
+                                                        <h4>{{ $constellation->name }}
+                                                        </h4>
+                                                        <div class="main-button">
+                                                            <a
+                                                                href="{{ route('details-constellation', $constellation->slug) }}">View
+                                                                Details</a>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </div>
+                                            @else
+                                                <div class="item pb-5">
+                                                    <img src="{{ asset('images') }}/planets/no-photo.jpg"
+                                                        alt="no-photo.jpg">
+                                                    <div class="down-content text-center">
+                                                        <h4>{{ $constellation->name }}
+                                                        </h4>
+                                                        <div class="main-button">
+                                                            <a
+                                                                href="{{ route('details-constellation', $constellation->slug) }}">View
+                                                                Details</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            @endif
+                                        @endif
                                     @endforeach
                                 </div>
                             </div>

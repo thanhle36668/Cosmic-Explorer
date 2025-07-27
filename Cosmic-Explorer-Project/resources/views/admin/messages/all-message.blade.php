@@ -1,8 +1,6 @@
 @extends('layouts.admin.admin')
 
-@section('title')
-    <title>Messages Dashboard</title>
-@endsection
+@section('title', 'Messages Dashboard')
 
 @section('content')
     <div class="card">
@@ -92,13 +90,17 @@
                             </td>
                             <td>
                                 @if ($message->time_reply_message)
-                                    {{ date('d/m/Y - H:i:s', strtotime($message->time_reply_message)) }}
+                                    {{ $message->time_reply_message->format('d/m/Y - H:i:s') }}
+                                @else
+                                    N/A
                                 @endif
                             </td>
                             <td>
                                 @if ($message->status)
                                     <p class="bg-success mb-0" style="padding: 6px 12px; border-radius: 4px">
                                         {{ $message->replied_by }}</p>
+                                @else
+                                    N/A
                                 @endif
                             </td>
                             </td>

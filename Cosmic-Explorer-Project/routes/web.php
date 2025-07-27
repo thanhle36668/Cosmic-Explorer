@@ -64,6 +64,11 @@ Route::middleware(['auth', 'is_admin'])->prefix('admin')->name('admin.')
         Route::get('/customization-introduction', [CustomizationController::class, 'introduction'])->name('customization-introduction');
         Route::put('/updated-introduction', [CustomizationController::class, 'updatedIntroduction'])->name('updated-introduction');
 
+        // Customization About
+        Route::get('/customization-about', [CustomizationController::class, 'about'])->name('customization-about');
+        Route::put('/updated-about', [CustomizationController::class, 'updatedAbout'])->name('updated-about');
+        Route::put('/updated-about-services', [CustomizationController::class, 'updatedAboutServices'])->name('updated-about-services');
+
         // Customization Discovery
         Route::get('/customization-discovery', [CustomizationController::class, 'discovery'])->name('customization-discovery');
         Route::get('/create-discovery', [CustomizationController::class, 'createDiscovery'])->name('create-discovery');
@@ -81,6 +86,14 @@ Route::middleware(['auth', 'is_admin'])->prefix('admin')->name('admin.')
         Route::get('/edit-planet/{slug}', [CustomizationController::class, 'editPlanet'])->name('edit-planet');
         Route::put('/updated-planet', [CustomizationController::class, 'updatedPlanet'])->name('updated-planet');
         Route::post('/search-planet', [CustomizationController::class, 'searchPlanet'])->name('search-planet');
+
+        // Customization Constellations
+        Route::get('/customization-constellations', [CustomizationController::class, 'constellations'])->name('customization-constellations');
+        Route::get('/create-constellation', [CustomizationController::class, 'createConstellation'])->name('create-constellation');
+        Route::put('/save-constellation', [CustomizationController::class, 'saveConstellation'])->name('save-constellation');
+        Route::get('/edit-constellation/{slug}', [CustomizationController::class, 'editConstellation'])->name('edit-constellation');
+        Route::put('/updated-constellation', [CustomizationController::class, 'updatedConstellation'])->name('updated-constellation');
+        Route::get('/delete-constellation/{id}', [CustomizationController::class, 'deleteConstellation'])->name('delete-constellation');
     });
 
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');

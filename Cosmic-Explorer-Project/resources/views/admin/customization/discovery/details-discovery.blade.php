@@ -84,25 +84,41 @@
                     <div class="row">
                         <div class="form-group mb-4 col-12 col-md-6">
                             <label for="photo" class="form-label d-block mb-2">Photo 1 (Featured):</label>
-                            <div class="row align-items-center g-3">
+                            <div class="row align-items-center g-3 mb-2">
                                 <div class="col-12 col-sm-4 col-md-12 col-lg-5">
                                     @if ($post->photo)
                                         <div class="d-flex flex-column flex-sm-row align-items-start align-items-sm-center">
-                                            <img src="{{ asset($post->photo) }}" alt="{{ $post->photo }}"
+                                            <img src="{{ asset($post->photo) }}" alt="{{ basename($post->photo) }}"
                                                 class="img-thumbnail me-sm-3 mb-2 mb-sm-0"
                                                 style="height: 250px; width: 250px;">
                                         </div>
                                     @else
-                                        <p class="text-muted">No photo uploaded yet.</p>
+                                        <div class="d-flex flex-column flex-sm-row align-items-start align-items-sm-center">
+                                            <img src="{{ asset('images') }}/discovery/no-photo.jpg" alt="No Photo"
+                                                class="img-thumbnail me-sm-3 mb-2 mb-sm-0" height="300" width="300">
+                                        </div>
                                     @endif
                                 </div>
                                 <div class="col-12 col-sm-8 col-md-12 col-lg-7">
-                                    <input type="file" id="photo" name="photo" accept="image/*">
-                                    <small class="form-text text-muted mt-2">
-                                        Please select a new image file (JPG, JPEG, GIF, PNG, SVG, WEBP)
-                                    </small>
+                                    <input type="file" id="photo" name="photo" accept="image/*"
+                                        class="mb-2">
                                     @if ($post->photo)
-                                        <small class="form-text text-muted">
+                                        <small class="form-text text-muted mb-2 mt-0">
+                                            Please select a new image file (JPG, JPEG, PNG, GIF, WEBP, SVG).
+                                            <br>
+                                            To keep the current photo, leave this field empty.
+                                        </small>
+                                        <div class="mb-2 d-flex align-items-center">
+                                            <input type="checkbox" class="mr-1" id="delete_photo" name="delete_photo"
+                                                value="1">
+                                            <label class="mb-0" for="delete_photo">
+                                                Delete current photo!!!
+                                            </label>
+                                        </div>
+                                    @else
+                                        <small class="form-text text-muted mb-2">
+                                            Please select a new image file (JPG, JPEG, PNG, GIF, WEBP, SVG).
+                                            <br>
                                             To keep the current photo, leave this field empty.
                                         </small>
                                     @endif
@@ -110,27 +126,44 @@
                             </div>
                         </div>
                         <div class="form-group mb-4 col-12 col-md-6">
-                            <label for="photo_2 " class="form-label d-block mb-2">Photo 2:</label>
-                            <div class="row align-items-center g-3">
+                            <label for="photo_2" class="form-label d-block mb-2">Photo 2:</label>
+                            <div class="row align-items-center g-3 mb-2">
                                 <div class="col-12 col-sm-4 col-md-12 col-lg-5">
                                     @if ($post->photo_2)
                                         <div
                                             class="d-flex flex-column flex-sm-row align-items-start align-items-sm-center">
-                                            <img src="{{ asset($post->photo_2) }}" alt="{{ $post->photo_2 }}"
+                                            <img src="{{ asset($post->photo_2) }}" alt="{{ basename($post->photo_2) }}"
                                                 class="img-thumbnail me-sm-3 mb-2 mb-sm-0"
                                                 style="height: 250px; width: 250px;">
                                         </div>
                                     @else
-                                        <p class="text-muted">No photo uploaded yet.</p>
+                                        <div
+                                            class="d-flex flex-column flex-sm-row align-items-start align-items-sm-center">
+                                            <img src="{{ asset('images') }}/discovery/no-photo.jpg" alt="No Photo"
+                                                class="img-thumbnail me-sm-3 mb-2 mb-sm-0" height="300" width="300">
+                                        </div>
                                     @endif
                                 </div>
                                 <div class="col-12 col-sm-8 col-md-12 col-lg-7">
-                                    <input type="file" id="photo_2" name="photo_2" accept="image/*">
-                                    <small class="form-text text-muted mt-2">
-                                        Please select a new image file (JPG, JPEG, GIF, PNG, SVG, WEBP)
-                                    </small>
-                                    @if ($post->photo)
-                                        <small class="form-text text-muted">
+                                    <input type="file" id="photo_2" name="photo_2" accept="image/*"
+                                        class="mb-2">
+                                    @if ($post->photo_2)
+                                        <small class="form-text text-muted mb-2 mt-0">
+                                            Please select a new image file (JPG, JPEG, PNG, GIF, WEBP, SVG).
+                                            <br>
+                                            To keep the current photo, leave this field empty.
+                                        </small>
+                                        <div class="mb-2 d-flex align-items-center">
+                                            <input type="checkbox" class="mr-1" id="delete_photo_2"
+                                                name="delete_photo_2" value="1">
+                                            <label class="mb-0" for="delete_photo_2">
+                                                Delete current photo!!!
+                                            </label>
+                                        </div>
+                                    @else
+                                        <small class="form-text text-muted mb-2">
+                                            Please select a new image file (JPG, JPEG, PNG, GIF, WEBP, SVG).
+                                            <br>
                                             To keep the current photo, leave this field empty.
                                         </small>
                                     @endif
@@ -142,7 +175,7 @@
                 <div class="d-flex justify-content-end card-footer">
                     <a href="{{ route('admin.customization-discovery') }}"
                         class="btn btn-secondary mr-2 px-5 py-2">Cancel</a>
-                    <button type="submit" class="btn btn-primary float-right px-5 py-2">Save</button>
+                    <button type="submit" class="btn btn-primary float-right px-5 py-2">Update</button>
                 </div>
             </div>
         </section>

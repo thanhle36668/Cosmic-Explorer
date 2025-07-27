@@ -128,29 +128,55 @@
                 <div class="col-lg-5 offset-lg-1">
                     <div class="container">
                         <div class="row justify-content-center mb-4">
-                            <div class="col-md-12 text-center">
-                                <img src="{{ asset('images') }}/constellations/{{ $constellation_details->photo }}"
-                                    alt="{{ $constellation_details->name }}" class="img-fluid img-main rounded shadow-sm"
-                                    id="parent">
-                            </div>
+                            @if ($constellation_details->photo)
+                                <img src="{{ asset($constellation_details->photo) }}"
+                                    alt="{{ basename($constellation_details->photo) }}"
+                                    class="img-fluid img-main rounded shadow-sm p-2" id="parent">
+                            @else
+                                <img src="{{ asset('images') }}/constellations/no-photo.jpg" alt=""
+                                    class="img-fluid rounded shadow-sm person1">
+                            @endif
                         </div>
                         <div class="row justify-content-center g-2 person">
                             <div class="col-3 col-sm-3 col-md-3 col-lg-3">
-                                <img src="{{ asset('images') }}/constellations/{{ $constellation_details->photo }}"
-                                    class="img-fluid rounded shadow-sm person1 active-thumbnail"
-                                    alt="{{ $constellation_details->name }}">
+                                @if ($constellation_details->photo)
+                                    <img src="{{ asset($constellation_details->photo) }}"
+                                        class="img-fluid rounded shadow-sm person1 active-thumbnail"
+                                        alt="{{ basename($constellation_details->photo) }}">
+                                @else
+                                    <img src="{{ asset('images') }}/constellations/no-photo.jpg" alt=""
+                                        class="img-fluid rounded shadow-sm person1">
+                                @endif
                             </div>
                             <div class="col-3 col-sm-3 col-md-3 col-lg-3">
-                                <img src="{{ asset('images') }}/constellations/{{ $constellation_details->photo_2 }}"
-                                    class="img-fluid rounded shadow-sm person2" alt="{{ $constellation_details->name }}">
+                                @if ($constellation_details->photo_2)
+                                    <img src="{{ asset($constellation_details->photo_2) }}"
+                                        class="img-fluid rounded shadow-sm person1"
+                                        alt="{{ basename($constellation_details->photo_2) }}">
+                                @else
+                                    <img src="{{ asset('images') }}/constellations/no-photo.jpg" alt=""
+                                        class="img-fluid rounded shadow-sm person1">
+                                @endif
                             </div>
                             <div class="col-3 col-sm-3 col-md-3 col-lg-3">
-                                <img src="{{ asset('images') }}/constellations/{{ $constellation_details->photo_3 }}"
-                                    class="img-fluid rounded shadow-sm person3" alt="{{ $constellation_details->name }}">
+                                @if ($constellation_details->photo_3)
+                                    <img src="{{ asset($constellation_details->photo_3) }}"
+                                        class="img-fluid rounded shadow-sm person1"
+                                        alt="{{ basename($constellation_details->photo_3) }}">
+                                @else
+                                    <img src="{{ asset('images') }}/constellations/no-photo.jpg" alt=""
+                                        class="img-fluid rounded shadow-sm person1">
+                                @endif
                             </div>
                             <div class="col-3 col-sm-3 col-md-3 col-lg-3">
-                                <img src="{{ asset('images') }}/constellations/{{ $constellation_details->photo_4 }}"
-                                    class="img-fluid rounded shadow-sm person4" alt="{{ $constellation_details->name }}">
+                                @if ($constellation_details->photo_4)
+                                    <img src="{{ asset($constellation_details->photo_4) }}"
+                                        class="img-fluid rounded shadow-sm person1"
+                                        alt="{{ basename($constellation_details->photo_4) }}">
+                                @else
+                                    <img src="{{ asset('images') }}/constellations/no-photo.jpg" alt=""
+                                        class="img-fluid rounded shadow-sm person1">
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -178,18 +204,19 @@
                             <div class="col-lg-12 carousel">
                                 <div class="owl-collection owl-carousel">
                                     @foreach ($constellations as $constellation)
-                                        <div class="item">
-                                            <img class="img-constellation"
-                                                src="{{ asset('images') }}/constellations/{{ $constellation->photo }}"
-                                                alt="{{ $constellation->name }}">
-                                            <div class="down-content p-4" style="background-color: #282B2F;">
-                                                <div class="main-button main-button-constellation text-center">
-                                                    <h4 class="mb-3">{{ $constellation->name }}</h4>
-                                                    <a href="{{ route('details-constellation', $constellation->slug) }}">View
-                                                        Details</a>
+                                        @if ($constellation->status)
+                                            <div class="item">
+                                                <img class="img-constellation" src="{{ asset($constellation->photo) }}">
+                                                <div class="down-content p-4" style="background-color: #282B2F;">
+                                                    <div class="main-button main-button-constellation text-center">
+                                                        <h4 class="mb-3">{{ $constellation->name }}</h4>
+                                                        <a
+                                                            href="{{ route('details-constellation', $constellation->slug) }}">View
+                                                            Details</a>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        @endif
                                     @endforeach
                                 </div>
                             </div>
