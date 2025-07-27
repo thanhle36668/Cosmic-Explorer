@@ -195,17 +195,19 @@
                             <div class="col-lg-12 carousel">
                                 <div class="owl-collection owl-carousel">
                                     @foreach ($planets as $planet)
-                                        <div class="item">
-                                            <img class="img-planet" src="{{ asset($planet->photo_5) }}"
-                                                alt="{{ $planet->name }}">
-                                            <div class="down-content-discovery text-center p-3"
-                                                style="background-color: transparent; border: none">
-                                                <div class="main-button mt-0 mb-0">
-                                                    <a href="{{ route('details-planet', $planet->slug) }}">View
-                                                        Details</a>
+                                        @if ($planet->status)
+                                            <div class="item">
+                                                <img class="img-planet" src="{{ asset($planet->photo_5) }}"
+                                                    alt="{{ $planet->name }}">
+                                                <div class="down-content-discovery text-center p-3"
+                                                    style="background-color: transparent; border: none">
+                                                    <div class="main-button mt-0 mb-0">
+                                                        <a href="{{ route('details-planet', $planet->slug) }}">View
+                                                            Details</a>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        @endif
                                     @endforeach
                                 </div>
                             </div>

@@ -44,7 +44,7 @@ class CosmicExplorerController extends Controller
     public function pageCollectionsPlanets()
     {
         $data = [
-            'planets' => Planets::paginate(4)
+            'planets' => Planets::where('status', true)->paginate(4)
         ];
         return view('user/collections-page-planets')->with($data);
     }
@@ -53,7 +53,7 @@ class CosmicExplorerController extends Controller
     public function pageCollectionsConstellations()
     {
         $data = [
-            'constellations' => Constellations::paginate(4)
+            'constellations' => Constellations::where('status', true)->paginate(4)
         ];
         return view('user/collections-page-constellations')->with($data);
     }

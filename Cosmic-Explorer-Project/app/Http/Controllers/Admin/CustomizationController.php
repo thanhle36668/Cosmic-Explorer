@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\About;
 use App\Models\About_services;
+use App\Models\Constellations;
 use App\Models\Discovery;
 use App\Models\Introduction;
 use App\Models\Planets;
@@ -519,7 +520,7 @@ class CustomizationController extends Controller
 
             return redirect()->route('admin.customization-planets')->with('success-create-planet', 'You have successfully created a planet.');
         } catch (Exception $e) {
-            return redirect()->back()->with('error-create-planet', 'Failed to create post due to an internal error. Please try again.');
+            return redirect()->back()->with('error-create-planet', 'Failed to create planet due to an internal error. Please try again!!!');
         }
     }
 
@@ -612,7 +613,7 @@ class CustomizationController extends Controller
                     File::delete($oldImagePath);
                 }
 
-                $imageName = 'update' . '_' . Str::random(10) . '.' . $imageFile->getClientOriginalExtension();
+                $imageName = time() . '_' . Str::random(10) . '.' . $imageFile->getClientOriginalExtension();
 
                 $imageFile->move($destinationPath, $imageName);
 
@@ -641,5 +642,191 @@ class CustomizationController extends Controller
         ];
 
         return view('admin/customization/planets/search-planet')->with($data);
+    }
+
+    // Customization Constellations
+    public function constellations()
+    {
+        $data = [
+            'constellations' => Constellations::orderBy('id', 'desc')->paginate(4)
+        ];
+
+        return view('admin/customization/constellations/constellations')->with($data);
+    }
+
+    public function createConstellation()
+    {
+        return view('admin/customization/constellations/create-constellation');
+    }
+
+    public function saveConstellation(Request $request)
+    {
+        $processedSlug = Str::slug($request->slug);
+        $dataForValidation = $request->all();
+        $dataForValidation['slug'] = $processedSlug;
+
+        $validationRules = [
+            'name' => 'required|string|max:255|unique:constellations,name',
+            'slug' => 'required|string|max:255|unique:constellations,slug',
+            'title' => 'required|string|max:500',
+            'identification' => 'required|string',
+            'main_stars' => 'required|string',
+            'notable_features' => 'required|string',
+            'myths_meaning' => 'required|string',
+            'photo' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
+            'photo_2' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
+            'photo_3' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
+            'photo_4' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
+        ];
+
+        $validator = Validator::make($dataForValidation, $validationRules);
+        $validator->validate();
+
+        try {
+            $data_create = [
+                'name' => $request->name,
+                'slug' => $processedSlug,
+                'title' => $request->title,
+                'status' => 0,
+                'identification' => $request->identification,
+                'main_stars' => $request->main_stars,
+                'notable_features' => $request->notable_features,
+                'myths_meaning' => $request->myths_meaning
+            ];
+
+            $destinationPath = public_path('images/constellations');
+            if (!File::isDirectory($destinationPath)) {
+                File::makeDirectory($destinationPath, 0755, true, true);
+            }
+
+            $photoArray = ['photo'];
+            for ($i = 2; $i <= 4; $i++) {
+                $photoArray[] = 'photo_' . $i;
+            }
+
+            foreach ($photoArray as $item) {
+                if ($request->hasFile($item)) {
+                    $imageFile = $request->file($item);
+
+                    $imageName = time() . '_' . Str::random(10) . '.' . $imageFile->getClientOriginalExtension();
+
+                    $imageFile->move($destinationPath, $imageName);
+                }
+            }
+
+            Constellations::create($data_create);
+
+            return redirect()->route('admin.customization-constellations')->with('success-create-constellation', 'You have successfully created a constellation.');
+        } catch (Exception $e) {
+            return redirect()->back()->with('error-create-constellation', 'Failed to create constellation due to an internal error. Please try again!!!');
+        }
+    }
+
+    public function editConstellation($slug)
+    {
+        $data = [
+            'constellation' => Constellations::where('slug', $slug)->firstOrFail()
+        ];
+
+        return view('admin/customization/constellations/details-constellation')->with($data);
+    }
+
+    public function updatedConstellation(Request $request)
+    {
+        $validationRules = [
+            'name' => 'string|max:255|unique:constellations,name,' . $request->id,
+            'slug' => 'string|max:255|unique:constellations,slug,' . $request->id,
+            'status' => 'required|boolean',
+            'title' => 'required|string|max:500',
+            'identification' => 'required|string',
+            'main_stars' => 'required|string',
+            'notable_features' => 'required|string',
+            'myths_meaning' => 'required|string',
+            'photo' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
+            'photo_2' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
+            'photo_3' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
+            'photo_4' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
+        ];
+
+        $request->validate($validationRules);
+
+        $constellation = Constellations::find($request->id);
+
+        $data_updated = [
+            'name' => $request->name,
+            'slug' => $request->slug,
+            'status' => $request->status,
+            'title' => $request->title,
+            'identification' => $request->identification,
+            'main_stars' => $request->main_stars,
+            'notable_features' => $request->notable_features,
+            'myths_meaning' => $request->myths_meaning
+        ];
+
+        $destinationPath = public_path('images/constellations');
+
+        if (!File::isDirectory($destinationPath)) {
+            File::makeDirectory($destinationPath, 0755, true, true);
+        }
+
+        $photoArray = ['photo'];
+        for ($i = 2; $i <= 4; $i++) {
+            $photoArray[] = 'photo_' . $i;
+        }
+
+        foreach ($photoArray as $item) {
+            $deleteCheckboxName = 'delete_' . $item;
+            if ($request->hasFile($item)) {
+                $imageFile = $request->file($item);
+
+                $oldImagePathFromDb = $constellation->$item;
+                $oldImagePath = public_path($oldImagePathFromDb);
+                if ($oldImagePathFromDb && File::exists($oldImagePath)) {
+                    File::delete($oldImagePath);
+                }
+
+                $imageName = time() . '_' . Str::random(10) . '.' . $imageFile->getClientOriginalExtension();
+
+                $imageFile->move($destinationPath, $imageName);
+
+                $data_updated[$item] = 'images/constellations/' . $imageName;
+            } elseif ($request->has($deleteCheckboxName) && $request->$deleteCheckboxName == 1) {
+                $oldImagePathFromDb = $constellation->$item;
+                $oldImagePath = public_path($oldImagePathFromDb);
+
+                if ($oldImagePathFromDb && File::exists($oldImagePath)) {
+                    File::delete($oldImagePath);
+                }
+
+                $data_updated[$item] = null;
+            }
+        }
+
+        $constellation->update($data_updated);
+        return redirect()->route('admin.edit-constellation', $constellation->slug)->with('success-update-constellation', 'You have successfully changed!');
+    }
+
+    public function deleteConstellation($id)
+    {
+
+        $constellation = Constellations::find($id);
+
+        $photoArray = ['photo'];
+        for ($i = 2; $i <= 4; $i++) {
+            $photoArray[] = 'photo_' . $i;
+        }
+
+        foreach ($photoArray as $item) {
+            if ($constellation->$item) {
+                $fullPath = public_path($constellation->$item);
+
+                if (File::extension($fullPath)) {
+                    File::delete($fullPath);
+                }
+            }
+        }
+
+        $constellation->delete();
+        return redirect()->route('admin.customization-constellations')->with('success-delete-constellation', 'You have deleted successfully.');
     }
 }

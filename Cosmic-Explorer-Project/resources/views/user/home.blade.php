@@ -334,21 +334,40 @@
                                     <h2>Constellation Collection</h2>
                                 </div>
                             </div>
-                            <div class="col-lg-12 carousel">
+                            <div class="col-lg-12 carousel pb-5 pt-5">
                                 <div class="owl-collection owl-carousel">
                                     @foreach ($constellations as $constellation)
-                                        <div class="item">
-                                            <img src="{{ asset('images') }}/constellations/{{ $constellation->photo }}"
-                                                alt="{{ $constellation->name }}">
-                                            <div class="down-content text-center">
-                                                <h4>{{ $constellation->name }}
-                                                </h4>
-                                                <div class="main-button">
-                                                    <a href="{{ route('details-constellation', $constellation->slug) }}">View
-                                                        Details</a>
+                                        @if ($constellation->status)
+                                            @if ($constellation->photo)
+                                                <div class="item pb-5">
+                                                    <img src="{{ asset($constellation->photo) }}"
+                                                        alt="{{ basename($constellation->photo) }}">
+                                                    <div class="down-content text-center">
+                                                        <h4>{{ $constellation->name }}
+                                                        </h4>
+                                                        <div class="main-button">
+                                                            <a
+                                                                href="{{ route('details-constellation', $constellation->slug) }}">View
+                                                                Details</a>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </div>
+                                            @else
+                                                <div class="item pb-5">
+                                                    <img src="{{ asset('images') }}/planets/no-photo.jpg"
+                                                        alt="no-photo.jpg">
+                                                    <div class="down-content text-center">
+                                                        <h4>{{ $constellation->name }}
+                                                        </h4>
+                                                        <div class="main-button">
+                                                            <a
+                                                                href="{{ route('details-constellation', $constellation->slug) }}">View
+                                                                Details</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            @endif
+                                        @endif
                                     @endforeach
                                 </div>
                             </div>

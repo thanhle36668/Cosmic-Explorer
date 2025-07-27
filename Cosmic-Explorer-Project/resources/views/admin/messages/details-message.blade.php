@@ -38,23 +38,7 @@
                     </div>
                     <div class="form-group">
                         <label for="reply_message">Reply Message</label>
-                        @if ($details_message->status)
-                            <textarea name="reply_message" id="reply_message" class="form-control" rows="10" cols="10" disabled required>{{ $details_message->reply_message ? $details_message->reply_message : '' }}</textarea>
-                        @else
-                            <textarea name="reply_message" id="reply_message" class="form-control" rows="10" cols="10" required>{{ $details_message->reply_message ? $details_message->reply_message : '' }}</textarea>
-                        @endif
-                    </div>
-                    <div class="form-group">
-                        <label for="time_reply_message">Date Reply</label>
-                        @if ($details_message->status)
-                            <input type="text" name="time_reply_message"
-                                value="{{ $details_message->time_reply_message->format('d/m/Y - H:i:s') }}"
-                                id="time_reply_message" class="form-control" required disabled>
-                        @else
-                            <input type="datetime-local" name="time_reply_message"
-                                value="{{ $details_message->time_reply_message ? $details_message->time_reply_message->format('Y-m-d\TH:i') : '' }}"
-                                id="time_reply_message" class="form-control" required>
-                        @endif
+                        <textarea name="reply_message" id="reply_message" class="form-control" rows="10" cols="10" required>{{ $details_message->reply_message }}</textarea>
                     </div>
                     <div class="form-group">
                         <input type="hidden" name="status" value="1" class="form-control">
@@ -63,11 +47,7 @@
                 </div>
                 <div class="d-flex justify-content-end card-footer">
                     <a href="{{ route('admin.messages') }}" class="btn btn-secondary mr-2 px-5 py-2">Cancel</a>
-                    @if ($details_message->status)
-                        <button type="submit" class="btn btn-primary float-right px-5 py-2" disabled>Reply</button>
-                    @else
-                        <button type="submit" class="btn btn-primary float-right px-5 py-2">Reply</button>
-                    @endif
+                    <button type="submit" class="btn btn-primary float-right px-5 py-2">Reply</button>
                 </div>
             </div>
         </section>
