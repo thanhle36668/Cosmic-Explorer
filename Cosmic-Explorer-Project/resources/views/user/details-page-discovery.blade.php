@@ -125,9 +125,6 @@
                             <figure class="figure">
                                 <img src="{{ asset($discovery_details->photo) }}" class="img-fluid news-image"
                                     alt="{{ $discovery_details->name_photo }}">
-                                <figcaption class="figure-caption text-start text-light mt-2">Picture:
-                                    {{ $discovery_details->name_photo }}
-                                </figcaption>
                             </figure>
                         </div>
                         <p class="mt-2">
@@ -139,9 +136,6 @@
                             <figure class="figure">
                                 <img src="{{ asset($discovery_details->photo_2) }}" class="img-fluid news-image"
                                     alt="{{ $discovery_details->name_photo }}">
-                                <figcaption class="figure-caption text-start text-light mt-2">Picture:
-                                    {{ $discovery_details->name_photo }}
-                                </figcaption>
                             </figure>
                         </div>
                         <p class="mt-2">

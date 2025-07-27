@@ -5,10 +5,10 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\About;
 use App\Models\About_services;
-use Exception;
 use App\Models\Discovery;
 use App\Models\Introduction;
 use App\Models\Planets;
+use Exception;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator;
@@ -46,14 +46,14 @@ class CustomizationController extends Controller
 
         $introduction = Introduction::find($request->id);
 
-        $data_update = [
+        $data_updated = [
             'website_name' => $request->website_name,
             'short_introduction' => $request->short_introduction,
             'short_introduction_2' => $request->short_introduction_2,
             'company_description' => $request->company_description
         ];
 
-        $destinationPath = public_path('images/images-introduction');
+        $destinationPath = public_path('images/introduction');
 
         if (!File::isDirectory($destinationPath)) {
             File::makeDirectory($destinationPath, 0755, true, true);
@@ -65,13 +65,15 @@ class CustomizationController extends Controller
         }
 
         foreach ($photoArray as $item) {
+            $deleteCheckboxName = 'delete_' . $item;
             if ($request->hasFile($item)) {
                 $imageFile = $request->file($item);
 
                 if ($introduction->$item) {
-                    $filenameInDb = basename($introduction->$item);
-                    $oldImagePath = public_path('images/images-introduction' . '/' . $filenameInDb);
-                    if (File::exists($oldImagePath)) {
+                    $oldImagePathFromDb = $introduction->$item;
+                    $oldImagePath = public_path($oldImagePathFromDb);
+
+                    if ($oldImagePathFromDb && File::exists($oldImagePath)) {
                         File::delete($oldImagePath);
                     }
                 }
@@ -80,10 +82,20 @@ class CustomizationController extends Controller
 
                 $imageFile->move($destinationPath, $imageName);
 
-                $data_update[$item] = 'images/images-introduction/' . $imageName;
+                $data_updated[$item] = 'images/introduction/' . $imageName;
+            } elseif ($request->has($deleteCheckboxName) && $request->$deleteCheckboxName == 1) {
+
+                $oldImagePathFromDb = $introduction->$item;
+                $oldImagePath = public_path($oldImagePathFromDb);
+
+                if ($oldImagePathFromDb && File::exists($oldImagePath)) {
+                    File::delete($oldImagePath);
+                }
+
+                $data_updated[$item] = null;
             }
         }
-        $introduction->update($data_update);
+        $introduction->update($data_updated);
 
         return redirect()->route('admin.customization-introduction')->with('success-update-introduction', 'You have successfully changed!');
     }
@@ -93,7 +105,7 @@ class CustomizationController extends Controller
     {
         $data = [
             'about' => About::firstOrFail(),
-            'about_services' => About_services::get(),
+            'about_services' => About_services::firstOrFail(),
         ];
 
         return view('admin/customization/about/about')->with($data);
@@ -105,17 +117,29 @@ class CustomizationController extends Controller
             'title' => 'required|string|max:255',
             'description_1' => 'required|string',
             'description_2' => 'required|string',
+            'link' => 'nullable|string|max:300',
+            'link_2' => 'nullable|string|max:300',
+            'link_3' => 'nullable|string|max:300',
             'photo' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
         ];
 
-        $request->validate($validationRules);
+        $validator = Validator::make($request->all(), $validationRules);
+
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator, 'aboutErrors')
+                ->withInput();
+        }
 
         $about = About::find($request->id);
 
         $data_updated = [
             'title' => $request->title,
             'description_1' => $request->description_1,
-            'description_2' => $request->description_2
+            'description_2' => $request->description_2,
+            'link' => $request->link,
+            'link_2' => $request->link_2,
+            'link_3' => $request->link_3,
         ];
 
         $destinationPath = public_path('images/about');
@@ -133,7 +157,7 @@ class CustomizationController extends Controller
                 File::delete(public_path($oldImagePathFromDb));
             }
 
-            $imageName = 'updated' . '_' . Str::random(10) . '.' . $imageFile->getClientOriginalExtension();
+            $imageName = time() . '_' . Str::random(10) . '.' . $imageFile->getClientOriginalExtension();
 
             $imageFile->move($destinationPath, $imageName);
 
@@ -157,18 +181,34 @@ class CustomizationController extends Controller
     public function updatedAboutServices(Request $request)
     {
         $validationRules = [
-            'name' => 'required|string|max:250|unique:about_services,name,' . $request->id,
-            'description' => 'required|string|unique:about_services,description,' . $request->id,
+            'name' => 'required|string|max:250',
+            'name_2' => 'required|string|max:250',
+            'name_3' => 'required|string|max:250',
+            'description' => 'required|string',
+            'description_2' => 'required|string',
+            'description_3' => 'required|string',
             'photo' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
+            'photo_2' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
+            'photo_3' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
         ];
 
-        $request->validate($validationRules);
+        $validator = Validator::make($request->all(), $validationRules);
 
-        $service = About_services::find($request->id);
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator, 'aboutServices')
+                ->withInput();
+        }
+
+        $service = About_services::firstOrFail();
 
         $data_updated = [
             'name' => $request->name,
-            'description' => $request->description
+            'name_2' => $request->name_2,
+            'name_3' => $request->name_3,
+            'description' => $request->description,
+            'description_2' => $request->description_2,
+            'description_3' => $request->description_3
         ];
 
         $destinationPath = public_path('images/about');
@@ -177,30 +217,36 @@ class CustomizationController extends Controller
             File::makeDirectory($destinationPath, 0755, true, true);
         }
 
-        if ($request->hasFile('photo')) {
-            $imageFile = $request->file('photo');
+        $photoArray = ['photo', 'photo_2', 'photo_3'];
+        foreach ($photoArray as $item) {
+            $deleteCheckboxName = 'delete_' . $item;
+            if ($request->hasFile($item)) {
+                $imageFile = $request->file($item);
 
-            $oldImagePathFromDb = $service->photo;
-            $oldImagePath = public_path($oldImagePathFromDb);
+                $oldImagePathFromDb = $service->$item;
+                $oldImagePath = public_path($oldImagePathFromDb);
 
-            if ($oldImagePathFromDb && File::exists($oldImagePath)) {
-                File::delete($oldImagePath);
+                if ($oldImagePathFromDb && File::exists($oldImagePath)) {
+                    File::delete($oldImagePath);
+                }
+
+                $imageName = time() . '_' . Str::random(10) . '.' . $imageFile->getClientOriginalExtension();
+
+                $imageFile->move($destinationPath, $imageName);
+                $data_updated[$item] = 'images/about/' . $imageName;
+            } elseif ($request->has($deleteCheckboxName) && $request->$deleteCheckboxName == 1) {
+                $oldImagePathFromDb = $service->$item;
+                $oldImagePath = public_path($oldImagePathFromDb);
+
+                if ($oldImagePathFromDb && File::exists($oldImagePath)) {
+                    File::delete($oldImagePath);
+                }
+
+                $data_updated[$item] = null;
             }
-
-            $imageName = 'updated' . '_' . Str::random(10) . '.' . $imageFile->getClientOriginalExtension();
-
-            $imageFile->move($destinationPath, $imageName);
-            $data_updated['photo'] = 'images/about/' . $imageName;
-        } elseif ($request->has('delete_photo') && $request->delete_photo == 1) {
-            $oldImagePathFromDb = $request->photo;
-            $oldImagePath = public_path($oldImagePathFromDb);
-
-            if ($oldImagePathFromDb && File::exists($oldImagePath)) {
-                File::delete($oldImagePath);
-            }
-
-            $data_updated = null;
         }
+
+        $service->update($data_updated);
 
         return redirect()->route('admin.customization-about')->with('success-updated-about-services', 'You have successfully changed!');
     }
@@ -213,78 +259,6 @@ class CustomizationController extends Controller
         ];
 
         return view('admin/customization/discovery/discovery')->with($data);
-    }
-
-    public function editDiscovery($slug)
-    {
-        $data = [
-            'post' => Discovery::where('slug', $slug)->firstOrFail()
-        ];
-
-        return view('admin/customization/discovery/details-discovery')->with($data);
-    }
-
-    public function updatedDiscovery(Request $request)
-    {
-        $validationRules = [
-            'title' => 'string|max:255|unique:discovery,title,' . $request->id,
-            'slug' => 'string|max:255|unique:discovery,slug,' . $request->id,
-            'status' => 'required|boolean',
-            'author' => 'required|string|max:255',
-            'description_short' => 'required|string',
-            'title_details' => 'required|string',
-            'description_details' => 'required|string',
-            'content_1' => 'required|string',
-            'content_2' => 'required|string',
-            'photo' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
-            'photo_2' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
-        ];
-
-        $request->validate($validationRules);
-
-        $post = Discovery::find($request->id);
-
-        $data_update = [
-            'title' => $request->title,
-            'slug' => Str::slug($request->slug),
-            'author' => $request->author,
-            'status' => $request->status,
-            'description_short' => $request->description_short,
-            'title_details' => $request->title_details,
-            'description_details' => $request->description_details,
-            'content_1' => $request->content_1,
-            'content_2' => $request->content_2
-        ];
-
-        $destinationPath = public_path('images/discovery');
-
-        if (!File::isDirectory($destinationPath)) {
-            File::makeDirectory($destinationPath, 0755, true, true);
-        }
-
-        $photoArray = ['photo', 'photo_2'];
-
-        foreach ($photoArray as $item) {
-            if ($request->hasFile($item)) {
-                $imageFile = $request->file($item);
-
-                $oldImagePathFromDb = $post->$item;
-
-                if ($oldImagePathFromDb && File::exists(public_path($oldImagePathFromDb))) {
-                    File::delete(public_path($oldImagePathFromDb));
-                }
-
-                $imageName = 'updated' . '_' . Str::random(10) . '.' . $imageFile->getClientOriginalExtension();
-
-                $imageFile->move($destinationPath, $imageName);
-
-                $data_update[$item] = 'images/discovery/' . $imageName;
-            }
-        }
-
-        $post->update($data_update);
-
-        return redirect()->route('admin.edit-discovery', $post->slug)->with('success-update-discovery', 'You have successfully changed!');
     }
 
     public function createDiscovery()
@@ -307,10 +281,8 @@ class CustomizationController extends Controller
             'description_details' => 'required|string',
             'content_1' => 'required|string',
             'content_2' => 'required|string',
-            'photo' => 'required|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
-            'photo_2' => 'required|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
-            'name_photo' => 'required|string|max:255|',
-            'name_photo_2' => 'required|string|max:255|',
+            'photo' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
+            'photo_2' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
         ];
 
         $validator = Validator::make($dataForValidation, $validationRules);
@@ -327,8 +299,6 @@ class CustomizationController extends Controller
                 'description_details' => $request->description_details,
                 'content_1' => $request->content_1,
                 'content_2' => $request->content_2,
-                'name_photo' => $request->name_photo,
-                'name_photo_2' => $request->name_photo_2,
             ];
 
             $destinationPath = public_path('images/discovery');
@@ -389,6 +359,88 @@ class CustomizationController extends Controller
         ];
 
         return view('admin/customization/discovery/search-discovery')->with($data);
+    }
+
+    public function editDiscovery($slug)
+    {
+        $data = [
+            'post' => Discovery::where('slug', $slug)->firstOrFail()
+        ];
+
+        return view('admin/customization/discovery/details-discovery')->with($data);
+    }
+
+    public function updatedDiscovery(Request $request)
+    {
+        $validationRules = [
+            'title' => 'string|max:255|unique:discovery,title,' . $request->id,
+            'slug' => 'string|max:255|unique:discovery,slug,' . $request->id,
+            'status' => 'required|boolean',
+            'author' => 'required|string|max:255',
+            'description_short' => 'required|string',
+            'title_details' => 'required|string',
+            'description_details' => 'required|string',
+            'content_1' => 'required|string',
+            'content_2' => 'required|string',
+            'photo' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
+            'photo_2' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
+        ];
+
+        $request->validate($validationRules);
+
+        $post = Discovery::find($request->id);
+
+        $data_updated = [
+            'title' => $request->title,
+            'slug' => Str::slug($request->slug),
+            'author' => $request->author,
+            'status' => $request->status,
+            'description_short' => $request->description_short,
+            'title_details' => $request->title_details,
+            'description_details' => $request->description_details,
+            'content_1' => $request->content_1,
+            'content_2' => $request->content_2,
+        ];
+
+        $destinationPath = public_path('images/discovery');
+
+        if (!File::isDirectory($destinationPath)) {
+            File::makeDirectory($destinationPath, 0755, true, true);
+        }
+
+        $photoArray = ['photo', 'photo_2'];
+
+        foreach ($photoArray as $item) {
+            $deleteCheckboxName = 'delete_' . $item;
+            if ($request->hasFile($item)) {
+                $imageFile = $request->file($item);
+
+                $oldImagePathFromDb = $post->$item;
+
+                if ($oldImagePathFromDb && File::exists(public_path($oldImagePathFromDb))) {
+                    File::delete(public_path($oldImagePathFromDb));
+                }
+
+                $imageName = time() . '_' . Str::random(10) . '.' . $imageFile->getClientOriginalExtension();
+
+                $imageFile->move($destinationPath, $imageName);
+
+                $data_updated[$item] = 'images/discovery/' . $imageName;
+            } elseif ($request->has($deleteCheckboxName) && $request->$deleteCheckboxName == 1) {
+                $oldImagePathFromDb = $post->$item;
+                $oldImagePath = public_path($oldImagePathFromDb);
+
+                if ($oldImagePathFromDb && File::exists($oldImagePath)) {
+                    File::delete($oldImagePath);
+                }
+
+                $data_updated[$item] = null;
+            }
+        }
+
+        $post->update($data_updated);
+
+        return redirect()->route('admin.edit-discovery', $post->slug)->with('success-update-discovery', 'You have successfully changed!');
     }
 
     // Customization Planets
@@ -550,6 +602,7 @@ class CustomizationController extends Controller
         }
 
         foreach ($photoArray as $item) {
+            $deleteCheckboxName = 'delete_' . $item;
             if ($request->hasFile($item)) {
                 $imageFile = $request->file($item);
 
@@ -564,6 +617,15 @@ class CustomizationController extends Controller
                 $imageFile->move($destinationPath, $imageName);
 
                 $data_updated[$item] = 'images/planets/' . $imageName;
+            } elseif ($request->has($deleteCheckboxName) && $request->$deleteCheckboxName == 1) {
+                $oldImagePathFromDb = $planet->$item;
+                $oldImagePath = public_path($oldImagePathFromDb);
+
+                if ($oldImagePathFromDb && File::exists($oldImagePath)) {
+                    File::delete($oldImagePath);
+                }
+
+                $data_updated[$item] = null;
             }
         }
 

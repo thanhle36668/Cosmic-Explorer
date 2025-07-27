@@ -107,7 +107,7 @@
         </div>
         <div class="card-footer">
             <div class="row d-flex flex-row-reverse">
-                <a href="{{ route('admin.customization-discovery') }}" class="btn btn-info col-2">Back</a>
+                <a href="{{ route('admin.customization-planets') }}" class="btn btn-info col-2">Back</a>
             </div>
         </div>
     </div>

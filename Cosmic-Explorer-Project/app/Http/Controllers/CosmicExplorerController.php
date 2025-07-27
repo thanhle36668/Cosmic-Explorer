@@ -35,7 +35,7 @@ class CosmicExplorerController extends Controller
     {
         $data = [
             'about' => About::firstOrFail(),
-            'services' => About_services::get()
+            'service' => About_services::firstOrFail()
         ];
         return view('user/about')->with($data);
     }

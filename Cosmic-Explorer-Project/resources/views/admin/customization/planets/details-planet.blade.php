@@ -83,7 +83,7 @@
                     </div>
                     <div class="row">
                         <div class="form-group mb-4 col-12 col-md-6">
-                            <label for="photo" class="form-label d-block mb-2">Photo 1 (Featured):</label>
+                            <label for="photo" class="form-label d-block mb-2">Photo 1 (Featured)</label>
                             <div class="row align-items-center g-3">
                                 <div class="col-12 col-sm-4 col-md-12 col-lg-5">
                                     @if ($planet->photo)
@@ -93,17 +93,29 @@
                                                 style="height: 250px; width: 250px;">
                                         </div>
                                     @else
-                                        <img src="{{ asset('images') }}/planets/no-photo.jpg" alt="" height="250"
+                                        <img src="{{ asset('images') }}/planets/no-photo.jpg" alt="No Photo" height="250"
                                             width="250">
                                     @endif
                                 </div>
                                 <div class="col-12 col-sm-8 col-md-12 col-lg-7">
                                     <input type="file" id="photo" name="photo" accept="image/*">
-                                    <small class="form-text text-muted mt-2">
-                                        Please select a new image file (JPG, JPEG, GIF, PNG, SVG, WEBP)
-                                    </small>
                                     @if ($planet->photo)
-                                        <small class="form-text text-muted">
+                                        <small class="form-text text-muted mb-2 mt-0">
+                                            Please select a new image file (JPG, JPEG, PNG, GIF, WEBP, SVG).
+                                            <br>
+                                            To keep the current photo, leave this field empty.
+                                        </small>
+                                        <div class="mb-2 d-flex align-items-center">
+                                            <input type="checkbox" class="mr-1" id="delete_photo" name="delete_photo"
+                                                value="1">
+                                            <label class="mb-0" for="delete_photo">
+                                                Delete current photo!!!
+                                            </label>
+                                        </div>
+                                    @else
+                                        <small class="form-text text-muted mb-2">
+                                            Please select a new image file (JPG, JPEG, PNG, GIF, WEBP, SVG).
+                                            <br>
                                             To keep the current photo, leave this field empty.
                                         </small>
                                     @endif
@@ -111,7 +123,7 @@
                             </div>
                         </div>
                         <div class="form-group mb-4 col-12 col-md-6">
-                            <label for="photo_2 " class="form-label d-block mb-2">Photo 2:</label>
+                            <label for="photo_2 " class="form-label d-block mb-2">Photo 2</label>
                             <div class="row align-items-center g-3">
                                 <div class="col-12 col-sm-4 col-md-12 col-lg-5">
                                     @if ($planet->photo_2)
@@ -123,17 +135,29 @@
                                                 style="height: 250px; width: 250px;">
                                         </div>
                                     @else
-                                        <img src="{{ asset('images') }}/planets/no-photo.jpg" alt=""
+                                        <img src="{{ asset('images') }}/planets/no-photo.jpg" alt="No Photo"
                                             height="250" width="250">
                                     @endif
                                 </div>
                                 <div class="col-12 col-sm-8 col-md-12 col-lg-7">
                                     <input type="file" id="photo_2" name="photo_2" accept="image/*">
-                                    <small class="form-text text-muted mt-2">
-                                        Please select a new image file (JPG, JPEG, GIF, PNG, SVG, WEBP)
-                                    </small>
-                                    @if ($planet->photo_2)
-                                        <small class="form-text text-muted">
+                                    @if ($planet->photo)
+                                        <small class="form-text text-muted mb-2 mt-0">
+                                            Please select a new image file (JPG, JPEG, PNG, GIF, WEBP, SVG).
+                                            <br>
+                                            To keep the current photo, leave this field empty.
+                                        </small>
+                                        <div class="mb-2 d-flex align-items-center">
+                                            <input type="checkbox" class="mr-1" id="delete_photo_2"
+                                                name="delete_photo_2" value="1">
+                                            <label class="mb-0" for="delete_photo_2">
+                                                Delete current photo!!!
+                                            </label>
+                                        </div>
+                                    @else
+                                        <small class="form-text text-muted mb-2">
+                                            Please select a new image file (JPG, JPEG, PNG, GIF, WEBP, SVG).
+                                            <br>
                                             To keep the current photo, leave this field empty.
                                         </small>
                                     @endif
@@ -141,7 +165,7 @@
                             </div>
                         </div>
                         <div class="form-group mb-4 col-12 col-md-6">
-                            <label for="photo_3" class="form-label d-block mb-2">Photo 3:</label>
+                            <label for="photo_3" class="form-label d-block mb-2">Photo 3</label>
                             <div class="row align-items-center g-3">
                                 <div class="col-12 col-sm-4 col-md-12 col-lg-5">
                                     @if ($planet->photo_3)
@@ -153,17 +177,29 @@
                                                 style="height: 250px; width: 250px;">
                                         </div>
                                     @else
-                                        <img src="{{ asset('images') }}/planets/no-photo.jpg" alt=""
+                                        <img src="{{ asset('images') }}/planets/no-photo.jpg" alt="No Photo"
                                             height="250" width="250">
                                     @endif
                                 </div>
                                 <div class="col-12 col-sm-8 col-md-12 col-lg-7">
                                     <input type="file" id="photo_3" name="photo_3" accept="image/*">
-                                    <small class="form-text text-muted mt-2">
-                                        Please select a new image file (JPG, JPEG, GIF, PNG, SVG, WEBP)
-                                    </small>
-                                    @if ($planet->photo_3)
-                                        <small class="form-text text-muted">
+                                    @if ($planet->photo)
+                                        <small class="form-text text-muted mb-2 mt-0">
+                                            Please select a new image file (JPG, JPEG, PNG, GIF, WEBP, SVG).
+                                            <br>
+                                            To keep the current photo, leave this field empty.
+                                        </small>
+                                        <div class="mb-2 d-flex align-items-center">
+                                            <input type="checkbox" class="mr-1" id="delete_photo_3"
+                                                name="delete_photo_3" value="1">
+                                            <label class="mb-0" for="delete_photo_3">
+                                                Delete current photo!!!
+                                            </label>
+                                        </div>
+                                    @else
+                                        <small class="form-text text-muted mb-2">
+                                            Please select a new image file (JPG, JPEG, PNG, GIF, WEBP, SVG).
+                                            <br>
                                             To keep the current photo, leave this field empty.
                                         </small>
                                     @endif
@@ -171,7 +207,7 @@
                             </div>
                         </div>
                         <div class="form-group mb-4 col-12 col-md-6">
-                            <label for="photo_4" class="form-label d-block mb-2">Photo 4:</label>
+                            <label for="photo_4" class="form-label d-block mb-2">Photo 4</label>
                             <div class="row align-items-center g-3">
                                 <div class="col-12 col-sm-4 col-md-12 col-lg-5">
                                     @if ($planet->photo_4)
@@ -183,17 +219,29 @@
                                                 style="height: 250px; width: 250px;">
                                         </div>
                                     @else
-                                        <img src="{{ asset('images') }}/planets/no-photo.jpg" alt=""
+                                        <img src="{{ asset('images') }}/planets/no-photo.jpg" alt="No Photo"
                                             height="250" width="250">
                                     @endif
                                 </div>
                                 <div class="col-12 col-sm-8 col-md-12 col-lg-7">
                                     <input type="file" id="photo_4" name="photo_4" accept="image/*">
-                                    <small class="form-text text-muted mt-2">
-                                        Please select a new image file (JPG, JPEG, GIF, PNG, SVG, WEBP)
-                                    </small>
-                                    @if ($planet->photo_4)
-                                        <small class="form-text text-muted">
+                                    @if ($planet->photo)
+                                        <small class="form-text text-muted mb-2 mt-0">
+                                            Please select a new image file (JPG, JPEG, PNG, GIF, WEBP, SVG).
+                                            <br>
+                                            To keep the current photo, leave this field empty.
+                                        </small>
+                                        <div class="mb-2 d-flex align-items-center">
+                                            <input type="checkbox" class="mr-1" id="delete_photo_4"
+                                                name="delete_photo_4" value="1">
+                                            <label class="mb-0" for="delete_photo_4">
+                                                Delete current photo!!!
+                                            </label>
+                                        </div>
+                                    @else
+                                        <small class="form-text text-muted mb-2">
+                                            Please select a new image file (JPG, JPEG, PNG, GIF, WEBP, SVG).
+                                            <br>
                                             To keep the current photo, leave this field empty.
                                         </small>
                                     @endif
@@ -201,7 +249,7 @@
                             </div>
                         </div>
                         <div class="form-group mb-4 col-12 col-md-6">
-                            <label for="photo_5" class="form-label d-block mb-2">Photo 5:</label>
+                            <label for="photo_5" class="form-label d-block mb-2">Photo 5 (Carousel Image)</label>
                             <div class="row align-items-center g-3">
                                 <div class="col-12 col-sm-4 col-md-12 col-lg-5">
                                     @if ($planet->photo_5)
@@ -213,17 +261,29 @@
                                                 style="height: 250px; width: 250px;">
                                         </div>
                                     @else
-                                        <img src="{{ asset('images') }}/planets/no-photo.jpg" alt=""
+                                        <img src="{{ asset('images') }}/planets/no-photo.jpg" alt="No Photo"
                                             height="250" width="250">
                                     @endif
                                 </div>
                                 <div class="col-12 col-sm-8 col-md-12 col-lg-7">
                                     <input type="file" id="photo_5" name="photo_5" accept="image/*">
-                                    <small class="form-text text-muted mt-2">
-                                        Please select a new image file (JPG, JPEG, GIF, PNG, SVG, WEBP)
-                                    </small>
-                                    @if ($planet->photo_5)
-                                        <small class="form-text text-muted">
+                                    @if ($planet->photo)
+                                        <small class="form-text text-muted mb-2 mt-0">
+                                            Please select a new image file (JPG, JPEG, PNG, GIF, WEBP, SVG).
+                                            <br>
+                                            To keep the current photo, leave this field empty.
+                                        </small>
+                                        <div class="mb-2 d-flex align-items-center">
+                                            <input type="checkbox" class="mr-1" id="delete_photo_5"
+                                                name="delete_photo_5" value="1">
+                                            <label class="mb-0" for="delete_photo_5">
+                                                Delete current photo!!!
+                                            </label>
+                                        </div>
+                                    @else
+                                        <small class="form-text text-muted mb-2">
+                                            Please select a new image file (JPG, JPEG, PNG, GIF, WEBP, SVG).
+                                            <br>
                                             To keep the current photo, leave this field empty.
                                         </small>
                                     @endif

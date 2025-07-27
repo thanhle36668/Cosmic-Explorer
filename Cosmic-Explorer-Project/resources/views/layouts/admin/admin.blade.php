@@ -282,7 +282,7 @@
                                     <a href="{{ route('admin.customization-introduction') }}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>
-                                            Introduction
+                                            Page Introduction
                                         </p>
                                     </a>
                                 </li>
@@ -290,7 +290,7 @@
                                     <a href="{{ route('admin.customization-about') }}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>
-                                            About
+                                            Page About
                                         </p>
                                     </a>
                                 </li>
@@ -298,7 +298,7 @@
                                     <a href="{{ route('admin.customization-discovery') }}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>
-                                            Discovery
+                                            Page Discovery
                                         </p>
                                     </a>
                                 </li>
@@ -306,12 +306,13 @@
                                     <a href="{{ route('admin.customization-planets') }}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>
-                                            Planets
+                                            Collection of Planets
                                         </p>
                                     </a>
                                 </li>
                             </ul>
                         </li>
+
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->
