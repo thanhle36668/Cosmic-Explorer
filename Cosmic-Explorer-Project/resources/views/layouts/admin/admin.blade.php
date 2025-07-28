@@ -27,7 +27,7 @@
         </div>
 
         <!-- Navbar -->
-        <nav class="main-header navbar navbar-expand navbar-dark p-3">
+        <nav class="main-header navbar navbar-expand navbar-dark">
             <!-- Left navbar links -->
             <ul class="navbar-nav">
                 <li class="nav-item">
@@ -190,6 +190,14 @@
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>
                                             Collection Constellations
+                                        </p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.customization-observatories') }}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>
+                                            Collection Observatories
                                         </p>
                                     </a>
                                 </li>

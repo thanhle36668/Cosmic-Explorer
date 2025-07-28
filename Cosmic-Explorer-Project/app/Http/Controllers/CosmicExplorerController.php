@@ -62,7 +62,7 @@ class CosmicExplorerController extends Controller
     public function pageCollectionsObservatories()
     {
         $data = [
-            'observatories' => Observatories::paginate(4)
+            'observatories' => Observatories::where('status', true)->paginate(4)
         ];
         return view('user/collections-page-observatories')->with($data);
     }

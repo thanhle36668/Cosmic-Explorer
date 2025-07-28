@@ -8,6 +8,7 @@ use App\Models\About_services;
 use App\Models\Constellations;
 use App\Models\Discovery;
 use App\Models\Introduction;
+use App\Models\Observatories;
 use App\Models\Planets;
 use Exception;
 use Illuminate\Support\Str;
@@ -15,6 +16,7 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redis;
 
 class CustomizationController extends Controller
 {
@@ -37,10 +39,10 @@ class CustomizationController extends Controller
             'company_description' => 'required|string',
         ];
 
-        $validationRules['photo'] = 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048';
+        $validationRules['photo'] = 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp';
 
         for ($i = 2; $i <= 8; $i++) {
-            $validationRules['photo_' . $i] = 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048';
+            $validationRules['photo_' . $i] = 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp';
         }
 
         $request->validate($validationRules);
@@ -121,7 +123,7 @@ class CustomizationController extends Controller
             'link' => 'nullable|string|max:300',
             'link_2' => 'nullable|string|max:300',
             'link_3' => 'nullable|string|max:300',
-            'photo' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
+            'photo' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp',
         ];
 
         $validator = Validator::make($request->all(), $validationRules);
@@ -188,9 +190,9 @@ class CustomizationController extends Controller
             'description' => 'required|string',
             'description_2' => 'required|string',
             'description_3' => 'required|string',
-            'photo' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
-            'photo_2' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
-            'photo_3' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
+            'photo' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp',
+            'photo_2' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp',
+            'photo_3' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp',
         ];
 
         $validator = Validator::make($request->all(), $validationRules);
@@ -282,8 +284,8 @@ class CustomizationController extends Controller
             'description_details' => 'required|string',
             'content_1' => 'required|string',
             'content_2' => 'required|string',
-            'photo' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
-            'photo_2' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
+            'photo' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp',
+            'photo_2' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp',
         ];
 
         $validator = Validator::make($dataForValidation, $validationRules);
@@ -383,8 +385,8 @@ class CustomizationController extends Controller
             'description_details' => 'required|string',
             'content_1' => 'required|string',
             'content_2' => 'required|string',
-            'photo' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
-            'photo_2' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
+            'photo' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp',
+            'photo_2' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp',
         ];
 
         $request->validate($validationRules);
@@ -473,11 +475,11 @@ class CustomizationController extends Controller
             'diameter_km' => 'required|string|max:250',
             'avg_distance_to_earth_km' => 'required|string|max:250',
             'avg_distance_to_sun_km' => 'required|string|max:250',
-            'photo' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
-            'photo_2' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
-            'photo_3' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
-            'photo_4' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
-            'photo_5' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
+            'photo' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp',
+            'photo_2' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp',
+            'photo_3' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp',
+            'photo_4' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp',
+            'photo_5' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp',
         ];
 
         $validator = Validator::make($dataForValidation, $validationRules);
@@ -568,11 +570,11 @@ class CustomizationController extends Controller
             'diameter_km' => 'required|max:250|string',
             'avg_distance_to_earth_km' => 'required|max:250|string',
             'avg_distance_to_sun_km' => 'required|max:250|string',
-            'photo' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
-            'photo_2' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
-            'photo_3' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
-            'photo_4' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
-            'photo_5' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
+            'photo' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp',
+            'photo_2' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp',
+            'photo_3' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp',
+            'photo_4' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp',
+            'photo_5' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp',
         ];
 
         $request->validate($validationRules);
@@ -673,10 +675,10 @@ class CustomizationController extends Controller
             'main_stars' => 'required|string',
             'notable_features' => 'required|string',
             'myths_meaning' => 'required|string',
-            'photo' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
-            'photo_2' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
-            'photo_3' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
-            'photo_4' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
+            'photo' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp',
+            'photo_2' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp',
+            'photo_3' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp',
+            'photo_4' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp',
         ];
 
         $validator = Validator::make($dataForValidation, $validationRules);
@@ -711,6 +713,8 @@ class CustomizationController extends Controller
                     $imageName = time() . '_' . Str::random(10) . '.' . $imageFile->getClientOriginalExtension();
 
                     $imageFile->move($destinationPath, $imageName);
+
+                    $data_create[$item] = 'images/constellations/' . $imageName;
                 }
             }
 
@@ -742,10 +746,10 @@ class CustomizationController extends Controller
             'main_stars' => 'required|string',
             'notable_features' => 'required|string',
             'myths_meaning' => 'required|string',
-            'photo' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
-            'photo_2' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
-            'photo_3' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
-            'photo_4' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
+            'photo' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp',
+            'photo_2' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp',
+            'photo_3' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp',
+            'photo_4' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp',
         ];
 
         $request->validate($validationRules);
@@ -808,7 +812,6 @@ class CustomizationController extends Controller
 
     public function deleteConstellation($id)
     {
-
         $constellation = Constellations::find($id);
 
         $photoArray = ['photo'];
@@ -828,5 +831,216 @@ class CustomizationController extends Controller
 
         $constellation->delete();
         return redirect()->route('admin.customization-constellations')->with('success-delete-constellation', 'You have deleted successfully.');
+    }
+
+    public function searchConstellation(Request $request)
+    {
+        $data = [
+            'search_constellation' => Constellations::where('name', 'LIKE', '%' . $request->search_name . '%')->get()
+        ];
+
+        return view('admin/customization/constellations/search-constellation')->with($data);
+    }
+
+    // Customization Observatories
+    public function observatories()
+    {
+        $data = [
+            'observatories' => Observatories::orderBy('id', 'desc')->paginate(4)
+        ];
+
+        return view('admin/customization/observatories/observatories')->with($data);
+    }
+
+    public function createObservatory()
+    {
+        return view('admin/customization/observatories/create-observatory');
+    }
+
+    public function saveObservatory(Request $request)
+    {
+        $processedSlug = Str::slug($request->slug);
+        $dataForValidation = $request->all();
+        $dataForValidation['slug'] = $processedSlug;
+
+        $validationRules = [
+            'name' => 'required|string|max:255|unique:observatories,name',
+            'slug' => 'required|string|max:255|unique:observatories,slug',
+            'location' => 'required|string|max:255',
+            'altitude_meters' => 'required|string|max:255',
+            'established_year' => 'required|string|max:255',
+            'managing_organization' => 'required|string|max:255',
+            'main_instruments' => 'required|string',
+            'primary_research_areas' => 'required|string',
+            'public_access_info' => 'required|string',
+            'photo' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp',
+            'photo_2' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp',
+            'photo_3' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp',
+            'photo_4' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp',
+        ];
+
+        $validator = Validator::make($dataForValidation, $validationRules);
+        $validator->validate();
+
+        try {
+            $data_create = [
+                'name' => $request->name,
+                'slug' => $processedSlug,
+                'status' => 0,
+                'location' => $request->location,
+                'altitude_meters' => $request->altitude_meters,
+                'established_year' => $request->established_year,
+                'managing_organization' => $request->managing_organization,
+                'main_instruments' => $request->main_instruments,
+                'primary_research_areas' => $request->primary_research_areas,
+                'public_access_info' => $request->public_access_info,
+            ];
+
+            $destinationPath = public_path('images/observatories');
+            if (!File::isDirectory($destinationPath)) {
+                File::makeDirectory($destinationPath, 0755, true, true);
+            }
+
+            $photoArray = ['photo'];
+            for ($i = 2; $i <= 4; $i++) {
+                $photoArray[] = 'photo_' . $i;
+            }
+
+            foreach ($photoArray as $item) {
+                if ($request->hasFile($item)) {
+                    $imageFile = $request->file($item);
+
+                    $imageName = time() . '_' . Str::random(10) . '.' . $imageFile->getClientOriginalExtension();
+
+                    $imageFile->move($destinationPath, $imageName);
+
+                    $data_create[$item] = 'images/observatories/' . $imageName;
+                }
+            }
+
+            Observatories::create($data_create);
+
+            return redirect()->route('admin.customization-observatories')->with('success-create-observatory', 'You have successfully created a observatory.');
+        } catch (Exception $e) {
+            return redirect()->back()->with('error-create-observatory', 'Failed to create constellation due to an internal error. Please try again!!!');
+        }
+    }
+
+    public function editObservatory($slug)
+    {
+        $data = [
+            'observatory' => Observatories::where('slug', $slug)->firstOrFail()
+        ];
+
+        return view('admin/customization/observatories/details-observatory')->with($data);
+    }
+
+    public function updatedObservatory(Request $request)
+    {
+        $validationRules = [
+            'name' => 'string|max:255|unique:observatories,name,' . $request->id,
+            'slug' => 'string|max:255|unique:observatories,slug,' . $request->id,
+            'status' => 'required|boolean',
+            'location' => 'required|string|max:255',
+            'altitude_meters' => 'required|string|max:255',
+            'established_year' => 'required|string|max:255',
+            'managing_organization' => 'required|string|max:255',
+            'main_instruments' => 'required|string',
+            'primary_research_areas' => 'required|string',
+            'public_access_info' => 'required|string',
+            'photo' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp',
+            'photo_2' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp',
+            'photo_3' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp',
+            'photo_4' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp',
+        ];
+
+        $request->validate($validationRules);
+        $observatory = Observatories::find($request->id);
+
+        $data_updated = [
+            'name' => $request->name,
+            'slug' => $request->slug,
+            'status' => $request->status,
+            'location' => $request->location,
+            'altitude_meters' => $request->altitude_meters,
+            'established_year' => $request->established_year,
+            'managing_organization' => $request->managing_organization,
+            'main_instruments' => $request->main_instruments,
+            'primary_research_areas' => $request->primary_research_areas,
+            'public_access_info' => $request->public_access_info
+        ];
+
+        $destinationPath = public_path('images/observatories');
+
+        if (!File::isDirectory($destinationPath)) {
+            File::makeDirectory($destinationPath, 0755, true, true);
+        }
+
+        $photoArray = ['photo'];
+        for ($i = 2; $i <= 4; $i++) {
+            $photoArray[] = 'photo_' . $i;
+        }
+
+        foreach ($photoArray as $item) {
+            $deleteCheckboxName = 'delete_' . $item;
+            if ($request->hasFile($item)) {
+                $imageFile = $request->file($item);
+
+                $oldImagePathFromDb = $observatory->$item;
+                $oldImagePath = public_path($oldImagePathFromDb);
+                if ($oldImagePathFromDb && File::exists($oldImagePath)) {
+                    File::delete($oldImagePath);
+                }
+
+                $imageName = time() . '_' . Str::random(10) . '.' . $imageFile->getClientOriginalExtension();
+
+                $imageFile->move($destinationPath, $imageName);
+
+                $data_updated[$item] = 'images/observatories/' . $imageName;
+            } elseif ($request->has($deleteCheckboxName) && $request->$deleteCheckboxName == 1) {
+                $oldImagePathFromDb = $observatory->$item;
+                $oldImagePath = public_path($oldImagePathFromDb);
+
+                if ($oldImagePathFromDb && File::exists($oldImagePath)) {
+                    File::delete($oldImagePath);
+                }
+
+                $data_updated[$item] = null;
+            }
+        }
+        $observatory->update($data_updated);
+        return redirect()->route('admin.edit-observatory', $observatory->slug)->with('success-update-observatory', 'You have successfully changed!');
+    }
+
+    public function deleteObservatory($id)
+    {
+        $observatory = Observatories::find($id);
+
+        $photoArray = ['photo'];
+        for ($i = 2; $i <= 4; $i++) {
+            $photoArray[] = 'photo_' . $i;
+        }
+
+        foreach ($photoArray as $item) {
+            if ($observatory->$item) {
+                $fullPath = public_path($observatory->$item);
+
+                if (File::extension($fullPath)) {
+                    File::delete($fullPath);
+                }
+            }
+        }
+
+        $observatory->delete();
+        return redirect()->route('admin.customization-observatories')->with('success-delete-observatory', 'You have deleted successfully.');
+    }
+
+    public function searchObservatory(Request $request)
+    {
+        $data = [
+            'search_observatory' => Observatories::where('name', 'LIKE', '%' . $request->search_name . '%')->get()
+        ];
+
+        return view('admin/customization/observatories/search-observatory')->with($data);
     }
 }

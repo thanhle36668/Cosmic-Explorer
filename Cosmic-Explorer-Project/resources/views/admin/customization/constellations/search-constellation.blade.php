@@ -1,12 +1,14 @@
 @extends('layouts.admin.admin')
 
-@section('title', 'Constellations Dashboard')
+@section('title')
+    <title>Constellations Dashboard</title>
+@endsection
 
 @section('content')
     <div class="card">
-        <div class="card-header">
+        <div class="card-header mt-4">
             <div class="row">
-                <h3 class="card-title col-8 d-flex align-items-center">All Constellation</h3>
+                <h3 class="card-title col-8 d-flex align-items-center">Search Constellation</h3>
                 <div class="card-tools col-4 d-flex justify-content-end align-items-center">
                     <a href="{{ route('admin.create-constellation') }}" class="btn btn-info mr-2"
                         style="padding: 3px 6px;">Create
@@ -71,7 +73,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($constellations as $constellation)
+                    @foreach ($search_constellation as $constellation)
                         <tr class="text-center bg-secondary-subtle">
                             <td>{{ $constellation->id }}</td>
                             <td>
@@ -127,8 +129,10 @@
                 </tbody>
             </table>
         </div>
-        <div class="pagination-links mt-4 mb-4">
-            {{ $constellations->links('pagination::bootstrap-5') }}
+        <div class="card-footer">
+            <div class="row d-flex flex-row-reverse">
+                <a href="{{ route('admin.customization-constellations') }}" class="btn btn-info col-2">Back</a>
+            </div>
         </div>
     </div>
 @endsection

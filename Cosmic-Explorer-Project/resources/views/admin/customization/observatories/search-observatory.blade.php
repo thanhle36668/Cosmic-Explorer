@@ -1,21 +1,23 @@
 @extends('layouts.admin.admin')
 
-@section('title', 'Constellations Dashboard')
+@section('title')
+    <title>Observatories Dashboard</title>
+@endsection
 
 @section('content')
     <div class="card">
         <div class="card-header">
             <div class="row">
-                <h3 class="card-title col-8 d-flex align-items-center">All Constellation</h3>
+                <h3 class="card-title col-8 d-flex align-items-center">Search Observatories</h3>
                 <div class="card-tools col-4 d-flex justify-content-end align-items-center">
-                    <a href="{{ route('admin.create-constellation') }}" class="btn btn-info mr-2"
+                    <a href="{{ route('admin.create-observatory') }}" class="btn btn-info mr-2"
                         style="padding: 3px 6px;">Create
                         New</a>
-                    <form action="{{ route('admin.search-constellation') }}" method="POST">
+                    <form action="{{ route('admin.search-observatory') }}" method="POST">
                         @csrf
                         <div class="input-group input-group-sm">
                             <input type="text" name="search_name" class="form-control bg-secondary"
-                                placeholder="Search Name Constellation">
+                                placeholder="Search Name Observatories">
                             <div class="input-group-append">
                                 <button type="submit" class="btn btn-primary">
                                     <i class="fas fa-search"></i>
@@ -29,18 +31,18 @@
         <div class="card-body p-0">
             <div class="row">
                 <div class="col-12">
-                    @if (session('success-create-constellation'))
+                    @if (session('success-create-observatory'))
                         <div id="successAlert" class="alert alert-success alert-dismissible fade show mt-2 bg-success"
                             role="alert">
-                            {{ session('success-create-constellation') }}
+                            {{ session('success-create-observatory') }}
                         </div>
                     @endif
                 </div>
                 <div class="col-12">
-                    @if (session('success-delete-constellation'))
+                    @if (session('success-delete-observatory'))
                         <div id="successAlert" class="alert alert-success alert-dismissible fade show mt-2 bg-success"
                             role="alert">
-                            {{ session('success-delete-constellation') }}
+                            {{ session('success-delete-observatory') }}
                         </div>
                     @endif
                 </div>
@@ -71,26 +73,25 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($constellations as $constellation)
+                    @foreach ($search_observatory as $observatory)
                         <tr class="text-center bg-secondary-subtle">
-                            <td>{{ $constellation->id }}</td>
+                            <td>{{ $observatory->id }}</td>
                             <td>
-                                @if ($constellation->photo)
-                                    <img src="{{ asset($constellation->photo) }}"
-                                        alt="{{ basename($constellation->photo) }}" height="150" width="150"
-                                        class="me-sm-3 mb-2 mb-sm-0">
+                                @if ($observatory->photo)
+                                    <img src="{{ asset($observatory->photo) }}" alt="{{ $observatory->name }}"
+                                        height="150" width="150" class="me-sm-3 mb-2 mb-sm-0">
                                 @else
                                     <div class="icon">
-                                        <img src="{{ asset('images') }}/constellations/no-photo.jpg" alt="no-photo.jpg"
+                                        <img src="{{ asset('images') }}/observatories/no-photo.jpg" alt="no-photo.jpg"
                                             height="150" width="150">
                                     </div>
                                 @endif
                             </td>
                             <td>
-                                {{ $constellation->name }}
+                                {{ $observatory->name }}
                             </td>
                             <td>
-                                @if ($constellation->status)
+                                @if ($observatory->status)
                                     <p class="bg-success mb-0" style="padding: 6px 12px; border-radius: 4px">
                                         Publish</p>
                                 @else
@@ -99,26 +100,24 @@
                                 @endif
                             </td>
                             <td>
-                                {{ $constellation->created_at->format('d/m/Y - H:i:s') }}
+                                {{ $observatory->created_at->format('d/m/Y - H:i:s') }}
                             </td>
                             <td>
-                                @if ($constellation->updated_at)
-                                    {{ $constellation->updated_at->format('d/m/Y - H:i:s') }}
+                                @if ($observatory->updated_at)
+                                    {{ $observatory->updated_at->format('d/m/Y - H:i:s') }}
                                 @else
                                     N/A
                                 @endif
                             </td>
                             </td>
                             <td>
-                                <a href="{{ route('admin.edit-constellation', $constellation->slug) }}"
-                                    class="btn btn-info">
+                                <a href="{{ route('admin.edit-observatory', $observatory->slug) }}" class="btn btn-info">
                                     <i class="nav-icon fas fa-edit"></i>
                                 </a>
                             </td>
                             <td>
-                                <a href="{{ route('admin.delete-constellation', $constellation->id) }}"
-                                    class="btn btn-danger"
-                                    onclick="return confirm('Are you sure you want to delete planet with ID: {{ $constellation->id }}?')">
+                                <a href="{{ route('admin.delete-observatory', $observatory->id) }}" class="btn btn-danger"
+                                    onclick="return confirm('Are you sure you want to delete planet with ID: {{ $observatory->id }}?')">
                                     <i class="nav-icon fas fa-trash"></i>
                                 </a>
                             </td>
@@ -126,9 +125,6 @@
                     @endforeach
                 </tbody>
             </table>
-        </div>
-        <div class="pagination-links mt-4 mb-4">
-            {{ $constellations->links('pagination::bootstrap-5') }}
         </div>
     </div>
 @endsection

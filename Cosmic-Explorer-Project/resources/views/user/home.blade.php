@@ -393,27 +393,32 @@
                                         <div class="col-lg-12">
                                             <div class="owl-features owl-carousel">
                                                 @foreach ($observatories as $observatory)
-                                                    <div class="item">
-                                                        <div class="thumb">
-                                                            <img src="{{ asset('images') }}/observatories/{{ $observatory->photo }}"
-                                                                alt="{{ $observatory->name }}"
-                                                                style="border-radius: 20px;" height="360"
-                                                                width="360">
-                                                            <div class="hover-effect">
-                                                                <div class="content">
-                                                                    <h4 class="mb-1">{{ $observatory->name }}</h4>
-                                                                    <p>{{ $observatory->location }}</p>
-                                                                    <span class="details">
-                                                                        <div class="border-button">
-                                                                            <a
-                                                                                href="{{ route('details-observatory', $observatory->slug) }}">View
-                                                                                Details</a>
+                                                    @if ($observatory->status)
+                                                        @if ($observatory->photo)
+                                                            <div class="item">
+                                                                <div class="thumb">
+                                                                    <img src="{{ asset($observatory->photo) }}"
+                                                                        alt="{{ basename($observatory->name) }}"
+                                                                        style="border-radius: 20px;" height="360"
+                                                                        width="360">
+                                                                    <div class="hover-effect">
+                                                                        <div class="content">
+                                                                            <h4 class="mb-1">{{ $observatory->name }}
+                                                                            </h4>
+                                                                            <p>{{ $observatory->location }}</p>
+                                                                            <span class="details">
+                                                                                <div class="border-button">
+                                                                                    <a
+                                                                                        href="{{ route('details-observatory', $observatory->slug) }}">View
+                                                                                        Details</a>
+                                                                                </div>
+                                                                            </span>
                                                                         </div>
-                                                                    </span>
+                                                                    </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                    </div>
+                                                        @endif
+                                                    @endif
                                                 @endforeach
                                             </div>
                                         </div>

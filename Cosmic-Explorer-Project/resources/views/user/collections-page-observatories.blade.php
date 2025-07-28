@@ -108,8 +108,8 @@
                         style="height: auto">
                         <div
                             class="planet-image-fixed-size d-flex align-items-center justify-content-center overflow-hidden mb-2">
-                            <img src="{{ asset('images') }}/observatories/{{ $observatory->photo }}"
-                                alt="{{ $observatory->name }}" class="img-fluid rounded-lg">
+                            <img src="{{ asset($observatory->photo) }}" alt="{{ basename($observatory->photo) }}"
+                                class="img-fluid rounded-lg">
                         </div>
                         <div class="flex-grow-1">
                             <h3>{{ $observatory->name }}</h3>

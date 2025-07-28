@@ -94,6 +94,16 @@ Route::middleware(['auth', 'is_admin'])->prefix('admin')->name('admin.')
         Route::get('/edit-constellation/{slug}', [CustomizationController::class, 'editConstellation'])->name('edit-constellation');
         Route::put('/updated-constellation', [CustomizationController::class, 'updatedConstellation'])->name('updated-constellation');
         Route::get('/delete-constellation/{id}', [CustomizationController::class, 'deleteConstellation'])->name('delete-constellation');
+        Route::post('/search-constellation', [CustomizationController::class, 'searchConstellation'])->name('search-constellation');
+
+        // Customization Observatories
+        Route::get('/customization-observatories', [CustomizationController::class, 'observatories'])->name('customization-observatories');
+        Route::get('/create-observatory', [CustomizationController::class, 'createObservatory'])->name('create-observatory');
+        Route::put('/save-observatory', [CustomizationController::class, 'saveObservatory'])->name('save-observatory');
+        Route::get('/edit-observatory/{slug}', [CustomizationController::class, 'editObservatory'])->name('edit-observatory');
+        Route::put('/updated-observatory', [CustomizationController::class, 'updatedObservatory'])->name('updated-observatory');
+        Route::get('/delete-observatory/{id}', [CustomizationController::class, 'deleteObservatory'])->name('delete-observatory');
+        Route::post('/search-observatory', [CustomizationController::class, 'searchObservatory'])->name('search-observatory');
     });
 
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
