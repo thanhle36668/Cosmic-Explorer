@@ -124,10 +124,11 @@
                         <div class="row justify-content-center mb-4">
                             <div class="col-md-12 text-center">
                                 @if ($planet_details->photo)
-                                    <img src="{{ asset($planet_details->photo) }}" alt="{{ $planet_details->name }}"
+                                    <img src="{{ asset($planet_details->photo) }}"
+                                        alt="{{ basename($planet_details->photo) }}"
                                         class="img-fluid img-main rounded shadow-sm" id="parent">
                                 @else
-                                    <img src="{{ asset('images') }}/planets/no-photo.jpg" alt=""
+                                    <img src="{{ asset('images') }}/planets/no-photo.jpg" alt="No Photo"
                                         class="img-fluid rounded shadow-sm person1">
                                 @endif
                             </div>
@@ -137,36 +138,39 @@
                                 @if ($planet_details->photo)
                                     <img src="{{ asset($planet_details->photo) }}"
                                         class="img-fluid rounded shadow-sm person1 active-thumbnail"
-                                        alt="{{ $planet_details->name }}">
+                                        alt="{{ basename($planet_details->photo) }}">
                                 @else
-                                    <img src="{{ asset('images') }}/planets/no-photo.jpg" alt=""
+                                    <img src="{{ asset('images') }}/planets/no-photo.jpg" alt="No Photo"
                                         class="img-fluid rounded shadow-sm person1">
                                 @endif
                             </div>
                             <div class="col-3 col-sm-3 col-md-3 col-lg-3">
                                 @if ($planet_details->photo_2)
                                     <img src="{{ asset($planet_details->photo_2) }}"
-                                        class="img-fluid rounded shadow-sm person2" alt="{{ $planet_details->name }}">
+                                        class="img-fluid rounded shadow-sm person2"
+                                        alt="{{ basename($planet_details->photo_2) }}">
                                 @else
-                                    <img src="{{ asset('images') }}/planets/no-photo.jpg" alt=""
+                                    <img src="{{ asset('images') }}/planets/no-photo.jpg" alt="No Photo"
                                         class="img-fluid rounded shadow-sm person1">
                                 @endif
                             </div>
                             <div class="col-3 col-sm-3 col-md-3 col-lg-3">
                                 @if ($planet_details->photo_3)
                                     <img src="{{ asset($planet_details->photo_3) }}"
-                                        class="img-fluid rounded shadow-sm person3" alt="{{ $planet_details->name }}">
+                                        class="img-fluid rounded shadow-sm person3"
+                                        alt="{{ basename($planet_details->photo_3) }}">
                                 @else
-                                    <img src="{{ asset('images') }}/planets/no-photo.jpg" alt=""
+                                    <img src="{{ asset('images') }}/planets/no-photo.jpg" alt="No Photo"
                                         class="img-fluid rounded shadow-sm person1">
                                 @endif
                             </div>
                             <div class="col-3 col-sm-3 col-md-3 col-lg-3">
                                 @if ($planet_details->photo_4)
                                     <img src="{{ asset($planet_details->photo_4) }}"
-                                        class="img-fluid rounded shadow-sm person4" alt="{{ $planet_details->name }}">
+                                        class="img-fluid rounded shadow-sm person4"
+                                        alt="{{ basename($planet_details->photo_4) }}">
                                 @else
-                                    <img src="{{ asset('images') }}/planets/no-photo.jpg" alt=""
+                                    <img src="{{ asset('images') }}/planets/no-photo.jpg" alt="No Photo"
                                         class="img-fluid rounded shadow-sm person1">
                                 @endif
                             </div>

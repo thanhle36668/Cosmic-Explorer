@@ -259,7 +259,8 @@
                                                             <h4>{{ $item->title }}</h4>
                                                             <span class="details">
                                                                 <div class="border-button">
-                                                                    <a href="#">View Details</a>
+                                                                    <a href="{{ route('posts.show', $item->slug) }}">View
+                                                                        Details</a>
                                                                 </div>
                                                             </span>
                                                         </div>
