@@ -1,6 +1,6 @@
 @extends('layouts.admin.admin')
 
-@section('title', 'Thêm bài viết')
+@section('title', 'Create Post')
 
 @section('content')
 
