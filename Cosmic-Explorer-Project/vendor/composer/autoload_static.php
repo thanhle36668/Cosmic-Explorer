@@ -537,6 +537,8 @@ class ComposerStaticInitc12a7c6aabf2facec2c378531c99c7ea
     public static $classMap = array (
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
+        'App\\Http\\Controllers\\Admin\\CommentsController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/CommentsController.php',
+        'App\\Http\\Controllers\\Admin\\CustomizationController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/CustomizationController.php',
         'App\\Http\\Controllers\\Admin\\MessagesController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/MessagesController.php',
         'App\\Http\\Controllers\\Admin\\PostController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/PostController.php',
         'App\\Http\\Controllers\\Admin\\SubscribeController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/SubscribeController.php',
@@ -562,6 +564,7 @@ class ComposerStaticInitc12a7c6aabf2facec2c378531c99c7ea
         'App\\Models\\Comment' => __DIR__ . '/../..' . '/app/Models/Comment.php',
         'App\\Models\\Constellations' => __DIR__ . '/../..' . '/app/Models/Constellations.php',
         'App\\Models\\Discovery' => __DIR__ . '/../..' . '/app/Models/Discovery.php',
+        'App\\Models\\Introduction' => __DIR__ . '/../..' . '/app/Models/Introduction.php',
         'App\\Models\\Messages' => __DIR__ . '/../..' . '/app/Models/Messages.php',
         'App\\Models\\Observatories' => __DIR__ . '/../..' . '/app/Models/Observatories.php',
         'App\\Models\\Planets' => __DIR__ . '/../..' . '/app/Models/Planets.php',

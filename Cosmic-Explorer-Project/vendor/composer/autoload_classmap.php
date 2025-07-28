@@ -8,6 +8,8 @@ $baseDir = dirname($vendorDir);
 return array(
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
+    'App\\Http\\Controllers\\Admin\\CommentsController' => $baseDir . '/app/Http/Controllers/Admin/CommentsController.php',
+    'App\\Http\\Controllers\\Admin\\CustomizationController' => $baseDir . '/app/Http/Controllers/Admin/CustomizationController.php',
     'App\\Http\\Controllers\\Admin\\MessagesController' => $baseDir . '/app/Http/Controllers/Admin/MessagesController.php',
     'App\\Http\\Controllers\\Admin\\PostController' => $baseDir . '/app/Http/Controllers/Admin/PostController.php',
     'App\\Http\\Controllers\\Admin\\SubscribeController' => $baseDir . '/app/Http/Controllers/Admin/SubscribeController.php',
@@ -33,6 +35,7 @@ return array(
     'App\\Models\\Comment' => $baseDir . '/app/Models/Comment.php',
     'App\\Models\\Constellations' => $baseDir . '/app/Models/Constellations.php',
     'App\\Models\\Discovery' => $baseDir . '/app/Models/Discovery.php',
+    'App\\Models\\Introduction' => $baseDir . '/app/Models/Introduction.php',
     'App\\Models\\Messages' => $baseDir . '/app/Models/Messages.php',
     'App\\Models\\Observatories' => $baseDir . '/app/Models/Observatories.php',
     'App\\Models\\Planets' => $baseDir . '/app/Models/Planets.php',
