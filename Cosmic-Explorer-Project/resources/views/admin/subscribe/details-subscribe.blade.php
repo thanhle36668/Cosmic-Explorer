@@ -19,30 +19,22 @@
                     <div class="form-group">
                         <label for="name">Name</label>
                         <input type="text" name="name" value="{{ $details_subscribe->name }}" id="name"
-                            class="form-control" disabled>
+                            class="form-control">
                     </div>
                     <div class="form-group">
                         <label for="email">Email</label>
                         <input type="text" name="email" value="{{ $details_subscribe->email }}" id="email"
-                            class="form-control" disabled>
+                            class="form-control">
                     </div>
                     <div class="form-group">
                         <label for="registration_date">Subscribe Date</label>
                         <input type="text" name="registration_date"
                             value="{{ $details_subscribe->registration_date->format('d/m/Y - H:i:s') }}"
-                            id="registration_date" class="form-control" disabled>
+                            id="registration_date" class="form-control">
                     </div>
                     <div class="form-group">
                         <label for="status">Status</label>
-                        <select name="status" class="form-control" id="status">
-                            @if ($details_subscribe->status)
-                                <option value="0">Unsubscribe</option>
-                                <option value="1" selected>Subscribe</option>
-                            @else
-                                <option value="0" selected>Unsubscribe</option>
-                                <option value="1">Subscribe</option>
-                            @endif
-                        </select>
+                        <input type="text" name="status" value="Subscribe" id="status" class="form-control" disabled>
                     </div>
                 </div>
                 <div class="d-flex justify-content-end card-footer">

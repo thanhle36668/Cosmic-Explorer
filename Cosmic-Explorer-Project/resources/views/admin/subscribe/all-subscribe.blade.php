@@ -78,9 +78,6 @@
                                 @if ($person->status)
                                     <p class="bg-success mb-0" style="padding: 6px 12px; border-radius: 4px">
                                         Subscribe</p>
-                                @else
-                                    <p class="bg-danger mb-0" style="padding: 6px 12px; border-radius: 4px">
-                                        Unsubscribe</p>
                                 @endif
                             </td>
                             <td>
