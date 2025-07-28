@@ -23,6 +23,7 @@ class Books extends Model
         'main_content_1',
         'main_content_2',
         'photo_book',
-        'slug'
+        'slug',
+        'link_amazon'
     ];
 }

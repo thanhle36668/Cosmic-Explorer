@@ -89,7 +89,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="inner-content">
-                        <h1 style="text-transform: uppercase">About</h1>
+                        <h1 style="text-transform: uppercase">About our website</h1>
                     </div>
                 </div>
             </div>
@@ -107,7 +107,10 @@
                             <div class="col-lg-6">
                                 <div class="left-image">
                                     @if ($about->photo)
-                                        <img src="{{ asset($about->photo) }}" alt="{{ basename($about->photo) }}">
+                                        <a href="#img1"><img src="{{ asset($about->photo) }}" alt="{{ basename($about->photo) }}"></a>
+                                        <div class="overlay" id="img1">
+                                            <a href="#"><img src="{{ asset($about->photo) }}" alt="Zoomed Image"></a>
+                                        </div>
                                     @else
                                         <img src="{{ asset('images') }}/about/no-photo.jpg" alt="No Photo">
                                     @endif
@@ -126,11 +129,16 @@
                                         </li>
                                         <li>
                                             <a href="{{ $about->link_2 }}">
-                                                <i class="fa-brands fa-twitter"></i>
+                                                <i class="fa-brands fa-instagram"></i>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="{{ $about->link_3 }}">
+                                                <i class="fab fa-tiktok"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ $about->link_4 }}">
                                                 <i class="fab fa-youtube"></i>
                                             </a>
                                         </li>
@@ -159,14 +167,14 @@
                             </div>
                             <div class="col-lg-4">
                                 <div class="service-item">
-                                    <h4>{{ $service->name }}</h4>
+                                    <h4>{{ $service->name_2 }}</h4>
                                     <p>{{ $service->description_2 }}</p>
                                     <img src="{{ asset($service->photo_2) }}" alt="{{ basename($service->photo_2) }}">
                                 </div>
                             </div>
                             <div class="col-lg-4">
                                 <div class="service-item">
-                                    <h4>{{ $service->name }}</h4>
+                                    <h4>{{ $service->name_3 }}</h4>
                                     <p>{{ $service->description_3 }}</p>
                                     <img src="{{ asset($service->photo_3) }}" alt="{{ basename($service->photo_3) }}">
                                 </div>

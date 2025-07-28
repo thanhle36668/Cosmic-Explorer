@@ -123,6 +123,11 @@
                         <img src="{{ asset('images') }}/books/{{ $book_details->photo_book }}" alt=""
                             height="580" width="480">
                     </div>
+                    <div>
+                        <a href="{{ $book_details->link_amazon }}">
+                            <img  class="icon-amazon" src="{{ asset('images') }}/icon-amazon.svg" alt="">
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
