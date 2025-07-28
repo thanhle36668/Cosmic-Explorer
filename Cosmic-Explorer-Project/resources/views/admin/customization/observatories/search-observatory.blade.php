@@ -15,7 +15,7 @@
                         @csrf
                         <div class="input-group input-group-sm">
                             <input type="text" name="search_name" class="form-control bg-secondary"
-                                placeholder="Search Name Observatories">
+                                placeholder="Search Observatories">
                             <div class="input-group-append">
                                 <button type="submit" class="btn btn-primary">
                                     <i class="fas fa-search"></i>
@@ -51,10 +51,10 @@
                         <th style="width: 5%">
                             ID
                         </th>
-                        <th style="width: 20%">
+                        <th style="width: 10%">
                             Photo
                         </th>
-                        <th style="width: 20%">
+                        <th style="width: 15%">
                             Name
                         </th>
                         <th style="width: 5%">
@@ -66,7 +66,7 @@
                         <th style="width: 15%">
                             Last Updated
                         </th>
-                        <th colspan="2" style="width: 5%">
+                        <th colspan="3">
                         </th>
                     </tr>
                 </thead>
@@ -107,16 +107,24 @@
                                     N/A
                                 @endif
                             </td>
+                            <td>
+                                <a href="{{ route('details-observatory', $observatory->slug) }}" class="btn btn-info"
+                                    target="blank">
+                                    <i class="nav-icon far fa-folder d-inline"></i>
+                                    <span>View</span>
+                                </a>
                             </td>
                             <td>
                                 <a href="{{ route('admin.edit-observatory', $observatory->slug) }}" class="btn btn-info">
-                                    <i class="nav-icon fas fa-edit"></i>
+                                    <i class="nav-icon fas fa-edit d-inline"></i>
+                                    <span>Edit</span>
                                 </a>
                             </td>
                             <td>
                                 <a href="{{ route('admin.delete-observatory', $observatory->id) }}" class="btn btn-danger"
                                     onclick="return confirm('Are you sure you want to delete planet with ID: {{ $observatory->id }}?')">
-                                    <i class="nav-icon fas fa-trash"></i>
+                                    <i class="nav-icon fas fa-edit d-inline"></i>
+                                    <span>Edit</span>
                                 </a>
                             </td>
                         </tr>

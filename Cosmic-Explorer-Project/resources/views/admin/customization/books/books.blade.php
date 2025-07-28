@@ -1,20 +1,20 @@
 @extends('layouts.admin.admin')
 
-@section('title', 'Planets Dashboard')
+@section('title', 'Books Dashboard')
 
 @section('content')
     <div class="card">
         <div class="card-header">
             <div class="row">
-                <h3 class="card-title col-8 d-flex align-items-center">Search Planet</h3>
+                <h3 class="card-title col-8 d-flex align-items-center">All Book</h3>
                 <div class="card-tools col-4 d-flex justify-content-end align-items-center">
-                    <a href="{{ route('admin.create-planet') }}" class="btn btn-info mr-2" style="padding: 3px 6px;">Create
+                    <a href="{{ route('admin.create-book') }}" class="btn btn-info mr-2" style="padding: 3px 6px;">Create
                         New</a>
-                    <form action="{{ route('admin.search-planet') }}" method="POST">
+                    <form action="#" method="POST">
                         @csrf
                         <div class="input-group input-group-sm">
                             <input type="text" name="search_name" class="form-control bg-secondary"
-                                placeholder="Search Planet">
+                                placeholder="Search Book">
                             <div class="input-group-append">
                                 <button type="submit" class="btn btn-primary">
                                     <i class="fas fa-search"></i>
@@ -26,16 +26,28 @@
             </div>
         </div>
         <div class="card-body p-0">
+            @if (session('success-create-planet'))
+                <div id="successAlert" class="alert alert-success alert-dismissible fade show mt-2 bg-success"
+                    role="alert">
+                    {{ session('success-create-planet') }}
+                </div>
+            @endif
+            @if (session('success-delete-planet'))
+                <div id="successAlert" class="alert alert-success alert-dismissible fade show mt-2 bg-success"
+                    role="alert">
+                    {{ session('success-delete-planet') }}
+                </div>
+            @endif
             <table class="table table-striped projects">
                 <thead>
                     <tr class="text-center bg-primary">
-                        <th style="width: 5%">
+                        <th style="width: 2%">
                             ID
                         </th>
                         <th style="width: 10%">
                             Photo
                         </th>
-                        <th style="width: 10%">
+                        <th style="width: 13%">
                             Name
                         </th>
                         <th style="width: 5%">
@@ -47,30 +59,30 @@
                         <th style="width: 15%">
                             Last Updated
                         </th>
-                        <th colspan="3">
+                        <th colspan="3" style="width: 25%">
                         </th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($search_planet as $planet)
+                    @foreach ($books as $book)
                         <tr class="text-center bg-secondary-subtle">
-                            <td>{{ $planet->id }}</td>
+                            <td>{{ $book->id }}</td>
                             <td>
-                                @if ($planet->photo)
-                                    <img src="{{ asset($planet->photo) }}" alt="{{ $planet->name }}" height="150"
-                                        width="150" class="me-sm-3 mb-2 mb-sm-0">
+                                @if ($book->photo_book)
+                                    <img src="{{ asset($book->photo_book) }}" alt="{{ basename($book->photo_book) }}"
+                                        height="150" width="150" class="me-sm-3 mb-2 mb-sm-0">
                                 @else
                                     <div class="icon">
-                                        <img src="{{ asset('images') }}/planets/no-photo.jpg" alt="no-photo.jpg"
+                                        <img src="{{ asset('images') }}/books/no-photo.jpg" alt="no-photo.jpg"
                                             height="150" width="150">
                                     </div>
                                 @endif
                             </td>
                             <td>
-                                {{ $planet->name }}
+                                {{ $book->name_book }}
                             </td>
                             <td>
-                                @if ($planet->status)
+                                @if ($book->status)
                                     <p class="bg-success mb-0" style="padding: 6px 12px; border-radius: 4px">
                                         Publish</p>
                                 @else
@@ -79,30 +91,39 @@
                                 @endif
                             </td>
                             <td>
-                                {{ $planet->created_at->format('d/m/Y - H:i:s') }}
+                                {{ $book->created_at->format('d/m/Y - H:i:s') }}
                             </td>
                             <td>
-                                @if ($planet->updated_at)
-                                    {{ $planet->updated_at->format('d/m/Y - H:i:s') }}
+                                @if ($book->updated_at)
+                                    {{ $book->updated_at->format('d/m/Y - H:i:s') }}
                                 @else
                                     N/A
                                 @endif
                             </td>
+                            @if ($book->status)
+                                <td>
+                                    <a href="{{ route('details-book', $book->slug) }}" class="btn btn-info" target="blank">
+                                        <i class="nav-icon far fa-folder d-inline"></i>
+                                        <span>View</span>
+                                    </a>
+                                </td>
+                            @else
+                                <td>
+                                    <a href="#" class="btn btn-info disabled">
+                                        <i class="nav-icon far fa-folder d-inline"></i>
+                                        <span>View</span>
+                                    </a>
+                                </td>
+                            @endif
                             <td>
-                                <a href="{{ route('details-planet', $planet->slug) }}" class="btn btn-info" target="blank">
-                                    <i class="nav-icon far fa-folder d-inline"></i>
-                                    <span>View</span>
-                                </a>
-                            </td>
-                            <td>
-                                <a href="{{ route('admin.edit-planet', $planet->slug) }}" class="btn btn-info">
+                                <a href="{{ route('admin.edit-book', $book->slug) }}" class="btn btn-info">
                                     <i class="nav-icon fas fa-edit d-inline"></i>
                                     <span>Edit</span>
                                 </a>
                             </td>
                             <td>
-                                <a href="{{ route('admin.delete-planet', $planet->id) }}" class="btn btn-danger"
-                                    onclick="return confirm('Are you sure you want to delete planet with ID: {{ $planet->id }}?')">
+                                <a href="#" class="btn btn-danger"
+                                    onclick="return confirm('Are you sure you want to delete planet with ID: {{ $book->id }}?')">
                                     <i class="nav-icon fas fa-trash d-inline"></i>
                                     <span>Remove</span>
                                 </a>
@@ -112,10 +133,8 @@
                 </tbody>
             </table>
         </div>
-        <div class="card-footer">
-            <div class="row d-flex flex-row-reverse">
-                <a href="{{ route('admin.customization-planets') }}" class="btn btn-info col-2">Back</a>
-            </div>
+        <div class="pagination-links mt-4 mb-4">
+            {{ $books->links('pagination::bootstrap-5') }}
         </div>
     </div>
 @endsection

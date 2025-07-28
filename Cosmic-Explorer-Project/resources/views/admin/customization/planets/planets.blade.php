@@ -14,7 +14,7 @@
                         @csrf
                         <div class="input-group input-group-sm">
                             <input type="text" name="search_name" class="form-control bg-secondary"
-                                placeholder="Search Name Planet">
+                                placeholder="Search Planet">
                             <div class="input-group-append">
                                 <button type="submit" class="btn btn-primary">
                                     <i class="fas fa-search"></i>
@@ -26,34 +26,28 @@
             </div>
         </div>
         <div class="card-body p-0">
-            <div class="row">
-                <div class="col-12">
-                    @if (session('success-create-planet'))
-                        <div id="successAlert" class="alert alert-success alert-dismissible fade show mt-2 bg-success"
-                            role="alert">
-                            {{ session('success-create-planet') }}
-                        </div>
-                    @endif
+            @if (session('success-create-planet'))
+                <div id="successAlert" class="alert alert-success alert-dismissible fade show mt-2 bg-success"
+                    role="alert">
+                    {{ session('success-create-planet') }}
                 </div>
-                <div class="col-12">
-                    @if (session('success-delete-planet'))
-                        <div id="successAlert" class="alert alert-success alert-dismissible fade show mt-2 bg-success"
-                            role="alert">
-                            {{ session('success-delete-planet') }}
-                        </div>
-                    @endif
+            @endif
+            @if (session('success-delete-planet'))
+                <div id="successAlert" class="alert alert-success alert-dismissible fade show mt-2 bg-success"
+                    role="alert">
+                    {{ session('success-delete-planet') }}
                 </div>
-            </div>
+            @endif
             <table class="table table-striped projects">
                 <thead>
                     <tr class="text-center bg-primary">
                         <th style="width: 5%">
                             ID
                         </th>
-                        <th style="width: 20%">
+                        <th style="width: 10%">
                             Photo
                         </th>
-                        <th style="width: 20%">
+                        <th style="width: 10%">
                             Name
                         </th>
                         <th style="width: 5%">
@@ -65,7 +59,7 @@
                         <th style="width: 15%">
                             Last Updated
                         </th>
-                        <th colspan="2" style="width: 5%">
+                        <th colspan="3">
                         </th>
                     </tr>
                 </thead>
@@ -106,16 +100,34 @@
                                     N/A
                                 @endif
                             </td>
-                            </td>
+                            @if ($planet->status)
+                                <td>
+                                    <a href="{{ route('details-planet', $planet->slug) }}" class="btn btn-info"
+                                        target="blank">
+                                        <i class="nav-icon far fa-folder d-inline"></i>
+                                        <span>View</span>
+                                    </a>
+                                </td>
+                            @else
+                                <td>
+                                    <a href="{{ route('details-planet', $planet->slug) }}" class="btn btn-info disabled"
+                                        target="blank">
+                                        <i class="nav-icon far fa-folder d-inline"></i>
+                                        <span>View</span>
+                                    </a>
+                                </td>
+                            @endif
                             <td>
                                 <a href="{{ route('admin.edit-planet', $planet->slug) }}" class="btn btn-info">
-                                    <i class="nav-icon fas fa-edit"></i>
+                                    <i class="nav-icon fas fa-edit d-inline"></i>
+                                    <span>Edit</span>
                                 </a>
                             </td>
                             <td>
                                 <a href="{{ route('admin.delete-planet', $planet->id) }}" class="btn btn-danger"
                                     onclick="return confirm('Are you sure you want to delete planet with ID: {{ $planet->id }}?')">
-                                    <i class="nav-icon fas fa-trash"></i>
+                                    <i class="nav-icon fas fa-trash d-inline"></i>
+                                    <span>Remove</span>
                                 </a>
                             </td>
                         </tr>

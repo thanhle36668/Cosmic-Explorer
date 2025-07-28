@@ -104,6 +104,13 @@ Route::middleware(['auth', 'is_admin'])->prefix('admin')->name('admin.')
         Route::put('/updated-observatory', [CustomizationController::class, 'updatedObservatory'])->name('updated-observatory');
         Route::get('/delete-observatory/{id}', [CustomizationController::class, 'deleteObservatory'])->name('delete-observatory');
         Route::post('/search-observatory', [CustomizationController::class, 'searchObservatory'])->name('search-observatory');
+
+        // Customization Books
+        Route::get('/customization-books', [CustomizationController::class, 'books'])->name('customization-books');
+        Route::get('/create-book', [CustomizationController::class, 'createBook'])->name('create-book');
+        Route::put('/save-book', [CustomizationController::class, 'saveBook'])->name('save-book');
+        Route::get('/edit-book/{slug}', [CustomizationController::class, 'editBook'])->name('edit-book');
+        Route::put('/updated-book', [CustomizationController::class, 'updatedBook'])->name('updated-book');
     });
 
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');

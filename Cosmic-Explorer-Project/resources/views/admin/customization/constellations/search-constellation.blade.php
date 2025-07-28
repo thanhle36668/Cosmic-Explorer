@@ -51,10 +51,10 @@
                         <th style="width: 5%">
                             ID
                         </th>
-                        <th style="width: 20%">
+                        <th style="width: 10%">
                             Photo
                         </th>
-                        <th style="width: 20%">
+                        <th style="width: 10%">
                             Name
                         </th>
                         <th style="width: 5%">
@@ -66,7 +66,7 @@
                         <th style="width: 15%">
                             Last Updated
                         </th>
-                        <th colspan="2" style="width: 5%">
+                        <th colspan="3">
                         </th>
                     </tr>
                 </thead>
@@ -108,18 +108,26 @@
                                     N/A
                                 @endif
                             </td>
+                            <td>
+                                <a href="{{ route('details-constellation', $constellation->slug) }}" class="btn btn-info"
+                                    target="blank">
+                                    <i class="nav-icon far fa-folder d-inline"></i>
+                                    <span>View</span>
+                                </a>
                             </td>
                             <td>
                                 <a href="{{ route('admin.edit-constellation', $constellation->slug) }}"
                                     class="btn btn-info">
-                                    <i class="nav-icon fas fa-edit"></i>
+                                    <i class="nav-icon fas fa-edit d-inline"></i>
+                                    <span>Edit</span>
                                 </a>
                             </td>
                             <td>
                                 <a href="{{ route('admin.delete-constellation', $constellation->id) }}"
                                     class="btn btn-danger"
                                     onclick="return confirm('Are you sure you want to delete planet with ID: {{ $constellation->id }}?')">
-                                    <i class="nav-icon fas fa-trash"></i>
+                                    <i class="nav-icon fas fa-edit d-inline"></i>
+                                    <span>Edit</span>
                                 </a>
                             </td>
                         </tr>

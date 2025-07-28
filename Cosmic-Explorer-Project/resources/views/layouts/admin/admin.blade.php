@@ -137,7 +137,6 @@
                                     </a>
                                 </li>
                             </ul>
-
                         </li>
                         <li class="nav-item">
                             <a href="#" class="nav-link">
@@ -196,9 +195,24 @@
                                         </p>
                                     </a>
                                 </li>
+                                <li class="nav-item">
+                                    <a href="{{route('admin.customization-books')}}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>
+                                            Books
+                                        </p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>
+                                            Videos
+                                        </p>
+                                    </a>
+                                </li>
                             </ul>
                         </li>
-
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->

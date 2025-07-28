@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\About;
 use App\Models\About_services;
+use App\Models\Books;
 use App\Models\Constellations;
 use App\Models\Discovery;
 use App\Models\Introduction;
@@ -123,6 +124,7 @@ class CustomizationController extends Controller
             'link' => 'nullable|string|max:300',
             'link_2' => 'nullable|string|max:300',
             'link_3' => 'nullable|string|max:300',
+            'link_4' => 'nullable|string|max:300',
             'photo' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp',
         ];
 
@@ -143,6 +145,7 @@ class CustomizationController extends Controller
             'link' => $request->link,
             'link_2' => $request->link_2,
             'link_3' => $request->link_3,
+            'link_4' => $request->link_4
         ];
 
         $destinationPath = public_path('images/about');
@@ -1042,5 +1045,163 @@ class CustomizationController extends Controller
         ];
 
         return view('admin/customization/observatories/search-observatory')->with($data);
+    }
+
+    // Customization Books
+    public function books()
+    {
+        $data = [
+            'books' => Books::orderBy('id', 'desc')->paginate(4)
+        ];
+
+        return view('admin/customization/books/books')->with($data);
+    }
+
+    public function createBook()
+    {
+        return view('admin/customization/books/create-book');
+    }
+
+    public function saveBook(Request $request)
+    {
+        $processedSlug = Str::slug($request->slug);
+        $dataForValidation = $request->all();
+        $dataForValidation['slug'] = $processedSlug;
+
+        $validationRules = [
+            'name_book' => 'required|string|max:255|unique:books,name_book',
+            'slug' => 'required|string|max:255|unique:books,slug',
+            'author' => 'required|string|max:255',
+            'publication_year' => 'required|string|max:255',
+            'genre' => 'required|string|max:255',
+            'description' => 'required|string',
+            'main_title' => 'required|string',
+            'main_content' => 'required|string',
+            'main_content_1' => 'required|string',
+            'main_content_2' => 'required|string',
+            'link_amazon' => 'nullable|string',
+            'photo_book' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp',
+        ];
+
+        $validator = Validator::make($dataForValidation, $validationRules);
+        $validator->validate();
+
+        try {
+            $data_create = [
+                'name_book' => $request->name_book,
+                'slug' => $request->slug,
+                'status' => 0,
+                'author' => $request->author,
+                'publication_year' => $request->publication_year,
+                'genre' => $request->genre,
+                'description' => $request->description,
+                'main_title' => $request->main_title,
+                'main_content' => $request->main_content,
+                'main_content_1' => $request->main_content_1,
+                'main_content_2' => $request->main_content_2,
+                'link_amazon' => $request->link_amazon
+            ];
+
+            $destinationPath = public_path('images/books');
+            if (!File::isDirectory($destinationPath)) {
+                File::makeDirectory($destinationPath, 0755, true, true);
+            }
+
+            if ($request->hasFile('photo_book')) {
+                $imageFile = $request->file('photo');
+
+                $imageName = time() . '_' . Str::random(10) . '.' . $imageFile->getClientOriginalExtension();
+
+                $imageFile->move($destinationPath, $imageName);
+
+                $data_create['photo_book'] = 'images/books/' . $imageName;
+            }
+
+            Books::create($data_create);
+
+            return redirect()->route('admin.customization-books')->with('success-create-book', 'You have successfully created a book.');
+        } catch (Exception $e) {
+            return redirect()->back()->with('error-create-book', 'Failed to create book due to an internal error. Please try again!!!');
+        }
+    }
+
+    public function editBook($slug)
+    {
+        $data = [
+            'book' => Books::where('slug', $slug)->firstOrFail()
+        ];
+
+        return view('admin/customization/books/details-book')->with($data);
+    }
+
+    public function updatedBook(Request $request)
+    {
+        $validationRules = [
+            'name_book' => 'required|string|max:255|unique:books,name_book,' . $request->id,
+            'slug' => 'required|string|max:255|unique:books,slug,' . $request->id,
+            'status' => 'required|boolean',
+            'author' => 'required|string|max:255',
+            'publication_year' => 'required|string|max:255',
+            'genre' => 'required|string|max:255',
+            'description' => 'required|string',
+            'main_title' => 'required|string',
+            'main_content' => 'required|string',
+            'main_content_1' => 'required|string',
+            'main_content_2' => 'required|string',
+            'link_amazon' => 'nullable|string',
+            'photo_book' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp',
+        ];
+
+        $request->validate($validationRules);
+
+        $book = Books::find($request->id);
+
+        $data_updated = [
+            'name_book' => $request->name_book,
+            'slug' => $request->slug,
+            'status' => $request->status,
+            'author' => $request->author,
+            'publication_year' => $request->publication_year,
+            'genre' => $request->genre,
+            'description' => $request->description,
+            'main_title' => $request->main_title,
+            'main_content' => $request->main_content,
+            'main_content_1' => $request->main_content_1,
+            'main_content_2' => $request->main_content_2,
+            'link_amazon' => $request->link_amazon
+        ];
+
+        $destinationPath = public_path('images/books');
+        if (!File::isDirectory($destinationPath)) {
+            File::makeDirectory($destinationPath, 0755, true, true);
+        }
+
+        if ($request->hasFile('photo_book')) {
+            $imageFile = $request->file('photo_book');
+
+            $oldImagePathFromDb = $book->photo_book;
+            $oldImagePath = public_path($oldImagePathFromDb);
+            if ($oldImagePathFromDb && File::exists($oldImagePath)) {
+                File::delete($oldImagePath);
+            }
+
+            $imageName = time() . '_' . Str::random(10) . '.' . $imageFile->getClientOriginalExtension();
+
+            $imageFile->move($destinationPath, $imageName);
+
+            $data_updated['photo_book'] = 'images/books/' . $imageName;
+        } elseif ($request->has('delete_photo') && $request->delete_photo == 1) {
+            $oldImagePathFromDb = $book->photo_book;
+            $oldImagePath = public_path($oldImagePathFromDb);
+
+            if ($oldImagePathFromDb && File::exists($oldImagePath)) {
+                File::delete($oldImagePath);
+            }
+
+            $data_updated['photo_book'] = null;
+        }
+
+        $book->update($data_updated);
+        return redirect()->route('admin.edit-book', $book->slug)->with('success-update-book', 'You have successfully changed!');
     }
 }

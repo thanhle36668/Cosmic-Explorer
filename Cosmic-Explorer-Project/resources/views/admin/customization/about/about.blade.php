@@ -51,16 +51,20 @@
                         <textarea id="description_2" name="description_2" class="form-control" rows="5" cols="5" required>{{ $about->description_2 }}</textarea>
                     </div>
                     <div class="form-group col-12">
-                        <label for="link">Link Facebook</label>
+                        <label for="link">Link</label>
                         <input id="link" name="link" value="{{ $about->link }}" class="form-control">
                     </div>
                     <div class="form-group col-12">
-                        <label for="twitter">Link Twitter</label>
+                        <label for="twitter">Link 2</label>
                         <input id="link_2" name="link_2" value="{{ $about->link_2 }}" class="form-control">
                     </div>
                     <div class="form-group col-12">
-                        <label for="youtube">Link Youtube</label>
+                        <label for="youtube">Link 3</label>
                         <input id="youtube" name="link_3" value="{{ $about->link_3 }}" class="form-control">
+                    </div>
+                    <div class="form-group col-12">
+                        <label for="youtube">Link 4</label>
+                        <input id="youtube" name="link_4" value="{{ $about->link_4 }}" class="form-control">
                     </div>
                     <div class="form-group mb-4 col-12 col-md-12">
                         <label for="photo" class="form-label d-block mb-2">Photo:</label>
@@ -100,7 +104,8 @@
                         </div>
                     </div>
                     <div class="w-100 d-flex justify-content-end card-footer">
-                        <a href="{{ route('admin.admin.dashboard') }}" class="btn btn-secondary mr-2 px-5 py-2">Cancel</a>
+                        <a href="{{ route('admin.admin.dashboard') }}"
+                            class="btn btn-secondary mr-2 px-5 py-2">Cancel</a>
                         <button type="submit" class="btn btn-primary float-right px-5 py-2">Update</button>
                     </div>
                 </div>

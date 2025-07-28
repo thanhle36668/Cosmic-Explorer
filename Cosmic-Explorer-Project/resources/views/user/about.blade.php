@@ -107,7 +107,8 @@
                             <div class="col-lg-6">
                                 <div class="left-image">
                                     @if ($about->photo)
-                                        <a href="#img1"><img src="{{ asset($about->photo) }}" alt="{{ basename($about->photo) }}"></a>
+                                        <a href="#img1"><img src="{{ asset($about->photo) }}"
+                                                alt="{{ basename($about->photo) }}"></a>
                                         <div class="overlay" id="img1">
                                             <a href="#"><img src="{{ asset($about->photo) }}" alt="Zoomed Image"></a>
                                         </div>
@@ -123,22 +124,22 @@
                                     <p>{{ $about->description_2 }}</p>
                                     <ul>
                                         <li>
-                                            <a href="{{ $about->link }}">
+                                            <a href="{{ $about->link }}" target="blank">
                                                 <i class="fa-brands fa-facebook"></i>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="{{ $about->link_2 }}">
+                                            <a href="{{ $about->link_2 }}" target="blank">
                                                 <i class="fa-brands fa-instagram"></i>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="{{ $about->link_3 }}">
+                                            <a href="{{ $about->link_3 }}" target="blank">
                                                 <i class="fab fa-tiktok"></i>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="{{ $about->link_4 }}">
+                                            <a href="{{ $about->link_4 }}" target="blank">
                                                 <i class="fab fa-youtube"></i>
                                             </a>
                                         </li>

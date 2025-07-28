@@ -125,31 +125,56 @@
                     <div class="container">
                         <div class="row justify-content-center mb-4">
                             <div class="col-md-12 text-center">
-                                <img src="{{ asset($observatory_details->photo) }}"
-                                    alt="{{ basename($observatory_details->photo) }}"
-                                    class="img-fluid img-main rounded shadow-sm" id="parent">
+                                @if ($observatory_details->photo)
+                                    <img src="{{ asset($observatory_details->photo) }}"
+                                        alt="{{ basename($observatory_details->photo) }}"
+                                        class="img-fluid img-main rounded shadow-sm" id="parent">
+                                @else
+                                    <img src="{{ asset('images') }}/observatories/no-photo.jpg" alt="No Photo"
+                                        class="img-fluid img-main rounded shadow-sm" id="parent">
+                                @endif
                             </div>
                         </div>
                         <div class="row justify-content-center g-2 person">
                             <div class="col-3 col-sm-3 col-md-3 col-lg-3">
-                                <img src="{{ asset($observatory_details->photo) }}"
-                                    class="img-fluid rounded shadow-sm person1 active-thumbnail"
-                                    alt="{{ basename($observatory_details->photo) }}">
+                                @if ($observatory_details->photo)
+                                    <img src="{{ asset($observatory_details->photo) }}"
+                                        class="img-fluid rounded shadow-sm person1 active-thumbnail"
+                                        alt="{{ basename($observatory_details->photo) }}">
+                                @else
+                                    <img src="{{ asset('images') }}/observatories/no-photo.jpg" alt="No Photo"
+                                        class="img-fluid rounded shadow-sm person1">
+                                @endif
                             </div>
                             <div class="col-3 col-sm-3 col-md-3 col-lg-3">
-                                <img src="{{ asset($observatory_details->photo_2) }}"
-                                    class="img-fluid rounded shadow-sm person2"
-                                    alt="{{ basename($observatory_details->photo_2) }}">
+                                @if ($observatory_details->photo_2)
+                                    <img src="{{ asset($observatory_details->photo_2) }}"
+                                        class="img-fluid rounded shadow-sm person2"
+                                        alt="{{ basename($observatory_details->photo_2) }}">
+                                @else
+                                    <img src="{{ asset('images') }}/observatories/no-photo.jpg" alt="No Photo"
+                                        class="img-fluid rounded shadow-sm person2">
+                                @endif
                             </div>
                             <div class="col-3 col-sm-3 col-md-3 col-lg-3">
-                                <img src="{{ asset($observatory_details->photo_3) }}"
-                                    class="img-fluid rounded shadow-sm person3"
-                                    alt="{{ basename($observatory_details->photo_3) }}">
+                                @if ($observatory_details->photo_3)
+                                    <img src="{{ asset($observatory_details->photo_3) }}"
+                                        class="img-fluid rounded shadow-sm person3"
+                                        alt="{{ basename($observatory_details->photo_3) }}">
+                                @else
+                                    <img src="{{ asset('images') }}/observatories/no-photo.jpg" alt="No Photo"
+                                        class="img-fluid rounded shadow-sm person3">
+                                @endif
                             </div>
                             <div class="col-3 col-sm-3 col-md-3 col-lg-3">
-                                <img src="{{ asset($observatory_details->photo_4) }}"
-                                    class="img-fluid rounded shadow-sm person4"
-                                    alt="{{ basename($observatory_details->photo_4) }}">
+                                @if ($observatory_details->photo_4)
+                                    <img src="{{ asset($observatory_details->photo_4) }}"
+                                        class="img-fluid rounded shadow-sm person4"
+                                        alt="{{ basename($observatory_details->photo_4) }}">
+                                @else
+                                    <img src="{{ asset('images') }}/observatories/no-photo.jpg" alt="No Photo"
+                                        class="img-fluid rounded shadow-sm person4">
+                                @endif
                             </div>
                         </div>
                     </div>

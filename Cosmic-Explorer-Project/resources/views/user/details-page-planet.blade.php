@@ -129,7 +129,7 @@
                                         class="img-fluid img-main rounded shadow-sm" id="parent">
                                 @else
                                     <img src="{{ asset('images') }}/planets/no-photo.jpg" alt="No Photo"
-                                        class="img-fluid rounded shadow-sm person1">
+                                        class="img-fluid img-main rounded shadow-sm" id="parent">
                                 @endif
                             </div>
                         </div>
@@ -151,7 +151,7 @@
                                         alt="{{ basename($planet_details->photo_2) }}">
                                 @else
                                     <img src="{{ asset('images') }}/planets/no-photo.jpg" alt="No Photo"
-                                        class="img-fluid rounded shadow-sm person1">
+                                        class="img-fluid rounded shadow-sm person2">
                                 @endif
                             </div>
                             <div class="col-3 col-sm-3 col-md-3 col-lg-3">
@@ -161,7 +161,7 @@
                                         alt="{{ basename($planet_details->photo_3) }}">
                                 @else
                                     <img src="{{ asset('images') }}/planets/no-photo.jpg" alt="No Photo"
-                                        class="img-fluid rounded shadow-sm person1">
+                                        class="img-fluid rounded shadow-sm person3">
                                 @endif
                             </div>
                             <div class="col-3 col-sm-3 col-md-3 col-lg-3">
@@ -171,7 +171,7 @@
                                         alt="{{ basename($planet_details->photo_4) }}">
                                 @else
                                     <img src="{{ asset('images') }}/planets/no-photo.jpg" alt="No Photo"
-                                        class="img-fluid rounded shadow-sm person1">
+                                        class="img-fluid rounded shadow-sm person4">
                                 @endif
                             </div>
                         </div>

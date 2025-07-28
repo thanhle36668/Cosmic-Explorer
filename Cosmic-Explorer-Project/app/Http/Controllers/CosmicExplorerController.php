@@ -71,7 +71,7 @@ class CosmicExplorerController extends Controller
     public function pageCollectionsBooks()
     {
         $data = [
-            'books' => Books::paginate(4)
+            'books' => Books::where('status', true)->paginate(4)
         ];
         return view('user/collections-page-books')->with($data);
     }
