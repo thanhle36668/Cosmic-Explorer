@@ -1,8 +1,6 @@
 @extends('layouts.admin.admin')
 
-@section('title')
-    <title>Constellation Dashboard</title>
-@endsection
+@section('title', 'Constellations Dashboard')
 
 @section('content')
     @if ($errors->any())

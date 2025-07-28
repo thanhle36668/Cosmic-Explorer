@@ -1,8 +1,8 @@
 @extends('layouts.admin.admin')
 
 @section('content')
-    <div class="container mt-4">
-        <h2>Comment management</h2>
+    <div class="container">
+        <h2 class="p-2">Comment management</h2>
 
         @if (session('success'))
             <div class="alert alert-success">{{ session('success') }}</div>

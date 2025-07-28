@@ -18,7 +18,7 @@
         <section class="content">
             <div class="card card-primary">
                 <div class="card-header">
-                    <h3 class="card-title">Create New Constellation</h3>
+                    <h3 class="card-title">Create Constellation</h3>
                 </div>
                 <div class="card-body">
                     <div class="form-group">

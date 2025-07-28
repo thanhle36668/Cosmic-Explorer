@@ -10,9 +10,10 @@
             </div>
             <div class="card-body">
                 <h1 class="mb-4">Dashboard Cosmic Explorer</h1>
-                <p class="mb-4">Hello, {{ auth()->user()->name }}!</p>
-                <h1>Date now at:</h1>
-                <p id="current-time"></p>
+                <p class="mb-2">Hello, {{ auth()->user()->name }}!</p>
+                <span class="mb-2">Date Time:</span>
+                <span id="current-time"></span> <br>
+                <a href="{{ route('logout') }}" class="btn btn-primary mt-2">Logout</a>
             </div>
         </div>
     </section>

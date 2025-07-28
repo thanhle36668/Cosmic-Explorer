@@ -1,8 +1,6 @@
 @extends('layouts.admin.admin')
 
-@section('title')
-    <title>Discovery Dashboard</title>
-@endsection
+@section('title', 'Discovery Dashboard')
 
 @section('content')
     @if ($errors->any())

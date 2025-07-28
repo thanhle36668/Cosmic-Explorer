@@ -9,7 +9,7 @@
         <section class="content">
             <div class="card collapsed-card card-primary">
                 <div class="card-header">
-                    <h3 class="card-title">About</h3>
+                    <h3 class="card-title">About Page</h3>
                     <div class="card-tools">
                         <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                             <i class="fas fa-minus"></i>

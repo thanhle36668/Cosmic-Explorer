@@ -1,8 +1,6 @@
 @extends('layouts.admin.admin')
 
-@section('title')
-    <title>Constellations Dashboard</title>
-@endsection
+@section('title', 'Constellations Dashboard')
 
 @section('content')
     <div class="card">

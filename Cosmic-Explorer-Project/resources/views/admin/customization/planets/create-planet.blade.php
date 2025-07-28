@@ -1,8 +1,6 @@
 @extends('layouts.admin.admin')
 
-@section('title')
-    <title>Planet Dashboard</title>
-@endsection
+@section('title', 'Planets Dashboard')
 
 @section('content')
     @if (session('error-create-planet'))

@@ -1,8 +1,6 @@
 @extends('layouts.admin.admin')
 
-@section('title')
-    <title>Observatory Dashboard</title>
-@endsection
+@section('title', 'Observatories Dashboard')
 
 @section('content')
     @if (session('error-create-observatory'))

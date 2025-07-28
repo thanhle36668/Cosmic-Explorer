@@ -1,8 +1,6 @@
 @extends('layouts.admin.admin')
 
-@section('title')
-    <title>Planets Dashboard</title>
-@endsection
+@section('title', 'Planets Dashboard')
 
 @section('content')
     <div class="card">
@@ -11,7 +9,7 @@
                 <h3 class="card-title col-8 d-flex align-items-center">Search Planet</h3>
                 <div class="card-tools col-4 d-flex justify-content-end align-items-center">
                     <a href="{{ route('admin.create-planet') }}" class="btn btn-info mr-2" style="padding: 3px 6px;">Create
-                        Planet</a>
+                        New</a>
                     <form action="{{ route('admin.search-planet') }}" method="POST">
                         @csrf
                         <div class="input-group input-group-sm">

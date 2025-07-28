@@ -1,8 +1,6 @@
 @extends('layouts.admin.admin')
 
-@section('title')
-    <title>Discovery Dashboard</title>
-@endsection
+@section('title', 'Discovery Dashboard')
 
 @section('content')
     @if ($errors->any())
@@ -20,7 +18,7 @@
         <section class="content">
             <div class="card card-primary">
                 <div class="card-header">
-                    <h3 class="card-title">Create New Post</h3>
+                    <h3 class="card-title">Create Post</h3>
                 </div>
                 <div class="card-body">
                     <div class="form-group">

@@ -38,11 +38,6 @@
                     <a href="{{ route('admin.admin.dashboard') }}" class="nav-link">Home</a>
                 </li>
             </ul>
-            <!-- Right navbar links -->
-            <ul class="navbar-nav ml-auto">
-                <!-- Navbar Search -->
-                <a href="{{ route('logout') }}" class="btn btn-primary">Logout</a>
-            </ul>
         </nav>
         <!-- /.navbar -->
 
@@ -218,7 +213,9 @@
             <!-- /.content-header -->
 
             <!-- Main content -->
-            @yield('content')
+            <div class="content">
+                @yield('content')
+            </div>
             <!-- /.content -->
         </div>
         <!-- /.content-wrapper -->
