@@ -3,10 +3,13 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Exception;
+use App\Models\About;
+use App\Models\About_services;
+use App\Models\Constellations;
 use App\Models\Discovery;
 use App\Models\Introduction;
 use App\Models\Planets;
+use Exception;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator;
@@ -44,14 +47,14 @@ class CustomizationController extends Controller
 
         $introduction = Introduction::find($request->id);
 
-        $data_update = [
+        $data_updated = [
             'website_name' => $request->website_name,
             'short_introduction' => $request->short_introduction,
             'short_introduction_2' => $request->short_introduction_2,
             'company_description' => $request->company_description
         ];
 
-        $destinationPath = public_path('images/images-introduction');
+        $destinationPath = public_path('images/introduction');
 
         if (!File::isDirectory($destinationPath)) {
             File::makeDirectory($destinationPath, 0755, true, true);
@@ -63,13 +66,15 @@ class CustomizationController extends Controller
         }
 
         foreach ($photoArray as $item) {
+            $deleteCheckboxName = 'delete_' . $item;
             if ($request->hasFile($item)) {
                 $imageFile = $request->file($item);
 
                 if ($introduction->$item) {
-                    $filenameInDb = basename($introduction->$item);
-                    $oldImagePath = public_path('images/images-introduction' . '/' . $filenameInDb);
-                    if (File::exists($oldImagePath)) {
+                    $oldImagePathFromDb = $introduction->$item;
+                    $oldImagePath = public_path($oldImagePathFromDb);
+
+                    if ($oldImagePathFromDb && File::exists($oldImagePath)) {
                         File::delete($oldImagePath);
                     }
                 }
@@ -78,12 +83,173 @@ class CustomizationController extends Controller
 
                 $imageFile->move($destinationPath, $imageName);
 
-                $data_update[$item] = 'images/images-introduction/' . $imageName;
+                $data_updated[$item] = 'images/introduction/' . $imageName;
+            } elseif ($request->has($deleteCheckboxName) && $request->$deleteCheckboxName == 1) {
+
+                $oldImagePathFromDb = $introduction->$item;
+                $oldImagePath = public_path($oldImagePathFromDb);
+
+                if ($oldImagePathFromDb && File::exists($oldImagePath)) {
+                    File::delete($oldImagePath);
+                }
+
+                $data_updated[$item] = null;
             }
         }
-        $introduction->update($data_update);
+        $introduction->update($data_updated);
 
         return redirect()->route('admin.customization-introduction')->with('success-update-introduction', 'You have successfully changed!');
+    }
+
+    // Customization About
+    public function about()
+    {
+        $data = [
+            'about' => About::firstOrFail(),
+            'about_services' => About_services::firstOrFail(),
+        ];
+
+        return view('admin/customization/about/about')->with($data);
+    }
+
+    public function updatedAbout(Request $request)
+    {
+        $validationRules = [
+            'title' => 'required|string|max:255',
+            'description_1' => 'required|string',
+            'description_2' => 'required|string',
+            'link' => 'nullable|string|max:300',
+            'link_2' => 'nullable|string|max:300',
+            'link_3' => 'nullable|string|max:300',
+            'photo' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
+        ];
+
+        $validator = Validator::make($request->all(), $validationRules);
+
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator, 'aboutErrors')
+                ->withInput();
+        }
+
+        $about = About::find($request->id);
+
+        $data_updated = [
+            'title' => $request->title,
+            'description_1' => $request->description_1,
+            'description_2' => $request->description_2,
+            'link' => $request->link,
+            'link_2' => $request->link_2,
+            'link_3' => $request->link_3,
+        ];
+
+        $destinationPath = public_path('images/about');
+
+        if (!File::isDirectory($destinationPath)) {
+            File::makeDirectory($destinationPath, 0755, true, true);
+        }
+
+        if ($request->hasFile('photo')) {
+            $imageFile = $request->file('photo');
+
+            $oldImagePathFromDb = $about->photo;
+
+            if ($oldImagePathFromDb && File::exists(public_path($oldImagePathFromDb))) {
+                File::delete(public_path($oldImagePathFromDb));
+            }
+
+            $imageName = time() . '_' . Str::random(10) . '.' . $imageFile->getClientOriginalExtension();
+
+            $imageFile->move($destinationPath, $imageName);
+
+            $data_updated['photo'] = 'images/about/' . $imageName;
+        } elseif ($request->has('delete_photo') && $request->delete_photo == 1) {
+            $oldImagePathFromDb = $about->photo;
+            $oldImagePath = public_path($oldImagePathFromDb);
+
+            if ($oldImagePathFromDb && File::exists($oldImagePath)) {
+                File::delete($oldImagePath);
+            }
+
+            $data_updated['photo'] = null;
+        }
+
+        $about->update($data_updated);
+
+        return redirect()->route('admin.customization-about')->with('success-updated-about', 'You have successfully changed!');
+    }
+
+    public function updatedAboutServices(Request $request)
+    {
+        $validationRules = [
+            'name' => 'required|string|max:250',
+            'name_2' => 'required|string|max:250',
+            'name_3' => 'required|string|max:250',
+            'description' => 'required|string',
+            'description_2' => 'required|string',
+            'description_3' => 'required|string',
+            'photo' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
+            'photo_2' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
+            'photo_3' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
+        ];
+
+        $validator = Validator::make($request->all(), $validationRules);
+
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator, 'aboutServices')
+                ->withInput();
+        }
+
+        $service = About_services::firstOrFail();
+
+        $data_updated = [
+            'name' => $request->name,
+            'name_2' => $request->name_2,
+            'name_3' => $request->name_3,
+            'description' => $request->description,
+            'description_2' => $request->description_2,
+            'description_3' => $request->description_3
+        ];
+
+        $destinationPath = public_path('images/about');
+
+        if (!File::isDirectory($destinationPath)) {
+            File::makeDirectory($destinationPath, 0755, true, true);
+        }
+
+        $photoArray = ['photo', 'photo_2', 'photo_3'];
+        foreach ($photoArray as $item) {
+            $deleteCheckboxName = 'delete_' . $item;
+            if ($request->hasFile($item)) {
+                $imageFile = $request->file($item);
+
+                $oldImagePathFromDb = $service->$item;
+                $oldImagePath = public_path($oldImagePathFromDb);
+
+                if ($oldImagePathFromDb && File::exists($oldImagePath)) {
+                    File::delete($oldImagePath);
+                }
+
+                $imageName = time() . '_' . Str::random(10) . '.' . $imageFile->getClientOriginalExtension();
+
+                $imageFile->move($destinationPath, $imageName);
+                $data_updated[$item] = 'images/about/' . $imageName;
+            } elseif ($request->has($deleteCheckboxName) && $request->$deleteCheckboxName == 1) {
+                $oldImagePathFromDb = $service->$item;
+                $oldImagePath = public_path($oldImagePathFromDb);
+
+                if ($oldImagePathFromDb && File::exists($oldImagePath)) {
+                    File::delete($oldImagePath);
+                }
+
+                $data_updated[$item] = null;
+            }
+        }
+
+        $service->update($data_updated);
+
+        return redirect()->route('admin.customization-about')->with('success-updated-about-services', 'You have successfully changed!');
     }
 
     // Customization Discovery
@@ -94,78 +260,6 @@ class CustomizationController extends Controller
         ];
 
         return view('admin/customization/discovery/discovery')->with($data);
-    }
-
-    public function editDiscovery($slug)
-    {
-        $data = [
-            'post' => Discovery::where('slug', $slug)->firstOrFail()
-        ];
-
-        return view('admin/customization/discovery/details-discovery')->with($data);
-    }
-
-    public function updatedDiscovery(Request $request)
-    {
-        $validationRules = [
-            'title' => 'string|max:255|unique:discovery,title,' . $request->id,
-            'slug' => 'string|max:255|unique:discovery,slug,' . $request->id,
-            'status' => 'required|boolean',
-            'author' => 'required|string|max:255',
-            'description_short' => 'required|string',
-            'title_details' => 'required|string',
-            'description_details' => 'required|string',
-            'content_1' => 'required|string',
-            'content_2' => 'required|string',
-            'photo' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
-            'photo_2' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
-        ];
-
-        $request->validate($validationRules);
-
-        $post = Discovery::find($request->id);
-
-        $data_update = [
-            'title' => $request->title,
-            'slug' => Str::slug($request->slug),
-            'author' => $request->author,
-            'status' => $request->status,
-            'description_short' => $request->description_short,
-            'title_details' => $request->title_details,
-            'description_details' => $request->description_details,
-            'content_1' => $request->content_1,
-            'content_2' => $request->content_2
-        ];
-
-        $destinationPath = public_path('images/discovery');
-
-        if (!File::isDirectory($destinationPath)) {
-            File::makeDirectory($destinationPath, 0755, true, true);
-        }
-
-        $photoArray = ['photo', 'photo_2'];
-
-        foreach ($photoArray as $item) {
-            if ($request->hasFile($item)) {
-                $imageFile = $request->file($item);
-
-                $oldImagePathFromDb = $post->$item;
-
-                if ($oldImagePathFromDb && File::exists(public_path($oldImagePathFromDb))) {
-                    File::delete(public_path($oldImagePathFromDb));
-                }
-
-                $imageName = 'updated' . '_' . Str::random(10) . '.' . $imageFile->getClientOriginalExtension();
-
-                $imageFile->move($destinationPath, $imageName);
-
-                $data_update[$item] = 'images/discovery/' . $imageName;
-            }
-        }
-
-        $post->update($data_update);
-
-        return redirect()->route('admin.edit-discovery', $post->slug)->with('success-update-discovery', 'You have successfully changed!');
     }
 
     public function createDiscovery()
@@ -188,10 +282,8 @@ class CustomizationController extends Controller
             'description_details' => 'required|string',
             'content_1' => 'required|string',
             'content_2' => 'required|string',
-            'photo' => 'required|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
-            'photo_2' => 'required|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
-            'name_photo' => 'required|string|max:255|',
-            'name_photo_2' => 'required|string|max:255|',
+            'photo' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
+            'photo_2' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
         ];
 
         $validator = Validator::make($dataForValidation, $validationRules);
@@ -208,8 +300,6 @@ class CustomizationController extends Controller
                 'description_details' => $request->description_details,
                 'content_1' => $request->content_1,
                 'content_2' => $request->content_2,
-                'name_photo' => $request->name_photo,
-                'name_photo_2' => $request->name_photo_2,
             ];
 
             $destinationPath = public_path('images/discovery');
@@ -272,11 +362,93 @@ class CustomizationController extends Controller
         return view('admin/customization/discovery/search-discovery')->with($data);
     }
 
+    public function editDiscovery($slug)
+    {
+        $data = [
+            'post' => Discovery::where('slug', $slug)->firstOrFail()
+        ];
+
+        return view('admin/customization/discovery/details-discovery')->with($data);
+    }
+
+    public function updatedDiscovery(Request $request)
+    {
+        $validationRules = [
+            'title' => 'string|max:255|unique:discovery,title,' . $request->id,
+            'slug' => 'string|max:255|unique:discovery,slug,' . $request->id,
+            'status' => 'required|boolean',
+            'author' => 'required|string|max:255',
+            'description_short' => 'required|string',
+            'title_details' => 'required|string',
+            'description_details' => 'required|string',
+            'content_1' => 'required|string',
+            'content_2' => 'required|string',
+            'photo' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
+            'photo_2' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
+        ];
+
+        $request->validate($validationRules);
+
+        $post = Discovery::find($request->id);
+
+        $data_updated = [
+            'title' => $request->title,
+            'slug' => Str::slug($request->slug),
+            'author' => $request->author,
+            'status' => $request->status,
+            'description_short' => $request->description_short,
+            'title_details' => $request->title_details,
+            'description_details' => $request->description_details,
+            'content_1' => $request->content_1,
+            'content_2' => $request->content_2,
+        ];
+
+        $destinationPath = public_path('images/discovery');
+
+        if (!File::isDirectory($destinationPath)) {
+            File::makeDirectory($destinationPath, 0755, true, true);
+        }
+
+        $photoArray = ['photo', 'photo_2'];
+
+        foreach ($photoArray as $item) {
+            $deleteCheckboxName = 'delete_' . $item;
+            if ($request->hasFile($item)) {
+                $imageFile = $request->file($item);
+
+                $oldImagePathFromDb = $post->$item;
+
+                if ($oldImagePathFromDb && File::exists(public_path($oldImagePathFromDb))) {
+                    File::delete(public_path($oldImagePathFromDb));
+                }
+
+                $imageName = time() . '_' . Str::random(10) . '.' . $imageFile->getClientOriginalExtension();
+
+                $imageFile->move($destinationPath, $imageName);
+
+                $data_updated[$item] = 'images/discovery/' . $imageName;
+            } elseif ($request->has($deleteCheckboxName) && $request->$deleteCheckboxName == 1) {
+                $oldImagePathFromDb = $post->$item;
+                $oldImagePath = public_path($oldImagePathFromDb);
+
+                if ($oldImagePathFromDb && File::exists($oldImagePath)) {
+                    File::delete($oldImagePath);
+                }
+
+                $data_updated[$item] = null;
+            }
+        }
+
+        $post->update($data_updated);
+
+        return redirect()->route('admin.edit-discovery', $post->slug)->with('success-update-discovery', 'You have successfully changed!');
+    }
+
     // Customization Planets
     public function planets()
     {
         $data = [
-            'planets' => Planets::paginate(4)
+            'planets' => Planets::orderBy('id', 'desc')->paginate(4)
         ];
         return view('admin/customization/planets/planets')->with($data);
     }
@@ -301,11 +473,11 @@ class CustomizationController extends Controller
             'diameter_km' => 'required|string|max:250',
             'avg_distance_to_earth_km' => 'required|string|max:250',
             'avg_distance_to_sun_km' => 'required|string|max:250',
-            'photo' => 'required|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
-            'photo_2' => 'required|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
-            'photo_3' => 'required|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
-            'photo_4' => 'required|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
-            'photo_5' => 'required|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
+            'photo' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
+            'photo_2' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
+            'photo_3' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
+            'photo_4' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
+            'photo_5' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
         ];
 
         $validator = Validator::make($dataForValidation, $validationRules);
@@ -348,7 +520,7 @@ class CustomizationController extends Controller
 
             return redirect()->route('admin.customization-planets')->with('success-create-planet', 'You have successfully created a planet.');
         } catch (Exception $e) {
-            return redirect()->back()->with('error-create-planet', 'Failed to create post due to an internal error. Please try again.');
+            return redirect()->back()->with('error-create-planet', 'Failed to create planet due to an internal error. Please try again!!!');
         }
     }
 
@@ -431,6 +603,7 @@ class CustomizationController extends Controller
         }
 
         foreach ($photoArray as $item) {
+            $deleteCheckboxName = 'delete_' . $item;
             if ($request->hasFile($item)) {
                 $imageFile = $request->file($item);
 
@@ -440,11 +613,20 @@ class CustomizationController extends Controller
                     File::delete($oldImagePath);
                 }
 
-                $imageName = 'update' . '_' . Str::ramdom(10) . '.' . $imageFile->getClientOriginalExtension();
+                $imageName = time() . '_' . Str::random(10) . '.' . $imageFile->getClientOriginalExtension();
 
                 $imageFile->move($destinationPath, $imageName);
 
-                $data_update[$item] = 'images/planets' . $imageName;
+                $data_updated[$item] = 'images/planets/' . $imageName;
+            } elseif ($request->has($deleteCheckboxName) && $request->$deleteCheckboxName == 1) {
+                $oldImagePathFromDb = $planet->$item;
+                $oldImagePath = public_path($oldImagePathFromDb);
+
+                if ($oldImagePathFromDb && File::exists($oldImagePath)) {
+                    File::delete($oldImagePath);
+                }
+
+                $data_updated[$item] = null;
             }
         }
 
@@ -460,5 +642,191 @@ class CustomizationController extends Controller
         ];
 
         return view('admin/customization/planets/search-planet')->with($data);
+    }
+
+    // Customization Constellations
+    public function constellations()
+    {
+        $data = [
+            'constellations' => Constellations::orderBy('id', 'desc')->paginate(4)
+        ];
+
+        return view('admin/customization/constellations/constellations')->with($data);
+    }
+
+    public function createConstellation()
+    {
+        return view('admin/customization/constellations/create-constellation');
+    }
+
+    public function saveConstellation(Request $request)
+    {
+        $processedSlug = Str::slug($request->slug);
+        $dataForValidation = $request->all();
+        $dataForValidation['slug'] = $processedSlug;
+
+        $validationRules = [
+            'name' => 'required|string|max:255|unique:constellations,name',
+            'slug' => 'required|string|max:255|unique:constellations,slug',
+            'title' => 'required|string|max:500',
+            'identification' => 'required|string',
+            'main_stars' => 'required|string',
+            'notable_features' => 'required|string',
+            'myths_meaning' => 'required|string',
+            'photo' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
+            'photo_2' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
+            'photo_3' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
+            'photo_4' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
+        ];
+
+        $validator = Validator::make($dataForValidation, $validationRules);
+        $validator->validate();
+
+        try {
+            $data_create = [
+                'name' => $request->name,
+                'slug' => $processedSlug,
+                'title' => $request->title,
+                'status' => 0,
+                'identification' => $request->identification,
+                'main_stars' => $request->main_stars,
+                'notable_features' => $request->notable_features,
+                'myths_meaning' => $request->myths_meaning
+            ];
+
+            $destinationPath = public_path('images/constellations');
+            if (!File::isDirectory($destinationPath)) {
+                File::makeDirectory($destinationPath, 0755, true, true);
+            }
+
+            $photoArray = ['photo'];
+            for ($i = 2; $i <= 4; $i++) {
+                $photoArray[] = 'photo_' . $i;
+            }
+
+            foreach ($photoArray as $item) {
+                if ($request->hasFile($item)) {
+                    $imageFile = $request->file($item);
+
+                    $imageName = time() . '_' . Str::random(10) . '.' . $imageFile->getClientOriginalExtension();
+
+                    $imageFile->move($destinationPath, $imageName);
+                }
+            }
+
+            Constellations::create($data_create);
+
+            return redirect()->route('admin.customization-constellations')->with('success-create-constellation', 'You have successfully created a constellation.');
+        } catch (Exception $e) {
+            return redirect()->back()->with('error-create-constellation', 'Failed to create constellation due to an internal error. Please try again!!!');
+        }
+    }
+
+    public function editConstellation($slug)
+    {
+        $data = [
+            'constellation' => Constellations::where('slug', $slug)->firstOrFail()
+        ];
+
+        return view('admin/customization/constellations/details-constellation')->with($data);
+    }
+
+    public function updatedConstellation(Request $request)
+    {
+        $validationRules = [
+            'name' => 'string|max:255|unique:constellations,name,' . $request->id,
+            'slug' => 'string|max:255|unique:constellations,slug,' . $request->id,
+            'status' => 'required|boolean',
+            'title' => 'required|string|max:500',
+            'identification' => 'required|string',
+            'main_stars' => 'required|string',
+            'notable_features' => 'required|string',
+            'myths_meaning' => 'required|string',
+            'photo' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
+            'photo_2' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
+            'photo_3' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
+            'photo_4' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
+        ];
+
+        $request->validate($validationRules);
+
+        $constellation = Constellations::find($request->id);
+
+        $data_updated = [
+            'name' => $request->name,
+            'slug' => $request->slug,
+            'status' => $request->status,
+            'title' => $request->title,
+            'identification' => $request->identification,
+            'main_stars' => $request->main_stars,
+            'notable_features' => $request->notable_features,
+            'myths_meaning' => $request->myths_meaning
+        ];
+
+        $destinationPath = public_path('images/constellations');
+
+        if (!File::isDirectory($destinationPath)) {
+            File::makeDirectory($destinationPath, 0755, true, true);
+        }
+
+        $photoArray = ['photo'];
+        for ($i = 2; $i <= 4; $i++) {
+            $photoArray[] = 'photo_' . $i;
+        }
+
+        foreach ($photoArray as $item) {
+            $deleteCheckboxName = 'delete_' . $item;
+            if ($request->hasFile($item)) {
+                $imageFile = $request->file($item);
+
+                $oldImagePathFromDb = $constellation->$item;
+                $oldImagePath = public_path($oldImagePathFromDb);
+                if ($oldImagePathFromDb && File::exists($oldImagePath)) {
+                    File::delete($oldImagePath);
+                }
+
+                $imageName = time() . '_' . Str::random(10) . '.' . $imageFile->getClientOriginalExtension();
+
+                $imageFile->move($destinationPath, $imageName);
+
+                $data_updated[$item] = 'images/constellations/' . $imageName;
+            } elseif ($request->has($deleteCheckboxName) && $request->$deleteCheckboxName == 1) {
+                $oldImagePathFromDb = $constellation->$item;
+                $oldImagePath = public_path($oldImagePathFromDb);
+
+                if ($oldImagePathFromDb && File::exists($oldImagePath)) {
+                    File::delete($oldImagePath);
+                }
+
+                $data_updated[$item] = null;
+            }
+        }
+
+        $constellation->update($data_updated);
+        return redirect()->route('admin.edit-constellation', $constellation->slug)->with('success-update-constellation', 'You have successfully changed!');
+    }
+
+    public function deleteConstellation($id)
+    {
+
+        $constellation = Constellations::find($id);
+
+        $photoArray = ['photo'];
+        for ($i = 2; $i <= 4; $i++) {
+            $photoArray[] = 'photo_' . $i;
+        }
+
+        foreach ($photoArray as $item) {
+            if ($constellation->$item) {
+                $fullPath = public_path($constellation->$item);
+
+                if (File::extension($fullPath)) {
+                    File::delete($fullPath);
+                }
+            }
+        }
+
+        $constellation->delete();
+        return redirect()->route('admin.customization-constellations')->with('success-delete-constellation', 'You have deleted successfully.');
     }
 }

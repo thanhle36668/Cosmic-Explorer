@@ -1,20 +1,21 @@
 @extends('layouts.admin.admin')
 
-@section('title', 'Planets Dashboard')
+@section('title', 'Constellations Dashboard')
 
 @section('content')
     <div class="card">
         <div class="card-header">
             <div class="row">
-                <h3 class="card-title col-8 d-flex align-items-center">All Planet</h3>
+                <h3 class="card-title col-8 d-flex align-items-center">All Constellation</h3>
                 <div class="card-tools col-4 d-flex justify-content-end align-items-center">
-                    <a href="{{ route('admin.create-planet') }}" class="btn btn-info mr-2" style="padding: 3px 6px;">Create
+                    <a href="{{ route('admin.create-constellation') }}" class="btn btn-info mr-2"
+                        style="padding: 3px 6px;">Create
                         New</a>
-                    <form action="{{ route('admin.search-planet') }}" method="POST">
+                    <form action="" method="POST">
                         @csrf
                         <div class="input-group input-group-sm">
                             <input type="text" name="search_name" class="form-control bg-secondary"
-                                placeholder="Search Name Planet">
+                                placeholder="Search Name Constellation">
                             <div class="input-group-append">
                                 <button type="submit" class="btn btn-primary">
                                     <i class="fas fa-search"></i>
@@ -28,18 +29,18 @@
         <div class="card-body p-0">
             <div class="row">
                 <div class="col-12">
-                    @if (session('success-create-planet'))
+                    @if (session('success-create-constellation'))
                         <div id="successAlert" class="alert alert-success alert-dismissible fade show mt-2 bg-success"
                             role="alert">
-                            {{ session('success-create-planet') }}
+                            {{ session('success-create-constellation') }}
                         </div>
                     @endif
                 </div>
                 <div class="col-12">
-                    @if (session('success-delete-planet'))
+                    @if (session('success-delete-constellation'))
                         <div id="successAlert" class="alert alert-success alert-dismissible fade show mt-2 bg-success"
                             role="alert">
-                            {{ session('success-delete-planet') }}
+                            {{ session('success-delete-constellation') }}
                         </div>
                     @endif
                 </div>
@@ -70,25 +71,26 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($planets as $planet)
+                    @foreach ($constellations as $constellation)
                         <tr class="text-center bg-secondary-subtle">
-                            <td>{{ $planet->id }}</td>
+                            <td>{{ $constellation->id }}</td>
                             <td>
-                                @if ($planet->photo)
-                                    <img src="{{ asset($planet->photo) }}" alt="{{ $planet->name }}" height="150"
-                                        width="150" class="me-sm-3 mb-2 mb-sm-0">
+                                @if ($constellation->photo)
+                                    <img src="{{ asset($constellation->photo) }}"
+                                        alt="{{ basename($constellation->photo) }}" height="150" width="150"
+                                        class="me-sm-3 mb-2 mb-sm-0">
                                 @else
                                     <div class="icon">
-                                        <img src="{{ asset('images') }}/planets/no-photo.jpg" alt="no-photo.jpg"
+                                        <img src="{{ asset('images') }}/constellations/no-photo.jpg" alt="no-photo.jpg"
                                             height="150" width="150">
                                     </div>
                                 @endif
                             </td>
                             <td>
-                                {{ $planet->name }}
+                                {{ $constellation->name }}
                             </td>
                             <td>
-                                @if ($planet->status)
+                                @if ($constellation->status)
                                     <p class="bg-success mb-0" style="padding: 6px 12px; border-radius: 4px">
                                         Publish</p>
                                 @else
@@ -97,24 +99,26 @@
                                 @endif
                             </td>
                             <td>
-                                {{ $planet->created_at->format('d/m/Y - H:i:s') }}
+                                {{ $constellation->created_at->format('d/m/Y - H:i:s') }}
                             </td>
                             <td>
-                                @if ($planet->updated_at)
-                                    {{ $planet->updated_at->format('d/m/Y - H:i:s') }}
+                                @if ($constellation->updated_at)
+                                    {{ $constellation->updated_at->format('d/m/Y - H:i:s') }}
                                 @else
                                     N/A
                                 @endif
                             </td>
                             </td>
                             <td>
-                                <a href="{{ route('admin.edit-planet', $planet->slug) }}" class="btn btn-info">
+                                <a href="{{ route('admin.edit-constellation', $constellation->slug) }}"
+                                    class="btn btn-info">
                                     <i class="nav-icon fas fa-edit"></i>
                                 </a>
                             </td>
                             <td>
-                                <a href="{{ route('admin.delete-planet', $planet->id) }}" class="btn btn-danger"
-                                    onclick="return confirm('Are you sure you want to delete planet with ID: {{ $planet->id }}?')">
+                                <a href="{{ route('admin.delete-constellation', $constellation->id) }}"
+                                    class="btn btn-danger"
+                                    onclick="return confirm('Are you sure you want to delete planet with ID: {{ $constellation->id }}?')">
                                     <i class="nav-icon fas fa-trash"></i>
                                 </a>
                             </td>
@@ -124,7 +128,7 @@
             </table>
         </div>
         <div class="pagination-links mt-4 mb-4">
-            {{ $planets->links('pagination::bootstrap-5') }}
+            {{ $constellations->links('pagination::bootstrap-5') }}
         </div>
     </div>
 @endsection

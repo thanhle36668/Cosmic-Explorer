@@ -125,9 +125,6 @@
                             <figure class="figure">
                                 <img src="{{ asset($discovery_details->photo) }}" class="img-fluid news-image"
                                     alt="{{ $discovery_details->name_photo }}">
-                                <figcaption class="figure-caption text-start text-light mt-2">Picture:
-                                    {{ $discovery_details->name_photo }}
-                                </figcaption>
                             </figure>
                         </div>
                         <p class="mt-2">
@@ -139,9 +136,6 @@
                             <figure class="figure">
                                 <img src="{{ asset($discovery_details->photo_2) }}" class="img-fluid news-image"
                                     alt="{{ $discovery_details->name_photo }}">
-                                <figcaption class="figure-caption text-start text-light mt-2">Picture:
-                                    {{ $discovery_details->name_photo }}
-                                </figcaption>
                             </figure>
                         </div>
                         <p class="mt-2">
@@ -172,8 +166,7 @@
                                 <div class="owl-collection owl-carousel">
                                     @foreach ($planets as $planet)
                                         <div class="item">
-                                            <img class="img-planet"
-                                                src="{{ asset('images') }}/planets/{{ $planet->photo_extra }}"
+                                            <img class="img-planet" src="{{ asset($planet->photo_5) }}"
                                                 alt="{{ $planet->name }}">
                                             <div class="down-content-discovery text-center p-3"
                                                 style="background-color: transparent; border: none">

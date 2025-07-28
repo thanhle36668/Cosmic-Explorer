@@ -27,8 +27,6 @@ class Discovery extends Model
         'content_2',
         'photo',
         'photo_2',
-        'name_photo',
-        'name_photo_2',
         'slug',
         'status',
     ];

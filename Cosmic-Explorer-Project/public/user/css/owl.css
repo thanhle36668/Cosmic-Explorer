@@ -108,6 +108,7 @@
 }
 
 .owl-carousel.owl-drag .owl-item {
+  cursor: pointer !important;
   -ms-touch-action: pan-y;
   touch-action: pan-y;
   -webkit-user-select: none;
@@ -120,7 +121,7 @@
 
 .owl-carousel.owl-drag .owl-item:hover {
   opacity: 1;
-  transform: translateY(-10px);
+  transform: scale(1.1);
 }
 
 .owl-carousel.owl-grab {

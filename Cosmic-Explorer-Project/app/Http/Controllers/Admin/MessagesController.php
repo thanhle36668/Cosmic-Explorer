@@ -41,7 +41,6 @@ class MessagesController extends Controller
     public function replyMessage(Request $request)
     {
         $message = [
-            'time_reply_message' => $request->time_reply_message,
             'reply_message' => $request->reply_message,
             'status' => $request->status,
             'replied_by' => $request->replied_by

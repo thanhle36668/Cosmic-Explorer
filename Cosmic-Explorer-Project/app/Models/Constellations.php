@@ -12,6 +12,11 @@ class Constellations extends Model
 
     public $timestamps = false;
 
+    protected $casts = [
+        'created_at' => 'datetime',
+        'updated_at' => 'datetime',
+    ];
+
     public $fillable = [
         'name',
         'title',
@@ -19,11 +24,11 @@ class Constellations extends Model
         'photo_2',
         'photo_3',
         'photo_4',
-        'photo_5',
         'identification',
         'main_stars',
         'notable_features',
         'myths_meaning',
         'slug',
+        'status',
     ];
 }

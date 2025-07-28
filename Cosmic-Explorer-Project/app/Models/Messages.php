@@ -21,8 +21,6 @@ class Messages extends Model
         'sender_name',
         'sender_email',
         'message',
-        'time_received_message',
-        'time_reply_message',
         'status',
         'reply_message',
         'replied_by',

@@ -39,44 +39,13 @@ class CommentController extends Controller
         Comment::create([
         'content' => $request->content,
         'post_id' => $request->post_id,
-        'user_id' => Auth::id(), // null nếu chưa đăng nhập
+        'user_id' => Auth::id(), // null if not login
         'name' => $request->name,
         'email' => $request->email,
-        'approved' => false, // hoặc true nếu không cần kiểm duyệt
+        'approved' => false, 
         ]);
 
-        return back()->with('success', 'Cảm ơn bạn đã bình luận!');
+        return back()->with('success', 'Thanks for your comment');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Comment $comment)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Comment $comment)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Comment $comment)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Comment $comment)
-    {
-        //
-    }
 }

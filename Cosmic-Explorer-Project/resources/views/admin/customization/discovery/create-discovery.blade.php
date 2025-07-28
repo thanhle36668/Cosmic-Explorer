@@ -20,7 +20,7 @@
         <section class="content">
             <div class="card card-primary">
                 <div class="card-header">
-                    <h3 class="card-title">Create Post</h3>
+                    <h3 class="card-title">Create New Post</h3>
                 </div>
                 <div class="card-body">
                     <div class="form-group">
@@ -57,43 +57,37 @@
                             placeholder="e.g., A detailed look at Alexander Fleming's groundbreaking discovery and its impact." required>{{ old('description_details') }}</textarea>
                     </div>
                     <div class="form-group">
-                        <label for="content_1">Content 1:</label>
+                        <label for="content_1">Content 1</label>
                         <textarea id="content_1" name="content_1" class="form-control" rows="10" cols="10"
                             placeholder="e.g., In 1928, Fleming noticed mold killing bacteria in his lab..." required>{{ old('content_1') }}</textarea>
                     </div>
                     <div class="form-group">
-                        <label for="content_2">Content 2:</label>
+                        <label for="content_2">Content 2</label>
                         <textarea id="content_2" name="content_2" class="form-control" rows="10" cols="10"
                             placeholder="e.g., Its mass production during WWII saved countless lives..." required>{{ old('content_2') }}</textarea>
                     </div>
                     <div class="row">
                         <div class="form-group mb-4 col-12 col-md-6">
-                            <label for="photo" class="form-label d-block mb-2">Photo 1 (Featured):</label>
+                            <label for="photo" class="form-label d-block mb-2">Photo 1 (Featured)</label>
                             <div class="row align-items-center g-3">
                                 <div class="col-12 col-sm-8 col-md-12 col-lg-12">
                                     <input type="file" id="photo" name="photo" accept="image/*">
                                     <small class="form-text text-muted mt-2">
-                                        Please select a new image file (JPG, PNG, GIF, WebP)
+                                        Please select a new image file (JPG, JPEG, PNG, GIF, WEBP, SVG).
                                     </small>
                                 </div>
                             </div>
-                            <label for="name_photo" class="mt-2">Name Photo 1:</label>
-                            <input type="text" id="name_photo" name="name_photo" class="form-control"
-                                value="{{ old('name_photo') }}" placeholder="e.g., Alexander Fleming" required>
                         </div>
                         <div class="form-group mb-4 col-12 col-md-6">
-                            <label for="photo_2" class="form-label d-block mb-2">Photo 2:</label>
+                            <label for="photo_2" class="form-label d-block mb-2">Photo 2</label>
                             <div class="row align-items-center g-3">
                                 <div class="col-12 col-sm-8 col-md-12 col-lg-12">
                                     <input type="file" id="photo_2" name="photo_2" accept="image/*">
                                     <small class="form-text text-muted mt-2">
-                                        Please select a new image file (JPG, PNG, GIF, WebP)
+                                        Please select a new image file (JPG, JPEG, PNG, GIF, WEBP, SVG).
                                     </small>
                                 </div>
                             </div>
-                            <label for="name_photo_2" class="mt-2">Name Photo 2:</label>
-                            <input type="text" id="name_photo_2" name="name_photo_2" class="form-control"
-                                value="{{ old('name_photo_2') }}" required placeholder="e.g., Penicillin culture">
                         </div>
                     </div>
                 </div>

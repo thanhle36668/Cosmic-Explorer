@@ -103,25 +103,27 @@
         <div class="container">
             <div class="space-y-5 mt-5 mx-auto" style="max-width: 1000px;">
                 @foreach ($constellations as $constellation)
-                    <div id="{{ $constellation->name }}"
-                        class="card p-4 rounded-lg shadow-lg scroll-margin-top-120 d-md-flex flex-md-row align-items-md-center gap-5"
-                        style="height: auto">
-                        <div class="flex-grow-1">
-                            <h3>{{ $constellation->name }}</h3>
-                            <p class="text-light lh-lg mb-3">
-                                {{ $constellation->identification }}
-                            </p>
-                            <div class="main-button">
-                                <a href="{{ route('details-constellation', $constellation->slug) }}">View
-                                    Details</a>
+                    @if ($constellation->status)
+                        <div id="{{ $constellation->name }}"
+                            class="card p-4 rounded-lg shadow-lg scroll-margin-top-120 d-md-flex flex-md-row align-items-md-center gap-5"
+                            style="height: auto">
+                            <div class="flex-grow-1">
+                                <h3>{{ $constellation->name }}</h3>
+                                <p class="text-light lh-lg mb-3">
+                                    {{ $constellation->identification }}
+                                </p>
+                                <div class="main-button">
+                                    <a href="{{ route('details-constellation', $constellation->slug) }}">View
+                                        Details</a>
+                                </div>
+                            </div>
+                            <div
+                                class="planet-image-fixed-size d-flex align-items-center justify-content-center overflow-hidden mb-2">
+                                <img src="{{ asset($constellation->photo) }}" alt="{{ basename($constellation->photo) }}"
+                                    class="img-fluid rounded-lg">
                             </div>
                         </div>
-                        <div
-                            class="planet-image-fixed-size d-flex align-items-center justify-content-center overflow-hidden mb-2">
-                            <img src="{{ asset('images') }}/constellations/{{ $constellation->photo }}"
-                                alt="{{ $constellation->name }}" class="img-fluid rounded-lg">
-                        </div>
-                    </div>
+                    @endif
                 @endforeach
             </div>
         </div>

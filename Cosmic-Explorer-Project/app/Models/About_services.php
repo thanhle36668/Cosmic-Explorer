@@ -14,7 +14,13 @@ class About_services extends Model
 
     public $fillable = [
         'name',
+        'name_2',
+        'name_3',
         'description',
+        'description_2',
+        'description_3',
         'photo',
+        'photo_2',
+        'photo_3',
     ];
 }
