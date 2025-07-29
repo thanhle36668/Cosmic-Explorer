@@ -132,7 +132,7 @@
                             </td>
                             <td>
                                 <a href="{{ route('admin.delete-observatory', $observatory->id) }}" class="btn btn-danger"
-                                    onclick="return confirm('Are you sure you want to delete planet with ID: {{ $observatory->id }}?')">
+                                    onclick="return confirm('Are you sure you want to delete observatory with name: {{ $observatory->name }}?')">
                                     <i class="nav-icon fas fa-trash d-inline"></i>
                                     <span>Remove</span>
                                 </a>

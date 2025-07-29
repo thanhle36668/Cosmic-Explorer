@@ -27,7 +27,7 @@
                 </div>
                 <div class="card-body">
                     <div class="form-group">
-                        <label for="name_book">Name</label>
+                        <label for="name_book">Book Name</label>
                         <input id="name_book" name="name_book" class="form-control" value="{{ old('name_book') }}" required>
                     </div>
                     <div class="form-group">

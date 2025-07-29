@@ -135,7 +135,7 @@
                             <td>
                                 <a href="{{ route('admin.delete-constellation', $constellation->id) }}"
                                     class="btn btn-danger"
-                                    onclick="return confirm('Are you sure you want to delete planet with ID: {{ $constellation->id }}?')">
+                                    onclick="return confirm('Are you sure you want to delete constellation with name: {{ $constellation->name }}?')">
                                     <i class="nav-icon fas fa-trash d-inline"></i>
                                     <span>Remove</span>
                                 </a>

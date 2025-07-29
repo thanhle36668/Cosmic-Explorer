@@ -6,11 +6,13 @@ use App\Http\Controllers\Controller;
 use App\Models\About;
 use App\Models\About_services;
 use App\Models\Books;
+use App\Models\Comment;
 use App\Models\Constellations;
 use App\Models\Discovery;
 use App\Models\Introduction;
 use App\Models\Observatories;
 use App\Models\Planets;
+use App\Models\Post;
 use Exception;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\File;
@@ -21,6 +23,21 @@ use Illuminate\Support\Facades\Redis;
 
 class CustomizationController extends Controller
 {
+
+    // Dashboard
+    public function dashboard()
+    {
+        $data = [
+            'total_planet' => Planets::count(),
+            'total_constellation' => Constellations::count(),
+            'total_observatory' => Observatories::count(),
+            'total_post' => Post::count(),
+            'total_comment' => Comment::count(),
+            'total_post_discovery' => Discovery::count()
+        ];
+        return view('admin/dashboard')->with($data);
+    }
+
     // Customization Introduction
     public function introduction()
     {
@@ -1028,7 +1045,7 @@ class CustomizationController extends Controller
             if ($observatory->$item) {
                 $fullPath = public_path($observatory->$item);
 
-                if (File::extension($fullPath)) {
+                if (File::exists($fullPath)) {
                     File::delete($fullPath);
                 }
             }
@@ -1203,5 +1220,29 @@ class CustomizationController extends Controller
 
         $book->update($data_updated);
         return redirect()->route('admin.edit-book', $book->slug)->with('success-update-book', 'You have successfully changed!');
+    }
+
+    public function deleteBook($id)
+    {
+        $book = Books::find($id);
+
+        if ($book->photo_book) {
+            $fullPath = public_path($book->photo_book);
+            if (File::exists($fullPath)) {
+                File::delete($fullPath);
+            }
+        }
+
+        $book->delete();
+        return redirect()->route('admin.customization-books')->with('success-delete-book', 'You have deleted successfully.');
+    }
+
+    public function searchBook(Request $request)
+    {
+        $data = [
+            'search_book' => Books::where('name_book', 'LIKE', '%' . $request->search_name . '%')->get()
+        ];
+
+        return view('admin/customization/books/search-book')->with($data);
     }
 }

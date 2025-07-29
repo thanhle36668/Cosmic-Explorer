@@ -125,7 +125,7 @@
                             </td>
                             <td>
                                 <a href="{{ route('admin.delete-planet', $planet->id) }}" class="btn btn-danger"
-                                    onclick="return confirm('Are you sure you want to delete planet with ID: {{ $planet->id }}?')">
+                                    onclick="return confirm('Are you sure you want to delete planet with name: {{ $planet->name }}?')">
                                     <i class="nav-icon fas fa-trash d-inline"></i>
                                     <span>Remove</span>
                                 </a>

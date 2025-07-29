@@ -52,63 +52,70 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($search_planet as $planet)
+                    @if ($search_planet->isNotEmpty())
+                        @foreach ($search_planet as $planet)
+                            <tr class="text-center bg-secondary-subtle">
+                                <td>{{ $planet->id }}</td>
+                                <td>
+                                    @if ($planet->photo)
+                                        <img src="{{ asset($planet->photo) }}" alt="{{ $planet->name }}" height="150"
+                                            width="150" class="me-sm-3 mb-2 mb-sm-0">
+                                    @else
+                                        <div class="icon">
+                                            <img src="{{ asset('images') }}/planets/no-photo.jpg" alt="no-photo.jpg"
+                                                height="150" width="150">
+                                        </div>
+                                    @endif
+                                </td>
+                                <td>
+                                    {{ $planet->name }}
+                                </td>
+                                <td>
+                                    @if ($planet->status)
+                                        <p class="bg-success mb-0" style="padding: 6px 12px; border-radius: 4px">
+                                            Publish</p>
+                                    @else
+                                        <p class="bg-danger mb-0" style="padding: 6px 12px; border-radius: 4px">
+                                            Private</p>
+                                    @endif
+                                </td>
+                                <td>
+                                    {{ $planet->created_at->format('d/m/Y - H:i:s') }}
+                                </td>
+                                <td>
+                                    @if ($planet->updated_at)
+                                        {{ $planet->updated_at->format('d/m/Y - H:i:s') }}
+                                    @else
+                                        N/A
+                                    @endif
+                                </td>
+                                <td>
+                                    <a href="{{ route('details-planet', $planet->slug) }}" class="btn btn-info"
+                                        target="blank">
+                                        <i class="nav-icon far fa-folder d-inline"></i>
+                                        <span>View</span>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="{{ route('admin.edit-planet', $planet->slug) }}" class="btn btn-info">
+                                        <i class="nav-icon fas fa-edit d-inline"></i>
+                                        <span>Edit</span>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="{{ route('admin.delete-planet', $planet->id) }}" class="btn btn-danger"
+                                        onclick="return confirm('Are you sure you want to delete planet with ID: {{ $planet->id }}?')">
+                                        <i class="nav-icon fas fa-trash d-inline"></i>
+                                        <span>Remove</span>
+                                    </a>
+                                </td>
+                            </tr>
+                        @endforeach
+                    @else
                         <tr class="text-center bg-secondary-subtle">
-                            <td>{{ $planet->id }}</td>
-                            <td>
-                                @if ($planet->photo)
-                                    <img src="{{ asset($planet->photo) }}" alt="{{ $planet->name }}" height="150"
-                                        width="150" class="me-sm-3 mb-2 mb-sm-0">
-                                @else
-                                    <div class="icon">
-                                        <img src="{{ asset('images') }}/planets/no-photo.jpg" alt="no-photo.jpg"
-                                            height="150" width="150">
-                                    </div>
-                                @endif
-                            </td>
-                            <td>
-                                {{ $planet->name }}
-                            </td>
-                            <td>
-                                @if ($planet->status)
-                                    <p class="bg-success mb-0" style="padding: 6px 12px; border-radius: 4px">
-                                        Publish</p>
-                                @else
-                                    <p class="bg-danger mb-0" style="padding: 6px 12px; border-radius: 4px">
-                                        Private</p>
-                                @endif
-                            </td>
-                            <td>
-                                {{ $planet->created_at->format('d/m/Y - H:i:s') }}
-                            </td>
-                            <td>
-                                @if ($planet->updated_at)
-                                    {{ $planet->updated_at->format('d/m/Y - H:i:s') }}
-                                @else
-                                    N/A
-                                @endif
-                            </td>
-                            <td>
-                                <a href="{{ route('details-planet', $planet->slug) }}" class="btn btn-info" target="blank">
-                                    <i class="nav-icon far fa-folder d-inline"></i>
-                                    <span>View</span>
-                                </a>
-                            </td>
-                            <td>
-                                <a href="{{ route('admin.edit-planet', $planet->slug) }}" class="btn btn-info">
-                                    <i class="nav-icon fas fa-edit d-inline"></i>
-                                    <span>Edit</span>
-                                </a>
-                            </td>
-                            <td>
-                                <a href="{{ route('admin.delete-planet', $planet->id) }}" class="btn btn-danger"
-                                    onclick="return confirm('Are you sure you want to delete planet with ID: {{ $planet->id }}?')">
-                                    <i class="nav-icon fas fa-trash d-inline"></i>
-                                    <span>Remove</span>
-                                </a>
-                            </td>
+                            <td colspan="9">No result found!!!</td>
                         </tr>
-                    @endforeach
+                    @endif
                 </tbody>
             </table>
         </div>

@@ -19,12 +19,12 @@ class CommentsController extends Controller
         $comment->approved = !$comment->approved;
         $comment->save();
 
-        return redirect()->back()->with('success', 'Cập nhật trạng thái thành công.');
+        return redirect()->back()->with('success', 'Status update successful.');
     }
 
     public function destroy($id)
     {
         Comment::destroy($id);
-        return redirect()->back()->with('success', 'Đã xoá bình luận.');
+        return redirect()->back()->with('success', 'Comment deleted.');
     }
 }

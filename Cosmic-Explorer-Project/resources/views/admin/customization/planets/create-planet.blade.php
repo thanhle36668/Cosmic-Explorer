@@ -27,7 +27,7 @@
                 </div>
                 <div class="card-body">
                     <div class="form-group">
-                        <label for="name">Name</label>
+                        <label for="name">Name Planet</label>
                         <input id="name" name="name" class="form-control" value="{{ old('name') }}"
                             placeholder="e.g., Mars, Kepler-186f, Proxima Centauri b" required>
                     </div>

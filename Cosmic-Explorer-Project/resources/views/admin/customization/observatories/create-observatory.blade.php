@@ -27,7 +27,7 @@
                 </div>
                 <div class="card-body">
                     <div class="form-group">
-                        <label for="name">Name</label>
+                        <label for="name">Name Observatory</label>
                         <input id="name" name="name" class="form-control" value="{{ old('name') }}" required>
                     </div>
                     <div class="form-group">

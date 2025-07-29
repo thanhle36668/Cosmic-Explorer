@@ -10,7 +10,7 @@
                 <div class="card-tools col-4 d-flex justify-content-end align-items-center">
                     <a href="{{ route('admin.create-book') }}" class="btn btn-info mr-2" style="padding: 3px 6px;">Create
                         New</a>
-                    <form action="#" method="POST">
+                    <form action="{{ route('admin.search-book') }}" method="POST">
                         @csrf
                         <div class="input-group input-group-sm">
                             <input type="text" name="search_name" class="form-control bg-secondary"
@@ -26,16 +26,16 @@
             </div>
         </div>
         <div class="card-body p-0">
-            @if (session('success-create-planet'))
+            @if (session('success-create-book'))
                 <div id="successAlert" class="alert alert-success alert-dismissible fade show mt-2 bg-success"
                     role="alert">
-                    {{ session('success-create-planet') }}
+                    {{ session('success-create-book') }}
                 </div>
             @endif
-            @if (session('success-delete-planet'))
+            @if (session('success-delete-book'))
                 <div id="successAlert" class="alert alert-success alert-dismissible fade show mt-2 bg-success"
                     role="alert">
-                    {{ session('success-delete-planet') }}
+                    {{ session('success-delete-book') }}
                 </div>
             @endif
             <table class="table table-striped projects">
@@ -48,7 +48,7 @@
                             Photo
                         </th>
                         <th style="width: 13%">
-                            Name
+                            Book Name
                         </th>
                         <th style="width: 5%">
                             Status
@@ -122,8 +122,8 @@
                                 </a>
                             </td>
                             <td>
-                                <a href="#" class="btn btn-danger"
-                                    onclick="return confirm('Are you sure you want to delete planet with ID: {{ $book->id }}?')">
+                                <a href="{{ route('admin.delete-book', $book->id) }}" class="btn btn-danger"
+                                    onclick="return confirm('Are you sure you want to delete book with name: {{ $book->name_book }}?')">
                                     <i class="nav-icon fas fa-trash d-inline"></i>
                                     <span>Remove</span>
                                 </a>

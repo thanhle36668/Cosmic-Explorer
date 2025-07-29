@@ -39,8 +39,7 @@ Route::group(['prefix' => ''], function () {
 // Admin 
 Route::middleware(['auth', 'is_admin'])->prefix('admin')->name('admin.')
     ->group(function () {
-        Route::get('/', fn() => view('admin.dashboard'))
-            ->name('admin.dashboard');
+        Route::get('/', [CustomizationController::class, 'dashboard'])->name('admin.dashboard');
         Route::resource('posts', PostController::class);
         // Route::resource('comments', CommentController::class);
         // Dashboard Comments
@@ -111,6 +110,8 @@ Route::middleware(['auth', 'is_admin'])->prefix('admin')->name('admin.')
         Route::put('/save-book', [CustomizationController::class, 'saveBook'])->name('save-book');
         Route::get('/edit-book/{slug}', [CustomizationController::class, 'editBook'])->name('edit-book');
         Route::put('/updated-book', [CustomizationController::class, 'updatedBook'])->name('updated-book');
+        Route::get('/delete-book/{id}', [CustomizationController::class, 'deleteBook'])->name('delete-book');
+        Route::post('/search-book', [CustomizationController::class, 'searchBook'])->name('search-book');
     });
 
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
