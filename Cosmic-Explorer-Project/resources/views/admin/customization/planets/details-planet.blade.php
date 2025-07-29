@@ -139,7 +139,7 @@
                                 </div>
                                 <div class="col-12 col-sm-8 col-md-12 col-lg-7">
                                     <input type="file" id="photo_2" name="photo_2" accept="image/*">
-                                    @if ($planet->photo)
+                                    @if ($planet->photo_2)
                                         <small class="form-text text-muted mb-2 mt-0">
                                             Please select a new image file (JPG, JPEG, PNG, GIF, WEBP, SVG).
                                             <br>
@@ -181,7 +181,7 @@
                                 </div>
                                 <div class="col-12 col-sm-8 col-md-12 col-lg-7">
                                     <input type="file" id="photo_3" name="photo_3" accept="image/*">
-                                    @if ($planet->photo)
+                                    @if ($planet->photo_3)
                                         <small class="form-text text-muted mb-2 mt-0">
                                             Please select a new image file (JPG, JPEG, PNG, GIF, WEBP, SVG).
                                             <br>
@@ -223,7 +223,7 @@
                                 </div>
                                 <div class="col-12 col-sm-8 col-md-12 col-lg-7">
                                     <input type="file" id="photo_4" name="photo_4" accept="image/*">
-                                    @if ($planet->photo)
+                                    @if ($planet->photo_4)
                                         <small class="form-text text-muted mb-2 mt-0">
                                             Please select a new image file (JPG, JPEG, PNG, GIF, WEBP, SVG).
                                             <br>
@@ -265,7 +265,7 @@
                                 </div>
                                 <div class="col-12 col-sm-8 col-md-12 col-lg-7">
                                     <input type="file" id="photo_5" name="photo_5" accept="image/*">
-                                    @if ($planet->photo)
+                                    @if ($planet->photo_5)
                                         <small class="form-text text-muted mb-2 mt-0">
                                             Please select a new image file (JPG, JPEG, PNG, GIF, WEBP, SVG).
                                             <br>
