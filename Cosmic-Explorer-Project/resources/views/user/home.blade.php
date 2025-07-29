@@ -129,49 +129,49 @@
                 <div class="col-lg-5 offset-lg-1">
                     <div class="owl-banner owl-carousel">
                         @if ($information->photo)
-                            <div class="item p-2">
+                            <div class="item p-4">
                                 <img class="rounded-circle" src="{{ asset($information->photo) }}"
                                     alt="{{ basename($information->photo) }}" height="480px">
                             </div>
                         @endif
                         @if ($information->photo_2)
-                            <div class="item p-2">
+                            <div class="item p-4">
                                 <img class="rounded-circle" src="{{ asset($information->photo_2) }}"
                                     alt="{{ basename($information->photo_2) }}" height="480px">
                             </div>
                         @endif
                         @if ($information->photo_3)
-                            <div class="item p-2">
+                            <div class="item p-4">
                                 <img class="rounded-circle" src="{{ asset($information->photo_3) }}"
                                     alt="{{ basename($information->photo_3) }}" height="480px">
                             </div>
                         @endif
                         @if ($information->photo_4)
-                            <div class="item p-2">
+                            <div class="item p-4">
                                 <img class="rounded-circle" src="{{ asset($information->photo_4) }}"
                                     alt="{{ basename($information->photo_4) }}" height="480px">
                             </div>
                         @endif
                         @if ($information->photo_5)
-                            <div class="item p-2">
+                            <div class="item p-4">
                                 <img class="rounded-circle" src="{{ asset($information->photo_5) }}"
                                     alt="{{ basename($information->photo_5) }}" height="480px">
                             </div>
                         @endif
                         @if ($information->photo_6)
-                            <div class="item p-2">
+                            <div class="item p-4">
                                 <img class="rounded-circle" src="{{ asset($information->photo_6) }}"
                                     alt="{{ basename($information->photo_6) }}" height="480px">
                             </div>
                         @endif
                         @if ($information->photo_7)
-                            <div class="item p-2">
+                            <div class="item p-4">
                                 <img class="rounded-circle" src="{{ asset($information->photo_7) }}"
                                     alt="{{ basename($information->photo_7) }}" height="480px">
                             </div>
                         @endif
                         @if ($information->photo_8)
-                            <div class="item p-2">
+                            <div class="item p-4">
                                 <img class="rounded-circle" src="{{ asset($information->photo_8) }}"
                                     alt="{{ basename($information->photo_8) }}" height="480px">
                             </div>
