@@ -858,7 +858,7 @@ Introduction
 
 .main-banner {
   background-size: cover;
-  padding-top: 230px;
+  padding-top: 200px;
   padding-bottom: 160px;
   background-color: #2a2a2a;
 }
@@ -1128,7 +1128,7 @@ Categories & Collections Style
 }
 
 .collections .item img {
-  height: 380px !important;
+  height: 360px !important;
   border-top-right-radius: 20px;
   border-top-left-radius: 20px;
 }
@@ -1148,7 +1148,7 @@ Categories & Collections Style
 }
 
 .collections .item .img-constellation {
-  height: 380px !important;
+  height: 300px !important;
   width: 100% !important;
   border-top-right-radius: 25px;
   border-top-left-radius: 25px;

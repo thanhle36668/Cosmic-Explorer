@@ -129,49 +129,49 @@
                 <div class="col-lg-5 offset-lg-1">
                     <div class="owl-banner owl-carousel">
                         @if ($information->photo)
-                            <div class="item">
+                            <div class="item p-2">
                                 <img class="rounded-circle" src="{{ asset($information->photo) }}"
                                     alt="{{ basename($information->photo) }}" height="480px">
                             </div>
                         @endif
                         @if ($information->photo_2)
-                            <div class="item">
+                            <div class="item p-2">
                                 <img class="rounded-circle" src="{{ asset($information->photo_2) }}"
                                     alt="{{ basename($information->photo_2) }}" height="480px">
                             </div>
                         @endif
                         @if ($information->photo_3)
-                            <div class="item">
+                            <div class="item p-2">
                                 <img class="rounded-circle" src="{{ asset($information->photo_3) }}"
                                     alt="{{ basename($information->photo_3) }}" height="480px">
                             </div>
                         @endif
                         @if ($information->photo_4)
-                            <div class="item">
+                            <div class="item p-2">
                                 <img class="rounded-circle" src="{{ asset($information->photo_4) }}"
                                     alt="{{ basename($information->photo_4) }}" height="480px">
                             </div>
                         @endif
                         @if ($information->photo_5)
-                            <div class="item">
+                            <div class="item p-2">
                                 <img class="rounded-circle" src="{{ asset($information->photo_5) }}"
                                     alt="{{ basename($information->photo_5) }}" height="480px">
                             </div>
                         @endif
                         @if ($information->photo_6)
-                            <div class="item">
+                            <div class="item p-2">
                                 <img class="rounded-circle" src="{{ asset($information->photo_6) }}"
                                     alt="{{ basename($information->photo_6) }}" height="480px">
                             </div>
                         @endif
                         @if ($information->photo_7)
-                            <div class="item">
+                            <div class="item p-2">
                                 <img class="rounded-circle" src="{{ asset($information->photo_7) }}"
                                     alt="{{ basename($information->photo_7) }}" height="480px">
                             </div>
                         @endif
                         @if ($information->photo_8)
-                            <div class="item">
+                            <div class="item p-2">
                                 <img class="rounded-circle" src="{{ asset($information->photo_8) }}"
                                     alt="{{ basename($information->photo_8) }}" height="480px">
                             </div>
@@ -213,8 +213,9 @@
                                         alt="{{ basename($discoveries->photo) }}">
                                 </div>
                             @else
-                                <div class="icon">
-                                    <img src="{{ asset('images') }}/discovery/no-photo.jpg" alt="no-photo.jpg">
+                                <div class="col-md-4">
+                                    <img src="{{ asset('images') }}/discovery/no-photo.jpg" alt="no-photo.jpg"
+                                        style="width: 400px; height:430px">
                                 </div>
                             @endif
                             <div class="col-md-8 d-flex justify-content-center align-items-center">
@@ -443,7 +444,7 @@
         <div class="contact-us">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-6">
+                    <div class="col-lg-6 col-md-12 col-sm-12">
                         <div id="map">
                             <iframe
                                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3694.5308998533724!2d106.7116196747655!3d10.806685889343925!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317529ed00409f09%3A0x11f7708a5c77d777!2zQXB0ZWNoIENvbXB1dGVyIEVkdWNhdGlvbiAtIEjhu4cgVGjhu5FuZyDEkMOgbyB04bqhbyBM4bqtcCBUcsOsbmggVmnDqm4gUXXhu5FjIHThur8gQXB0ZWNo!5e1!3m2!1svi!2s!4v1751729317282!5m2!1svi!2s"
@@ -451,20 +452,20 @@
                                 referrerpolicy="no-referrer-when-downgrade"></iframe>
                         </div>
                     </div>
-                    <div class="col-lg-6">
+                    <div class="col-lg-6 col-md-12 col-sm-12">
                         <div class="section-heading">
                             <h2>Say Hello. Don't Be Shy!</h2>
                         </div>
                         <form id="contact" action="{{ route('send-message') }}" method="post">
                             @csrf
                             <div class="row">
-                                <div class="col-lg-6">
+                                <div class="col-lg-6 col-md-6 col-sm-12">
                                     <fieldset>
                                         <input name="sender_name" type="text" id="name" placeholder="Your name"
                                             required>
                                     </fieldset>
                                 </div>
-                                <div class="col-lg-6">
+                                <div class="col-lg-6 col-md-6 col-sm-12">
                                     <fieldset>
                                         <input name="sender_email" type="text" id="email"
                                             placeholder="Your email" pattern="[^ @]*@[^ @]*" required>
@@ -490,26 +491,26 @@
         <div class="subscribe">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-8">
+                    <div class="col-lg-8 col-md-12 col-sm-12">
                         <div class="section-heading">
                             <h2>By Subscribing To Our Newsletter</h2>
                         </div>
                         <form id="subscribe" action="{{ route('created-subscribe') }}" method="POST">
                             @csrf
                             <div class="row">
-                                <div class="col-lg-5">
+                                <div class="col-lg-5 col-md-6 col-sm-12">
                                     <fieldset>
                                         <input name="name" type="text" id="name" placeholder="Your Name"
                                             required>
                                     </fieldset>
                                 </div>
-                                <div class="col-lg-5">
+                                <div class="col-lg-5 col-md-6 col-sm-12">
                                     <fieldset>
                                         <input name="email" type="text" id="email" pattern="[^ @]*@[^ @]*"
                                             placeholder="Your Email Address" required>
                                     </fieldset>
                                 </div>
-                                <div class="col-lg-2">
+                                <div class="col-lg-2 col-md-12 col-sm-12">
                                     <fieldset>
                                         <button type="submit" id="form-submit" class="main-dark-button"><i
                                                 class="fa fa-paper-plane"></i></button>
@@ -518,9 +519,9 @@
                             </div>
                         </form>
                     </div>
-                    <div class="col-lg-4">
+                    <div class="col-lg-4 col-md-12 col-sm-12 mt-lg-0 mt-md-5 mt-sm-5">
                         <div class="row">
-                            <div class="col-6">
+                            <div class="col-md-6 col-sm-12">
                                 <ul>
                                     <li>School Location:<br><span>35/6 D5 Street, Ward 25, Binh Thanh, Ho Chi Minh City
                                             72308, Vietnam</span></li>
@@ -529,7 +530,7 @@
                                     <li>Phone:<br><span>+84 1800 1779</span></li>
                                 </ul>
                             </div>
-                            <div class="col-6">
+                            <div class="col-md-6 col-sm-12 mt-md-0 mt-sm-3">
                                 <ul>
                                     <li>Work Hours:<br><span>07:30 AM - 10:00 PM Daily (Except Sunday)</span></li>
                                     <li>Email:<br><span>aptech2@aprotrain.com</span></li>

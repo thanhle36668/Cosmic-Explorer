@@ -1,6 +1,8 @@
 @extends('layouts.admin.admin')
 
-@section('title', 'Admin Dashboard')
+@section('title')
+    <title>Cosmic Explorer Dashboard</title>
+@endsection
 
 @section('content')
     <section class="content">

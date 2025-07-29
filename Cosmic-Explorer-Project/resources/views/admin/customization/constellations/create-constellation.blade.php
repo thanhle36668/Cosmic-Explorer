@@ -24,7 +24,7 @@
                     <div class="form-group">
                         <label for="name">Name Constellation</label>
                         <input id="name" name="name" class="form-control" value="{{ old('name') }}"
-                            placeholder="Orion (The Hunter)" required>
+                            placeholder="e.g., Orion (The Hunter), Scorpius (The Scorpion)" required>
                     </div>
                     <div class="form-group">
                         <label for="slug">Slug</label>
@@ -34,30 +34,30 @@
                     <div class="form-group">
                         <label for="title">Title</label>
                         <input id="title" name="title" value="{{ old('title') }}" class="form-control"
-                            placeholder="Orion" required>
+                            placeholder="e.g., Orion, Scorpius" required>
                     </div>
                     <div class="form-group">
                         <label for="identification">Identification</label>
                         <textarea id="identification" name="identification" class="form-control" rows="10" cols="10"
-                            placeholder="This is a very bright constellation, easy to find in the winter sky (December - March). It's located near the celestial equator, so you can see it from most places on Earth. It looks like a hunter, clearly marked by Orion's Belt (three bright stars in a straight line)"
+                            placeholder="e.g., This is a very bright constellation, easy to find in the winter sky (December - March). It's located near the celestial equator, so you can see it from most places on Earth. It looks like a hunter, clearly marked by Orion's Belt (three bright stars in a straight line)"
                             required>{{ old('identification') }}</textarea>
                     </div>
                     <div class="form-group">
                         <label for="main_stars">Main Stars</label>
                         <textarea id="main_stars" name="main_stars" class="form-control" rows="10" cols="10"
-                            placeholder="Betelgeuse: A huge, red-orange star on the hunter's shoulder, estimated to be about 1,000 times bigger than our Sun. Rigel: A brilliant blue-white star on the hunter's foot"
+                            placeholder="e.g., Betelgeuse: A huge, red-orange star on the hunter's shoulder, estimated to be about 1,000 times bigger than our Sun. Rigel: A brilliant blue-white star on the hunter's foot"
                             required>{{ old('main_stars') }}</textarea>
                     </div>
                     <div class="form-group">
                         <label for="notable_features">Notable Features</label>
                         <textarea id="notable_features" name="notable_features" class="form-control" rows="10" cols="10"
-                            placeholder="The Orion Nebula (M42), a giant star-forming region about 1,344 light-years away. You can often see it with your naked eye as a fuzzy patch in dark skies"
+                            placeholder="e.g., The Orion Nebula (M42), a giant star-forming region about 1,344 light-years away. You can often see it with your naked eye as a fuzzy patch in dark skies"
                             required>{{ old('notable_features') }}</textarea>
                     </div>
                     <div class="form-group">
                         <label for="myths_meaning">Myths Meaning</label>
                         <textarea id="myths_meaning" name="myths_meaning" class="form-control" rows="10" cols="10"
-                            placeholder="In Greek mythology, Orion was a great hunter. This constellation is also useful for finding nearby constellations"
+                            placeholder="e.g., In Greek mythology, Orion was a great hunter. This constellation is also useful for finding nearby constellations"
                             required>{{ old('myths_meaning') }}</textarea>
                     </div>
                     <div class="row">

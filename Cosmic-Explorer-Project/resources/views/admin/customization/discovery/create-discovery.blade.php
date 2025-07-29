@@ -24,12 +24,14 @@
                     <div class="form-group">
                         <label for="title">Title</label>
                         <input id="title" name="title" class="form-control" value="{{ old('title') }}"
-                            placeholder="The Big Bang: Exploring the Origin of Our Universe" required>
+                            placeholder="e.g., Unraveling the Secrets of Exoplanets: A Quest for Life Beyond Earth"
+                            required>
                     </div>
                     <div class="form-group">
                         <label for="slug">Slug</label>
                         <input id="slug" name="slug" class="form-control" value="{{ old('slug') }}"
-                            placeholder="The Big Bang: Exploring the Origin of Our Universe" required>
+                            placeholder="e.g., Unraveling the Secrets of Exoplanets: A Quest for Life Beyond Earth"
+                            required>
                     </div>
                     <div class="form-group">
                         <label for="author">Author</label>
@@ -42,30 +44,31 @@
                         <label for="title_details">Title Details</label>
                         <input id="title_details" name="title_details" class="form-control"
                             value="{{ old('title_details') }}"
-                            placeholder="The Big Bang Theory: The Beginning and Development of Our Universe" required>
+                            placeholder="e.g., Delve deeper into the scientific breakthroughs, challenges, and future prospects of this exploration."
+                            required>
                     </div>
                     <div class="form-group">
                         <label for="description_short">Description Short</label>
                         <textarea id="description_short" name="description_short" class="form-control" rows="10" cols="10"
-                            placeholder="Where did our universe begin? The Big Bang is the leading theory, describing the sudden expansion of space and time from an extremely hot, dense point 13.8 billion years ago...."
+                            placeholder="e.g., A concise summary highlighting the article's main theme and its significance in space exploration."
                             required>{{ old('description_short') }}</textarea>
                     </div>
                     <div class="form-group">
                         <label for="description_details">Description Details</label>
                         <textarea id="description_details" name="description_details" class="form-control" rows="10" cols="10"
-                            placeholder="Our universe is believed to have originated approximately 13.8 billion years ago from an incredibly hot, dense, and tiny state known as a singularity. This wasn't a conventional explosion, but rather the expansion of space itself...."
+                            placeholder="e.g., Elaborate on the key questions the article will answer, the research it draws upon, and its broader implications for our understanding of the universe."
                             required>{{ old('description_details') }}</textarea>
                     </div>
                     <div class="form-group">
                         <label for="content_1">Content 1</label>
                         <textarea id="content_1" name="content_1" class="form-control" rows="10" cols="10"
-                            placeholder="The Big Bang theory is strongly supported by a wealth of compelling observational evidence. One key piece is the expansion of the universe, described by Hubble's Law, which shows that galaxies are moving away from us, and those farther away are receding even faster. This is much like how points on an inflating balloon move farther apart from each other...."
+                            placeholder="e.g., Begin your first major section here, perhaps introducing the historical context or the fundamental principles of your topic."
                             required>{{ old('content_1') }}</textarea>
                     </div>
                     <div class="form-group">
                         <label for="content_2">Content 2</label>
                         <textarea id="content_2" name="content_2" class="form-control" rows="10" cols="10"
-                            placeholder="While the Big Bang theory has been remarkably successful in explaining the origin and evolution of the cosmos, significant unanswered questions remain. One of the greatest mysteries is the nature of dark matter and dark energy. These two components are thought to constitute over 95% of the universe's total energy and matter, yet their true identities and mechanisms are still unknown...."
+                            placeholder="e.g., Continue developing your narrative by introducing new evidence, exploring counter-arguments, or detailing the next phase of your exploration."
                             required>{{ old('content_2') }}</textarea>
                     </div>
                     <div class="row">

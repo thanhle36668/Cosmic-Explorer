@@ -54,7 +54,7 @@
                         <th style="width: 10%">
                             Photo
                         </th>
-                        <th style="width: 10%">
+                        <th style="width: 15%">
                             Name
                         </th>
                         <th style="width: 5%">

@@ -48,7 +48,7 @@
                             Photo
                         </th>
                         <th style="width: 13%">
-                            Book Name
+                            Name
                         </th>
                         <th style="width: 5%">
                             Status

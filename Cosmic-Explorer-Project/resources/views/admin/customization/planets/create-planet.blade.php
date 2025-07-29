@@ -29,12 +29,12 @@
                     <div class="form-group">
                         <label for="name">Name Planet</label>
                         <input id="name" name="name" class="form-control" value="{{ old('name') }}"
-                            placeholder="Earth" required>
+                            placeholder="e.g., Mars, Earth" required>
                     </div>
                     <div class="form-group">
                         <label for="slug">Slug</label>
                         <input id="slug" name="slug" class="form-control" value="{{ old('slug') }}"
-                            placeholder="Earth" required>
+                            placeholder="e.g., Mars, Earth" required>
                     </div>
                     <div class="form-group">
                         <label for="title_short">Title Short</label>

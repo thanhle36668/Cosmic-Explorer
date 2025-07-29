@@ -1132,7 +1132,7 @@ class CustomizationController extends Controller
             }
 
             if ($request->hasFile('photo_book')) {
-                $imageFile = $request->file('photo');
+                $imageFile = $request->file('photo_book');
 
                 $imageName = time() . '_' . Str::random(10) . '.' . $imageFile->getClientOriginalExtension();
 

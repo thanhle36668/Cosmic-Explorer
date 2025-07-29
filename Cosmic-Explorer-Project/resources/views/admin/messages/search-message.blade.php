@@ -30,22 +30,25 @@
                         <th style="width: 5%">
                             ID
                         </th>
-                        <th style="width: 15%">
+                        <th style="width: 10%">
                             Name
                         </th>
-                        <th style="width: 20%">
+                        <th style="width: 15%">
                             Email
                         </th>
                         <th style="width: 15%">
                             Date
                         </th>
+                        <th style="width: 10%">
+                            Status
+                        </th>
                         <th style="width: 15%">
                             Date Reply
                         </th>
                         <th style="width: 10%">
-                            Status
+                            Replied By
                         </th>
-                        <th colspan="2">
+                        <th colspan="2" style="width: 20%">
                         </th>
                     </tr>
                 </thead>
@@ -61,28 +64,43 @@
                                     {{ $message->sender_email }}
                                 </td>
                                 <td>
-                                    {{ $message->time_received_message->format('Y-m-d H:i') }}
+                                    {{ $message->time_received_message->format('d/m/Y - H:i:s') }}
                                 </td>
                                 <td>
-                                    {{ $message->time_reply_message }}
-                                </td>
-                                <td>
-                                    @if (!$message->status)
-                                        <p class="bg-danger mb-0" style="padding: 6px 12px; border-radius: 4px">
-                                            Pending</p>
-                                    @else
+                                    @if ($message->status)
                                         <p class="bg-success mb-0" style="padding: 6px 12px; border-radius: 4px">
                                             Replied</p>
+                                    @else
+                                        <p class="bg-danger mb-0" style="padding: 6px 12px; border-radius: 4px">
+                                            Pending</p>
+                                    @endif
+                                </td>
+                                <td>
+                                    @if ($message->time_reply_message)
+                                        {{ $message->time_reply_message->format('d/m/Y - H:i:s') }}
+                                    @else
+                                        N/A
+                                    @endif
+                                </td>
+                                <td>
+                                    @if ($message->status)
+                                        <p class="bg-success mb-0" style="padding: 6px 12px; border-radius: 4px">
+                                            {{ $message->replied_by }}</p>
+                                    @else
+                                        N/A
                                     @endif
                                 </td>
                                 <td>
                                     <a href="{{ route('admin.details-message', $message->id) }}" class="btn btn-info">
-                                        Reply
+                                        <i class="nav-icon fas fa-reply"></i>
+                                        <span>Reply</span>
                                     </a>
                                 </td>
                                 <td>
-                                    <a href="{{ route('admin.delete-message', $message->id) }}" class="btn btn-danger">
-                                        Delete
+                                    <a href="{{ route('admin.delete-message', $message->id) }}" class="btn btn-danger"
+                                        onclick="return confirm('Confirm deletion for item ID: {{ $message->slug }}?')">
+                                        <i class="nav-icon fas fa-trash"></i>
+                                        <span>Remove</span>
                                     </a>
                                 </td>
                             </tr>

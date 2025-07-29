@@ -44,7 +44,7 @@
                         <th style="width: 5%">
                             ID
                         </th>
-                        <th style="width: 15%">
+                        <th style="width: 10%">
                             Name
                         </th>
                         <th style="width: 15%">
@@ -62,7 +62,7 @@
                         <th style="width: 10%">
                             Replied By
                         </th>
-                        <th colspan="2" style="width: 15%">
+                        <th colspan="2" style="width: 20%">
                         </th>
                     </tr>
                 </thead>
@@ -103,16 +103,17 @@
                                     N/A
                                 @endif
                             </td>
-                            </td>
                             <td>
                                 <a href="{{ route('admin.details-message', $message->id) }}" class="btn btn-info">
-                                    <i class="fas fa-reply"></i>
+                                    <i class="nav-icon fas fa-reply"></i>
+                                    <span>Reply</span>
                                 </a>
                             </td>
                             <td>
                                 <a href="{{ route('admin.delete-message', $message->id) }}" class="btn btn-danger"
-                                    onclick="return confirm('Confirm deletion for item ID: {{ $message->slug }}?')">
-                                    <i class="fas fa-trash"></i>
+                                    onclick="return confirm('Confirm deletion for message of email: {{ $message->slug }}?')">
+                                    <i class="nav-icon fas fa-trash"></i>
+                                    <span>Remove</span>
                                 </a>
                             </td>
                         </tr>

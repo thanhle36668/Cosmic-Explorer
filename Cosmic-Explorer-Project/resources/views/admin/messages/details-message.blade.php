@@ -37,8 +37,13 @@
                         <textarea name="message" id="message" class="form-control" rows="10" cols="10" disabled>{{ $details_message->message }}</textarea>
                     </div>
                     <div class="form-group">
-                        <label for="reply_message">Reply Message</label>
-                        <textarea name="reply_message" id="reply_message" class="form-control" rows="10" cols="10" required>{{ $details_message->reply_message }}</textarea>
+                        @if ($details_message->status)
+                            <label for="reply_message">Reply Message</label>
+                            <textarea name="reply_message" id="reply_message" class="form-control" rows="10" cols="10" required disabled>{{ $details_message->reply_message }}</textarea>
+                        @else
+                            <label for="reply_message">Reply Message</label>
+                            <textarea name="reply_message" id="reply_message" class="form-control" rows="10" cols="10" required>{{ $details_message->reply_message }}</textarea>
+                        @endif
                     </div>
                     <div class="form-group">
                         <input type="hidden" name="status" value="1" class="form-control">

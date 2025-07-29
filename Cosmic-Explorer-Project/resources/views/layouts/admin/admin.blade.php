@@ -148,14 +148,6 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="{{ route('admin.customization-introduction') }}" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>
-                                            Page Introduction
-                                        </p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
                                     <a href="{{ route('admin.customization-about') }}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>
@@ -168,6 +160,14 @@
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>
                                             Page Discovery
+                                        </p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.customization-introduction') }}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>
+                                            Page Introduction
                                         </p>
                                     </a>
                                 </li>
@@ -196,7 +196,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{route('admin.customization-books')}}" class="nav-link">
+                                    <a href="{{ route('admin.customization-books') }}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>
                                             Books
@@ -204,7 +204,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{route('admin.customization-videos')}}" class="nav-link">
+                                    <a href="{{ route('admin.customization-videos') }}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>
                                             Videos
