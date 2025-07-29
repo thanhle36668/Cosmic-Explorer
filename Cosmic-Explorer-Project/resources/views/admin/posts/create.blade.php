@@ -16,9 +16,6 @@
                 </ul>
             </div>
         @endif
-
-
-
         <section class="content">
             <div class="card card-primary">
                 <div class="card-header">
@@ -60,20 +57,16 @@
                         </select>
                     </div>
                 </div>
+                <div class="card-footer">
+                    <div class="col-12 p-2">
+                        <a href="{{ route('admin.posts.index') }}" class="btn btn-secondary">Cancel</a>
+                        <input type="submit" value="Create new Post" class="btn btn-success float-right">
+                    </div>
+                </div>
                 <!-- /.card-body -->
             </div>
             <!-- /.card -->
-
-
-
-            <div class="row">
-                <div class="col-12">
-                    <a href="{{ route('admin.posts.index') }}" class="btn btn-secondary">Cancel</a>
-                    <input type="submit" value="Create new Project" class="btn btn-success float-right">
-                </div>
-            </div>
         </section>
-
     </form>
 
 @endsection

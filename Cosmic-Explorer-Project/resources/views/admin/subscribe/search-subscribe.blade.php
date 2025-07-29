@@ -64,43 +64,53 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($search_subscribe as $person)
+                    @if ($search_subscribe->isNotEmpty())
+                        @foreach ($search_subscribe as $person)
+                            <tr class="text-center bg-secondary-subtle">
+                                <td>{{ $person->id }}</td>
+                                <td>
+                                    {{ $person->name }}
+                                </td>
+                                <td>
+                                    {{ $person->email }}
+                                </td>
+                                <td>
+                                    {{ $person->registration_date }}
+                                </td>
+                                <td>
+                                    @if ($person->status)
+                                        <p class="bg-success mb-0" style="padding: 6px 12px; border-radius: 4px">
+                                            Subscribe</p>
+                                    @else
+                                        <p class="bg-danger mb-0" style="padding: 6px 12px; border-radius: 4px">
+                                            Unsubscribe</p>
+                                    @endif
+                                </td>
+                                <td>
+                                    <a href="{{ route('admin.edit-subscribe', $person->slug) }}" class="btn btn-info">
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="{{ route('admin.delete-subscribe', $person->slug) }}" class="btn btn-danger"
+                                        onclick="return confirm('Are you sure you want to delete the user with email: {{ $person->slug }}?')">
+                                        <i class="fas fa-trash"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        @endforeach
+                    @else
                         <tr class="text-center bg-secondary-subtle">
-                            <td>{{ $person->id }}</td>
-                            <td>
-                                {{ $person->name }}
-                            </td>
-                            <td>
-                                {{ $person->email }}
-                            </td>
-                            <td>
-                                {{ $person->registration_date }}
-                            </td>
-                            <td>
-                                @if ($person->status)
-                                    <p class="bg-success mb-0" style="padding: 6px 12px; border-radius: 4px">
-                                        Subscribe</p>
-                                @else
-                                    <p class="bg-danger mb-0" style="padding: 6px 12px; border-radius: 4px">
-                                        Unsubscribe</p>
-                                @endif
-                            </td>
-                            <td>
-                                <a href="{{ route('admin.edit-subscribe', $person->slug) }}" class="btn btn-info">
-                                    <i class="fas fa-edit"></i>
-                                </a>
-                            </td>
-                            <td>
-                                <a href="{{ route('admin.delete-subscribe', $person->slug) }}" class="btn btn-danger"
-                                    onclick="return confirm('Are you sure you want to delete the user with email: {{ $person->slug }}?')">
-                                    <i class="fas fa-trash"></i>
-                                </a>
-                            </td>
+                            <td colspan="9">No result found!!!</td>
                         </tr>
-                    @endforeach
+                    @endif
                 </tbody>
             </table>
         </div>
-        <!-- /.card-body -->
+        <div class="card-footer">
+            <div class="row d-flex flex-row-reverse">
+                <a href="{{ route('admin.subscribe') }}" class="btn btn-info col-2">Back</a>
+            </div>
+        </div>
     </div>
 @endsection

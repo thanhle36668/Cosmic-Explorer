@@ -10,9 +10,12 @@ use App\Models\Comment;
 use App\Models\Constellations;
 use App\Models\Discovery;
 use App\Models\Introduction;
+use App\Models\Messages;
 use App\Models\Observatories;
 use App\Models\Planets;
 use App\Models\Post;
+use App\Models\Subscribe;
+use App\Models\Videos;
 use Exception;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\File;
@@ -33,7 +36,11 @@ class CustomizationController extends Controller
             'total_observatory' => Observatories::count(),
             'total_post' => Post::count(),
             'total_comment' => Comment::count(),
-            'total_post_discovery' => Discovery::count()
+            'total_post_discovery' => Discovery::count(),
+            'total_messages' => Messages::count(),
+            'total_subscribe' => Subscribe::count(),
+            'total_book' => Books::count(),
+            'total_video' => Videos::count()
         ];
         return view('admin/dashboard')->with($data);
     }
@@ -1244,5 +1251,102 @@ class CustomizationController extends Controller
         ];
 
         return view('admin/customization/books/search-book')->with($data);
+    }
+
+    // Customization Videos
+    public function videos()
+    {
+        $data = [
+            'videos' => Videos::orderBy('id', 'desc')->paginate(4)
+        ];
+
+        return view('admin/customization/videos/videos')->with($data);
+    }
+
+    public function createVideo()
+    {
+        return view('admin/customization/videos/create-video');
+    }
+
+    public function saveVideo(Request $request)
+    {
+        $validationRules = [
+            'name_video' => 'required|string|max:255|unique:videos,name_video',
+            'channel' => 'required|string|max:255',
+            'genre' => 'required|string',
+            'source_video' => 'required|string',
+            'description_short' => 'required|string',
+        ];
+        $request->validate($validationRules);
+
+        try {
+            $data_create = [
+                'name_video' => $request->name_video,
+                'status' => 0,
+                'channel' => $request->channel,
+                'genre' => $request->genre,
+                'source_video' => $request->source_video,
+                'description_short' => $request->description_short
+            ];
+
+            Videos::create($data_create);
+
+            return redirect()->route('admin.customization-videos')->with('success-create-video', 'You have successfully created a video.');
+        } catch (Exception $e) {
+            return redirect()->back()->with('error-create-video', 'Failed to create video due to an internal error. Please try again.');
+        }
+    }
+
+    public function editVideo($name_video)
+    {
+        $data = [
+            'video' => Videos::where('name_video', $name_video)->firstOrFail()
+        ];
+
+        return view('admin/customization/videos/details-video')->with($data);
+    }
+
+    public function updatedVideo(Request $request)
+    {
+        $validationRules = [
+            'name_video' => 'required|string|max:255|unique:videos,name_video,' . $request->id,
+            'status' => 'required|boolean',
+            'channel' => 'required|string|max:255',
+            'genre' => 'required|string',
+            'source_video' => 'required|string',
+            'description_short' => 'required|string',
+        ];
+
+        $request->validate($validationRules);
+
+        $video = Videos::find($request->id);
+
+        $data_updated = [
+            'name_video' => $request->name_video,
+            'status' => $request->status,
+            'channel' => $request->channel,
+            'genre' => $request->genre,
+            'source_video' => $request->source_video,
+            'description_short' => $request->description_short
+        ];
+
+        $video->update($data_updated);
+        return redirect()->route('admin.edit-video', $video->name_video)->with('success-update-video', 'You have successfully changed!');
+    }
+
+    public function deleteVideo($id)
+    {
+        $video = Videos::find($id);
+        $video->delete();
+        return redirect()->route('admin.customization-videos')->with('success-delete-video', 'You have deleted successfully.');
+    }
+
+    public function searchVideo(Request $request)
+    {
+        $data = [
+            'search_video' => Videos::where('name_video', 'LIKE', '%' . $request->search_name . '%')->get()
+        ];
+
+        return view('admin/customization/videos/search-video')->with($data);
     }
 }

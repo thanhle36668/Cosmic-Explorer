@@ -24,12 +24,12 @@
                     <div class="form-group">
                         <label for="title">Title</label>
                         <input id="title" name="title" class="form-control" value="{{ old('title') }}"
-                            placeholder="e.g., Penicillin Discovered" required>
+                            placeholder="The Big Bang: Exploring the Origin of Our Universe" required>
                     </div>
                     <div class="form-group">
                         <label for="slug">Slug</label>
                         <input id="slug" name="slug" class="form-control" value="{{ old('slug') }}"
-                            placeholder="e.g., Penicillin Discovered" required>
+                            placeholder="The Big Bang: Exploring the Origin of Our Universe" required>
                     </div>
                     <div class="form-group">
                         <label for="author">Author</label>
@@ -42,27 +42,31 @@
                         <label for="title_details">Title Details</label>
                         <input id="title_details" name="title_details" class="form-control"
                             value="{{ old('title_details') }}"
-                            placeholder="e.g., The Story of Penicillin: From Mold to Miracle Drug" required>
+                            placeholder="The Big Bang Theory: The Beginning and Development of Our Universe" required>
                     </div>
                     <div class="form-group">
                         <label for="description_short">Description Short</label>
                         <textarea id="description_short" name="description_short" class="form-control" rows="10" cols="10"
-                            placeholder="e.g., The accidental find that revolutionized medicine." required>{{ old('description_short') }}</textarea>
+                            placeholder="Where did our universe begin? The Big Bang is the leading theory, describing the sudden expansion of space and time from an extremely hot, dense point 13.8 billion years ago...."
+                            required>{{ old('description_short') }}</textarea>
                     </div>
                     <div class="form-group">
                         <label for="description_details">Description Details</label>
                         <textarea id="description_details" name="description_details" class="form-control" rows="10" cols="10"
-                            placeholder="e.g., A detailed look at Alexander Fleming's groundbreaking discovery and its impact." required>{{ old('description_details') }}</textarea>
+                            placeholder="Our universe is believed to have originated approximately 13.8 billion years ago from an incredibly hot, dense, and tiny state known as a singularity. This wasn't a conventional explosion, but rather the expansion of space itself...."
+                            required>{{ old('description_details') }}</textarea>
                     </div>
                     <div class="form-group">
                         <label for="content_1">Content 1</label>
                         <textarea id="content_1" name="content_1" class="form-control" rows="10" cols="10"
-                            placeholder="e.g., In 1928, Fleming noticed mold killing bacteria in his lab..." required>{{ old('content_1') }}</textarea>
+                            placeholder="The Big Bang theory is strongly supported by a wealth of compelling observational evidence. One key piece is the expansion of the universe, described by Hubble's Law, which shows that galaxies are moving away from us, and those farther away are receding even faster. This is much like how points on an inflating balloon move farther apart from each other...."
+                            required>{{ old('content_1') }}</textarea>
                     </div>
                     <div class="form-group">
                         <label for="content_2">Content 2</label>
                         <textarea id="content_2" name="content_2" class="form-control" rows="10" cols="10"
-                            placeholder="e.g., Its mass production during WWII saved countless lives..." required>{{ old('content_2') }}</textarea>
+                            placeholder="While the Big Bang theory has been remarkably successful in explaining the origin and evolution of the cosmos, significant unanswered questions remain. One of the greatest mysteries is the nature of dark matter and dark energy. These two components are thought to constitute over 95% of the universe's total energy and matter, yet their true identities and mechanisms are still unknown...."
+                            required>{{ old('content_2') }}</textarea>
                     </div>
                     <div class="row">
                         <div class="form-group mb-4 col-12 col-md-6">

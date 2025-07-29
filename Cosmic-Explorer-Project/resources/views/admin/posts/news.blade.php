@@ -116,10 +116,10 @@
                     <div class="clearfix my-4 mt-lg-0 mt-5">
                         <div class="col-md-6 float-md-end mb-3 ms-md-3" data-aos="fade-up">
                             <figure class="figure">
-                                Image:
                                 @if ($post->image)
-                                    <div class="mb-4">
-                                        <img src="{{ asset($post->image) }}" class="img-fluid" alt="{{ $post->title }}">
+                                    <div>
+                                        <img src="{{ asset($post->image) }}" class="img-fluid" alt="{{ $post->title }}"
+                                            style="width: 360px; height: 360px">
                                     </div>
                                 @endif
 

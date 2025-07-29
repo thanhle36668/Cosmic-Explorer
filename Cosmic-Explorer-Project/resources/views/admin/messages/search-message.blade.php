@@ -50,45 +50,55 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($search_message as $message)
+                    @if ($search_message->isNotEmpty())
+                        @foreach ($search_message as $message)
+                            <tr class="text-center bg-secondary-subtle">
+                                <td>{{ $message->id }}</td>
+                                <td>
+                                    {{ $message->sender_name }}
+                                </td>
+                                <td>
+                                    {{ $message->sender_email }}
+                                </td>
+                                <td>
+                                    {{ $message->time_received_message->format('Y-m-d H:i') }}
+                                </td>
+                                <td>
+                                    {{ $message->time_reply_message }}
+                                </td>
+                                <td>
+                                    @if (!$message->status)
+                                        <p class="bg-danger mb-0" style="padding: 6px 12px; border-radius: 4px">
+                                            Pending</p>
+                                    @else
+                                        <p class="bg-success mb-0" style="padding: 6px 12px; border-radius: 4px">
+                                            Replied</p>
+                                    @endif
+                                </td>
+                                <td>
+                                    <a href="{{ route('admin.details-message', $message->id) }}" class="btn btn-info">
+                                        Reply
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="{{ route('admin.delete-message', $message->id) }}" class="btn btn-danger">
+                                        Delete
+                                    </a>
+                                </td>
+                            </tr>
+                        @endforeach
+                    @else
                         <tr class="text-center bg-secondary-subtle">
-                            <td>{{ $message->id }}</td>
-                            <td>
-                                {{ $message->sender_name }}
-                            </td>
-                            <td>
-                                {{ $message->sender_email }}
-                            </td>
-                            <td>
-                                {{ $message->time_received_message->format('Y-m-d H:i') }}
-                            </td>
-                            <td>
-                                {{ $message->time_reply_message }}
-                            </td>
-                            <td>
-                                @if (!$message->status)
-                                    <p class="bg-danger mb-0" style="padding: 6px 12px; border-radius: 4px">
-                                        Pending</p>
-                                @else
-                                    <p class="bg-success mb-0" style="padding: 6px 12px; border-radius: 4px">
-                                        Replied</p>
-                                @endif
-                            </td>
-                            <td>
-                                <a href="{{ route('admin.details-message', $message->id) }}" class="btn btn-info">
-                                    Reply
-                                </a>
-                            </td>
-                            <td>
-                                <a href="{{ route('admin.delete-message', $message->id) }}" class="btn btn-danger">
-                                    Delete
-                                </a>
-                            </td>
+                            <td colspan="9">No result found!!!</td>
                         </tr>
-                    @endforeach
+                    @endif
                 </tbody>
             </table>
         </div>
-        <!-- /.card-body -->
+        <div class="card-footer">
+            <div class="row d-flex flex-row-reverse">
+                <a href="{{ route('admin.messages') }}" class="btn btn-info col-2">Back</a>
+            </div>
+        </div>
     </div>
 @endsection

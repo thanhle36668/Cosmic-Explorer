@@ -19,11 +19,11 @@ Route::group(['prefix' => ''], function () {
     Route::get('/about', [CosmicExplorerController::class, 'about'])->name('about');
 
     // Collection Page
-    Route::get('/collection-planet', [CosmicExplorerController::class, 'pageCollectionsPlanets'])->name('collections-planets');
-    Route::get('/collection-observatory', [CosmicExplorerController::class, 'pageCollectionsObservatories'])->name('collections-observatories');
-    Route::get('/collection-constellation', [CosmicExplorerController::class, 'pageCollectionsConstellations'])->name('collections-constellations');
-    Route::get('/collection-book', [CosmicExplorerController::class, 'pageCollectionsBooks'])->name('collections-books');
-    Route::get('/collection-video', [CosmicExplorerController::class, 'pageCollectionsVideos'])->name('collections-videos');
+    Route::get('/collection-of-planets', [CosmicExplorerController::class, 'pageCollectionsPlanets'])->name('collections-planets');
+    Route::get('/collection-of-observatories', [CosmicExplorerController::class, 'pageCollectionsObservatories'])->name('collections-observatories');
+    Route::get('/collection-of-constellations', [CosmicExplorerController::class, 'pageCollectionsConstellations'])->name('collections-constellations');
+    Route::get('/collection-of-books', [CosmicExplorerController::class, 'pageCollectionsBooks'])->name('collections-books');
+    Route::get('/collection-of-videos', [CosmicExplorerController::class, 'pageCollectionsVideos'])->name('collections-videos');
 
     // Details Page
     Route::get('/details-planet/{slug}', [CosmicExplorerController::class, 'pageDetailsPlanet'])->name('details-planet');
@@ -34,7 +34,6 @@ Route::group(['prefix' => ''], function () {
     Route::post('/send-message', [MessagesController::class, 'sendMessage'])->name('send-message');
     Route::post('/created-subscribe', [SubscribeController::class, 'createdSubscribe'])->name('created-subscribe');
 });
-
 
 // Admin 
 Route::middleware(['auth', 'is_admin'])->prefix('admin')->name('admin.')
@@ -112,6 +111,15 @@ Route::middleware(['auth', 'is_admin'])->prefix('admin')->name('admin.')
         Route::put('/updated-book', [CustomizationController::class, 'updatedBook'])->name('updated-book');
         Route::get('/delete-book/{id}', [CustomizationController::class, 'deleteBook'])->name('delete-book');
         Route::post('/search-book', [CustomizationController::class, 'searchBook'])->name('search-book');
+
+        // Customization Videos
+        Route::get('/customization-videos', [CustomizationController::class, 'videos'])->name('customization-videos');
+        Route::get('/create-video', [CustomizationController::class, 'createVideo'])->name('create-video');
+        Route::post('/save-video', [CustomizationController::class, 'saveVideo'])->name('save-video');
+        Route::get('/edit-video/{name_video}', [CustomizationController::class, 'editVideo'])->name('edit-video');
+        Route::post('/updated-video', [CustomizationController::class, 'updatedVideo'])->name('updated-video');
+        Route::get('/delete-video/{id}', [CustomizationController::class, 'deleteVideo'])->name('delete-video');
+        Route::post('/search-video', [CustomizationController::class, 'searchVideo'])->name('search-video');
     });
 
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
