@@ -109,8 +109,8 @@
                                 <iframe width="100%" height="380" src="{{ $video->source_video }}"
                                     title="{{ $video->name_video }}" frameborder="0"
                                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen
-                                    class="rounded-3"></iframe>
+                                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen class="rounded-3"
+                                    loading='lazy'></iframe>
                             </div>
                         </div>
                         <div class="col-lg-6">
