@@ -191,17 +191,24 @@
                     <div class="card px-4 py-4">
                         <div class="row g-0">
                             <div class="col-md-8 d-flex justify-content-center align-items-center">
-                                <div class="card-body">
+                                <div class="card-body pe-5">
                                     <h5 class="card-title">{{ $discoveries->title }}</h5>
                                     <p class="card-text">{{ $discoveries->description_short }}</p>
                                     <a href="{{ route('details-discovery', $discoveries->slug) }}"
                                         class="card-button badge rounded-pill bg-white">View Details</a>
                                 </div>
                             </div>
-                            <div class="col-md-4">
-                                <img src="{{ asset($discoveries->photo) }}" class="img-fluid img-discovery"
-                                    alt="{{ $discoveries->title }}">
-                            </div>
+                            @if ($discoveries->photo)
+                                <div class="col-md-4">
+                                    <img src="{{ asset($discoveries->photo) }}" class="img-fluid img-discovery"
+                                        alt="{{ basename($discoveries->photo) }}">
+                                </div>
+                            @else
+                                <div class="col-md-4">
+                                    <img src="{{ asset('images') }}/discovery/no-photo.jpg" alt="no-photo.jpg"
+                                        style="width: 400px; height:430px">
+                                </div>
+                            @endif
                         </div>
                     </div>
                 @else
@@ -209,7 +216,7 @@
                         <div class="row g-0">
                             @if ($discoveries->photo)
                                 <div class="col-md-4">
-                                    <img src="{{ asset($discoveries->photo) }}" class="img-fluid"
+                                    <img src="{{ asset($discoveries->photo) }}" class="img-fluid img-discovery"
                                         alt="{{ basename($discoveries->photo) }}">
                                 </div>
                             @else

@@ -1026,6 +1026,7 @@ Introduction
   line-height: 32px;
   margin-top: 20px;
   font-family: "Raleway", sans-serif;
+  text-align: justify;
 }
 
 .card .card-button {
