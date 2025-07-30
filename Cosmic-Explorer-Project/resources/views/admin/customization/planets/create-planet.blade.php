@@ -1,8 +1,6 @@
 @extends('layouts.admin.admin')
 
-@section('title')
-    <title>Planet Dashboard</title>
-@endsection
+@section('title', 'Planets Dashboard')
 
 @section('content')
     @if (session('error-create-planet'))
@@ -29,19 +27,20 @@
                 </div>
                 <div class="card-body">
                     <div class="form-group">
-                        <label for="name">Name</label>
+                        <label for="name">Name Planet</label>
                         <input id="name" name="name" class="form-control" value="{{ old('name') }}"
-                            placeholder="e.g., Mars, Kepler-186f, Proxima Centauri b" required>
+                            placeholder="e.g., Mars, Earth" required>
                     </div>
                     <div class="form-group">
                         <label for="slug">Slug</label>
                         <input id="slug" name="slug" class="form-control" value="{{ old('slug') }}"
-                            placeholder="e.g., Mars, Kepler-186f, Proxima Centauri b" required>
+                            placeholder="e.g., Mars, Earth" required>
                     </div>
                     <div class="form-group">
                         <label for="title_short">Title Short</label>
                         <textarea id="title_short" name="title_short" class="form-control" rows="5" cols="5"
-                            placeholder="e.g., K2-18b, Earth, Venus" required>{{ old('title_short') }}</textarea>
+                            placeholder="Our home! Earth is the only known planet to harbor life, thanks to the presence of liquid water on its surface and an oxygen-rich atmosphere. Earth has one Moon, which significantly influences tides and stabilizes its rotational axis"
+                            required>{{ old('title_short') }}</textarea>
                     </div>
                     <div class="form-group">
                         <label for="discovery_date">Discovery Date</label>

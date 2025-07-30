@@ -46,7 +46,8 @@ class SubscribeController extends Controller
     public function updatesSubscribe(Request $request)
     {
         $subscribe = [
-            'status' => $request->status
+            'name' => $request->name,
+            'email' => $request->email,
         ];
 
         Subscribe::where('id', $request->id)->update($subscribe);

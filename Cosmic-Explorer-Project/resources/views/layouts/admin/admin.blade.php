@@ -27,7 +27,7 @@
         </div>
 
         <!-- Navbar -->
-        <nav class="main-header navbar navbar-expand navbar-dark p-3">
+        <nav class="main-header navbar navbar-expand navbar-dark">
             <!-- Left navbar links -->
             <ul class="navbar-nav">
                 <li class="nav-item">
@@ -37,11 +37,6 @@
                 <li class="nav-item d-none d-sm-inline-block">
                     <a href="{{ route('admin.admin.dashboard') }}" class="nav-link">Home</a>
                 </li>
-            </ul>
-            <!-- Right navbar links -->
-            <ul class="navbar-nav ml-auto">
-                <!-- Navbar Search -->
-                <a href="{{ route('logout') }}" class="btn btn-primary">Logout</a>
             </ul>
         </nav>
         <!-- /.navbar -->
@@ -142,7 +137,6 @@
                                     </a>
                                 </li>
                             </ul>
-
                         </li>
                         <li class="nav-item">
                             <a href="#" class="nav-link">
@@ -153,14 +147,6 @@
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="{{ route('admin.customization-introduction') }}" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>
-                                            Page Introduction
-                                        </p>
-                                    </a>
-                                </li>
                                 <li class="nav-item">
                                     <a href="{{ route('admin.customization-about') }}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
@@ -174,6 +160,14 @@
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>
                                             Page Discovery
+                                        </p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.customization-introduction') }}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>
+                                            Page Introduction
                                         </p>
                                     </a>
                                 </li>
@@ -193,9 +187,32 @@
                                         </p>
                                     </a>
                                 </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.customization-observatories') }}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>
+                                            Collection Observatories
+                                        </p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.customization-books') }}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>
+                                            Books
+                                        </p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.customization-videos') }}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>
+                                            Videos
+                                        </p>
+                                    </a>
+                                </li>
                             </ul>
                         </li>
-
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->
@@ -210,7 +227,9 @@
             <!-- /.content-header -->
 
             <!-- Main content -->
-            @yield('content')
+            <div class="content">
+                @yield('content')
+            </div>
             <!-- /.content -->
         </div>
         <!-- /.content-wrapper -->

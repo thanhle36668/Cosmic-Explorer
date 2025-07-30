@@ -21,9 +21,9 @@ class CosmicExplorerController extends Controller
     {
         $data = [
             'introduction' => Introduction::get(),
-            'planets' => Planets::get(),
-            'constellations' => Constellations::orderBy('name', 'asc')->get(),
-            'observatories' => Observatories::orderBy('name', 'desc')->get(),
+            'planets' => Planets::orderBy('id', 'desc')->get(),
+            'constellations' => Constellations::orderBy('id', 'desc')->get(),
+            'observatories' => Observatories::orderBy('id', 'desc')->get(),
             'discovery' => Discovery::get(),
             'post' => Post::get(),
         ];
@@ -44,7 +44,7 @@ class CosmicExplorerController extends Controller
     public function pageCollectionsPlanets()
     {
         $data = [
-            'planets' => Planets::where('status', true)->paginate(4)
+            'planets' => Planets::where('status', true)->orderBy('id', 'desc')->paginate(4)
         ];
         return view('user/collections-page-planets')->with($data);
     }
@@ -53,7 +53,7 @@ class CosmicExplorerController extends Controller
     public function pageCollectionsConstellations()
     {
         $data = [
-            'constellations' => Constellations::where('status', true)->paginate(4)
+            'constellations' => Constellations::where('status', true)->orderBy('id', 'desc')->paginate(4)
         ];
         return view('user/collections-page-constellations')->with($data);
     }
@@ -62,7 +62,7 @@ class CosmicExplorerController extends Controller
     public function pageCollectionsObservatories()
     {
         $data = [
-            'observatories' => Observatories::paginate(4)
+            'observatories' => Observatories::where('status', true)->orderBy('id', 'desc')->paginate(4)
         ];
         return view('user/collections-page-observatories')->with($data);
     }
@@ -71,7 +71,7 @@ class CosmicExplorerController extends Controller
     public function pageCollectionsBooks()
     {
         $data = [
-            'books' => Books::paginate(4)
+            'books' => Books::where('status', true)->orderBy('id', 'desc')->paginate(4)
         ];
         return view('user/collections-page-books')->with($data);
     }
@@ -80,7 +80,7 @@ class CosmicExplorerController extends Controller
     public function pageCollectionsVideos()
     {
         $data = [
-            'videos' => Videos::paginate(4)
+            'videos' => Videos::where('status', true)->orderBy('id', 'desc')->paginate(4)
         ];
         return view('user/collections-page-videos')->with($data);
     }

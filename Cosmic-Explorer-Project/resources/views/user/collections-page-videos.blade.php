@@ -102,28 +102,31 @@
         style="background: url('{{ asset('images') }}/background/background-collections.jpg')">
         <div class="container">
             @foreach ($videos as $video)
-                <div class="row py-4">
-                    <div class="col-lg-6">
-                        <div id="{{ $video->name_video }}">
-                            <iframe width="100%" height="380" src="{{ $video->source_video }}"
-                                title="{{ $video->name_video }}" frameborder="0"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen class="rounded-3"></iframe>
+                @if ($video->status)
+                    <div class="row py-4">
+                        <div class="col-lg-6">
+                            <div id="{{ $video->name_video }}">
+                                <iframe width="100%" height="380" src="{{ $video->source_video }}"
+                                    title="{{ $video->name_video }}" frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen
+                                    class="rounded-3"></iframe>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <h3 class="mb-2">{{ $video->name_video }}</h3>
+                            <span class="d-block mb-2">
+                                <strong class="text-light">Channel: {{ $video->channel }}</strong>
+                            </span>
+                            <span class="d-block mb-2">
+                                <strong class="text-light">Genre: {{ $video->genre }}</strong>
+                            </span>
+                            <p class="text-light lh-lg mb-3">
+                                {{ $video->description_short }}
+                            </p>
                         </div>
                     </div>
-                    <div class="col-lg-6">
-                        <h3 class="mb-2">{{ $video->name_video }}</h3>
-                        <span class="d-block mb-2">
-                            <strong class="text-light">Channel: {{ $video->channel }}</strong>
-                        </span>
-                        <span class="d-block mb-2">
-                            <strong class="text-light">Genre: {{ $video->genre }}</strong>
-                        </span>
-                        <p class="text-light lh-lg mb-3">
-                            {{ $video->description_short }}
-                        </p>
-                    </div>
-                </div>
+                @endif
             @endforeach
         </div>
         <div class="pagination-links mt-2 mb-2">

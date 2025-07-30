@@ -1,8 +1,6 @@
 @extends('layouts.admin.admin')
 
-@section('title')
-    <title>Discovery Dashboard</title>
-@endsection
+@section('title', 'Discovery Dashboard')
 
 @section('content')
     @if ($errors->any())
@@ -20,18 +18,20 @@
         <section class="content">
             <div class="card card-primary">
                 <div class="card-header">
-                    <h3 class="card-title">Create New Post</h3>
+                    <h3 class="card-title">Create Post</h3>
                 </div>
                 <div class="card-body">
                     <div class="form-group">
                         <label for="title">Title</label>
                         <input id="title" name="title" class="form-control" value="{{ old('title') }}"
-                            placeholder="e.g., Penicillin Discovered" required>
+                            placeholder="e.g., Unraveling the Secrets of Exoplanets: A Quest for Life Beyond Earth"
+                            required>
                     </div>
                     <div class="form-group">
                         <label for="slug">Slug</label>
                         <input id="slug" name="slug" class="form-control" value="{{ old('slug') }}"
-                            placeholder="e.g., Penicillin Discovered" required>
+                            placeholder="e.g., Unraveling the Secrets of Exoplanets: A Quest for Life Beyond Earth"
+                            required>
                     </div>
                     <div class="form-group">
                         <label for="author">Author</label>
@@ -44,27 +44,32 @@
                         <label for="title_details">Title Details</label>
                         <input id="title_details" name="title_details" class="form-control"
                             value="{{ old('title_details') }}"
-                            placeholder="e.g., The Story of Penicillin: From Mold to Miracle Drug" required>
+                            placeholder="e.g., Delve deeper into the scientific breakthroughs, challenges, and future prospects of this exploration."
+                            required>
                     </div>
                     <div class="form-group">
                         <label for="description_short">Description Short</label>
                         <textarea id="description_short" name="description_short" class="form-control" rows="10" cols="10"
-                            placeholder="e.g., The accidental find that revolutionized medicine." required>{{ old('description_short') }}</textarea>
+                            placeholder="e.g., A concise summary highlighting the article's main theme and its significance in space exploration."
+                            required>{{ old('description_short') }}</textarea>
                     </div>
                     <div class="form-group">
                         <label for="description_details">Description Details</label>
                         <textarea id="description_details" name="description_details" class="form-control" rows="10" cols="10"
-                            placeholder="e.g., A detailed look at Alexander Fleming's groundbreaking discovery and its impact." required>{{ old('description_details') }}</textarea>
+                            placeholder="e.g., Elaborate on the key questions the article will answer, the research it draws upon, and its broader implications for our understanding of the universe."
+                            required>{{ old('description_details') }}</textarea>
                     </div>
                     <div class="form-group">
                         <label for="content_1">Content 1</label>
                         <textarea id="content_1" name="content_1" class="form-control" rows="10" cols="10"
-                            placeholder="e.g., In 1928, Fleming noticed mold killing bacteria in his lab..." required>{{ old('content_1') }}</textarea>
+                            placeholder="e.g., Begin your first major section here, perhaps introducing the historical context or the fundamental principles of your topic."
+                            required>{{ old('content_1') }}</textarea>
                     </div>
                     <div class="form-group">
                         <label for="content_2">Content 2</label>
                         <textarea id="content_2" name="content_2" class="form-control" rows="10" cols="10"
-                            placeholder="e.g., Its mass production during WWII saved countless lives..." required>{{ old('content_2') }}</textarea>
+                            placeholder="e.g., Continue developing your narrative by introducing new evidence, exploring counter-arguments, or detailing the next phase of your exploration."
+                            required>{{ old('content_2') }}</textarea>
                     </div>
                     <div class="row">
                         <div class="form-group mb-4 col-12 col-md-6">

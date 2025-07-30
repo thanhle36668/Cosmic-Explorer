@@ -120,8 +120,18 @@
                 </div>
                 <div class="col-lg-5 offset-lg-1">
                     <div class="item rounded-3">
-                        <img src="{{ asset('images') }}/books/{{ $book_details->photo_book }}" alt=""
-                            height="580" width="480">
+                        @if ($book_details->photo_book)
+                            <img src="{{ asset($book_details->photo_book) }}"
+                                alt="{{ basename($book_details->photo_book) }}" height="580" width="480">
+                        @else
+                            <img src="{{ asset('images') }}/books/no-photo.jpg" alt="No Photo" height="580"
+                                width="480">
+                        @endif
+                    </div>
+                    <div>
+                        <a href="{{ $book_details->link_amazon }}">
+                            <img class="icon-amazon" src="{{ asset('images') }}/icon-amazon.svg" alt="Icon Amazon">
+                        </a>
                     </div>
                 </div>
             </div>
@@ -145,19 +155,25 @@
                             <div class="col-lg-12 carousel">
                                 <div class="owl-collection owl-carousel">
                                     @foreach ($books as $book)
-                                        <div class="item">
-                                            <img class="img-observatory"
-                                                src="{{ asset('images') }}/books/{{ $book->photo_book }}"
-                                                alt="{{ $book->name_book }}">
-                                            <div class="down-content text-center">
-                                                <h4>{{ $book->name_book }}
-                                                </h4>
-                                                <div class="main-button">
-                                                    <a href="{{ route('details-book', $book->slug) }}">View
-                                                        Details</a>
+                                        @if ($book->status)
+                                            <div class="item">
+                                                @if ($book->photo_book)
+                                                    <img class="img-observatory" src="{{ asset($book->photo_book) }}"
+                                                        alt="{{ basename($book->photo_book) }}">
+                                                @else
+                                                    <img class="img-observatory"
+                                                        src="{{ asset('images') }}/books/no-photo.jpg" alt="No Photo">
+                                                @endif
+                                                <div class="down-content text-center">
+                                                    <h4>{{ $book->name_book }}
+                                                    </h4>
+                                                    <div class="main-button">
+                                                        <a href="{{ route('details-book', $book->slug) }}">View
+                                                            Details</a>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        @endif
                                     @endforeach
                                 </div>
                             </div>

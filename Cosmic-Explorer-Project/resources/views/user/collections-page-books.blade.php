@@ -103,39 +103,46 @@
         <div class="container">
             <div class="space-y-5 mt-5 mx-auto" style="max-width: 1000px;">
                 @foreach ($books as $book)
-                    <div id="{{ $book->name_book }}"
-                        class="card p-4 rounded-lg shadow-lg scroll-margin-top-120 d-md-flex flex-md-row align-items-md-center gap-5"
-                        style="height: auto">
-                        <div
-                            class="planet-image-fixed-size d-flex align-items-center justify-content-center overflow-hidden mb-2">
-                            <img src="{{ asset('images') }}/books/{{ $book->photo_book }}" alt="{{ $book->name_book }}"
-                                class="img-fluid rounded-lg">
-                        </div>
-                        <div class="flex-grow-1">
-                            <h2 class="mb-2">{{ $book->name_book }}</h2>
-                            <span class="d-block mb-2">
-                                <strong class="text-light">Author: {{ $book->author }}</strong>
-                            </span>
-                            <span class="d-block mb-2">
-                                <strong class="text-light">Publication
-                                    Date: {{ $book->publication_year }}
-                                </strong>
-                            </span>
-                            <span class="d-block mb-2">
-                                <strong class="text-light">Genre: {{ $book->genre }}
-                                </strong>
-                            </span>
-                            <span class="d-block mb-2">
-                                <strong class="text-light">Description: {{ $book->description }}
-                                </strong>
-                            </span>
+                    @if ($book->status)
+                        <div id="{{ $book->name_book }}"
+                            class="card p-4 rounded-lg shadow-lg scroll-margin-top-120 d-md-flex flex-md-row align-items-md-center gap-5"
+                            style="height: auto">
+                            <div
+                                class="planet-image-fixed-size d-flex align-items-center justify-content-center overflow-hidden mb-2">
+                                @if ($book->photo_book)
+                                    <img src="{{ asset($book->photo_book) }}" alt="{{ basename($book->photo_book) }}"
+                                        class="img-fluid rounded-lg">
+                                @else
+                                    <img src="{{ asset('images') }}/books/no-photo.jpg" alt="No Photo"
+                                        class="img-fluid rounded-lg">
+                                @endif
+                            </div>
+                            <div class="flex-grow-1">
+                                <h2 class="mb-2">{{ $book->name_book }}</h2>
+                                <span class="d-block mb-2">
+                                    <strong class="text-light">Author: {{ $book->author }}</strong>
+                                </span>
+                                <span class="d-block mb-2">
+                                    <strong class="text-light">Publication
+                                        Date: {{ $book->publication_year }}
+                                    </strong>
+                                </span>
+                                <span class="d-block mb-2">
+                                    <strong class="text-light">Genre: {{ $book->genre }}
+                                    </strong>
+                                </span>
+                                <span class="d-block mb-2">
+                                    <strong class="text-light">Description: {{ $book->description }}
+                                    </strong>
+                                </span>
 
-                            <div class="main-button">
-                                <a href="{{ route('details-book', $book->slug) }}">View
-                                    Details</a>
+                                <div class="main-button">
+                                    <a href="{{ route('details-book', $book->slug) }}">View
+                                        Details</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    @endif
                 @endforeach
             </div>
         </div>

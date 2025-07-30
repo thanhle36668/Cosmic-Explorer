@@ -20,5 +20,6 @@ class About extends Model
         'link',
         'link_2',
         'link_3',
+        'link_4'
     ];
 }

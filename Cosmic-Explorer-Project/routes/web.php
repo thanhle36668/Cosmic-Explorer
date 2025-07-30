@@ -19,11 +19,11 @@ Route::group(['prefix' => ''], function () {
     Route::get('/about', [CosmicExplorerController::class, 'about'])->name('about');
 
     // Collection Page
-    Route::get('/collection-planet', [CosmicExplorerController::class, 'pageCollectionsPlanets'])->name('collections-planets');
-    Route::get('/collection-observatory', [CosmicExplorerController::class, 'pageCollectionsObservatories'])->name('collections-observatories');
-    Route::get('/collection-constellation', [CosmicExplorerController::class, 'pageCollectionsConstellations'])->name('collections-constellations');
-    Route::get('/collection-book', [CosmicExplorerController::class, 'pageCollectionsBooks'])->name('collections-books');
-    Route::get('/collection-video', [CosmicExplorerController::class, 'pageCollectionsVideos'])->name('collections-videos');
+    Route::get('/collection-of-planets', [CosmicExplorerController::class, 'pageCollectionsPlanets'])->name('collections-planets');
+    Route::get('/collection-of-observatories', [CosmicExplorerController::class, 'pageCollectionsObservatories'])->name('collections-observatories');
+    Route::get('/collection-of-constellations', [CosmicExplorerController::class, 'pageCollectionsConstellations'])->name('collections-constellations');
+    Route::get('/collection-of-books', [CosmicExplorerController::class, 'pageCollectionsBooks'])->name('collections-books');
+    Route::get('/collection-of-videos', [CosmicExplorerController::class, 'pageCollectionsVideos'])->name('collections-videos');
 
     // Details Page
     Route::get('/details-planet/{slug}', [CosmicExplorerController::class, 'pageDetailsPlanet'])->name('details-planet');
@@ -35,12 +35,10 @@ Route::group(['prefix' => ''], function () {
     Route::post('/created-subscribe', [SubscribeController::class, 'createdSubscribe'])->name('created-subscribe');
 });
 
-
 // Admin 
 Route::middleware(['auth', 'is_admin'])->prefix('admin')->name('admin.')
     ->group(function () {
-        Route::get('/', fn() => view('admin.dashboard'))
-            ->name('admin.dashboard');
+        Route::get('/', [CustomizationController::class, 'dashboard'])->name('admin.dashboard');
         Route::resource('posts', PostController::class);
         // Route::resource('comments', CommentController::class);
         // Dashboard Comments
@@ -94,6 +92,34 @@ Route::middleware(['auth', 'is_admin'])->prefix('admin')->name('admin.')
         Route::get('/edit-constellation/{slug}', [CustomizationController::class, 'editConstellation'])->name('edit-constellation');
         Route::put('/updated-constellation', [CustomizationController::class, 'updatedConstellation'])->name('updated-constellation');
         Route::get('/delete-constellation/{id}', [CustomizationController::class, 'deleteConstellation'])->name('delete-constellation');
+        Route::post('/search-constellation', [CustomizationController::class, 'searchConstellation'])->name('search-constellation');
+
+        // Customization Observatories
+        Route::get('/customization-observatories', [CustomizationController::class, 'observatories'])->name('customization-observatories');
+        Route::get('/create-observatory', [CustomizationController::class, 'createObservatory'])->name('create-observatory');
+        Route::put('/save-observatory', [CustomizationController::class, 'saveObservatory'])->name('save-observatory');
+        Route::get('/edit-observatory/{slug}', [CustomizationController::class, 'editObservatory'])->name('edit-observatory');
+        Route::put('/updated-observatory', [CustomizationController::class, 'updatedObservatory'])->name('updated-observatory');
+        Route::get('/delete-observatory/{id}', [CustomizationController::class, 'deleteObservatory'])->name('delete-observatory');
+        Route::post('/search-observatory', [CustomizationController::class, 'searchObservatory'])->name('search-observatory');
+
+        // Customization Books
+        Route::get('/customization-books', [CustomizationController::class, 'books'])->name('customization-books');
+        Route::get('/create-book', [CustomizationController::class, 'createBook'])->name('create-book');
+        Route::put('/save-book', [CustomizationController::class, 'saveBook'])->name('save-book');
+        Route::get('/edit-book/{slug}', [CustomizationController::class, 'editBook'])->name('edit-book');
+        Route::put('/updated-book', [CustomizationController::class, 'updatedBook'])->name('updated-book');
+        Route::get('/delete-book/{id}', [CustomizationController::class, 'deleteBook'])->name('delete-book');
+        Route::post('/search-book', [CustomizationController::class, 'searchBook'])->name('search-book');
+
+        // Customization Videos
+        Route::get('/customization-videos', [CustomizationController::class, 'videos'])->name('customization-videos');
+        Route::get('/create-video', [CustomizationController::class, 'createVideo'])->name('create-video');
+        Route::post('/save-video', [CustomizationController::class, 'saveVideo'])->name('save-video');
+        Route::get('/edit-video/{name_video}', [CustomizationController::class, 'editVideo'])->name('edit-video');
+        Route::post('/updated-video', [CustomizationController::class, 'updatedVideo'])->name('updated-video');
+        Route::get('/delete-video/{id}', [CustomizationController::class, 'deleteVideo'])->name('delete-video');
+        Route::post('/search-video', [CustomizationController::class, 'searchVideo'])->name('search-video');
     });
 
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');

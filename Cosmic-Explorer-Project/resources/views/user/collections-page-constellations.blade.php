@@ -117,11 +117,19 @@
                                         Details</a>
                                 </div>
                             </div>
-                            <div
-                                class="planet-image-fixed-size d-flex align-items-center justify-content-center overflow-hidden mb-2">
-                                <img src="{{ asset($constellation->photo) }}" alt="{{ basename($constellation->photo) }}"
-                                    class="img-fluid rounded-lg">
-                            </div>
+                            @if ($constellation->photo)
+                                <div
+                                    class="planet-image-fixed-size d-flex align-items-center justify-content-center overflow-hidden mb-2">
+                                    <img src="{{ asset($constellation->photo) }}"
+                                        alt="{{ basename($constellation->photo) }}" class="img-fluid rounded-lg">
+                                </div>
+                            @else
+                                <div
+                                    class="planet-image-fixed-size d-flex align-items-center justify-content-center overflow-hidden mb-2">
+                                    <img src="{{ asset('images') }}/constellations/no-photo.jpg" alt="No Photo"
+                                        class="img-fluid rounded-lg">
+                                </div>
+                            @endif
                         </div>
                     @endif
                 @endforeach

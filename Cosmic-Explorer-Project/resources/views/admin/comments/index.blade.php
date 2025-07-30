@@ -1,10 +1,12 @@
 @extends('layouts.admin.admin')
 
-@section('content')
-    <div class="container mt-4">
-        <h2>Comment management</h2>
+@section('title', 'Comment Management')
 
-        @if(session('success'))
+@section('content')
+    <div class="container">
+        <h2 class="p-2">Comment Management</h2>
+
+        @if (session('success'))
             <div class="alert alert-success">{{ session('success') }}</div>
         @endif
 
@@ -21,14 +23,14 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach($comments as $comment)
+                @foreach ($comments as $comment)
                     <tr>
                         <td>{{ $comment->id }}</td>
                         <td>{{ $comment->post->title ?? 'N/A' }}</td>
                         <td>{{ $comment->user->name ?? $comment->name }}</td>
                         <td>{{ Str::limit($comment->content, 50) }}</td>
                         <td>
-                            @if($comment->approved)
+                            @if ($comment->approved)
                                 <span class="badge bg-success">Approved</span>
                             @else
                                 <span class="badge bg-warning">Pending</span>
@@ -39,14 +41,14 @@
                             <form method="POST" action="{{ route('admin.comments.update', $comment->id) }}" class="d-inline">
                                 @csrf
                                 @method('PUT')
-                                <button class="btn btn-sm btn-info">Approved / Cancel</button>
+                                <button class="btn btn-sm btn-info w-100 mb-2">Approved / Cancel</button>
                             </form>
 
-                            <form method="POST" action="{{ route('admin.comments.destroy', $comment->id) }}" class="d-inline" 
-                                  onsubmit="return confirm('Are you sure ?')">
+                            <form method="POST" action="{{ route('admin.comments.destroy', $comment->id) }}"
+                                class="d-inline" onsubmit="return confirm('Are you sure ?')">
                                 @csrf
                                 @method('DELETE')
-                                <button class="btn btn-sm btn-danger">Delete</button>
+                                <button class="btn btn-sm btn-danger w-100">Delete</button>
                             </form>
                         </td>
                     </tr>

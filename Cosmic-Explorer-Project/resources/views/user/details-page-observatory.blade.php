@@ -1,7 +1,7 @@
 @extends('layouts.user.details-page')
 
 @section('title')
-        <title>{{ $observatory_details->name }}</title>S
+    <title>{{ $observatory_details->name }}</title>S
 @endsection
 
 @section('section-change')
@@ -125,28 +125,56 @@
                     <div class="container">
                         <div class="row justify-content-center mb-4">
                             <div class="col-md-12 text-center">
-                                <img src="{{ asset('images') }}/observatories/{{ $observatory_details->photo }}"
-                                    alt="{{ $observatory_details->name }}" class="img-fluid img-main rounded shadow-sm"
-                                    id="parent">
+                                @if ($observatory_details->photo)
+                                    <img src="{{ asset($observatory_details->photo) }}"
+                                        alt="{{ basename($observatory_details->photo) }}"
+                                        class="img-fluid img-main rounded shadow-sm" id="parent">
+                                @else
+                                    <img src="{{ asset('images') }}/observatories/no-photo.jpg" alt="No Photo"
+                                        class="img-fluid img-main rounded shadow-sm" id="parent">
+                                @endif
                             </div>
                         </div>
                         <div class="row justify-content-center g-2 person">
                             <div class="col-3 col-sm-3 col-md-3 col-lg-3">
-                                <img src="{{ asset('images') }}/observatories/{{ $observatory_details->photo }}"
-                                    class="img-fluid rounded shadow-sm person1 active-thumbnail"
-                                    alt="{{ $observatory_details->name }}">
+                                @if ($observatory_details->photo)
+                                    <img src="{{ asset($observatory_details->photo) }}"
+                                        class="img-fluid rounded shadow-sm person1 active-thumbnail"
+                                        alt="{{ basename($observatory_details->photo) }}">
+                                @else
+                                    <img src="{{ asset('images') }}/observatories/no-photo.jpg" alt="No Photo"
+                                        class="img-fluid rounded shadow-sm person1">
+                                @endif
                             </div>
                             <div class="col-3 col-sm-3 col-md-3 col-lg-3">
-                                <img src="{{ asset('images') }}/observatories/{{ $observatory_details->photo_2 }}"
-                                    class="img-fluid rounded shadow-sm person2" alt="{{ $observatory_details->name }}">
+                                @if ($observatory_details->photo_2)
+                                    <img src="{{ asset($observatory_details->photo_2) }}"
+                                        class="img-fluid rounded shadow-sm person2"
+                                        alt="{{ basename($observatory_details->photo_2) }}">
+                                @else
+                                    <img src="{{ asset('images') }}/observatories/no-photo.jpg" alt="No Photo"
+                                        class="img-fluid rounded shadow-sm person2">
+                                @endif
                             </div>
                             <div class="col-3 col-sm-3 col-md-3 col-lg-3">
-                                <img src="{{ asset('images') }}/observatories/{{ $observatory_details->photo_3 }}"
-                                    class="img-fluid rounded shadow-sm person3" alt="{{ $observatory_details->name }}">
+                                @if ($observatory_details->photo_3)
+                                    <img src="{{ asset($observatory_details->photo_3) }}"
+                                        class="img-fluid rounded shadow-sm person3"
+                                        alt="{{ basename($observatory_details->photo_3) }}">
+                                @else
+                                    <img src="{{ asset('images') }}/observatories/no-photo.jpg" alt="No Photo"
+                                        class="img-fluid rounded shadow-sm person3">
+                                @endif
                             </div>
                             <div class="col-3 col-sm-3 col-md-3 col-lg-3">
-                                <img src="{{ asset('images') }}/observatories/{{ $observatory_details->photo_4 }}"
-                                    class="img-fluid rounded shadow-sm person4" alt="{{ $observatory_details->name }}">
+                                @if ($observatory_details->photo_4)
+                                    <img src="{{ asset($observatory_details->photo_4) }}"
+                                        class="img-fluid rounded shadow-sm person4"
+                                        alt="{{ basename($observatory_details->photo_4) }}">
+                                @else
+                                    <img src="{{ asset('images') }}/observatories/no-photo.jpg" alt="No Photo"
+                                        class="img-fluid rounded shadow-sm person4">
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -175,9 +203,9 @@
                                     @foreach ($observatories as $observatory)
                                         <div class="item">
                                             <div class="thumb">
-                                                <img src="{{ asset('images') }}/observatories/{{ $observatory->photo }}"
-                                                    alt="{{ $observatory->name }}" style="border-radius: 20px;"
-                                                    height="360" width="360">
+                                                <img src="{{ asset($observatory->photo) }}"
+                                                    alt="{{ basename($observatory->photo) }}"
+                                                    style="border-radius: 20px;" height="360" width="360">
                                                 <div class="hover-effect">
                                                     <div class="content">
                                                         <h4 class="mb-1">{{ $observatory->name }}</h4>

@@ -12,6 +12,11 @@ class Books extends Model
 
     public $timestamps = false;
 
+    protected $casts = [
+        'created_at' => 'datetime',
+        'updated_at' => 'datetime',
+    ];
+
     public $fillable = [
         'name_book',
         'author',
@@ -23,6 +28,8 @@ class Books extends Model
         'main_content_1',
         'main_content_2',
         'photo_book',
-        'slug'
+        'slug',
+        'link_amazon',
+        'status',
     ];
 }

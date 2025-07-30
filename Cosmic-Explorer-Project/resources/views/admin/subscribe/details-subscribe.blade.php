@@ -14,7 +14,8 @@
                 </div>
                 <div class="card-body">
                     <div class="form-group">
-                        <input type="hidden" name="id" value="{{ $details_subscribe->id }}" class="form-control">
+                        <input type="hidden" name="id" value="{{ $details_subscribe->id }}" class="form-control"
+                            disabled>
                     </div>
                     <div class="form-group">
                         <label for="name">Name</label>
@@ -34,20 +35,11 @@
                     </div>
                     <div class="form-group">
                         <label for="status">Status</label>
-                        <select name="status" class="form-control" id="status">
-                            @if ($details_subscribe->status)
-                                <option value="0">Unsubscribe</option>
-                                <option value="1" selected>Subscribe</option>
-                            @else
-                                <option value="0" selected>Unsubscribe</option>
-                                <option value="1">Subscribe</option>
-                            @endif
-                        </select>
+                        <input type="text" name="status" value="Subscribe" id="status" class="form-control" disabled>
                     </div>
                 </div>
                 <div class="d-flex justify-content-end card-footer">
-                    <a href="{{ route('admin.subscribe') }}" class="btn btn-secondary mr-2 px-5 py-2">Cancel</a>
-                    <button type="submit" class="btn btn-primary float-right px-5 py-2">Update</button>
+                    <a href="{{ route('admin.subscribe') }}" class="btn btn-secondary mr-2 px-5 py-2">Back</a>
                 </div>
             </div>
         </section>

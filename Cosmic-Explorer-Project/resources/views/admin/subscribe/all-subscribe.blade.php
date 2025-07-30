@@ -78,20 +78,19 @@
                                 @if ($person->status)
                                     <p class="bg-success mb-0" style="padding: 6px 12px; border-radius: 4px">
                                         Subscribe</p>
-                                @else
-                                    <p class="bg-danger mb-0" style="padding: 6px 12px; border-radius: 4px">
-                                        Unsubscribe</p>
                                 @endif
                             </td>
                             <td>
                                 <a href="{{ route('admin.edit-subscribe', $person->slug) }}" class="btn btn-info">
-                                    <i class="fas fa-edit"></i>
+                                    <i class="nav-icon fas fa-edit d-inline"></i>
+                                    <span>Edit</span>
                                 </a>
                             </td>
                             <td>
                                 <a href="{{ route('admin.delete-subscribe', $person->slug) }}" class="btn btn-danger"
                                     onclick="return confirm('Are you sure you want to delete the user with email: {{ $person->slug }}?')">
-                                    <i class="fas fa-trash"></i>
+                                    <i class="nav-icon fas fa-trash"></i>
+                                    <span>Remove</span>
                                 </a>
                             </td>
                         </tr>

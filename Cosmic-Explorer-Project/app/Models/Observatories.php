@@ -12,9 +12,15 @@ class Observatories extends Model
 
     public $timestamps = false;
 
+    protected $casts = [
+        'created_at' => 'datetime',
+        'updated_at' => 'datetime',
+    ];
+
     public $fillable = [
         'name',
-        'observatories',
+        'slug',
+        'status',
         'location',
         'photo',
         'photo_2',
@@ -26,7 +32,5 @@ class Observatories extends Model
         'main_instruments',
         'primary_research_areas',
         'public_access_info',
-        'additional_notes',
-        'slug',
     ];
 }
