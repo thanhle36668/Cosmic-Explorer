@@ -114,7 +114,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 align-self-center">
-                    <div class="header-text">
+                    <div class="header-text" style="text-align: justify">
                         @foreach ($introduction as $information)
                             <h1>{{ $information->website_name }}
                             </h1>
@@ -469,13 +469,13 @@
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <fieldset>
                                         <input name="sender_name" type="text" id="name" placeholder="Your name"
-                                            required>
+                                            maxlength="255" required>
                                     </fieldset>
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <fieldset>
                                         <input name="sender_email" type="text" id="email"
-                                            placeholder="Your email" pattern="[^ @]*@[^ @]*" required>
+                                            placeholder="Your email" pattern="[^ @]*@[^ @]*" maxlength="255" required>
                                     </fieldset>
                                 </div>
                                 <div class="col-lg-12">
@@ -508,13 +508,13 @@
                                 <div class="col-lg-5 col-md-6 col-sm-12">
                                     <fieldset>
                                         <input name="name" type="text" id="name" placeholder="Your Name"
-                                            required>
+                                            maxlength="255" required>
                                     </fieldset>
                                 </div>
                                 <div class="col-lg-5 col-md-6 col-sm-12">
                                     <fieldset>
                                         <input name="email" type="text" id="email" pattern="[^ @]*@[^ @]*"
-                                            placeholder="Your Email Address" required>
+                                            placeholder="Your Email Address" maxlength="255" required>
                                     </fieldset>
                                 </div>
                                 <div class="col-lg-2 col-md-12 col-sm-12">

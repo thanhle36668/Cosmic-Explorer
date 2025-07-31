@@ -103,7 +103,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 align-self-center">
-                    <div class="header-text">
+                    <div class="header-text" style="text-align: justify">
                         <h2>{{ $constellation_details->name }}</h2>
                         <ul class="info-list">
                             <li>

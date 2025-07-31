@@ -24,17 +24,17 @@
                     <div class="form-group">
                         <label for="website_name">Name Website</label>
                         <input id="website_name" name="website_name" value="{{ $information->website_name }}"
-                            class="form-control" required>
+                            class="form-control" maxlength="255" required>
                     </div>
                     <div class="form-group">
                         <label for="short_introduction">Short Introduction</label>
                         <input id="short_introduction" name="short_introduction"
-                            value="{{ $information->short_introduction }}" class="form-control" required>
+                            value="{{ $information->short_introduction }}" class="form-control" maxlength="255" required>
                     </div>
                     <div class="form-group">
                         <label for="short_introduction_2">Short Introduction 2</label>
                         <input id="short_introduction_2" name="short_introduction_2"
-                            value="{{ $information->short_introduction_2 }}" class="form-control" required>
+                            value="{{ $information->short_introduction_2 }}" class="form-control" maxlength="255" required>
                     </div>
                     <div class="form-group">
                         <label for="company_description">Company Description</label>
@@ -61,7 +61,8 @@
                                     @endif
                                 </div>
                                 <div class="col-12 col-sm-8 col-md-12 col-lg-9">
-                                    <input type="file" id="photo" name="photo" accept="image/*" class="mb-2">
+                                    <input type="file" id="photo" name="photo"
+                                        accept="image/jpeg, image/png, image/gif, image/webp, image/svg+xml" class="mb-2">
                                     @if ($information->photo)
                                         <small class="form-text text-muted mb-2 mt-0">
                                             Please select a new image file (JPG, JPEG, PNG, GIF, WebP, SVG).
@@ -104,7 +105,8 @@
                                     @endif
                                 </div>
                                 <div class="col-12 col-sm-8 col-md-12 col-lg-9">
-                                    <input type="file" id="photo_2" name="photo_2" accept="image/*" class="mb-2">
+                                    <input type="file" id="photo_2" name="photo_2"
+                                        accept="image/jpeg, image/png, image/gif, image/webp, image/svg+xml" class="mb-2">
                                     @if ($information->photo_2)
                                         <small class="form-text text-muted mb-2 mt-0">
                                             Please select a new image file (JPG, JPEG, PNG, GIF, WebP, SVG).
@@ -149,7 +151,8 @@
                                     @endif
                                 </div>
                                 <div class="col-12 col-sm-8 col-md-12 col-lg-9">
-                                    <input type="file" id="photo_3" name="photo_3" accept="image/*"
+                                    <input type="file" id="photo_3" name="photo_3"
+                                        accept="image/jpeg, image/png, image/gif, image/webp, image/svg+xml"
                                         class="mb-2">
                                     @if ($information->photo_3)
                                         <small class="form-text text-muted mb-2 mt-0">
@@ -195,7 +198,8 @@
                                     @endif
                                 </div>
                                 <div class="col-12 col-sm-8 col-md-12 col-lg-9">
-                                    <input type="file" id="photo_4" name="photo_4" accept="image/*"
+                                    <input type="file" id="photo_4" name="photo_4"
+                                        accept="image/jpeg, image/png, image/gif, image/webp, image/svg+xml"
                                         class="mb-2">
                                     @if ($information->photo)
                                         <small class="form-text text-muted mb-2 mt-0">
@@ -241,7 +245,8 @@
                                     @endif
                                 </div>
                                 <div class="col-12 col-sm-8 col-md-12 col-lg-9">
-                                    <input type="file" id="photo_5" name="photo_5" accept="image/*"
+                                    <input type="file" id="photo_5" name="photo_5"
+                                        accept="image/jpeg, image/png, image/gif, image/webp, image/svg+xml"
                                         class="mb-2">
                                     @if ($information->photo_5)
                                         <small class="form-text text-muted mb-2 mt-0">
@@ -287,7 +292,8 @@
                                     @endif
                                 </div>
                                 <div class="col-12 col-sm-8 col-md-12 col-lg-9">
-                                    <input type="file" id="photo_6" name="photo_6" accept="image/*"
+                                    <input type="file" id="photo_6" name="photo_6"
+                                        accept="image/jpeg, image/png, image/gif, image/webp, image/svg+xml"
                                         class="mb-2">
                                     @if ($information->photo_6)
                                         <small class="form-text text-muted mb-2 mt-0">
@@ -333,7 +339,8 @@
                                     @endif
                                 </div>
                                 <div class="col-12 col-sm-8 col-md-12 col-lg-9">
-                                    <input type="file" id="photo_7" name="photo_7" accept="image/*"
+                                    <input type="file" id="photo_7" name="photo_7"
+                                        accept="image/jpeg, image/png, image/gif, image/webp, image/svg+xml"
                                         class="mb-2">
                                     @if ($information->photo_7)
                                         <small class="form-text text-muted mb-2 mt-0">
@@ -379,7 +386,8 @@
                                     @endif
                                 </div>
                                 <div class="col-12 col-sm-8 col-md-12 col-lg-9">
-                                    <input type="file" id="photo_8" name="photo_8" accept="image/*"
+                                    <input type="file" id="photo_8" name="photo_8"
+                                        accept="image/jpeg, image/png, image/gif, image/webp, image/svg+xml"
                                         class="mb-2">
                                     @if ($information->photo_8)
                                         <small class="form-text text-muted mb-2 mt-0">

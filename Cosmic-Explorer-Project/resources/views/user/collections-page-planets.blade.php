@@ -120,8 +120,8 @@
                                 </div>
                             @endif
                             <div class="flex-grow-1">
-                                <h3>{{ $planet->name }}</h3>
-                                <p class="text-light lh-lg mb-3">
+                                <h3 class="mb-2" style="text-align: justify">{{ $planet->name }}</h3>
+                                <p class="text-light lh-lg mb-3" style="text-align: justify">
                                     {{ $planet->title_short }}
                                 </p>
                                 <div class="main-button">

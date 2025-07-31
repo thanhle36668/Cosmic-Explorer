@@ -142,13 +142,13 @@ class CustomizationController extends Controller
     public function updatedAbout(Request $request)
     {
         $validationRules = [
-            'title' => 'required|string|max:255',
+            'title' => 'required|string|max:250',
             'description_1' => 'required|string',
             'description_2' => 'required|string',
             'link' => 'nullable|string|max:300',
-            'link_2' => 'nullable|string|max:300',
-            'link_3' => 'nullable|string|max:300',
-            'link_4' => 'nullable|string|max:300',
+            'link_2' => 'nullable|string|max:255',
+            'link_3' => 'nullable|string|max:255',
+            'link_4' => 'nullable|string|max:255',
             'photo' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp',
         ];
 

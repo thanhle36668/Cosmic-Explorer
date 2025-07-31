@@ -109,7 +109,7 @@
                             style="height: auto">
                             <div class="flex-grow-1">
                                 <h3>{{ $constellation->name }}</h3>
-                                <p class="text-light lh-lg mb-3">
+                                <p class="text-light lh-lg mb-3" style="text-align: justify">
                                     {{ $constellation->identification }}
                                 </p>
                                 <div class="main-button">

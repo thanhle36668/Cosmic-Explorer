@@ -117,7 +117,7 @@
                                         class="img-fluid rounded-lg">
                                 @endif
                             </div>
-                            <div class="flex-grow-1">
+                            <div class="flex-grow-1" style="text-align: justify">
                                 <h2 class="mb-2">{{ $book->name_book }}</h2>
                                 <span class="d-block mb-2">
                                     <strong class="text-light">Author: {{ $book->author }}</strong>

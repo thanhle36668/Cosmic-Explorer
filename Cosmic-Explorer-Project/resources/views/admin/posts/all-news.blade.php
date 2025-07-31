@@ -110,8 +110,8 @@
                             <img src="{{ asset($post->image) }}" alt="tên ảnh" class="img-fluid rounded-lg">
                         </div>
                         <div class="flex-grow-1">
-                            <h3>{{ $post->title }}</h3>
-                            <p class="text-light lh-lg mb-3">
+                            <h3 class="mb-2">{{ $post->title }}</h3>
+                            <p class="text-light lh-lg mb-3" style="text-align: justify">
                                 {{ $post->excerpt }}
                             </p>
                             <div class="main-button">

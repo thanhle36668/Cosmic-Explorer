@@ -31,7 +31,8 @@
                     </div>
                     <div class="form-group">
                         <label for="title">Title</label>
-                        <input id="title" name="title" value="{{ $post->title }}" class="form-control" required>
+                        <input id="title" name="title" value="{{ $post->title }}" class="form-control"
+                            maxlength="255" required>
                     </div>
                     <div class="form-group">
                         <label for="slug">Slug</label>
@@ -51,8 +52,8 @@
                     </div>
                     <div class="form-group">
                         <label for="author">Author</label>
-                        <input id="author" name="author" value="{{ $post->author }}" class="form-control" required
-                            disabled>
+                        <input id="author" name="author" value="{{ $post->author }}" class="form-control"
+                            maxlength="255" maxlength="255" required disabled>
                         <input type="hidden" id="author" name="author" value="{{ $post->author }}" class="form-control"
                             required>
                     </div>
@@ -98,7 +99,8 @@
                                     @endif
                                 </div>
                                 <div class="col-12 col-sm-8 col-md-12 col-lg-7">
-                                    <input type="file" id="photo" name="photo" accept="image/*"
+                                    <input type="file" id="photo" name="photo"
+                                        accept="image/jpeg, image/png, image/gif, image/webp, image/svg+xml""
                                         class="mb-2">
                                     @if ($post->photo)
                                         <small class="form-text text-muted mb-2 mt-0">
@@ -143,7 +145,8 @@
                                     @endif
                                 </div>
                                 <div class="col-12 col-sm-8 col-md-12 col-lg-7">
-                                    <input type="file" id="photo_2" name="photo_2" accept="image/*"
+                                    <input type="file" id="photo_2" name="photo_2"
+                                        accept="image/jpeg, image/png, image/gif, image/webp, image/svg+xml""
                                         class="mb-2">
                                     @if ($post->photo_2)
                                         <small class="form-text text-muted mb-2 mt-0">

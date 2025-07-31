@@ -12,6 +12,7 @@ use App\Models\Observatories;
 use App\Models\Planets;
 use App\Models\Post;
 use App\Models\Videos;
+use Illuminate\Http\Request;
 
 class CosmicExplorerController extends Controller
 {
@@ -41,46 +42,117 @@ class CosmicExplorerController extends Controller
     }
 
     // Controller Page Collections Planets
-    public function pageCollectionsPlanets()
+    public function pageCollectionsPlanets(Request $request)
     {
+        $totalPlanetsCount = Planets::where('status', true)->count();
+
+        $perPage = 4;
+
+        $totalPages = ceil($totalPlanetsCount / $perPage);
+
+        $currentPage = $request->input('page', 1);
+
+        if ($totalPlanetsCount > 0 && $currentPage > $totalPages && $currentPage != 1) {
+            return abort(404, 'Page Not Found');
+        }
+
+        $planets = Planets::where('status', true)->orderBy('id', 'desc')->paginate($perPage);
+
+
         $data = [
-            'planets' => Planets::where('status', true)->orderBy('id', 'desc')->paginate(4)
+            'planets' => $planets
         ];
         return view('user/collections-page-planets')->with($data);
     }
 
     // Controller Page Collections Constellations
-    public function pageCollectionsConstellations()
+    public function pageCollectionsConstellations(Request $request)
     {
+        $totalConstellationsCount = Constellations::where('status', true)->count();
+
+        $perPage = 4;
+
+        $totalPages = ceil($totalConstellationsCount / $perPage);
+
+        $currentPage = $request->input('page', 1);
+
+        if ($totalConstellationsCount > 0 && $currentPage > $totalPages && $currentPage != 1) {
+            return abort(404, 'Page Not Found');
+        }
+
+        $constellations = Constellations::where('status', true)->orderBy('id', 'desc')->paginate($perPage);
+
         $data = [
-            'constellations' => Constellations::where('status', true)->orderBy('id', 'desc')->paginate(4)
+            'constellations' => $constellations
         ];
         return view('user/collections-page-constellations')->with($data);
     }
 
     // Controller Page Collections Observatories
-    public function pageCollectionsObservatories()
+    public function pageCollectionsObservatories(Request $request)
     {
+        $totalObservatoriesCount = Observatories::where('status', true)->count();
+
+        $perPage = 4;
+
+        $totalPages = ceil($totalObservatoriesCount / $perPage);
+
+        $currentPage = $request->input('page', 1);
+
+        if ($totalObservatoriesCount > 0 && $currentPage > $totalPages && $currentPage != 1) {
+            return abort(404, 'Page Not Found');
+        }
+
+        $observatories = Observatories::where('status', true)->orderBy('id', 'desc')->paginate($perPage);
+
         $data = [
-            'observatories' => Observatories::where('status', true)->orderBy('id', 'desc')->paginate(4)
+            'observatories' => $observatories
         ];
         return view('user/collections-page-observatories')->with($data);
     }
 
     // Controller Page Collections Books
-    public function pageCollectionsBooks()
+    public function pageCollectionsBooks(Request $request)
     {
+        $totalBooksCount = Books::where('status', true)->count();
+
+        $perPage = 4;
+
+        $totalPages = ceil($totalBooksCount / $perPage);
+
+        $currentPage = $request->input('page', 1);
+
+        if ($totalBooksCount > 0 && $currentPage > $totalPages && $currentPage != 1) {
+            return abort(404, 'Page Not Found');
+        }
+
+        $books = Books::where('status', true)->orderBy('id', 'desc')->paginate($perPage);
+
         $data = [
-            'books' => Books::where('status', true)->orderBy('id', 'desc')->paginate(4)
+            'books' => $books
         ];
         return view('user/collections-page-books')->with($data);
     }
 
     // Controller Page Collections Videos
-    public function pageCollectionsVideos()
+    public function pageCollectionsVideos(Request $request)
     {
+        $totalVideosCount = Videos::where('status', true)->count();
+
+        $perPage = 4;
+
+        $totalPages = ceil($totalVideosCount / $perPage);
+
+        $currentPage = $request->input('page', 1);
+
+        if ($totalVideosCount > 0 && $currentPage > $totalPages && $currentPage != 1) {
+            return abort(404, 'Page Not Found');
+        }
+
+        $videos = Videos::where('status', true)->orderBy('id', 'desc')->paginate($perPage);
+
         $data = [
-            'videos' => Videos::where('status', true)->orderBy('id', 'desc')->paginate(4)
+            'videos' => $videos
         ];
         return view('user/collections-page-videos')->with($data);
     }

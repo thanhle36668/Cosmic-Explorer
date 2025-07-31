@@ -40,7 +40,8 @@
                     </div>
                     <div class="form-group col-12">
                         <label for="title">Title</label>
-                        <input id="title" name="title" value="{{ $about->title }}" class="form-control" required>
+                        <input id="title" name="title" value="{{ $about->title }}" class="form-control"
+                            maxlength="250" required>
                     </div>
                     <div class="form-group col-12">
                         <label for="description_1">Description 1</label>
@@ -52,19 +53,23 @@
                     </div>
                     <div class="form-group col-12">
                         <label for="link">Link</label>
-                        <input id="link" name="link" value="{{ $about->link }}" class="form-control">
+                        <input id="link" name="link" value="{{ $about->link }}" class="form-control"
+                            maxlength="255">
                     </div>
                     <div class="form-group col-12">
                         <label for="twitter">Link 2</label>
-                        <input id="link_2" name="link_2" value="{{ $about->link_2 }}" class="form-control">
+                        <input id="link_2" name="link_2" value="{{ $about->link_2 }}" class="form-control"
+                            maxlength="255">
                     </div>
                     <div class="form-group col-12">
                         <label for="youtube">Link 3</label>
-                        <input id="youtube" name="link_3" value="{{ $about->link_3 }}" class="form-control">
+                        <input id="youtube" name="link_3" value="{{ $about->link_3 }}" class="form-control"
+                            maxlength="255">
                     </div>
                     <div class="form-group col-12">
                         <label for="youtube">Link 4</label>
-                        <input id="youtube" name="link_4" value="{{ $about->link_4 }}" class="form-control">
+                        <input id="youtube" name="link_4" value="{{ $about->link_4 }}" class="form-control"
+                            maxlength="255">
                     </div>
                     <div class="form-group mb-4 col-12 col-md-12">
                         <label for="photo" class="form-label d-block mb-2">Photo:</label>
@@ -81,7 +86,8 @@
                                 @endif
                             </div>
                             <div class="col-12 col-sm-8 col-md-12 col-lg-3">
-                                <input type="file" id="photo" name="photo" accept="image/*" class="mb-2">
+                                <input type="file" id="photo" name="photo"
+                                    accept="image/jpeg, image/png, image/gif, image/webp, image/svg+xml" class="mb-2">
                                 @if ($about->photo)
                                     <small class="form-text text-muted mb-2">
                                         Please select a new image file (JPG, JPEG, PNG, GIF, WEBP, SVG). <br>
@@ -152,7 +158,8 @@
                                 <div class="form-group">
                                     <label for="name_service">Name</label>
                                     <input type="text" name="name" id="name_service"
-                                        value="{{ $about_services->name }}" class="form-control" required>
+                                        value="{{ $about_services->name }}" class="form-control" maxlength="250"
+                                        required>
                                 </div>
                                 <div class="form-group">
                                     <label for="description_service">Description</label>
@@ -182,7 +189,7 @@
                                             </div>
                                             <div class="col-12 col-sm-8 col-md-12 col-lg-8">
                                                 <input class="mb-2" type="file" id="photo_service" name="photo"
-                                                    accept="image/*">
+                                                    accept="image/jpeg, image/png, image/gif, image/webp, image/svg+xml">
                                                 @if ($about_services->photo)
                                                     <small class="form-text text-muted mb-2 mt-0">
                                                         Please select a new image file (JPG, JPEG, PNG, GIF, WEBP, SVG).
@@ -212,7 +219,8 @@
                                 <div class="form-group">
                                     <label for="name_service_2">Name</label>
                                     <input type="text" name="name_2" id="name_service_2"
-                                        value="{{ $about_services->name_2 }}" class="form-control" required>
+                                        value="{{ $about_services->name_2 }}" class="form-control" maxlength="250"
+                                        required>
                                 </div>
                                 <div class="form-group">
                                     <label for="description_service_2">Description</label>
@@ -243,7 +251,7 @@
                                             </div>
                                             <div class="col-12 col-sm-8 col-md-12 col-lg-8">
                                                 <input class="mb-2" type="file" id="photo_service_2" name="photo_2"
-                                                    accept="image/*">
+                                                    accept="image/jpeg, image/png, image/gif, image/webp, image/svg+xml">
                                                 @if ($about_services->photo_2)
                                                     <small class="form-text text-muted mb-2 mt-0">
                                                         Please select a new image file (JPG, JPEG, PNG, GIF, WEBP, SVG).
@@ -273,7 +281,8 @@
                                 <div class="form-group">
                                     <label for="name_service_3">Name</label>
                                     <input type="text" name="name_3" id="name_service_3"
-                                        value="{{ $about_services->name_3 }}" class="form-control" required>
+                                        value="{{ $about_services->name_3 }}" class="form-control" maxlength="250"
+                                        required>
                                 </div>
                                 <div class="form-group">
                                     <label for="description_service_3">Description</label>
@@ -304,7 +313,7 @@
                                             </div>
                                             <div class="col-12 col-sm-8 col-md-12 col-lg-8">
                                                 <input class="mb-2" type="file" id="photo_service_3" name="photo_3"
-                                                    accept="image/*">
+                                                    accept="image/jpeg, image/png, image/gif, image/webp, image/svg+xml">
                                                 @if ($about_services->photo_3)
                                                     <small class="form-text text-muted mb-2 mt-0">
                                                         Please select a new image file (JPG, JPEG, PNG, GIF, WEBP, SVG).

@@ -119,7 +119,7 @@
                             </strong>
                         </span>
                     @endif
-                    <p class="mt-2">{{ $discovery_details->description_details }}</p>
+                    <p class="mt-2" style="text-align: justify">{{ $discovery_details->description_details }}</p>
                     <div class="clearfix mt-lg-0 mt-2">
                         <div class="col-md-6 float-md-end mb-1 ms-md-3">
                             <figure class="figure">
@@ -127,7 +127,7 @@
                                     alt="{{ $discovery_details->name_photo }}">
                             </figure>
                         </div>
-                        <p class="mt-2">
+                        <p class="mt-2" style="text-align: justify">
                             {{ $discovery_details->content_1 }}
                         </p>
                     </div>
@@ -138,7 +138,7 @@
                                     alt="{{ $discovery_details->name_photo }}">
                             </figure>
                         </div>
-                        <p class="mt-2">
+                        <p class="mt-2" style="text-align: justify">
                             {{ $discovery_details->content_2 }}
                         </p>
                     </div>

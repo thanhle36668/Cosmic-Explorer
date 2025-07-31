@@ -118,7 +118,7 @@
                                 </div>
                             </div>
                             <div class="col-lg-6">
-                                <div class="right-content">
+                                <div class="right-content" style="text-align: justify">
                                     <h4>About Us &amp; Our Skills</h4>
                                     <p>{{ $about->description_1 }}</p>
                                     <p>{{ $about->description_2 }}</p>
@@ -160,21 +160,21 @@
                                 </div>
                             </div>
                             <div class="col-lg-4">
-                                <div class="service-item">
+                                <div class="service-item" style="text-align: center">
                                     <h4>{{ $service->name }}</h4>
                                     <p>{{ $service->description }}</p>
                                     <img src="{{ asset($service->photo) }}" alt="{{ basename($service->photo) }}">
                                 </div>
                             </div>
                             <div class="col-lg-4">
-                                <div class="service-item">
+                                <div class="service-item" style="text-align: center">
                                     <h4>{{ $service->name_2 }}</h4>
                                     <p>{{ $service->description_2 }}</p>
                                     <img src="{{ asset($service->photo_2) }}" alt="{{ basename($service->photo_2) }}">
                                 </div>
                             </div>
                             <div class="col-lg-4">
-                                <div class="service-item">
+                                <div class="service-item" style="text-align: center">
                                     <h4>{{ $service->name_3 }}</h4>
                                     <p>{{ $service->description_3 }}</p>
                                     <img src="{{ asset($service->photo_3) }}" alt="{{ basename($service->photo_3) }}">

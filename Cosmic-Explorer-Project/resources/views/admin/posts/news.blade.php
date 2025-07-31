@@ -110,7 +110,7 @@
                         <br>
                         <strong>Creation date: {{ $post->created_at->format('d/m/Y') }}</strong>
                     </p>
-                    <p class="mt-2">
+                    <p class="mt-2" style="text-align: justify">
                         {{ $post->excerpt }}
                     </p>
                     <div class="clearfix my-4 mt-lg-0 mt-5">
@@ -125,7 +125,7 @@
 
                             </figure>
                         </div>
-                        <p>
+                        <p style="text-align: justify">
                             {!! nl2br(e($post->content)) !!}
                         </p>
                     </div>
