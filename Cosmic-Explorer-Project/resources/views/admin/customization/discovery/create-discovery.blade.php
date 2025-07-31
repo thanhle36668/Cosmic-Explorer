@@ -76,7 +76,7 @@
                             <label for="photo" class="form-label d-block mb-2">Photo 1 (Featured)</label>
                             <div class="row align-items-center g-3">
                                 <div class="col-12 col-sm-8 col-md-12 col-lg-12">
-                                    <input type="file" id="photo" name="photo" accept="image/jpeg, image/png, image/gif, image/webp, image/svg+xml"">
+                                    <input type="file" id="photo" name="photo" accept="image/jpeg, image/png, image/gif, image/webp, image/svg+xml">
                                     <small class="form-text text-muted mt-2">
                                         Please select a new image file (JPG, JPEG, PNG, GIF, WEBP, SVG).
                                     </small>
@@ -87,7 +87,7 @@
                             <label for="photo_2" class="form-label d-block mb-2">Photo 2</label>
                             <div class="row align-items-center g-3">
                                 <div class="col-12 col-sm-8 col-md-12 col-lg-12">
-                                    <input type="file" id="photo_2" name="photo_2" accept="image/jpeg, image/png, image/gif, image/webp, image/svg+xml"">
+                                    <input type="file" id="photo_2" name="photo_2" accept="image/jpeg, image/png, image/gif, image/webp, image/svg+xml">
                                     <small class="form-text text-muted mt-2">
                                         Please select a new image file (JPG, JPEG, PNG, GIF, WEBP, SVG).
                                     </small>

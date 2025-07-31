@@ -100,7 +100,7 @@
                                 </div>
                                 <div class="col-12 col-sm-8 col-md-12 col-lg-7">
                                     <input type="file" id="photo" name="photo"
-                                        accept="image/jpeg, image/png, image/gif, image/webp, image/svg+xml""
+                                        accept="image/jpeg, image/png, image/gif, image/webp, image/svg+xml"
                                         class="mb-2">
                                     @if ($post->photo)
                                         <small class="form-text text-muted mb-2 mt-0">
@@ -146,7 +146,7 @@
                                 </div>
                                 <div class="col-12 col-sm-8 col-md-12 col-lg-7">
                                     <input type="file" id="photo_2" name="photo_2"
-                                        accept="image/jpeg, image/png, image/gif, image/webp, image/svg+xml""
+                                        accept="image/jpeg, image/png, image/gif, image/webp, image/svg+xml"
                                         class="mb-2">
                                     @if ($post->photo_2)
                                         <small class="form-text text-muted mb-2 mt-0">
