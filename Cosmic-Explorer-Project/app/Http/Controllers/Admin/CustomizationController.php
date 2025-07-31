@@ -64,10 +64,10 @@ class CustomizationController extends Controller
             'company_description' => 'required|string',
         ];
 
-        $validationRules['photo'] = 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp';
+        $validationRules['photo'] = 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048';
 
         for ($i = 2; $i <= 8; $i++) {
-            $validationRules['photo_' . $i] = 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp';
+            $validationRules['photo_' . $i] = 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048';
         }
 
         $request->validate($validationRules);
@@ -149,7 +149,7 @@ class CustomizationController extends Controller
             'link_2' => 'nullable|string|max:255',
             'link_3' => 'nullable|string|max:255',
             'link_4' => 'nullable|string|max:255',
-            'photo' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp',
+            'photo' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
         ];
 
         $validator = Validator::make($request->all(), $validationRules);
@@ -217,9 +217,9 @@ class CustomizationController extends Controller
             'description' => 'required|string',
             'description_2' => 'required|string',
             'description_3' => 'required|string',
-            'photo' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp',
-            'photo_2' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp',
-            'photo_3' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp',
+            'photo' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
+            'photo_2' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
+            'photo_3' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
         ];
 
         $validator = Validator::make($request->all(), $validationRules);
@@ -311,8 +311,8 @@ class CustomizationController extends Controller
             'description_details' => 'required|string',
             'content_1' => 'required|string',
             'content_2' => 'required|string',
-            'photo' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp',
-            'photo_2' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp',
+            'photo' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
+            'photo_2' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
         ];
 
         $validator = Validator::make($dataForValidation, $validationRules);
@@ -412,8 +412,8 @@ class CustomizationController extends Controller
             'description_details' => 'required|string',
             'content_1' => 'required|string',
             'content_2' => 'required|string',
-            'photo' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp',
-            'photo_2' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp',
+            'photo' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
+            'photo_2' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
         ];
 
         $request->validate($validationRules);
@@ -502,11 +502,11 @@ class CustomizationController extends Controller
             'diameter_km' => 'required|string|max:250',
             'avg_distance_to_earth_km' => 'required|string|max:250',
             'avg_distance_to_sun_km' => 'required|string|max:250',
-            'photo' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp',
-            'photo_2' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp',
-            'photo_3' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp',
-            'photo_4' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp',
-            'photo_5' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp',
+            'photo' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
+            'photo_2' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
+            'photo_3' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
+            'photo_4' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
+            'photo_5' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
         ];
 
         $validator = Validator::make($dataForValidation, $validationRules);
@@ -597,11 +597,11 @@ class CustomizationController extends Controller
             'diameter_km' => 'required|max:250|string',
             'avg_distance_to_earth_km' => 'required|max:250|string',
             'avg_distance_to_sun_km' => 'required|max:250|string',
-            'photo' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp',
-            'photo_2' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp',
-            'photo_3' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp',
-            'photo_4' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp',
-            'photo_5' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp',
+            'photo' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
+            'photo_2' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
+            'photo_3' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
+            'photo_4' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
+            'photo_5' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
         ];
 
         $request->validate($validationRules);
@@ -702,10 +702,10 @@ class CustomizationController extends Controller
             'main_stars' => 'required|string',
             'notable_features' => 'required|string',
             'myths_meaning' => 'required|string',
-            'photo' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp',
-            'photo_2' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp',
-            'photo_3' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp',
-            'photo_4' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp',
+            'photo' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
+            'photo_2' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
+            'photo_3' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
+            'photo_4' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
         ];
 
         $validator = Validator::make($dataForValidation, $validationRules);
@@ -773,10 +773,10 @@ class CustomizationController extends Controller
             'main_stars' => 'required|string',
             'notable_features' => 'required|string',
             'myths_meaning' => 'required|string',
-            'photo' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp',
-            'photo_2' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp',
-            'photo_3' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp',
-            'photo_4' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp',
+            'photo' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
+            'photo_2' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
+            'photo_3' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
+            'photo_4' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
         ];
 
         $request->validate($validationRules);
@@ -900,10 +900,10 @@ class CustomizationController extends Controller
             'main_instruments' => 'required|string',
             'primary_research_areas' => 'required|string',
             'public_access_info' => 'required|string',
-            'photo' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp',
-            'photo_2' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp',
-            'photo_3' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp',
-            'photo_4' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp',
+            'photo' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
+            'photo_2' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
+            'photo_3' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
+            'photo_4' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
         ];
 
         $validator = Validator::make($dataForValidation, $validationRules);
@@ -975,10 +975,10 @@ class CustomizationController extends Controller
             'main_instruments' => 'required|string',
             'primary_research_areas' => 'required|string',
             'public_access_info' => 'required|string',
-            'photo' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp',
-            'photo_2' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp',
-            'photo_3' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp',
-            'photo_4' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp',
+            'photo' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
+            'photo_2' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
+            'photo_3' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
+            'photo_4' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
         ];
 
         $request->validate($validationRules);
@@ -1104,7 +1104,7 @@ class CustomizationController extends Controller
             'main_content_1' => 'required|string',
             'main_content_2' => 'required|string',
             'link_amazon' => 'nullable|string',
-            'photo_book' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp',
+            'photo_book' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
         ];
 
         $validator = Validator::make($dataForValidation, $validationRules);
@@ -1173,7 +1173,7 @@ class CustomizationController extends Controller
             'main_content_1' => 'required|string',
             'main_content_2' => 'required|string',
             'link_amazon' => 'nullable|string',
-            'photo_book' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp',
+            'photo_book' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg,webp|max:2048',
         ];
 
         $request->validate($validationRules);
