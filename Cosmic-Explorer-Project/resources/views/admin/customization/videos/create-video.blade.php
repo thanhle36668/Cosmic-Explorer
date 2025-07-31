@@ -28,12 +28,12 @@
                     <div class="form-group">
                         <label for="name_video">Name Video</label>
                         <input id="name_video" name="name_video" class="form-control" value="{{ old('name_video') }}"
-                            placeholder="e.g., Black Holes: Crash Course Astronomy #33" required>
+                            placeholder="e.g., Black Holes: Crash Course Astronomy #33" maxlength="255" required>
                     </div>
                     <div class="form-group">
                         <label for="channel">Channel</label>
                         <input id="channel" name="channel" class="form-control" value="{{ old('channel') }}"
-                            placeholder="e.g., CrashCourse" required>
+                            placeholder="e.g., CrashCourse" maxlength="255" required>
                     </div>
                     <div class="form-group">
                         <label for="genre">Genre</label>
@@ -43,7 +43,8 @@
                     <div class="form-group">
                         <label for="source_video">Source Video</label>
                         <textarea id="source_video" name="source_video" class="form-control" rows="10" cols="10"
-                            placeholder="e.g., https://www.youtube.com/embed/qZWPBKULkdQ?si=3xNauGOySAxxvOQw - NOTE: LINK EMBED YOUTUBE" required>{{ old('source_video') }}</textarea>
+                            placeholder="e.g., https://www.youtube.com/embed/qZWPBKULkdQ?si=3xNauGOySAxxvOQw - NOTE: LINK EMBED YOUTUBE"
+                            required>{{ old('source_video') }}</textarea>
                     </div>
                     <div class="form-group">
                         <label for="description_short">Description Short</label>

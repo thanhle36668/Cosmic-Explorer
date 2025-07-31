@@ -29,27 +29,27 @@
                     <div class="form-group">
                         <label for="name_book">Name Book</label>
                         <input id="name_book" name="name_book" class="form-control" value="{{ old('name_book') }}"
-                            placeholder="e.g., Cosmos" required>
+                            placeholder="e.g., Cosmos" maxlength="255" required>
                     </div>
                     <div class="form-group">
                         <label for="slug">Slug</label>
                         <input id="slug" name="slug" class="form-control" value="{{ old('slug') }}"
-                            placeholder="e.g., Cosmos" required>
+                            placeholder="e.g., Cosmos" maxlength="255" required>
                     </div>
                     <div class="form-group">
                         <label for="author">Author</label>
                         <input id="author" name="author" class="form-control" value="{{ old('author') }}"
-                            placeholder="e.g., Carl Sagan" required>
+                            placeholder="e.g., Carl Sagan" maxlength="255" required>
                     </div>
                     <div class="form-group">
                         <label for="publication_year">Publication Year</label>
                         <input id="publication_year" name="publication_year" class="form-control"
-                            value="{{ old('publication_year') }}" placeholder="e.g., 1980, (YYYY-MM-DD)" required>
+                            value="{{ old('publication_year') }}" placeholder="e.g., 1980, (YYYY-MM-DD)" maxlength="255" required>
                     </div>
                     <div class="form-group">
                         <label for="genre">Genre</label>
                         <input id="genre" name="genre" value="{{ old('genre') }}" class="form-control"
-                            placeholder="e.g., Non-fiction, Science, Astronomy, Philosophy, History" required>
+                            placeholder="e.g., Non-fiction, Science, Astronomy, Philosophy, History" maxlength="255"  required>
                     </div>
                     <div class="form-group">
                         <label for="link_amazon">Link Amazon</label>
@@ -90,7 +90,7 @@
                             <label for="photo_book" class="form-label d-block mb-2">Photo 1</label>
                             <div class="row align-items-center g-3">
                                 <div class="col-12 col-sm-8 col-md-12 col-lg-12">
-                                    <input type="file" id="photo_book" name="photo_book" accept="image/*">
+                                    <input type="file" id="photo_book" name="photo_book" accept="image/jpeg, image/png, image/gif, image/webp, image/svg+xml">
                                     <small class="form-text text-muted mt-2">
                                         Please select a new image file (JPG, JPEG, PNG, GIF, WEBP, SVG)
                                     </small>

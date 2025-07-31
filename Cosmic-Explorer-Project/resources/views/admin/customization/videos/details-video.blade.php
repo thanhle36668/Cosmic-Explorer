@@ -31,7 +31,7 @@
                     <div class="form-group">
                         <label for="name_video">Name Video</label>
                         <input id="name_video" name="name_video" class="form-control" value="{{ $video->name_video }}"
-                            required>
+                            maxlength="255" required>
                     </div>
                     <div class="form-group">
                         <label for="status">Status</label>
@@ -43,11 +43,12 @@
                                 <option value="0" selected>Private</option>
                                 <option value="1">Publish</option>
                             @endif
-                        </select>
+                        </select>   
                     </div>
                     <div class="form-group">
                         <label for="channel">Channel</label>
-                        <input id="channel" name="channel" class="form-control" value="{{ $video->channel }}" required>
+                        <input id="channel" name="channel" class="form-control" value="{{ $video->channel }}"
+                            maxlength="255" required>
                     </div>
                     <div class="form-group">
                         <label for="genre">Genre</label>

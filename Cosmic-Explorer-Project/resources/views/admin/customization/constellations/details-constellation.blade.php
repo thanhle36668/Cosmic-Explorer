@@ -32,12 +32,12 @@
                     <div class="form-group">
                         <label for="name ">Name Constellation </label>
                         <input id="name" name="name" value="{{ $constellation->name }}" class="form-control"
-                            required>
+                            maxlength="255" required>
                     </div>
                     <div class="form-group">
                         <label for="slug">Slug</label>
                         <input id="slug" name="slug" value="{{ $constellation->slug }}" class="form-control"
-                            required>
+                            maxlength="255" required>
                     </div>
                     <div class="form-group">
                         <label for="status">Status</label>
@@ -54,7 +54,7 @@
                     <div class="form-group">
                         <label for="title">Title</label>
                         <input id="title" name="title" value="{{ $constellation->title }}" class="form-control"
-                            required>
+                            maxlength="500" required>
                     </div>
                     <div class="form-group">
                         <label for="identification">Identification</label>
@@ -93,7 +93,8 @@
                                     @endif
                                 </div>
                                 <div class="col-12 col-sm-8 col-md-12 col-lg-7">
-                                    <input type="file" id="photo" name="photo" accept="image/*">
+                                    <input type="file" id="photo" name="photo"
+                                        accept="image/jpeg, image/png, image/gif, image/webp, image/svg+xml">
                                     @if ($constellation->photo)
                                         <small class="form-text text-muted mb-2 mt-0">
                                             Please select a new image file (JPG, JPEG, PNG, GIF, WEBP, SVG).
@@ -135,7 +136,8 @@
                                     @endif
                                 </div>
                                 <div class="col-12 col-sm-8 col-md-12 col-lg-7">
-                                    <input type="file" id="photo_2" name="photo_2" accept="image/*">
+                                    <input type="file" id="photo_2" name="photo_2"
+                                        accept="image/jpeg, image/png, image/gif, image/webp, image/svg+xml">
                                     @if ($constellation->photo_2)
                                         <small class="form-text text-muted mb-2 mt-0">
                                             Please select a new image file (JPG, JPEG, PNG, GIF, WEBP, SVG).
@@ -177,7 +179,8 @@
                                     @endif
                                 </div>
                                 <div class="col-12 col-sm-8 col-md-12 col-lg-7">
-                                    <input type="file" id="photo_3" name="photo_3" accept="image/*">
+                                    <input type="file" id="photo_3" name="photo_3"
+                                        accept="image/jpeg, image/png, image/gif, image/webp, image/svg+xml">
                                     @if ($constellation->photo_3)
                                         <small class="form-text text-muted mb-2 mt-0">
                                             Please select a new image file (JPG, JPEG, PNG, GIF, WEBP, SVG).
@@ -219,7 +222,8 @@
                                     @endif
                                 </div>
                                 <div class="col-12 col-sm-8 col-md-12 col-lg-7">
-                                    <input type="file" id="photo_4" name="photo_4" accept="image/*">
+                                    <input type="file" id="photo_4" name="photo_4"
+                                        accept="image/jpeg, image/png, image/gif, image/webp, image/svg+xml">
                                     @if ($constellation->photo_4)
                                         <small class="form-text text-muted mb-2 mt-0">
                                             Please select a new image file (JPG, JPEG, PNG, GIF, WEBP, SVG).

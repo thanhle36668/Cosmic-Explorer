@@ -31,11 +31,11 @@
                     </div>
                     <div class="form-group">
                         <label for="name ">Name Observatory </label>
-                        <input id="name" name="name" value="{{ $observatory->name }}" class="form-control" required>
+                        <input id="name" name="name" value="{{ $observatory->name }}" class="form-control" maxlength="250" required>
                     </div>
                     <div class="form-group">
                         <label for="slug">Slug</label>
-                        <input id="slug" name="slug" value="{{ $observatory->slug }}" class="form-control" required>
+                        <input id="slug" name="slug" value="{{ $observatory->slug }}" class="form-control" maxlength="255" required>
                     </div>
                     <div class="form-group">
                         <label for="status">Status</label>
@@ -51,23 +51,23 @@
                     </div>
                     <div class="form-group">
                         <label for="location">Location</label>
-                        <input id="location" name="location" value="{{ $observatory->location }}" class="form-control"
+                        <input id="location" name="location" value="{{ $observatory->location }}" class="form-control" maxlength="255"
                             required>
                     </div>
                     <div class="form-group">
                         <label for="altitude_meters">Altitude Meters</label>
                         <input id="altitude_meters" name="altitude_meters" value="{{ $observatory->altitude_meters }}"
-                            class="form-control" required>
+                            class="form-control" maxlength="255" required>
                     </div>
                     <div class="form-group">
                         <label for="established_year">Established Year</label>
                         <input id="established_year" name="established_year" value="{{ $observatory->established_year }}"
-                            class="form-control" required>
+                            class="form-control" maxlength="255" required>
                     </div>
                     <div class="form-group">
                         <label for="managing_organization">Managing Organization</label>
                         <input id="managing_organization" name="managing_organization"
-                            value="{{ $observatory->managing_organization }}" class="form-control" required>
+                            value="{{ $observatory->managing_organization }}" class="form-control" maxlength="255" required>
                     </div>
                     <div class="form-group">
                         <label for="main_instruments">Main Instruments</label>
@@ -102,7 +102,7 @@
                                     @endif
                                 </div>
                                 <div class="col-12 col-sm-8 col-md-12 col-lg-7">
-                                    <input type="file" id="photo" name="photo" accept="image/*">
+                                    <input type="file" id="photo" name="photo" accept="image/jpeg, image/png, image/gif, image/webp, image/svg+xml">
                                     @if ($observatory->photo)
                                         <small class="form-text text-muted mb-2 mt-0">
                                             Please select a new image file (JPG, JPEG, PNG, GIF, WEBP, SVG).
@@ -144,7 +144,7 @@
                                     @endif
                                 </div>
                                 <div class="col-12 col-sm-8 col-md-12 col-lg-7">
-                                    <input type="file" id="photo_2" name="photo_2" accept="image/*">
+                                    <input type="file" id="photo_2" name="photo_2" accept="image/jpeg, image/png, image/gif, image/webp, image/svg+xml">
                                     @if ($observatory->photo_2)
                                         <small class="form-text text-muted mb-2 mt-0">
                                             Please select a new image file (JPG, JPEG, PNG, GIF, WEBP, SVG).
@@ -186,7 +186,7 @@
                                     @endif
                                 </div>
                                 <div class="col-12 col-sm-8 col-md-12 col-lg-7">
-                                    <input type="file" id="photo_3" name="photo_3" accept="image/*">
+                                    <input type="file" id="photo_3" name="photo_3" accept="image/jpeg, image/png, image/gif, image/webp, image/svg+xml">
                                     @if ($observatory->photo_3)
                                         <small class="form-text text-muted mb-2 mt-0">
                                             Please select a new image file (JPG, JPEG, PNG, GIF, WEBP, SVG).
@@ -228,7 +228,7 @@
                                     @endif
                                 </div>
                                 <div class="col-12 col-sm-8 col-md-12 col-lg-7">
-                                    <input type="file" id="photo_4" name="photo_4" accept="image/*">
+                                    <input type="file" id="photo_4" name="photo_4" accept="image/jpeg, image/png, image/gif, image/webp, image/svg+xml">
                                     @if ($observatory->photo_4)
                                         <small class="form-text text-muted mb-2 mt-0">
                                             Please select a new image file (JPG, JPEG, PNG, GIF, WEBP, SVG).

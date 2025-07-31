@@ -31,11 +31,13 @@
                     </div>
                     <div class="form-group">
                         <label for="name_book">Name</label>
-                        <input id="name_book" name="name_book" class="form-control" value="{{ $book->name_book }}" required>
+                        <input id="name_book" name="name_book" class="form-control" value="{{ $book->name_book }}"
+                            maxlength="255" required>
                     </div>
                     <div class="form-group">
                         <label for="slug">Slug</label>
-                        <input id="slug" name="slug" class="form-control" value="{{ $book->slug }}" required>
+                        <input id="slug" name="slug" class="form-control" value="{{ $book->slug }}"
+                            maxlength="255" required>
                     </div>
                     <div class="form-group">
                         <label for="status">Status</label>
@@ -51,16 +53,18 @@
                     </div>
                     <div class="form-group">
                         <label for="author">Author</label>
-                        <input id="author" name="author" class="form-control" value="{{ $book->author }}" required>
+                        <input id="author" name="author" class="form-control" value="{{ $book->author }}"
+                            maxlength="255" required>
                     </div>
                     <div class="form-group">
                         <label for="publication_year">Publication Year</label>
                         <input id="publication_year" name="publication_year" class="form-control"
-                            value="{{ $book->publication_year }}" required>
+                            value="{{ $book->publication_year }}" maxlength="255" required>
                     </div>
                     <div class="form-group">
                         <label for="genre">Genre</label>
-                        <input id="genre" name="genre" value="{{ $book->genre }}" class="form-control" required>
+                        <input id="genre" name="genre" value="{{ $book->genre }}" class="form-control"
+                            maxlength="255" required>
                     </div>
                     <div class="form-group">
                         <label for="link_amazon">Link Amazon</label>
@@ -105,7 +109,8 @@
                                     @endif
                                 </div>
                                 <div class="col-12 col-sm-8 col-md-12 col-lg-7">
-                                    <input type="file" id="photo_book" name="photo_book" accept="image/*">
+                                    <input type="file" id="photo_book" name="photo_book"
+                                        accept="image/jpeg, image/png, image/gif, image/webp, image/svg+xml">
                                     @if ($book->photo_book)
                                         <small class="form-text text-muted mb-2 mt-0">
                                             Please select a new image file (JPG, JPEG, PNG, GIF, WEBP, SVG).

@@ -24,17 +24,17 @@
                     <div class="form-group">
                         <label for="name">Name Constellation</label>
                         <input id="name" name="name" class="form-control" value="{{ old('name') }}"
-                            placeholder="e.g., Orion (The Hunter), Scorpius (The Scorpion)" required>
+                            placeholder="e.g., Orion (The Hunter), Scorpius (The Scorpion)" maxlength="255" required>
                     </div>
                     <div class="form-group">
                         <label for="slug">Slug</label>
                         <input id="slug" name="slug" class="form-control" value="{{ old('slug') }}"
-                            placeholder="Orion" required>
+                            placeholder="Orion" maxlength="255" required>
                     </div>
                     <div class="form-group">
                         <label for="title">Title</label>
                         <input id="title" name="title" value="{{ old('title') }}" class="form-control"
-                            placeholder="e.g., Orion, Scorpius" required>
+                            placeholder="e.g., Orion, Scorpius" maxlength="500" required>
                     </div>
                     <div class="form-group">
                         <label for="identification">Identification</label>
@@ -65,7 +65,7 @@
                             <label for="photo" class="form-label d-block mb-2">Photo 1 (Featured)</label>
                             <div class="row align-items-center g-3">
                                 <div class="col-12 col-sm-8 col-md-12 col-lg-12">
-                                    <input type="file" id="photo" name="photo" accept="image/*">
+                                    <input type="file" id="photo" name="photo" accept="image/jpeg, image/png, image/gif, image/webp, image/svg+xml">
                                     <small class="form-text text-muted mt-2">
                                         Please select a new image file (JPG, JPEG, PNG, GIF, WEBP, SVG).
                                     </small>
@@ -76,7 +76,7 @@
                             <label for="photo_2" class="form-label d-block mb-2">Photo 2</label>
                             <div class="row align-items-center g-3">
                                 <div class="col-12 col-sm-8 col-md-12 col-lg-12">
-                                    <input type="file" id="photo_2" name="photo_2" accept="image/*">
+                                    <input type="file" id="photo_2" name="photo_2" accept="image/jpeg, image/png, image/gif, image/webp, image/svg+xml">
                                     <small class="form-text text-muted mt-2">
                                         Please select a new image file (JPG, JPEG, PNG, GIF, WEBP, SVG).
                                     </small>
@@ -87,7 +87,7 @@
                             <label for="photo_3" class="form-label d-block mb-2">Photo 3</label>
                             <div class="row align-items-center g-3">
                                 <div class="col-12 col-sm-8 col-md-12 col-lg-12">
-                                    <input type="file" id="photo_3" name="photo_3" accept="image/*">
+                                    <input type="file" id="photo_3" name="photo_3" accept="image/jpeg, image/png, image/gif, image/webp, image/svg+xml">
                                     <small class="form-text text-muted mt-2">
                                         Please select a new image file (JPG, JPEG, PNG, GIF, WEBP, SVG).
                                     </small>
@@ -98,7 +98,7 @@
                             <label for="photo_4" class="form-label d-block mb-2">Photo 4</label>
                             <div class="row align-items-center g-3">
                                 <div class="col-12 col-sm-8 col-md-12 col-lg-12">
-                                    <input type="file" id="photo_4" name="photo_4" accept="image/*">
+                                    <input type="file" id="photo_4" name="photo_4" accept="image/jpeg, image/png, image/gif, image/webp, image/svg+xml">
                                     <small class="form-text text-muted mt-2">
                                         Please select a new image file (JPG, JPEG, PNG, GIF, WEBP, SVG).
                                     </small>

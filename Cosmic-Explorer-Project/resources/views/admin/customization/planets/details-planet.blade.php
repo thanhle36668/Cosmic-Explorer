@@ -31,11 +31,13 @@
                     </div>
                     <div class="form-group">
                         <label for="name ">Name Planet </label>
-                        <input id="name" name="name" value="{{ $planet->name }}" class="form-control" required>
+                        <input id="name" name="name" value="{{ $planet->name }}" class="form-control"
+                            maxlength="100" required>
                     </div>
                     <div class="form-group">
                         <label for="slug">Slug</label>
-                        <input id="slug" name="slug" value="{{ $planet->slug }}" class="form-control" required>
+                        <input id="slug" name="slug" value="{{ $planet->slug }}" class="form-control"
+                            maxlength="255" required>
                     </div>
                     <div class="form-group">
                         <label for="status">Status</label>
@@ -57,22 +59,22 @@
                     <div class="form-group">
                         <label for="discovery_date">Discovery Date</label>
                         <input id="discovery_date" name="discovery_date" value="{{ $planet->discovery_date }}"
-                            class="form-control" required>
+                            class="form-control" maxlength="250" required>
                     </div>
                     <div class="form-group">
                         <label for="diameter_km">Diameter Km</label>
-                        <input id="diameter_km" name="diameter_km" value="{{ $planet->diameter_km }}" class="form-control"
+                        <input id="diameter_km" name="diameter_km" value="{{ $planet->diameter_km }}" class="form-control" maxlength="250"
                             required>
                     </div>
                     <div class="form-group">
                         <label for="avg_distance_to_earth_km">Avg Distance To Earth Km</label>
                         <input id="avg_distance_to_earth_km" name="avg_distance_to_earth_km"
-                            value="{{ $planet->avg_distance_to_earth_km }}" class="form-control" required>
+                            value="{{ $planet->avg_distance_to_earth_km }}" class="form-control" maxlength="250" required>
                     </div>
                     <div class="form-group">
                         <label for="avg_distance_to_sun_km">Avg Distance To Sun Km</label>
                         <input id="avg_distance_to_sun_km" name="avg_distance_to_sun_km"
-                            value="{{ $planet->avg_distance_to_sun_km }}" class="form-control" required>
+                            value="{{ $planet->avg_distance_to_sun_km }}" class="form-control" maxlength="250" required>
                     </div>
                     <div class="form-group">
                         <label for="brief_intro_composition">Brief Intro Composition</label>
@@ -96,7 +98,8 @@
                                     @endif
                                 </div>
                                 <div class="col-12 col-sm-8 col-md-12 col-lg-7">
-                                    <input type="file" id="photo" name="photo" accept="image/*">
+                                    <input type="file" id="photo" name="photo"
+                                        accept="image/jpeg, image/png, image/gif, image/webp, image/svg+xml">
                                     @if ($planet->photo)
                                         <small class="form-text text-muted mb-2 mt-0">
                                             Please select a new image file (JPG, JPEG, PNG, GIF, WEBP, SVG).
@@ -138,7 +141,8 @@
                                     @endif
                                 </div>
                                 <div class="col-12 col-sm-8 col-md-12 col-lg-7">
-                                    <input type="file" id="photo_2" name="photo_2" accept="image/*">
+                                    <input type="file" id="photo_2" name="photo_2"
+                                        accept="image/jpeg, image/png, image/gif, image/webp, image/svg+xml">
                                     @if ($planet->photo_2)
                                         <small class="form-text text-muted mb-2 mt-0">
                                             Please select a new image file (JPG, JPEG, PNG, GIF, WEBP, SVG).
@@ -180,7 +184,8 @@
                                     @endif
                                 </div>
                                 <div class="col-12 col-sm-8 col-md-12 col-lg-7">
-                                    <input type="file" id="photo_3" name="photo_3" accept="image/*">
+                                    <input type="file" id="photo_3" name="photo_3"
+                                        accept="image/jpeg, image/png, image/gif, image/webp, image/svg+xml">
                                     @if ($planet->photo_3)
                                         <small class="form-text text-muted mb-2 mt-0">
                                             Please select a new image file (JPG, JPEG, PNG, GIF, WEBP, SVG).
@@ -222,7 +227,8 @@
                                     @endif
                                 </div>
                                 <div class="col-12 col-sm-8 col-md-12 col-lg-7">
-                                    <input type="file" id="photo_4" name="photo_4" accept="image/*">
+                                    <input type="file" id="photo_4" name="photo_4"
+                                        accept="image/jpeg, image/png, image/gif, image/webp, image/svg+xml">
                                     @if ($planet->photo_4)
                                         <small class="form-text text-muted mb-2 mt-0">
                                             Please select a new image file (JPG, JPEG, PNG, GIF, WEBP, SVG).
@@ -264,7 +270,8 @@
                                     @endif
                                 </div>
                                 <div class="col-12 col-sm-8 col-md-12 col-lg-7">
-                                    <input type="file" id="photo_5" name="photo_5" accept="image/*">
+                                    <input type="file" id="photo_5" name="photo_5"
+                                        accept="image/jpeg, image/png, image/gif, image/webp, image/svg+xml">
                                     @if ($planet->photo_5)
                                         <small class="form-text text-muted mb-2 mt-0">
                                             Please select a new image file (JPG, JPEG, PNG, GIF, WEBP, SVG).

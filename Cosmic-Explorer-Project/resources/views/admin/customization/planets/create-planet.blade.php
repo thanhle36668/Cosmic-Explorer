@@ -29,12 +29,12 @@
                     <div class="form-group">
                         <label for="name">Name Planet</label>
                         <input id="name" name="name" class="form-control" value="{{ old('name') }}"
-                            placeholder="e.g., Mars, Earth" required>
+                            placeholder="e.g., Mars, Earth"  maxlength="100" required>
                     </div>
                     <div class="form-group">
                         <label for="slug">Slug</label>
                         <input id="slug" name="slug" class="form-control" value="{{ old('slug') }}"
-                            placeholder="e.g., Mars, Earth" required>
+                            placeholder="e.g., Mars, Earth" maxlength="100" required>
                     </div>
                     <div class="form-group">
                         <label for="title_short">Title Short</label>
@@ -45,25 +45,25 @@
                     <div class="form-group">
                         <label for="discovery_date">Discovery Date</label>
                         <input id="discovery_date" name="discovery_date" class="form-control"
-                            value="{{ old('discovery_date') }}" placeholder="e.g., 1989-10-14 (YYYY-MM-DD), 17th Century"
+                            value="{{ old('discovery_date') }}" placeholder="e.g., 1989-10-14 (YYYY-MM-DD), 17th Century" maxlength="250"
                             required>
                     </div>
                     <div class="form-group">
                         <label for="diameter_km">Diameter Km</label>
                         <input id="diameter_km" name="diameter_km" value="{{ old('diameter_km') }}"
-                            placeholder="e.g., 12742 (km), 6779 (km)" class="form-control" required>
+                            placeholder="e.g., 12742 (km), 6779 (km)" class="form-control" maxlength="250" required>
                     </div>
                     <div class="form-group">
                         <label for="avg_distance_to_earth_km">Avg Distance To Earth Km</label>
                         <input id="avg_distance_to_earth_km" name="avg_distance_to_earth_km" class="form-control"
                             value="{{ old('avg_distance_to_earth_km') }}"
-                            placeholder="e.g., 225 million (km), 54.6 million (km) - closest approach" required>
+                            placeholder="e.g., 225 million (km), 54.6 million (km) - closest approach" maxlength="250" required>
                     </div>
                     <div class="form-group">
                         <label for="avg_distance_to_sun_km">Avg Distance To Sun Km</label>
                         <input id="avg_distance_to_sun_km" name="avg_distance_to_sun_km" class="form-control"
                             value="{{ old('avg_distance_to_sun_km') }}"
-                            placeholder="e.g., 150 million (km), 228 million (km)" required>
+                            placeholder="e.g., 150 million (km), 228 million (km)"  maxlength="250" required>
                     </div>
                     <div class="form-group">
                         <label for="brief_intro_composition">Brief Intro Composition</label>
@@ -86,7 +86,7 @@
                             <label for="photo_2" class="form-label d-block mb-2">Photo 2:</label>
                             <div class="row align-items-center g-3">
                                 <div class="col-12 col-sm-8 col-md-12 col-lg-12">
-                                    <input type="file" id="photo_2" name="photo_2" accept="image/*">
+                                    <input type="file" id="photo_2" name="photo_2" accept="image/jpeg, image/png, image/gif, image/webp, image/svg+xml">
                                     <small class="form-text text-muted mt-2">
                                         Please select a new image file (JPG, JPEG, PNG, GIF, WEBP, SVG)
                                     </small>
@@ -97,7 +97,7 @@
                             <label for="photo_3" class="form-label d-block mb-2">Photo 3:</label>
                             <div class="row align-items-center g-3">
                                 <div class="col-12 col-sm-8 col-md-12 col-lg-12">
-                                    <input type="file" id="photo_3" name="photo_3" accept="image/*">
+                                    <input type="file" id="photo_3" name="photo_3" accept="image/jpeg, image/png, image/gif, image/webp, image/svg+xml">
                                     <small class="form-text text-muted mt-2">
                                         Please select a new image file (JPG, JPEG, PNG, GIF, WEBP, SVG)
                                     </small>
@@ -108,7 +108,7 @@
                             <label for="photo_4" class="form-label d-block mb-2">Photo 4:</label>
                             <div class="row align-items-center g-3">
                                 <div class="col-12 col-sm-8 col-md-12 col-lg-12">
-                                    <input type="file" id="photo_4" name="photo_4" accept="image/*">
+                                    <input type="file" id="photo_4" name="photo_4" accept="image/jpeg, image/png, image/gif, image/webp, image/svg+xml">
                                     <small class="form-text text-muted mt-2">
                                         Please select a new image file (JPG, JPEG, PNG, GIF, WEBP, SVG)
                                     </small>
@@ -119,7 +119,7 @@
                             <label for="photo_5" class="form-label d-block mb-2">Photo 5 (Carousel Image):</label>
                             <div class="row align-items-center g-3">
                                 <div class="col-12 col-sm-8 col-md-12 col-lg-12">
-                                    <input type="file" id="photo_5" name="photo_5" accept="image/*">
+                                    <input type="file" id="photo_5" name="photo_5" accept="image/jpeg, image/png, image/gif, image/webp, image/svg+xml">
                                     <small class="form-text text-muted mt-2">
                                         Please select a new image file (JPG, JPEG, PNG, GIF, WEBP, SVG)
                                     </small>
